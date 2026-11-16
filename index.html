@@ -22,7 +22,8 @@
   <link rel="stylesheet" href="css/components.css?v=20261121b">
   <link rel="stylesheet" href="css/promo.css?v=20261121b">
   <link rel="stylesheet" href="css/news.css?v=20261121e">
-  <link rel="stylesheet" href="css/calendar.css?v=20261121e">
+  <link rel="stylesheet" href="css/calendar.css?v=20261122a">
+  <link rel="stylesheet" href="css/stats.css?v=20261121c">
   <link rel="stylesheet" href="css/responsive.css?v=20261121b">
 
   <!-- โหลดก่อน paint เพื่อไม่ให้จอกระพริบตอนสลับธีม -->
@@ -527,12 +528,211 @@
         </div>
       </div>
     </section>
+
+    <section class="stats-section" id="statistics" aria-labelledby="statistics-title">
+      <div class="stats-section__inner">
+        <div class="stats-section__head">
+          <h2 class="stats-section__title" id="statistics-title" data-i18n="stats.title">
+            สถิติการดำเนินงาน
+          </h2>
+          <span class="stats-section__rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="stats-summary">
+          <article class="stats-card stats-card--applicants">
+            <span class="stats-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </span>
+            <div class="stats-card__content">
+              <h3 data-i18n="stats.applicants.label">จำนวนผู้ยื่นคำร้อง บศ.1</h3>
+              <p class="stats-card__value"><strong>1,248</strong><span data-i18n="stats.people">คน</span></p>
+              <p class="stats-card__trend">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M8 3 14 13H2L8 3Z"></path>
+                </svg>
+                <strong>+14.8%</strong>
+                <span data-i18n="stats.previousTerm">จากเทอมก่อน</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="stats-card stats-card--total">
+            <span class="stats-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
+                <path d="M14 2v6h6M8 13h8M8 17h8"></path>
+              </svg>
+            </span>
+            <div class="stats-card__content">
+              <h3 data-i18n="stats.total.label">จำนวนคำร้องทั้งหมด</h3>
+              <p class="stats-card__value"><strong>3,560</strong><span data-i18n="stats.requests">คำร้อง</span></p>
+              <p class="stats-card__trend">
+                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M8 3 14 13H2L8 3Z"></path>
+                </svg>
+                <strong>+8.2%</strong>
+                <span data-i18n="stats.previousSemester">จากภาคที่ผ่านมา</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="stats-card stats-card--completed">
+            <span class="stats-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="m8 12 2.5 2.5L16 9"></path>
+              </svg>
+            </span>
+            <div class="stats-card__content">
+              <h3 data-i18n="stats.completed.label">จำนวนคำร้องที่ดำเนินการสำเร็จ</h3>
+              <p class="stats-card__value"><strong>3,290</strong><span data-i18n="stats.requests">คำร้อง</span></p>
+              <p class="stats-card__trend stats-card__trend--badge">
+                <strong>92.4%</strong>
+                <span data-i18n="stats.successRate">อัตราความสำเร็จ</span>
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="stats-panels">
+          <article class="stats-panel" aria-labelledby="stats-monthly-title">
+            <div class="stats-panel__head">
+              <div>
+                <h3 id="stats-monthly-title" data-i18n="stats.monthly.title">
+                  สถิติการยื่นคำร้อง บศ.1 รายเดือน
+                </h3>
+                <p class="stats-panel__subtitle" data-i18n="stats.monthly.period">
+                  ภาคการศึกษาที่ 1/2569 (มิ.ย. - พ.ย. 2569)
+                </p>
+              </div>
+              <ul class="stats-legend" aria-label="คำอธิบายกราฟ"
+                data-i18n-aria-label="stats.chart.legend">
+                <li><span class="stats-legend__dot"></span><span data-i18n="stats.monthly.requests">จำนวน บศ.1</span></li>
+                <li><span class="stats-legend__line"></span><span data-i18n="stats.monthly.trend">แนวโน้มเฉลี่ย</span></li>
+              </ul>
+            </div>
+
+            <div class="stats-chart-wrap">
+              <span class="stats-chart__latest" data-i18n="stats.monthly.latest">ล่าสุด 328 ราย</span>
+              <svg class="stats-chart" viewBox="0 0 760 300" role="img"
+                aria-labelledby="stats-chart-title stats-chart-description">
+                <title id="stats-chart-title" data-i18n="stats.monthly.svgTitle">
+                  จำนวนคำร้อง บศ.1 รายเดือน
+                </title>
+                <desc id="stats-chart-description" data-i18n="stats.monthly.svgDescription">
+                  กราฟตั้งแต่เดือนมิถุนายนถึงพฤศจิกายน โดยพฤศจิกายนมีคำร้อง 328 ราย
+                </desc>
+                <g class="stats-chart__grid" aria-hidden="true">
+                  <line x1="66" y1="34" x2="730" y2="34"></line>
+                  <line x1="66" y1="90" x2="730" y2="90"></line>
+                  <line x1="66" y1="146" x2="730" y2="146"></line>
+                  <line x1="66" y1="202" x2="730" y2="202"></line>
+                  <line x1="66" y1="234" x2="730" y2="234"></line>
+                </g>
+                <g class="stats-chart__axis" aria-hidden="true">
+                  <text x="54" y="38">350</text>
+                  <text x="54" y="94">250</text>
+                  <text x="54" y="150">150</text>
+                  <text x="54" y="206">50</text>
+                  <text x="54" y="238">0</text>
+                  <text class="stats-chart__month" x="100" y="270" data-i18n="stats.month.jun">มิ.ย.</text>
+                  <text class="stats-chart__month" x="220" y="270" data-i18n="stats.month.jul">ก.ค.</text>
+                  <text class="stats-chart__month" x="340" y="270" data-i18n="stats.month.aug">ส.ค.</text>
+                  <text class="stats-chart__month" x="460" y="270" data-i18n="stats.month.sep">ก.ย.</text>
+                  <text class="stats-chart__month" x="580" y="270" data-i18n="stats.month.oct">ต.ค.</text>
+                  <text class="stats-chart__month" x="700" y="270" data-i18n="stats.month.nov">พ.ย.</text>
+                </g>
+                <g class="stats-chart__bars" aria-hidden="true">
+                  <rect x="84" y="188" width="32" height="46" rx="8"></rect>
+                  <rect x="204" y="142" width="32" height="92" rx="8"></rect>
+                  <rect x="324" y="103" width="32" height="131" rx="8"></rect>
+                  <rect x="444" y="120" width="32" height="114" rx="8"></rect>
+                  <rect x="564" y="157" width="32" height="77" rx="8"></rect>
+                  <rect class="stats-chart__bar--latest" x="684" y="47" width="32" height="187" rx="8"></rect>
+                </g>
+                <path class="stats-chart__trend-line"
+                  d="M100 188 C144 178 179 146 220 142 S299 103 340 103 S420 119 460 120 S540 150 580 157 S659 67 700 47"></path>
+                <g class="stats-chart__points" aria-hidden="true">
+                  <circle cx="100" cy="188" r="5"></circle>
+                  <circle cx="220" cy="142" r="5"></circle>
+                  <circle cx="340" cy="103" r="5"></circle>
+                  <circle cx="460" cy="120" r="5"></circle>
+                  <circle cx="580" cy="157" r="5"></circle>
+                  <circle class="stats-chart__point--latest" cx="700" cy="47" r="5"></circle>
+                </g>
+              </svg>
+            </div>
+
+            <p class="stats-panel__note" data-i18n="stats.monthly.note">
+              เดือนพฤศจิกายนมีผู้ยื่นคำร้อง บศ.1 สูงสุด 328 ราย
+            </p>
+          </article>
+
+          <article class="stats-panel" aria-labelledby="stats-status-title">
+            <div class="stats-panel__head">
+              <div>
+                <h3 id="stats-status-title" data-i18n="stats.status.title">
+                  สัดส่วนสถานะคำร้องทั้งหมด
+                </h3>
+                <p class="stats-panel__subtitle" data-i18n="stats.status.subtitle">
+                  จำแนกตามขั้นตอนการดำเนินการในระบบ
+                </p>
+              </div>
+              <span class="stats-panel__badge">
+                <strong>3,560</strong>
+                <span data-i18n="stats.requests">คำร้อง</span>
+              </span>
+            </div>
+
+            <div class="stats-status__body">
+              <div class="stats-donut" role="img" data-i18n-aria-label="stats.status.accessible"
+                aria-label="สถานะคำร้อง: สำเร็จ 3,290 ราย อยู่ระหว่างตรวจสอบ 198 ราย และรอเอกสาร 72 ราย">
+                <div class="stats-donut__center">
+                  <span class="stats-donut__total" data-i18n="stats.status.total">ทั้งหมด</span>
+                  <strong>92.4%</strong>
+                  <span class="stats-donut__caption" data-i18n="stats.status.completed">สำเร็จ</span>
+                </div>
+              </div>
+
+              <ul class="stats-status__list">
+                <li class="stats-status__item stats-status__item--completed">
+                  <span class="stats-status__dot" aria-hidden="true"></span>
+                  <span class="stats-status__label" data-i18n="stats.status.completed">ดำเนินการสำเร็จ</span>
+                  <span class="stats-status__value"><strong>3,290</strong><small>92.4%</small></span>
+                </li>
+                <li class="stats-status__item stats-status__item--review">
+                  <span class="stats-status__dot" aria-hidden="true"></span>
+                  <span class="stats-status__label" data-i18n="stats.status.review">อยู่ระหว่างตรวจสอบ</span>
+                  <span class="stats-status__value"><strong>198</strong><small>5.6%</small></span>
+                </li>
+                <li class="stats-status__item stats-status__item--documents">
+                  <span class="stats-status__dot" aria-hidden="true"></span>
+                  <span class="stats-status__label" data-i18n="stats.status.documents">รอนิสิตแก้ไข/เอกสารเพิ่ม</span>
+                  <span class="stats-status__value"><strong>72</strong><small>2.0%</small></span>
+                </li>
+              </ul>
+            </div>
+
+            <p class="stats-panel__note" data-i18n="stats.status.note">
+              คำร้องที่อยู่ระหว่างดำเนินการจะได้รับการอนุมัติภายใน 3–5 วันทำการ
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ประชาสัมพันธ์: ป๊อปอัพเปิดเว็บ + กล่องการ์ดมุมขวาล่าง (สร้างเนื้อหาด้วย js/promo.js) -->
   <div class="promo" data-promo></div>
 
-  <script src="js/i18n.js?v=20261121c" defer></script>
+  <script src="js/i18n.js?v=20261121d" defer></script>
   <script src="js/font-size.js?v=20261121b" defer></script>
   <script src="js/navigation.js?v=20261121b" defer></script>
   <script src="js/components.js?v=20261121b" defer></script>

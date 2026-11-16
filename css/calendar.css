@@ -28,6 +28,7 @@
   height: 2rem;
   background-color: var(--color-bg);
   border-bottom: 1px solid var(--calendar-border);
+  border-radius: inherit;
   pointer-events: none;
 }
 
