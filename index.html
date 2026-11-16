@@ -20,18 +20,19 @@
   <link rel="preload" as="image" href="assets/images/ปก.png" fetchpriority="high">
   <link rel="preload" as="image" href="assets/images/grad-logo.png">
 
-  <link rel="stylesheet" href="css/variables.css?v=20261121c">
+  <link rel="stylesheet" href="css/variables.css?v=20261123a">
   <link rel="stylesheet" href="css/reset.css?v=20261121b">
-  <link rel="stylesheet" href="css/style.css?v=20261121d">
-  <link rel="stylesheet" href="css/components.css?v=20261121b">
+  <link rel="stylesheet" href="css/style.css?v=20261123a">
+  <link rel="stylesheet" href="css/components.css?v=20261123a">
   <link rel="stylesheet" href="css/promo.css?v=20261121b">
-  <link rel="stylesheet" href="css/news.css?v=20261121e">
+  <link rel="stylesheet" href="css/news.css?v=20261123a">
   <link rel="stylesheet" href="css/calendar.css?v=20261122b">
   <link rel="stylesheet" href="css/stats.css?v=20261121c">
-  <link rel="stylesheet" href="css/support.css?v=20261122a">
+  <link rel="stylesheet" href="css/support.css?v=20261123a">
   <link rel="stylesheet" href="css/footer.css?v=20261122a">
   <link rel="stylesheet" href="css/intro.css?v=20261122a">
-  <link rel="stylesheet" href="css/responsive.css?v=20261121b">
+  <link rel="stylesheet" href="css/animations.css?v=20261123a">
+  <link rel="stylesheet" href="css/responsive.css?v=20261123a">
 
   <!-- โหลดก่อน paint เพื่อไม่ให้จอกระพริบตอนสลับธีม -->
   <script src="js/theme.js?v=20261121b"></script>
@@ -273,9 +274,18 @@
         <label class="visually-hidden" for="site-search-input" data-i18n="search.label">ค้นหาในเว็บไซต์</label>
         <input class="search-panel__input" id="site-search-input" type="search" name="q"
           placeholder="ค้นหาในเว็บไซต์..." data-i18n-placeholder="search.placeholder"
-          autocomplete="off">
+          autocomplete="off" aria-controls="site-search-results" aria-expanded="false"
+          aria-autocomplete="list">
         <button class="btn btn--primary" type="submit" data-i18n="search.submit">ค้นหา</button>
       </form>
+
+      <div class="search-results" id="site-search-results" data-search-results hidden>
+        <div class="search-results__inner container">
+          <p class="search-results__status" data-search-status role="status" aria-live="polite"></p>
+          <ul class="search-results__list" data-search-list role="listbox"
+            aria-label="ผลการค้นหา" data-i18n-aria-label="search.results"></ul>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -772,9 +782,6 @@
     <section class="support-section" id="contact" aria-labelledby="support-title">
       <div class="support-section__inner">
         <header class="support-hero">
-          <p class="support-hero__eyebrow" data-i18n="support.eyebrow">
-            บัณฑิตวิทยาลัย · มหาวิทยาลัยพะเยา
-          </p>
           <h2 class="support-hero__title" id="support-title" data-i18n="support.heroTitle">
             พร้อมให้บริการ ทำงานเป็นทีม ยิ้มแย้มแจ่มใส ใส่ใจคุณภาพ
           </h2>
@@ -1059,7 +1066,7 @@
   <div class="promo" data-promo></div>
 
   <script src="js/intro.js?v=20261122a" defer></script>
-  <script src="js/i18n.js?v=20261122b" defer></script>
+  <script src="js/i18n.js?v=20261123a" defer></script>
   <script src="js/font-size.js?v=20261121b" defer></script>
   <script src="js/navigation.js?v=20261121b" defer></script>
   <script src="js/components.js?v=20261121b" defer></script>
@@ -1067,6 +1074,8 @@
   <script src="js/promo.js?v=20261121b" defer></script>
   <script src="js/news.js?v=20261121c" defer></script>
   <script src="js/calendar.js?v=20261121d" defer></script>
+  <script src="js/animations.js?v=20261123a" defer></script>
+  <script src="js/search.js?v=20261123a" defer></script>
 </body>
 
 </html>

@@ -41,33 +41,9 @@
   text-align: center;
 }
 
-.support-hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin: 0;
-  padding: 0.35rem 0.9rem;
-  color: var(--color-primary-ink);
-  background: var(--support-chip);
-  border: 1px solid rgba(77, 35, 141, 0.14);
-  border-radius: var(--radius-pill);
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 1.4;
-}
-
-.support-hero__eyebrow::before {
-  content: "";
-  flex: 0 0 auto;
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-}
-
 .support-hero__title {
   max-width: 36ch;
-  margin: 0.9rem auto 0;
+  margin: 0 auto;
   color: var(--color-primary-ink);
   font-family: var(--font-heading);
   font-size: clamp(1.375rem, 2.7vw, 2.125rem);
@@ -461,9 +437,9 @@
 .support-contact__icon {
   display: grid;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  margin-bottom: 0.15rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: 0.2rem;
   color: var(--color-primary-ink);
   background: var(--support-chip);
   border: 1px solid var(--support-border);
@@ -471,13 +447,13 @@
 }
 
 .support-contact__icon svg {
-  width: 1.05rem;
-  height: 1.05rem;
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 .support-contact__label {
   color: var(--color-accent-strong);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   line-height: 1.4;
@@ -487,7 +463,7 @@
 .support-contact__org {
   margin: 0;
   color: var(--color-text);
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.45;
 }
@@ -495,8 +471,8 @@
 .support-contact__value {
   margin: 0;
   color: var(--support-muted);
-  font-size: 0.8125rem;
-  line-height: 1.55;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .support-contact__value--link {
@@ -600,22 +576,17 @@
     linear-gradient(135deg, #100d1c 0%, #171126 58%, #20152e 100%);
 }
 
-[data-theme="dark"] .support-hero__eyebrow {
-  color: #f2e9ff;
-  background: rgba(147, 100, 223, 0.22);
-  border-color: rgba(240, 201, 109, 0.28);
-}
-
 [data-theme="dark"] .support-hero__title,
 [data-theme="dark"] .support-card__title,
 [data-theme="dark"] .support-contact__title {
-  color: #f2e9ff;
+  color: #F2E9FF;
 }
 
 [data-theme="dark"] .support-service__name,
 [data-theme="dark"] .support-agency__name,
 [data-theme="dark"] .support-contact__org {
-  color: #ffffff;
+  /* ม่วงอ่อนสว่างแทนขาวล้วน ยังเด่นบนการ์ดเข้มแต่ไม่ตัดกับธีม */
+  color: #EFE7FB;
 }
 
 [data-theme="dark"] .support-service:hover,

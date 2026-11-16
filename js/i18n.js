@@ -52,6 +52,12 @@
       "search.placeholder": "ค้นหาในเว็บไซต์...",
       "search.submit": "ค้นหา",
       "search.close": "ปิดช่องค้นหา",
+      "search.results": "ผลการค้นหา",
+      "search.resultsCount": "พบ {n} รายการ สำหรับ “{q}”",
+      "search.resultsCountOne": "พบ 1 รายการ สำหรับ “{q}”",
+      "search.noResults": "ไม่พบผลลัพธ์สำหรับ “{q}” ลองค้นหาคำอื่น",
+      "search.onPage": "ในหน้านี้",
+      "search.external": "ลิงก์ภายนอก",
 
       "hero.title": "มหาวิทยาลัยพะเยา",
       "hero.tagline": "ก้าวสู่อนาคต...ไปด้วยกัน",
@@ -110,7 +116,6 @@
       "stats.status.note":
         "คำร้องที่อยู่ระหว่างดำเนินการจะได้รับการอนุมัติภายใน 3-5 วันทำการ",
 
-      "support.eyebrow": "บัณฑิตวิทยาลัย · มหาวิทยาลัยพะเยา",
       "support.heroTitle": "พร้อมให้บริการ ทำงานเป็นทีม ยิ้มแย้มแจ่มใส ใส่ใจคุณภาพ",
       "support.services": "บริการของเรา",
       "support.openSystem": "เปิดระบบ",
@@ -189,6 +194,12 @@
       "search.placeholder": "Search the website...",
       "search.submit": "Search",
       "search.close": "Close search",
+      "search.results": "Search results",
+      "search.resultsCount": "{n} results for “{q}”",
+      "search.resultsCountOne": "1 result for “{q}”",
+      "search.noResults": "No results for “{q}”. Try another keyword.",
+      "search.onPage": "On this page",
+      "search.external": "External link",
 
       "hero.title": "University of Phayao",
       "hero.tagline": "Step into the future... together",
@@ -247,7 +258,6 @@
       "stats.status.note":
         "Applications in progress are expected to be approved within 3-5 business days.",
 
-      "support.eyebrow": "Graduate School · University of Phayao",
       "support.heroTitle":
         "Ready to serve, working as a team, always smiling, committed to quality",
       "support.services": "Our services",
