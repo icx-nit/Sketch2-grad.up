@@ -1,0 +1,704 @@
+/* ==========================================================================
+   support.css
+   ส่วนท้ายหน้า: บริการของเรา · หน่วยงานที่เกี่ยวข้อง · ติดต่อเรา · ผู้เข้าชม
+   - ดีไซน์ใหม่: hero กลาง + การ์ดบริการ/หน่วยงาน + แถบติดต่อ + ป้ายผู้เข้าชม
+   - ลิงก์ทุกจุดกดได้จริง (ระบบคำร้อง, เว็บหน่วยงาน, โทร, อีเมล)
+   - ใช้โทเคนสีจาก variables.css (Amethyst Purple + Bright Gold)
+   ========================================================================== */
+
+.support-section {
+  position: relative;
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(2.5rem, 5vw, 4rem);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse at 10% 0%, rgba(147, 100, 223, 0.14), transparent 45%),
+    radial-gradient(ellipse at 90% 100%, rgba(214, 168, 63, 0.14), transparent 42%),
+    linear-gradient(135deg, #f8f6fc 0%, var(--color-bg) 55%, #efe8f8 100%);
+  scroll-margin-top: calc(var(--header-h, var(--header-height)) + 0.5rem);
+
+  /* --- โทเคนเฉพาะส่วนนี้ --- */
+  --support-card: #ffffff;
+  --support-soft: #f7f4fb;
+  --support-border: #e2dbef;
+  --support-muted: #6f687a;
+  --support-chip: rgba(77, 35, 141, 0.07);
+  --support-shadow: 0 20px 44px -28px rgba(36, 27, 50, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.support-section__inner {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 5rem);
+}
+
+/* --------------------------------------------------------------------------
+   Hero: ข้อความต้อนรับ (จัดกลาง)
+   -------------------------------------------------------------------------- */
+
+.support-hero {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+.support-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.35rem 0.9rem;
+  color: var(--color-primary-ink);
+  background: var(--support-chip);
+  border: 1px solid rgba(77, 35, 141, 0.14);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.support-hero__eyebrow::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+}
+
+.support-hero__title {
+  max-width: 36ch;
+  margin: 0.9rem auto 0;
+  color: var(--color-primary-ink);
+  font-family: var(--font-heading);
+  font-size: clamp(1.375rem, 2.7vw, 2.125rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.support-hero__rule {
+  display: block;
+  width: 4.5rem;
+  height: 4px;
+  margin: 1rem auto 0;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+/* --------------------------------------------------------------------------
+   การ์ด 2 คอลัมน์: บริการ (ซ้าย) · หน่วยงาน (ขวา)
+   -------------------------------------------------------------------------- */
+
+.support-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+  align-items: stretch;
+}
+
+.support-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background: var(--support-card);
+  border: 1px solid var(--support-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--support-shadow);
+}
+
+.support-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--support-border);
+}
+
+.support-card__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  color: var(--color-primary-ink);
+  font-size: clamp(0.95rem, 1.4vw, 1.0625rem);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.support-card__badge {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: #ffffff;
+  border-radius: 0.625rem;
+}
+
+.support-card__badge--primary {
+  background: linear-gradient(140deg, #5c2e9e, #4d238d);
+  box-shadow: 0 6px 14px -6px rgba(77, 35, 141, 0.7);
+}
+
+.support-card__badge--gold {
+  color: #3a1a6b;
+  background: linear-gradient(140deg, #f3d88b, #d6a83f);
+  box-shadow: 0 6px 14px -6px rgba(214, 168, 63, 0.7);
+}
+
+.support-card__badge svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.support-card__more {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.6rem;
+  color: var(--color-primary-ink);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background-color var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.support-card__more svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  transition: transform var(--duration) var(--ease);
+}
+
+.support-card__more:hover,
+.support-card__more:focus-visible {
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+}
+
+.support-card__more:hover svg,
+.support-card__more:focus-visible svg {
+  transform: translate(1px, -1px);
+}
+
+/* --- บริการ --- */
+
+.support-services {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.support-service {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem 0.9rem;
+  background: var(--support-soft);
+  border: 1px solid var(--support-border);
+  border-radius: 1rem;
+  transition: background-color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.support-service:hover,
+.support-service:focus-visible {
+  background: var(--support-card);
+  border-color: rgba(77, 35, 141, 0.45);
+  box-shadow: 0 14px 26px -20px rgba(36, 27, 50, 0.5);
+  transform: translateY(-2px);
+}
+
+.support-service__icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #ffffff;
+  background: linear-gradient(145deg, #6d3db0, #4d238d);
+  border-radius: 0.85rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 8px 16px -10px rgba(77, 35, 141, 0.8);
+}
+
+.support-service__icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.support-service__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.support-service__name {
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.support-service__desc {
+  color: var(--support-muted);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.support-service__go {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--color-primary-ink);
+  background: var(--support-chip);
+  border-radius: 50%;
+  transition: background-color var(--duration) var(--ease),
+    color var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.support-service__go svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.support-service:hover .support-service__go,
+.support-service:focus-visible .support-service__go {
+  color: #ffffff;
+  background: var(--color-primary);
+  transform: translateX(2px);
+}
+
+/* --- หน่วยงานที่เกี่ยวข้อง --- */
+
+.support-agencies {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.support-agency {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.8rem;
+  background: var(--support-soft);
+  border: 1px solid var(--support-border);
+  border-radius: 1rem;
+  transition: background-color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.support-agency:hover,
+.support-agency:focus-visible {
+  background: var(--support-card);
+  border-color: rgba(214, 168, 63, 0.7);
+  box-shadow: 0 14px 26px -20px rgba(36, 27, 50, 0.5);
+  transform: translateY(-2px);
+}
+
+.support-agency__logo {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #ffffff;
+  background: linear-gradient(145deg, #a77be5, #6946a4);
+  border: 1px solid rgba(214, 168, 63, 0.55);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    0 6px 14px -10px rgba(36, 27, 50, 0.7);
+}
+
+.support-agency__logo svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.support-agency__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.support-agency__name {
+  color: var(--color-text);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.support-agency__host {
+  color: var(--support-muted);
+  font-size: 0.6875rem;
+}
+
+.support-agency__arrow {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  color: var(--support-muted);
+  transition: color var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.support-agency__arrow svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.support-agency:hover .support-agency__arrow,
+.support-agency:focus-visible .support-agency__arrow {
+  color: var(--color-primary-ink);
+  transform: translate(1px, -1px);
+}
+
+/* --------------------------------------------------------------------------
+   ติดต่อเรา
+   -------------------------------------------------------------------------- */
+
+.support-contact {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.support-contact__head {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  margin-bottom: clamp(0.75rem, 1.8vw, 1.25rem);
+}
+
+.support-contact__rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--support-border));
+}
+
+.support-contact__rule:last-child {
+  background: linear-gradient(90deg, var(--support-border), transparent);
+}
+
+.support-contact__title {
+  position: relative;
+  flex: 0 0 auto;
+  margin: 0;
+  padding-bottom: 0.65rem;
+  color: var(--color-primary-ink);
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.support-contact__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 2.75rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-pill);
+  transform: translateX(-50%);
+}
+
+.support-contact__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  padding-block: clamp(0.75rem, 1.6vw, 1.25rem) 0;
+}
+
+.support-contact__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  padding-inline: clamp(0.5rem, 1.5vw, 1.75rem);
+  text-align: center;
+}
+
+.support-contact__item + .support-contact__item::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--support-border) 18%,
+    var(--support-border) 82%,
+    transparent
+  );
+}
+
+.support-contact__icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 0.15rem;
+  color: var(--color-primary-ink);
+  background: var(--support-chip);
+  border: 1px solid var(--support-border);
+  border-radius: 50%;
+}
+
+.support-contact__icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.support-contact__label {
+  color: var(--color-accent-strong);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.support-contact__org {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.support-contact__value {
+  margin: 0;
+  color: var(--support-muted);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+.support-contact__value--link {
+  color: var(--color-primary-ink);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color var(--duration) var(--ease);
+}
+
+.support-contact__value--link:hover,
+.support-contact__value--link:focus-visible {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* --------------------------------------------------------------------------
+   จำนวนผู้เข้าชม (ข้อมูลจากเว็บไซต์ทางการ)
+   -------------------------------------------------------------------------- */
+
+.support-visitors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem 0.65rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: clamp(1.5rem, 3vw, 2.25rem) auto 0;
+  padding: 0.7rem 1.35rem;
+  color: var(--support-muted);
+  background: var(--support-card);
+  border: 1px solid var(--support-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--support-shadow);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.support-visitors__icon {
+  display: grid;
+  place-items: center;
+  color: var(--color-primary-ink);
+}
+
+.support-visitors__icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.support-visitors__label {
+  font-weight: 600;
+}
+
+.support-visitors__count {
+  color: var(--color-primary-ink);
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.support-visitors__sep {
+  width: 1px;
+  height: 1rem;
+  background: var(--support-border);
+}
+
+.support-visitors__updated {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+}
+
+.support-visitors__updated time {
+  color: var(--color-primary-ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   โหมดมืด
+   -------------------------------------------------------------------------- */
+
+[data-theme="dark"] .support-section {
+  --support-card: #261e37;
+  --support-soft: #302543;
+  --support-border: #59486f;
+  --support-muted: #d7cde7;
+  --support-chip: rgba(183, 139, 220, 0.16);
+  --support-shadow: 0 22px 46px -26px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  background-image:
+    radial-gradient(ellipse at 10% 0%, rgba(147, 100, 223, 0.24), transparent 45%),
+    radial-gradient(ellipse at 90% 100%, rgba(240, 201, 109, 0.08), transparent 42%),
+    linear-gradient(135deg, #100d1c 0%, #171126 58%, #20152e 100%);
+}
+
+[data-theme="dark"] .support-hero__eyebrow {
+  color: #f2e9ff;
+  background: rgba(147, 100, 223, 0.22);
+  border-color: rgba(240, 201, 109, 0.28);
+}
+
+[data-theme="dark"] .support-hero__title,
+[data-theme="dark"] .support-card__title,
+[data-theme="dark"] .support-contact__title {
+  color: #f2e9ff;
+}
+
+[data-theme="dark"] .support-service__name,
+[data-theme="dark"] .support-agency__name,
+[data-theme="dark"] .support-contact__org {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .support-service:hover,
+[data-theme="dark"] .support-service:focus-visible {
+  border-color: rgba(240, 201, 109, 0.5);
+}
+
+[data-theme="dark"] .support-agency:hover,
+[data-theme="dark"] .support-agency:focus-visible {
+  border-color: rgba(240, 201, 109, 0.55);
+}
+
+[data-theme="dark"] .support-contact__label {
+  color: #f0c96d;
+}
+
+[data-theme="dark"] .support-contact__value--link {
+  color: #d9c4ff;
+}
+
+[data-theme="dark"] .support-visitors__count {
+  color: #f0c96d;
+}
+
+[data-theme="dark"] .support-visitors__updated time {
+  color: #e5d4ff;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 63.99rem) {
+  .support-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .support-section {
+    padding-block: 2.5rem 3rem;
+  }
+
+  .support-contact__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding-block: 0;
+  }
+
+  .support-contact__item {
+    padding-block: 1rem;
+  }
+
+  .support-contact__item + .support-contact__item::before {
+    inset-block: 0 auto;
+    inset-inline-start: 50%;
+    width: min(14rem, 72%);
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--support-border) 16%,
+      var(--support-border) 84%,
+      transparent
+    );
+    transform: translateX(-50%);
+  }
+
+  .support-visitors {
+    width: 100%;
+    border-radius: 1.25rem;
+  }
+
+  .support-visitors__sep {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-service:hover,
+  .support-service:focus-visible,
+  .support-agency:hover,
+  .support-agency:focus-visible {
+    transform: none;
+  }
+}
