@@ -1,0 +1,162 @@
+/* ==========================================================================
+   navigation.js
+   - Dropdown ของ "ประกาศมหาวิทยาลัยพะเยา" และ "วารสาร"
+   - เปิดด้วย hover และ click (DESIGN.md ข้อ 8: transition 150–300ms)
+   - รองรับ keyboard: Enter/Space, ArrowDown, Escape
+   ========================================================================== */
+
+(function () {
+  "use strict";
+
+  var items = Array.prototype.slice.call(
+    document.querySelectorAll(".nav-item--dropdown")
+  );
+
+  if (!items.length) {
+    return;
+  }
+
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  function triggerOf(item) {
+    return item.querySelector(".nav-link__toggle");
+  }
+
+  function linksOf(item) {
+    return item.querySelectorAll(".dropdown__link");
+  }
+
+  function open(item) {
+    items.forEach(function (other) {
+      if (other !== item) {
+        close(other);
+      }
+    });
+    item.classList.add("is-open");
+    var trigger = triggerOf(item);
+    if (trigger) {
+      trigger.setAttribute("aria-expanded", "true");
+    }
+  }
+
+  function close(item) {
+    item.classList.remove("is-open");
+    var trigger = triggerOf(item);
+    if (trigger) {
+      trigger.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  function closeAll() {
+    items.forEach(close);
+  }
+
+  items.forEach(function (item) {
+    var trigger = triggerOf(item);
+    if (!trigger) {
+      return;
+    }
+
+    trigger.addEventListener("click", function () {
+      if (item.classList.contains("is-open")) {
+        close(item);
+      } else {
+        open(item);
+      }
+    });
+
+    trigger.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        open(item);
+        var first = linksOf(item)[0];
+        if (first) {
+          first.focus();
+        }
+      }
+    });
+
+    if (canHover) {
+      item.addEventListener("mouseenter", function () {
+        open(item);
+      });
+
+      item.addEventListener("mouseleave", function () {
+        /* เอาเมาส์ออกแล้วปิดทันที ไม่ค้างไว้ */
+        close(item);
+      });
+    }
+
+    item.addEventListener("focusout", function (event) {
+      if (!item.contains(event.relatedTarget)) {
+        close(item);
+      }
+    });
+
+    Array.prototype.forEach.call(linksOf(item), function (link) {
+      link.addEventListener("click", function () {
+        close(item);
+      });
+    });
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".nav-item--dropdown")) {
+      closeAll();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") {
+      return;
+    }
+
+    var openItem = document.querySelector(".nav-item--dropdown.is-open");
+    if (!openItem) {
+      return;
+    }
+
+    var trigger = triggerOf(openItem);
+    close(openItem);
+    if (trigger) {
+      trigger.focus();
+    }
+  });
+
+  /* เมื่อเปลี่ยนช่วงขนาดหน้าจอ ให้ปิด dropdown ที่ค้างอยู่ */
+  var desktopQuery = window.matchMedia("(min-width: 1024px)");
+  var onBreakpointChange = function () {
+    closeAll();
+  };
+  if (typeof desktopQuery.addEventListener === "function") {
+    desktopQuery.addEventListener("change", onBreakpointChange);
+  } else if (typeof desktopQuery.addListener === "function") {
+    desktopQuery.addListener(onBreakpointChange);
+  }
+
+  /* คงเส้นสีทองไว้ที่เมนูที่ถูกกด (active) */
+  var topLinks = Array.prototype.slice.call(
+    document.querySelectorAll(".nav-list > .nav-item > .nav-link")
+  );
+
+  function select(link) {
+    topLinks.forEach(function (other) {
+      other.classList.remove("is-active");
+      if (other.tagName === "A") {
+        other.removeAttribute("aria-current");
+      }
+    });
+    link.classList.add("is-active");
+    if (link.tagName === "A") {
+      link.setAttribute("aria-current", "page");
+    }
+  }
+
+  topLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      select(link);
+    });
+  });
+
+  window.GUNavigation = { closeAll: closeAll };
+})();

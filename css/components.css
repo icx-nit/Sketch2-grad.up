@@ -1,0 +1,453 @@
+/* ==========================================================================
+   UI Components
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Icon button (ค้นหา / ธีม / เมนู)
+   -------------------------------------------------------------------------- */
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  /* ไอคอนใน Tab bar: ขนาดใหญ่ขึ้น (เดิม 2.5rem) */
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  transition: background-color var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.icon-btn:hover {
+  color: var(--color-primary-ink);
+}
+
+.icon-btn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ไอคอนพระอาทิตย์/พระจันทร์สลับตามธีม */
+.icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .icon-sun {
+  display: block;
+}
+
+[data-theme="dark"] .icon-moon {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Language button ( globe + badge )
+   -------------------------------------------------------------------------- */
+
+.lang-btn {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  /* ขนาดใหญ่ขึ้นให้เท่ากับปุ่มไอคอนอื่น (เดิม 2.5rem) */
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  transition: background-color var(--duration) var(--ease);
+}
+
+.lang-btn:hover {
+  color: var(--color-primary-ink);
+}
+
+.lang-btn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.lang-btn__badge {
+  position: absolute;
+  top: 0.125rem;
+  right: 0;
+  min-width: 1.25rem;
+  padding-inline: 0.1875rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: var(--color-on-primary);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-pill);
+}
+
+/* --------------------------------------------------------------------------
+   Font size control ( A- | A | A+ )
+   -------------------------------------------------------------------------- */
+
+/* กรอบม่วง พื้นขาว — หน้าตาเดียวกันทั้ง Light/Dark */
+.font-size {
+  display: inline-flex;
+  align-items: stretch;
+  height: 2.75rem;
+  border: 1px solid var(--font-control-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--font-control-bg);
+}
+
+.font-size__btn {
+  min-width: 2.125rem;
+  padding-inline: 0.4375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--font-control-text);
+  transition: background-color var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.font-size__btn + .font-size__btn {
+  border-left: 1px solid var(--font-control-border);
+}
+
+/* hover และตอนคลิก ใช้สีเดียวกัน */
+.font-size__btn:hover,
+.font-size__btn:active {
+  background-color: var(--font-control-hover);
+  color: var(--font-control-text);
+}
+
+/* --------------------------------------------------------------------------
+   Dropdown (ประกาศมหาวิทยาลัยพะเยา / วารสาร)
+   -------------------------------------------------------------------------- */
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  min-width: 17.5rem;
+  padding: var(--space-sm);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.25rem);
+  transition: opacity var(--duration) var(--ease),
+    transform var(--duration) var(--ease),
+    visibility var(--duration) var(--ease);
+  z-index: 2;
+}
+
+/* สะพานโปร่งใสกันเมาส์หลุดขณะเลื่อนจากปุ่มลงมาที่เมนู */
+.dropdown::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 0.25rem;
+}
+
+.nav-item--dropdown.is-open > .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown__link {
+  display: block;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  transition: background-color var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.dropdown__link:hover {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Search panel
+   -------------------------------------------------------------------------- */
+
+/* แสดงทับเนื้อหาด้านหลัง ไม่ดันเลย์เอาต์ให้ขยับ
+   ไม่มีแถบพื้นหลัง/เงาด้านหลัง เหลือแค่ช่องค้นหาที่มีกรอบบาง ๆ */
+.search-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: transparent;
+  border-top: 0;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.search-panel__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-block: 0.375rem;
+  pointer-events: auto;
+}
+
+.search-panel__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 2.75rem;
+  padding-inline: 0.875rem;
+  font-size: var(--text-base);
+  color: var(--search-field-text);
+  background-color: var(--search-field-bg);
+  border: 2px solid var(--search-field-border);
+  border-radius: var(--radius-md);
+}
+
+.search-panel__input::placeholder {
+  color: var(--search-field-placeholder);
+}
+
+.search-panel__input:focus {
+  outline: none;
+  border-color: var(--search-field-focus);
+  box-shadow: 0 0 0 3px var(--search-field-ring);
+}
+
+/* ปุ่มค้นหา: มุมโค้งเท่าช่องค้นหา และใช้สีเดียวกันทั้ง Light/Dark
+   (specificity สูงกว่า .btn--primary:hover เพื่อไม่ให้ธีมมืดเปลี่ยนสี) */
+.search-panel .btn.btn--primary {
+  border-radius: var(--radius-md);
+  background-color: var(--search-btn-bg);
+  color: var(--search-btn-text);
+}
+
+.search-panel .btn.btn--primary:hover {
+  background-color: var(--search-btn-bg-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  height: 2.75rem;
+  padding-inline: var(--space-lg);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background-color var(--duration) var(--ease),
+    color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Drawer (เมนู 3 ขีด)
+   -------------------------------------------------------------------------- */
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  visibility: hidden;
+  /* หน่วงการซ่อนไว้จนกว่า panel จะเลื่อนออกเสร็จ */
+  transition: visibility 0s linear var(--duration);
+}
+
+.drawer.is-open {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(16, 13, 28, 0.55);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.drawer.is-open .drawer__backdrop {
+  opacity: 1;
+}
+
+.drawer__panel {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(22rem, 92vw);
+  background-color: var(--color-surface);
+  border-inline-start: 1px solid var(--color-border);
+  border-start-start-radius: 1.25rem;
+  border-end-start-radius: 1.25rem;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transform: translateX(100%);
+  transition: transform var(--duration) var(--ease);
+}
+
+.drawer.is-open .drawer__panel {
+  transform: translateX(0);
+}
+
+/* --- หัว drawer: แท่ง accent + เส้นไล่สีม่วง→ทอง --- */
+.drawer__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: 1.25rem 0.75rem 1rem 1rem;
+}
+
+.drawer__header::after {
+  content: "";
+  position: absolute;
+  inset-inline: 1rem;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-accent) 65%,
+    transparent
+  );
+  opacity: 0.5;
+}
+
+.drawer__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.drawer__title::before {
+  content: "";
+  width: 0.25rem;
+  height: 1.125rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--color-accent), var(--color-primary));
+}
+
+/* ปุ่มปิด: hover เป็นวงกลมสีอ่อน */
+.drawer__header .icon-btn:hover {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-ink);
+}
+
+.drawer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  overflow-y: auto;
+}
+
+/* การ์ดเมนู */
+.drawer__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: background-color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    color var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.drawer__link:hover,
+.drawer__link:focus-visible {
+  background-color: var(--color-primary-soft);
+  border-color: var(--color-primary-soft);
+  color: var(--color-primary-ink);
+  transform: translateX(-0.125rem);
+}
+
+/* ลูกศรในวงกลม */
+.drawer__link svg {
+  box-sizing: content-box;
+  width: 1rem;
+  height: 1rem;
+  padding: 0.4375rem;
+  flex-shrink: 0;
+  color: var(--color-primary-ink);
+  background-color: var(--color-primary-soft);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--duration) var(--ease),
+    color var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.drawer__link:hover svg,
+.drawer__link:focus-visible svg {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  transform: translateX(0.125rem);
+}
+
+/* เปิด drawer: รายการเลื่อนขึ้นทีละรายการ */
+@keyframes drawer-row-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.drawer.is-open .drawer__link {
+  animation: drawer-row-in 320ms var(--ease) backwards;
+}
+
+.drawer.is-open .drawer__list li:nth-child(2) .drawer__link {
+  animation-delay: 40ms;
+}
+
+.drawer.is-open .drawer__list li:nth-child(3) .drawer__link {
+  animation-delay: 80ms;
+}
+
+.drawer.is-open .drawer__list li:nth-child(4) .drawer__link {
+  animation-delay: 120ms;
+}
+
+/* ล็อกการเลื่อนหน้าขณะเปิด drawer */
+body.is-locked {
+  overflow: hidden;
+}

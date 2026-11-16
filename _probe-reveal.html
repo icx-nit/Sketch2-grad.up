@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>reveal</title>
+</head>
+<body>
+<pre id="out">running</pre>
+<iframe id="f" style="border:0;width:1366px;height:768px"></iframe>
+<script>
+try {
+  localStorage.setItem("gu-theme", "light");
+  localStorage.setItem("gu-language", "th");
+} catch (e) {}
+
+var f = document.getElementById("f");
+var d, win;
+var log = [];
+function mark(k, v) { log.push(k + "=" + v); }
+
+f.onload = function () {
+  d = f.contentDocument;
+  win = f.contentWindow;
+  d.documentElement.style.scrollBehavior = "auto";
+  d.documentElement.removeAttribute("data-lock");
+  d.documentElement.setAttribute("data-announce", "in");
+
+  setTimeout(function () {
+    var news = d.querySelector(".news");
+    var panel = d.querySelector(".news__panel");
+    mark("reducedMotion", String(win.matchMedia("(prefers-reduced-motion: reduce)").matches));
+    mark("atLoad.class", news.className);
+    mark("atLoad.panelOpacity", win.getComputedStyle(panel).opacity);
+    mark("html.overflow", win.getComputedStyle(d.documentElement).overflow);
+
+    win.scrollTo(0, news.getBoundingClientRect().top + win.scrollY + 40);
+    win.dispatchEvent(new win.Event("scroll"));
+
+    var ticks = 0;
+    var t = setInterval(function () {
+      ticks++;
+      mark(
+        "t" + (ticks * 120) + "ms",
+        "class=" + news.className.replace(/\s+/g, ".") +
+          " opacity=" + win.getComputedStyle(panel).opacity +
+          " anim=" + win.getComputedStyle(panel).animationName +
+          " scrollY=" + Math.round(win.scrollY)
+      );
+      if (ticks >= 14) {
+        clearInterval(t);
+        mark("maxScroll", Math.round(d.documentElement.scrollHeight - win.innerHeight));
+        document.getElementById("out").textContent = log.join("\n");
+      }
+    }, 120);
+  }, 1500);
+};
+f.src = "index.html";
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+/* ==========================================================================
+   Responsive
+   Breakpoints ตาม DESIGN.md
+   Mobile 320–767 · Tablet 768–1023 · Desktop 1024–1439 · Large 1440+
+   ========================================================================== */
+
+/* --- Large Desktop 1440px+ --- */
+@media (min-width: 1440px) {
+  :root {
+    --container-pad: 2rem;
+    --header-height: 5rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding-inline: 0.875rem;
+  }
+}
+
+/* --- Desktop 1200px+: เมนูหลักอยู่กึ่งกลางแถบพอดี (โลโก้ซ้าย / ไอคอนขวา) --- */
+@media (min-width: 1200px) {
+  .site-header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .brand {
+    justify-self: start;
+  }
+
+  .primary-nav {
+    justify-self: center;
+  }
+
+  .header-actions {
+    justify-self: end;
+  }
+}
+
+/* --- Tablet & below (<= 1023px) ---
+   เมนูหลักย้ายลงมาเป็นแถวที่สอง และ dropdown แสดงแบบ accordion
+   เพื่อไม่ให้ถูกตัดขอบและใช้งานบนจอสัมผัสได้ */
+@media (max-width: 1023px) {
+  .site-header__inner {
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-md);
+    padding-block: var(--space-sm);
+    min-height: 0;
+  }
+
+  .brand {
+    order: 1;
+  }
+
+  .header-actions {
+    order: 2;
+    margin-inline-start: auto;
+  }
+
+  .primary-nav {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 var(--space-xs);
+    max-width: 100%;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.625rem;
+    font-size: 0.875rem;
+  }
+
+  .nav-link::after {
+    bottom: 0.0625rem;
+    left: 0.625rem;
+    right: 0.625rem;
+  }
+
+  .dropdown {
+    position: static;
+    display: none;
+    min-width: 15rem;
+    margin: 0.125rem 0 var(--space-sm);
+    border-radius: var(--radius-sm);
+    /* ใช้พื้นเดียวกับ dropdown เดสก์ท็อป เพื่อให้กรอบ hover มองเห็นได้ชัด */
+    background-color: var(--color-surface);
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav-item--dropdown.is-open > .dropdown {
+    display: block;
+  }
+
+  .dropdown__link {
+    font-size: 0.875rem;
+  }
+
+  .page-main {
+    padding-block: 0;
+  }
+
+  .hero__panel {
+    max-width: 100%;
+  }
+}
+
+/* --- Mobile (<= 767px) --- */
+@media (max-width: 767px) {
+  :root {
+    --container-pad: 1rem;
+    --text-3xl: 1.625rem;
+  }
+
+  .brand__logo {
+    height: 3rem;
+  }
+
+  .header-actions {
+    gap: var(--space-xs);
+  }
+
+  .icon-btn,
+  .lang-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .font-size {
+    height: 2.5rem;
+  }
+
+  .font-size__btn {
+    min-width: 1.75rem;
+    padding-inline: 0.3125rem;
+  }
+
+  .nav-link {
+    font-size: 0.8125rem;
+    padding: 0.4375rem 0.5rem;
+  }
+
+  .hero__panel {
+    max-width: 100%;
+  }
+
+  .hero {
+    padding-inline: 0;
+  }
+
+  /* มือถือ: วางประกาศต่อจากภาพปก (ไม่ทับภาพ เพื่อไม่ให้บังภาพปกทั้งจอ) */
+  .announce {
+    position: static;
+    padding-block: var(--space-xl) var(--space-2xl);
+  }
+
+  .announce__title {
+    gap: 0.5rem;
+    width: auto;
+    margin: 0 0 var(--space-lg);
+    padding: 0;
+    font-size: var(--text-2xl);
+    color: var(--color-primary-ink);
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .announce__title-text {
+    color: var(--color-primary-ink);
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+  }
+
+  .announce__title::before,
+  .announce__title::after {
+    height: 1.25rem;
+  }
+
+  .announce__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .announce__grid li {
+    flex: 0 0 calc((100% - var(--space-md)) / 2);
+    max-width: calc((100% - var(--space-md)) / 2);
+  }
+
+  .search-panel__inner {
+    padding-block: 0.375rem;
+  }
+}
+
+/* --- Small mobile (<= 400px) --- */
+@media (max-width: 400px) {
+  .brand__logo {
+    height: 2.75rem;
+  }
+
+  .icon-btn,
+  .lang-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .icon-btn svg,
+  .lang-btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .font-size {
+    height: 2.25rem;
+  }
+
+  .font-size__btn {
+    min-width: 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-btn__badge {
+    font-size: 0.5rem;
+    min-width: 1rem;
+    line-height: 1rem;
+  }
+
+  .nav-item--dropdown .dropdown {
+    min-width: 100%;
+  }
+}

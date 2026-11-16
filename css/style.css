@@ -1,0 +1,767 @@
+/* ==========================================================================
+   Global Layout & Header
+   ========================================================================== */
+
+html {
+  /* ค่าเริ่มต้น 16px – ปุ่ม A-/A+ จะปรับค่านี้ และทุกขนาดใช้ rem */
+  font-size: 16px;
+  scroll-behavior: smooth;
+  /* จองที่แถบเลื่อนไว้ล่วงหน้า: ตอนล็อกการเลื่อนหน้าจะได้ไม่เกิดการกระตุกของเลย์เอาต์ */
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .nav-link,
+  .dropdown__link,
+  .drawer__link,
+  .btn
+) {
+  font-family: var(--font-heading);
+}
+
+button:not(.promo-card) {
+  font-family: var(--font-heading);
+}
+
+/* --- พื้นหลังหน้าเว็บ (สีพื้นตาม DESIGN.md) --- */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-color: var(--color-bg);
+}
+
+/* --- Container --- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-surface);
+  /* เส้นใต้แถบเมนู (โหมดสว่างเป็นสีม่วง / โหมดมืดไม่มีเส้น) */
+  border-bottom: 1px solid var(--header-line);
+  /* ยก Tab Bar ให้ลอยเหนือพื้นหลังชัดขึ้นทั้ง Light/Dark */
+  box-shadow: var(--shadow-md);
+}
+
+/* โหมดสว่าง: ให้แถบ Tab bar เด่นกว่าพื้นหลังหน้า (#F4F2F8)
+   = ไล่เฉดขาว–ลาเวนเดอร์ + เส้นทองบางใต้แถบ + เงาม่วงนุ่ม */
+[data-theme="light"] .site-header {
+  background-image: linear-gradient(
+    180deg,
+    #f8f3ff 0%,
+    #eee2fd 50%,
+    #e2d1fb 100%
+  );
+  border-bottom-color: rgba(77, 35, 141, 0.18);
+  box-shadow: 0 1px 0 rgba(214, 168, 63, 0.55),
+    0 16px 30px -22px rgba(77, 35, 141, 0.6);
+}
+
+/* แถบเต็มความกว้าง: โลโก้ชิดซ้าย ไอคอนชิดขวา */
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  /* โลโก้และไอคอนชิดขอบซ้าย–ขวา (เดิม 40px) */
+  padding-inline: var(--edge-pad);
+  min-height: var(--header-height);
+}
+
+/* --- Brand / Logo --- */
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  flex-shrink: 0;
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs);
+}
+
+.brand__logo {
+  width: auto;
+  /* โลโก้ใหญ่ขึ้นให้สมดุลกับไอคอนที่ขยาย */
+  height: 3.5rem;
+}
+
+/* ==========================================================================
+   Primary navigation
+   ========================================================================== */
+
+.primary-nav {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: var(--space-sm) 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-text);
+  text-align: left;
+  transition: color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease);
+}
+
+.nav-link:hover {
+  color: var(--color-primary-ink);
+}
+
+.nav-link.is-active {
+  color: var(--color-primary-ink);
+  font-weight: 600;
+}
+
+/* ขีดทองแสดงเมื่อโฟกัสเมนูด้วยคีย์บอร์ด */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.125rem;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+  transform: scaleX(0);
+  transition: transform var(--duration) var(--ease);
+  pointer-events: none;
+}
+
+.nav-link:focus-visible::after,
+.nav-link.is-active[href]::after {
+  transform: scaleX(1);
+}
+
+.nav-link__chevron {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  transition: transform var(--duration) var(--ease);
+}
+
+.nav-item--dropdown.is-open > .nav-link__toggle .nav-link__chevron {
+  transform: rotate(180deg);
+}
+
+.nav-item--dropdown > .nav-link__toggle:hover,
+.nav-item--dropdown.is-open > .nav-link__toggle {
+  color: var(--color-primary-ink);
+  background-color: var(--color-primary-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Dark mode
+   - เส้นใต้ header เป็นสีม่วง
+   - ตัวอักษรเมนูปกติสีขาว / ตอนชี้หรือกดเป็นสีเหลือง (Gold)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .site-header {
+  border-bottom-color: var(--color-primary);
+}
+
+/* โลโก้ใช้ภาพเดียวกันทั้ง Light/Dark — ไม่มีแผ่นพื้นหลังในโหมดมืด
+   เพิ่มเพียงแสงขอบบาง ๆ (ไม่ใช่พื้นหลัง) ให้ตัวอักษรม่วงอ่านออกบนแถบเข้ม */
+[data-theme="dark"] .brand__logo {
+  /* โลโก้ปกติ: ใช้ภาพเดียวกันทั้งสองโหมด ไม่มีเงาฟุ้ง/พื้นหลัง */
+  filter: none;
+}
+
+[data-theme="dark"] .nav-link {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link:focus-visible,
+[data-theme="dark"] .nav-link.is-active,
+[data-theme="dark"] .nav-item--dropdown > .nav-link__toggle:hover,
+[data-theme="dark"] .nav-item--dropdown.is-open > .nav-link__toggle {
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Header actions
+   ========================================================================== */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Main / Hero
+   ========================================================================== */
+
+.page-main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  /* ให้ส่วนประกาศลอยอยู่ด้านหน้าภาพปกได้ */
+  position: relative;
+  /* เปิด overflow เพื่อให้ scroll ผ่านส่วนประกาศถึงส่วนข่าวด้านล่างได้ */
+  overflow: visible;
+}
+
+/* ชั้นแรกของหน้า: ภาพปก + ประกาศ
+   ครอบสูง 100vh ใต้ header เพื่อให้เลื่อนผ่านส่วนนี้ไปจึงจะเห็นหน้าข่าว */
+.hero-stage {
+  position: relative;
+  display: block;
+  height: calc(100vh - var(--header-h, var(--header-height)));
+  height: calc(100svh - var(--header-h, var(--header-height)));
+  min-height: 24rem;
+  overflow: hidden;
+}
+
+/* ภาพปกเติมเต็มพื้นที่ hero-stage ทั้งหมด */
+.hero {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 24rem;
+  /* ครอปภาพที่ถูกซูม/เลื่อนตอนทำอนิเมชัน ไม่ให้ล้นออกนอกจอ */
+  overflow: hidden;
+  isolation: isolate;
+  padding-inline: 0;
+}
+
+.hero__panel {
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  max-width: none;
+}
+
+/* อนิเมชันภาพปกถูกนำออกแล้ว: ปกเป็นภาพนิ่ง (ไม่มีซูม/เลื่อน) ตามที่กำหนด */
+/* ภาพปกเต็มพื้นที่: เต็มจอทั้งภาพ ไม่มีแถบด้านข้าง */
+.hero__image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform-origin: center;
+}
+
+.hero__title {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  color: var(--color-primary-ink);
+}
+
+.hero__subtitle {
+  margin-top: var(--space-xs);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+}
+
+.hero__tagline {
+  margin-top: var(--space-sm);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Announcements (หน้าแรก)
+   ลอยอยู่ด้านหน้าภาพปก ไม่มีพื้นหลัง และเลื่อนขึ้นตอนเปิดเว็บ
+   ========================================================================== */
+
+.announce {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  /* ชิดด้านล่างของภาพ (ไม่ใช่กลางจอ) เพื่อให้ประกาศอยู่ต่ำลงมาอีกนิด */
+  align-items: flex-end;
+  justify-content: center;
+  /* ไม่มีพื้นหลัง: ภาพปกเห็นทะลุทั้งด้านหลังหัวข้อและการ์ด */
+  padding-block: 0 clamp(1.25rem, 4.5vh, 2.5rem);
+  pointer-events: none;
+  animation: announce-rise 700ms var(--ease) 160ms both;
+}
+
+.announce > .container {
+  width: 100%;
+  /* กะทัดรัดขึ้นกว่าคอนเทนเนอร์หลัก (เดิม 75rem) */
+  max-width: 66rem;
+  pointer-events: auto;
+}
+
+/* รอภาพปกให้พร้อม แล้วค่อยเลื่อนประกาศขึ้นมาจากด้านล่างของภาพ (attribute จากสคริปต์ใน <head>) */
+html[data-announce="wait"] .announce,
+html[data-announce="wait"] .announce-card {
+  animation-play-state: paused;
+}
+
+/* เดสก์ท็อป: ซ่อนประกาศไว้ก่อน ให้เห็นภาพปกเต็ม ๆ แล้วค่อยสไลด์ขึ้นมาบนภาพ */
+@media (min-width: 768px) {
+  html[data-announce="wait"] .announce {
+    animation: none;
+    opacity: 0;
+    transform: translateY(4rem);
+    /* ซ่อนแบบนุ่มนวลเมื่อเลื่อนไปหน้าข่าว (ไม่หายวับ) */
+    transition: opacity 220ms var(--ease), transform 220ms var(--ease);
+  }
+
+  html[data-announce="wait"] .announce-card {
+    animation: none;
+    opacity: 0;
+    transition: opacity 220ms var(--ease);
+  }
+
+  html[data-announce="wait"] .announce > .container {
+    pointer-events: none;
+  }
+
+  /* สถานะ "แสดงแล้ว" กำหนดค่าสุดท้ายไว้ตรง ๆ ด้วย
+     เพื่อให้ประกาศค้างอยู่ตลอด แม้อนิเมชันถูกยกเลิก/ถูกเบราว์เซอร์พักไว้ (สลับแท็บ/เครื่องช้า) */
+  html[data-announce="in"] .announce {
+    opacity: 1;
+    transform: none;
+    animation: announce-reveal 820ms var(--ease) both;
+  }
+
+  html[data-announce="in"] .announce > .container {
+    pointer-events: auto;
+  }
+
+  html[data-announce="in"] .announce-card {
+    opacity: 1;
+    animation: announce-card-in 520ms var(--ease) 480ms both;
+  }
+}
+
+@keyframes announce-rise {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* สไลด์ประกาศขึ้นมาจากด้านล่างของภาพปก (เดสก์ท็อป) */
+@keyframes announce-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(clamp(6rem, 18vh, 12rem));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* หัวข้อ: ป้ายกระจกม่วงเข้ม + อักษรไล่สีทอง (เด่น อ่านง่าย และทันสมัยบนภาพปก) */
+.announce__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto var(--space-md);
+  padding: 0.375rem 1.5rem 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  text-align: center;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(214, 168, 63, 0.62);
+  background: linear-gradient(
+    180deg,
+    rgba(22, 14, 38, 0.97),
+    rgba(15, 9, 26, 0.93)
+  );
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 22px 44px -22px rgba(16, 13, 28, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 0 0 1px rgba(214, 168, 63, 0.12);
+}
+
+/* ตัวอักษรไล่สีทองเมทัลลิก */
+.announce__title-text {
+  color: #f6dfa2;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .announce__title-text {
+    background-image: linear-gradient(
+      180deg,
+      #fffaea 0%,
+      #fbe6ab 40%,
+      #edc66b 74%,
+      #d9ab3d 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+/* แท่ง accent สองข้างหัวข้อ (ทอง → จาง) พร้อมเรืองแสงนุ่ม ๆ */
+.announce__title::before,
+.announce__title::after {
+  content: "";
+  flex-shrink: 0;
+  width: 0.1875rem;
+  height: 1.25rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, #f6dfa2, rgba(214, 168, 63, 0.12));
+  box-shadow: 0 0 10px rgba(214, 168, 63, 0.55);
+}
+
+.announce__title::after {
+  background: linear-gradient(0deg, #f6dfa2, rgba(214, 168, 63, 0.12));
+}
+
+.announce__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.announce__grid li {
+  display: flex;
+  min-width: 0;
+}
+
+/* การ์ด: หน้าไวท์-ลาเวนเดอร์ + กรอบไล่สีทอง ↔ ม่วง + เงาซอฟต์ ให้ดูทันสมัย */
+.announce-card {
+  --announce-face: linear-gradient(180deg, #ffffff 0%, #f8f5fc 58%, #f2eef8 100%);
+  --announce-frame: linear-gradient(
+    155deg,
+    #d6a83f,
+    rgba(214, 168, 63, 0.72) 22%,
+    rgba(139, 92, 210, 0.55) 58%,
+    rgba(214, 168, 63, 0.92)
+  );
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* จัดเนื้อหาจากด้านบน เพื่อให้ไอคอนทุกใบอยู่ระดับเดียวกัน */
+  justify-content: flex-start;
+  gap: 0.6875rem;
+  width: 100%;
+  padding: 1.5rem 0.75rem 1.25rem;
+  text-align: center;
+  border: 2px solid transparent;
+  border-radius: 1.25rem;
+  background: var(--announce-face) padding-box,
+    var(--announce-frame) border-box;
+  box-shadow: 0 28px 50px -24px rgba(16, 13, 28, 0.7),
+    0 8px 20px -10px rgba(16, 13, 28, 0.32);
+  color: var(--color-text);
+  animation: announce-card-in 520ms var(--ease) 480ms backwards;
+  transition: transform 260ms var(--ease), box-shadow 260ms var(--ease),
+    color var(--duration) var(--ease);
+}
+
+/* ไฮไลต์ด้านบนการ์ด (ทองนวล + แสงขาว) ช่วยให้ดูกระจกมีมิติ */
+.announce-card::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: calc(1.25rem - 2px);
+  background:
+    radial-gradient(120% 80% at 50% -20%, rgba(214, 168, 63, 0.18), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 34%);
+  opacity: 0.65;
+  pointer-events: none;
+  transition: opacity 260ms var(--ease);
+}
+
+/* แท่งทองบาง ๆ ด้านบนการ์ด (รายละเอียดเล็ก ๆ ให้ดูตั้งใจออกแบบ) */
+.announce-card::after {
+  content: "";
+  position: absolute;
+  top: 0.5625rem;
+  left: 50%;
+  width: 2.25rem;
+  height: 0.1875rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    90deg,
+    rgba(214, 168, 63, 0.15),
+    var(--color-accent),
+    rgba(214, 168, 63, 0.15)
+  );
+  transform: translateX(-50%) scaleX(0.65);
+  opacity: 0.85;
+  pointer-events: none;
+  transition: transform 260ms var(--ease), opacity 260ms var(--ease);
+}
+
+/* โหมดมืด: การ์ดเป็นม่วงอเมทิสต์สว่าง (glass) + ขอบทองเรืองแสง
+   - การ์ดสว่างกว่าพื้นหลัง/ภาพปกชัดเจน
+   - ตัวอักษรขาวคม อ่านง่ายบนพื้นการ์ด
+   - ไอคอนทองสว่างที่สุดในการ์ด (เด่นกว่าตัวอักษร) */
+[data-theme="dark"] .announce-card {
+  --announce-face: linear-gradient(
+    180deg,
+    #75609f 0%,
+    #5f4b87 46%,
+    #4b3a6c 100%
+  );
+  --announce-frame: linear-gradient(
+    155deg,
+    #fff4d2,
+    #ffd98d 26%,
+    #cdaaf8 58%,
+    #ffe9b8 100%
+  );
+  box-shadow: 0 0 0 1px rgba(255, 236, 190, 0.5),
+    0 26px 50px -20px rgba(0, 0, 0, 0.85),
+    0 10px 22px -10px rgba(0, 0, 0, 0.6),
+    0 0 34px -10px rgba(247, 214, 143, 0.5);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .announce-card::before {
+  background:
+    radial-gradient(120% 80% at 50% -20%, rgba(255, 228, 167, 0.34), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), transparent 42%);
+  opacity: 0.9;
+}
+
+/* แท่งทองด้านบนการ์ด: เร่งให้สว่างขึ้นในโหมดมืด */
+[data-theme="dark"] .announce-card::after {
+  background: linear-gradient(
+    90deg,
+    rgba(247, 214, 143, 0.2),
+    #ffe1a0,
+    rgba(247, 214, 143, 0.2)
+  );
+  opacity: 1;
+}
+
+/* การ์ดไล่ขึ้นทีละใบตอนเปิดเว็บ */
+@keyframes announce-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.announce__grid li:nth-child(2) .announce-card {
+  animation-delay: 540ms;
+}
+
+.announce__grid li:nth-child(3) .announce-card {
+  animation-delay: 600ms;
+}
+
+.announce__grid li:nth-child(4) .announce-card {
+  animation-delay: 660ms;
+}
+
+.announce__grid li:nth-child(5) .announce-card {
+  animation-delay: 720ms;
+}
+
+.announce-card:hover,
+.announce-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px -22px rgba(16, 13, 28, 0.72),
+    0 0 0 1px rgba(214, 168, 63, 0.45);
+  color: var(--color-primary-ink);
+}
+
+[data-theme="dark"] .announce-card:hover,
+[data-theme="dark"] .announce-card:focus-visible {
+  box-shadow: 0 30px 60px -22px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(240, 201, 109, 0.7),
+    0 0 24px -4px rgba(240, 201, 109, 0.28);
+  color: var(--color-accent);
+}
+
+.announce-card:hover::before,
+.announce-card:focus-visible::before {
+  opacity: 1;
+}
+
+.announce-card:hover::after,
+.announce-card:focus-visible::after {
+  transform: translateX(-50%) scaleX(1);
+  opacity: 1;
+}
+
+/* ไอคอน: ชิปไล่สีลาเวนเดอร์ ↔ ทอง + ขอบทองบาง ๆ */
+.announce-card__icon {
+  --announce-icon-face: linear-gradient(150deg, #efe9fa, #fbf1dc);
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(214, 168, 63, 0.55);
+  background: var(--announce-icon-face);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    0 8px 18px -10px rgba(16, 13, 28, 0.55);
+  color: var(--color-primary-ink);
+  transition: background-color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease), color var(--duration) var(--ease),
+    transform 260ms var(--ease), box-shadow 260ms var(--ease);
+}
+
+[data-theme="dark"] .announce-card__icon {
+  --announce-icon-face: linear-gradient(
+    155deg,
+    #ffffff 0%,
+    #f0e9ff 46%,
+    #d9c9f8 100%
+  );
+  border-color: rgba(255, 255, 255, 0.92);
+  box-shadow: inset 0 1px 0 #ffffff,
+    0 0 0 4px rgba(226, 214, 255, 0.2),
+    0 10px 20px -10px rgba(12, 6, 26, 0.75);
+  color: #4b2a86;
+}
+
+.announce-card__icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.announce-card:hover .announce-card__icon,
+.announce-card:focus-visible .announce-card__icon {
+  background: linear-gradient(150deg, var(--color-primary), #2E1259);
+  border-color: rgba(214, 168, 63, 0.85);
+  color: var(--color-on-primary);
+  transform: scale(1.07);
+  box-shadow: 0 12px 24px -10px rgba(77, 35, 141, 0.85);
+}
+
+/* โหมดมืด: ตอน hover ให้ชิปสว่างขึ้นอีกขั้น (โทนขาว–ลาเวนเดอร์ ไม่ใช้ทอง) */
+[data-theme="dark"] .announce-card:hover .announce-card__icon,
+[data-theme="dark"] .announce-card:focus-visible .announce-card__icon {
+  background: linear-gradient(155deg, #ffffff, #f4eeff);
+  border-color: #ffffff;
+  color: #3d2071;
+  box-shadow: 0 0 0 5px rgba(228, 216, 255, 0.3),
+    0 12px 26px -10px rgba(10, 4, 24, 0.7);
+}
+
+.announce-card__label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  /* จองความสูง 2 บรรทัดเท่ากันทุกใบ ตัวหนังสือจึงเริ่มบรรทัดแรกตรงกันหมด */
+  min-height: 2.8em;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* โหมดมืด: ตัวอักษรขาวสะอาด + เงาบาง ๆ ให้อ่านชัดบนพื้นม่วงสว่าง */
+/* โหมดมืด: ตัวอักษรขาวสว่างคม ชัดกว่าพื้นการ์ด (ไอคอนทองยังเด่นที่สุด) */
+[data-theme="dark"] .announce-card__label {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 1px 1px rgba(26, 12, 46, 0.85),
+    0 2px 10px rgba(20, 8, 40, 0.6);
+  transition: color var(--duration) var(--ease);
+}
+
+/* โหมดมืด: ตอน hover ตัวอักษรเป็นทองสว่าง (คุมโทนเดิม) */
+[data-theme="dark"] .announce-card:hover .announce-card__label,
+[data-theme="dark"] .announce-card:focus-visible .announce-card__label {
+  color: #ffe4a9;
+}
+
+/* ==========================================================================
+   Skip link
+   ========================================================================== */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-md);
+  z-index: calc(var(--z-drawer) + 1);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface);
+  color: var(--color-primary-ink);
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}

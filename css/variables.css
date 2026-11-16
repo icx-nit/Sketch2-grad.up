@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Design Tokens
+   อ้างอิงจาก DESIGN.md (Amethyst Purple – Bright Gold)
+   ค่าที่เพิ่มจาก DESIGN.md คือโทนที่ใช้เป็น hover / focus / ข้อความลิงก์
+   ซึ่ง derive มาจากสีหลักเพื่อรักษา contrast ตาม WCAG 2.2 AA
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- สีหลัก (Light Mode) --- */
+  --color-bg: #F4F2F8;
+  --color-primary: #4D238D;
+  --color-primary-hover: #3A1A6B;
+  /* ใช้กับข้อความ/ลิงก์ที่ต้องอ่านชัดบนพื้นสว่าง */
+  --color-primary-ink: #4D238D;
+  --color-primary-soft: #EAE5F2;
+  --color-accent: #D6A83F;
+  --color-accent-strong: #B78D2C;
+  --color-surface: #F4F2F8;
+  --color-surface-secondary: #EAE5F2;
+  /* พื้นผิวการ์ด/พาเนล (DESIGN.md §2.1: Surface #FFFFFF) — ใช้กับส่วนข่าวและป๊อปอัพ */
+  --color-panel: #FFFFFF;
+  --color-text: #241B32;
+  --color-text-secondary: #6F687A;
+  --color-border: #DED8E8;
+  --color-on-primary: #FFFFFF;
+
+  /* --- Focus ring (ต้องมี contrast >= 3:1 กับพื้นข้างเคียง) --- */
+  --color-focus: #4D238D;
+
+  /* --- Typography --- */
+  --font-sans: "Sarabun", "Inter", system-ui, -apple-system, "Segoe UI",
+    "Noto Sans Thai", sans-serif;
+  --font-heading: "Anuphan", "Sarabun", system-ui, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.375rem;
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.6;
+
+  /* --- Spacing (8px base) --- */
+  --space-xs: 0.25rem;
+  /* 4px  */
+  --space-sm: 0.5rem;
+  /* 8px  */
+  --space-md: 1rem;
+  /* 16px */
+  --space-lg: 1.5rem;
+  /* 24px */
+  --space-xl: 2rem;
+  /* 32px */
+  --space-2xl: 3rem;
+  /* 48px */
+  --space-3xl: 4rem;
+  /* 64px */
+  --space-4xl: 5rem;
+  /* 80px */
+
+  /* --- Radius / Shadow --- */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(36, 27, 50, 0.08);
+  --shadow-md: 0 8px 24px rgba(36, 27, 50, 0.12);
+  --shadow-lg: 0 18px 44px rgba(24, 16, 40, 0.28);
+
+  /* --- Layout --- */
+  --container-max: 75rem;
+  /* 1200px */
+  --container-pad: 1.25rem;
+  --header-height: 4.5rem;
+  /* ระยะขอบซ้าย–ขวาของแถบนำทาง (โลโก้ / ไอคอนเมนู)
+     ใช้ค่าเดียวกันกับส่วนข่าว เพื่อให้เนื้อหาชิดขอบตรงกับ Tab bar */
+  --edge-pad: clamp(0.75rem, 1.2vw, 1.25rem);
+
+  /* --- Motion --- */
+  --duration: 180ms;
+  --ease: cubic-bezier(0.2, 0, 0.2, 1);
+
+  /* --- Z-index --- */
+  --z-header: 100;
+  --z-drawer: 200;
+  /* ประชาสัมพันธ์ลอย: อยู่เหนือ header แต่ใต้ drawer */
+  --z-promo: 150;
+  /* ป๊อปอัพประชาสัมพันธ์: อยู่เหนือทุกเลเยอร์ */
+  --z-promo-modal: 330;
+
+  /* --- Search field ---
+     ช่องค้นหาลอยอยู่บนภาพฮีโร่ จึงใช้ชุดสีชุดเดียวกันทั้ง Light/Dark
+     เพื่อให้หน้าตาเหมือนกันทุกโหมด (ไม่ถูก override ในธีมมืด) */
+  --search-field-bg: #F0ECF7;
+  --search-field-border: #FFFFFF;
+  --search-field-text: #241B32;
+  --search-field-placeholder: #6B6375;
+  --search-field-focus: #4D238D;
+  --search-field-ring: rgba(77, 35, 141, 0.2);
+  --search-btn-bg: #4D238D;
+  --search-btn-bg-hover: #3A1A6B;
+  --search-btn-text: #FFFFFF;
+
+  /* --- Font size control (A- / A / A+) ---
+     ขอบม่วง + พื้นขาว ใช้หน้าตาเดียวกันทั้ง Light/Dark */
+  --font-control-bg: #FFFFFF;
+  --font-control-border: #CBBBE8;
+  --font-control-text: #4D238D;
+  --font-control-hover: #EAE5F2;
+
+  /* --- เส้นใต้ header --- */
+  --header-line: #4D238D;
+}
+
+/* ==========================================================================
+   Dark Mode – Deep Amethyst & Soft Gold
+   ========================================================================== */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #100D1C;
+  --color-primary: #9364DF;
+  --color-primary-hover: #A87BEA;
+  --color-primary-ink: #B99BF2;
+  --color-primary-soft: #272038;
+  --color-accent: #F0C96D;
+  --color-accent-strong: #F0C96D;
+  --color-surface: #1C172A;
+  --color-surface-secondary: #272038;
+  --color-panel: #1C172A;
+  --color-text: #F5F1FC;
+  --color-text-secondary: #B8AEC9;
+  --color-border: #393047;
+  --color-on-primary: #150F24;
+
+  --color-focus: #F0C96D;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 18px 44px rgba(0, 0, 0, 0.6);
+
+  /* โหมดมืด: ไม่เพิ่มเส้นใต้ header (ตามที่ระบุให้เพิ่มเฉพาะโหมดสว่าง) */
+  --header-line: transparent;
+}

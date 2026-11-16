@@ -1,0 +1,632 @@
+/* ==========================================================================
+   news.css
+   ส่วนข่าวสาร (ชั้นที่ 2 ของหน้าแรก ต่อจากภาพปก + ประกาศ)
+   - หัวข้อส่วนด้านบน + เส้นคั่นทองคำ
+   - ซ้าย: การ์ดข่าว/ประกาศสำคัญ (ภาพย่อ · ป้ายประเภท · หัวข้อ · วันที่)
+   - ขวา: ลิงก์ที่เกี่ยวข้อง
+   - ใช้โทเคนสีจาก variables.css ตาม DESIGN.md (Amethyst Purple + Bright Gold)
+   ========================================================================== */
+
+.news {
+  position: relative;
+  /* เผื่อที่ด้านล่างให้การ์ดประชาสัมพันธ์มุมขวาล่างไม่ทับเนื้อหาส่วนสุดท้าย */
+  padding-block: clamp(2rem, 3.4vw, 3rem) clamp(5rem, 8vw, 7.5rem);
+  background-color: var(--color-bg);
+  /* กันแถบเลื่อนแนวนอนตอนการ์ดสไลด์เข้ามา (clip ไม่ทำให้ sticky เสีย) */
+  overflow-x: clip;
+  /* เวลากดเมนู "ข่าว" แล้วเลื่อนมาที่ส่วนนี้ ไม่ให้หัวข้อถูก header บัง */
+  scroll-margin-top: calc(var(--header-h, var(--header-height)) + 0.5rem);
+
+  /* --- โทเคนเฉพาะส่วนข่าว: ให้การ์ดเด่นจากพื้นหลังทั้งสองธีม --- */
+  --news-card-bg: linear-gradient(180deg, #ffffff 0%, #fdfcff 100%);
+  --news-card-border: #ddd3ef;
+  --news-card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 2px 4px rgba(36, 27, 50, 0.06),
+    0 18px 38px -20px rgba(77, 35, 141, 0.42);
+  --news-head-tint: rgba(77, 35, 141, 0.07);
+}
+
+/* ระยะขอบซ้าย–ขวา: เว้นจากขอบจอให้พอเหมาะ (ไม่ชิดขอบเกินไป) */
+.news__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 5rem);
+}
+
+/* เส้นคั่นบาง ๆ ระหว่างภาพปกกับส่วนข่าว (ทอง → โปร่งใส) */
+.news::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(214, 168, 63, 0.6) 22%,
+    rgba(214, 168, 63, 0.6) 78%,
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* แสงเรืองรองจาง ๆ หลังการ์ด ให้การ์ดลอยเด่นจากพื้นหลัง (ทั้งสองธีม) */
+.news::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: min(30rem, 80%);
+  background: radial-gradient(
+      55% 90% at 12% 0%,
+      rgba(77, 35, 141, 0.1),
+      transparent 72%
+    ),
+    radial-gradient(45% 85% at 92% 4%, rgba(214, 168, 63, 0.14), transparent 74%);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   หัวข้อส่วน (ด้านบนของหน้า 2)
+   -------------------------------------------------------------------------- */
+
+.news__head {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 1.4vw, 1.25rem);
+  margin-bottom: clamp(1rem, 1.7vw, 1.5rem);
+}
+
+.news__title {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: clamp(1.1875rem, 1.9vw, 1.5rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-primary-ink);
+}
+
+/* แท่งไล่สีทอง–ม่วง หน้าหัวข้อ (เอกลักษณ์ของธีม) */
+.news__title::before {
+  content: "";
+  width: 0.25rem;
+  height: 1.15em;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--color-accent), var(--color-primary));
+}
+
+/* เส้นคั่นจาง ๆ ต่อจากหัวข้อไปทางขวา */
+.news__rule {
+  flex: 1 1 auto;
+  height: 1px;
+  min-width: 1.5rem;
+  background: linear-gradient(
+    90deg,
+    rgba(214, 168, 63, 0.55),
+    rgba(214, 168, 63, 0) 65%
+  );
+}
+
+/* --------------------------------------------------------------------------
+   เลย์เอาต์: ซ้าย = ข่าว (กว้างกว่า) · ขวา = ลิงก์ที่เกี่ยวข้อง
+   -------------------------------------------------------------------------- */
+
+.news__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
+  gap: clamp(1rem, 1.5vw, 1.5rem);
+  align-items: start;
+}
+
+/* --------------------------------------------------------------------------
+   การ์ดหลัก (ใบเดียว ครอบหัวการ์ด + รายการข่าว)
+   -------------------------------------------------------------------------- */
+
+.news__panel {
+  overflow: hidden;
+  background: var(--news-card-bg);
+  border: 1px solid var(--news-card-border);
+  border-radius: 1.125rem;
+  box-shadow: var(--news-card-shadow);
+}
+
+/* หัวการ์ด: ป้าย "ข่าวล่าสุด" ซ้าย · "ดูข่าวทั้งหมด" ขวา */
+.news__panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(
+    180deg,
+    var(--news-head-tint),
+    rgba(77, 35, 141, 0)
+  );
+  border-bottom: 1px solid var(--color-border);
+}
+
+.news__panel-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--color-primary-ink);
+}
+
+.news__panel-label svg {
+  flex-shrink: 0;
+  width: 1.0625rem;
+  height: 1.0625rem;
+  color: var(--color-accent-strong);
+}
+
+/* ลิงก์ "ดูข่าวทั้งหมด" — อยู่ในหัวการ์ด ชิดขวา */
+.news__more {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--color-primary-ink);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.news__more:hover,
+.news__more:focus-visible {
+  color: var(--color-on-primary);
+  background-color: var(--color-primary);
+}
+
+.news__more svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  transition: transform var(--duration) var(--ease);
+}
+
+.news__more:hover svg,
+.news__more:focus-visible svg {
+  transform: translateX(2px);
+}
+
+/* --------------------------------------------------------------------------
+   แถวข่าว — ภาพย่อ · ป้ายประเภท · หัวข้อ · วันที่ (แถวเดียว)
+   -------------------------------------------------------------------------- */
+
+.news__grid {
+  display: block;
+}
+
+.news-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0.75rem;
+  row-gap: 0.3rem;
+  padding: 0.625rem 1.25rem;
+  color: inherit;
+  transition: background-color 220ms var(--ease);
+}
+
+/* แถบไล่สีทอง–ม่วงด้านซ้ายตอนชี้/โฟกัส */
+.news-card::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--color-accent), var(--color-primary));
+  opacity: 0;
+  transition: opacity 220ms var(--ease);
+}
+
+.news__grid > a + a {
+  border-top: 1px solid var(--color-border);
+}
+
+.news-card:hover,
+.news-card:focus-visible {
+  background-color: var(--color-primary-soft);
+}
+
+.news-card:hover::before,
+.news-card:focus-visible::before {
+  opacity: 1;
+}
+
+/* ภาพย่อทางซ้าย */
+.news-card__media {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  flex-shrink: 0;
+  width: clamp(5rem, 5.6vw, 6.125rem);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--color-surface-secondary);
+  border: 1px solid rgba(77, 35, 141, 0.2);
+  border-radius: 0.625rem;
+  box-shadow: 0 2px 8px rgba(36, 27, 50, 0.16);
+}
+
+.news-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 420ms var(--ease);
+}
+
+.news-card:hover .news-card__img {
+  transform: scale(1.06);
+}
+
+/* ป้ายประเภท (ประกาศสอบ / อบรม / แจ้งปิดระบบ) */
+.news-card__chip {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+  color: var(--color-primary-ink);
+  background-color: var(--color-primary-soft);
+  border-radius: var(--radius-pill);
+}
+
+.news-card__title {
+  grid-column: 3;
+  grid-row: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--color-text);
+  transition: color 220ms var(--ease);
+}
+
+.news-card:hover .news-card__title {
+  color: var(--color-primary-ink);
+}
+
+/* วันที่ ชิดขวาของแถว */
+.news-card__date {
+  grid-column: 4;
+  grid-row: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ไอคอนปฏิทินหน้าวันที่ */
+.news-card__date::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.8rem;
+  height: 0.8rem;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%236F687A' stroke-width='2' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='4' width='18' height='17' rx='2'/%3E%3Cpath d='M8 2v4M16 2v4M3 10h18'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* --------------------------------------------------------------------------
+   ลิงก์ที่เกี่ยวข้อง
+   -------------------------------------------------------------------------- */
+
+.news-links {
+  position: sticky;
+  top: calc(var(--header-h, var(--header-height)) + 1.25rem);
+  overflow: hidden;
+  background: var(--news-card-bg);
+  border: 1px solid var(--news-card-border);
+  border-radius: 1.125rem;
+  box-shadow: var(--news-card-shadow);
+}
+
+.news-links__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--color-primary-ink);
+  background: linear-gradient(
+    180deg,
+    var(--news-head-tint),
+    rgba(77, 35, 141, 0)
+  );
+  border-bottom: 1px solid var(--color-border);
+}
+
+.news-links__title svg {
+  width: 1.0625rem;
+  height: 1.0625rem;
+  color: var(--color-accent-strong);
+}
+
+.news-links__list {
+  display: flex;
+  flex-direction: column;
+  padding: 0.35rem 0.6rem 0.5rem;
+}
+
+.news-links__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: 0.625rem;
+  transition: background-color var(--duration) var(--ease);
+}
+
+.news-links__item:hover,
+.news-links__item:focus-visible {
+  background-color: var(--color-primary-soft);
+}
+
+.news-links__icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-primary-ink);
+  background-color: var(--color-primary-soft);
+  border: 1px solid rgba(77, 35, 141, 0.18);
+  border-radius: 0.5625rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 2px 6px rgba(36, 27, 50, 0.12);
+}
+
+.news-links__icon svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2;
+}
+
+.news-links__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.news-links__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.news-links__host {
+  font-size: 0.6875rem;
+  color: var(--color-text-secondary);
+}
+
+.news-links__arrow {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-inline-start: auto;
+  color: var(--color-text-secondary);
+  transition: transform var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.news-links__item:hover .news-links__arrow {
+  color: var(--color-primary-ink);
+  transform: translate(1px, -1px);
+}
+
+/* --------------------------------------------------------------------------
+   โหมดมืด: การ์ดสว่างกว่าพื้นหลัง + ขอบม่วงจาง + เงาลึก ให้ลอยเด่น
+   -------------------------------------------------------------------------- */
+
+[data-theme="dark"] .news {
+  --color-text: #FFFFFF;
+  --color-text-secondary: #D7CDE7;
+  --color-primary-ink: #F2E9FF;
+  --color-primary-soft: #47365F;
+  --color-border: #594B70;
+  --news-card-bg: linear-gradient(180deg, #352B4B 0%, #2D2442 100%);
+  --news-card-border: #705C8F;
+  --news-card-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    0 0 24px -12px rgba(147, 100, 223, 0.55),
+    0 22px 46px -22px rgba(0, 0, 0, 0.8);
+  --news-head-tint: rgba(147, 100, 223, 0.34);
+}
+
+[data-theme="dark"] .news::after {
+  background: radial-gradient(
+      55% 90% at 12% 0%,
+      rgba(147, 100, 223, 0.22),
+      transparent 72%
+    ),
+    radial-gradient(45% 85% at 92% 4%, rgba(240, 201, 109, 0.1), transparent 74%);
+}
+
+[data-theme="dark"] .news-card:hover,
+[data-theme="dark"] .news-card:focus-visible,
+[data-theme="dark"] .news-links__item:hover,
+[data-theme="dark"] .news-links__item:focus-visible {
+  background-color: rgba(147, 100, 223, 0.2);
+}
+
+[data-theme="dark"] .news-card__chip {
+  color: #E8B94F;
+  background-color: rgba(147, 100, 223, 0.38);
+  border: 1px solid rgba(232, 185, 79, 0.72);
+}
+
+[data-theme="dark"] .news-links__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: #FFFFFF;
+  background: linear-gradient(145deg, #A77BE5 0%, #8259C2 58%, #6946A4 100%);
+  border-color: #F0C96D;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38),
+    0 0 0 3px rgba(240, 201, 109, 0.16),
+    0 5px 16px rgba(12, 6, 26, 0.38);
+  transition: transform var(--duration) var(--ease),
+    background var(--duration) var(--ease),
+    color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+}
+
+[data-theme="dark"] .news-links__icon svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  stroke-width: 2.2;
+}
+
+[data-theme="dark"] .news-links__item:hover .news-links__icon,
+[data-theme="dark"] .news-links__item:focus-visible .news-links__icon {
+  color: #241B32;
+  background: linear-gradient(145deg, #FFE8A9, #E5B94F);
+  border-color: #FFF4D1;
+  box-shadow: 0 0 0 4px rgba(240, 201, 109, 0.22),
+    0 6px 18px rgba(240, 201, 109, 0.3);
+  transform: translateY(-1px) scale(1.06);
+}
+
+[data-theme="dark"] .news-card__media {
+  border-color: rgba(240, 201, 109, 0.65);
+  box-shadow: 0 0 0 2px rgba(240, 201, 109, 0.16),
+    0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .news-card__date::before {
+  filter: brightness(1.5);
+}
+
+/* --------------------------------------------------------------------------
+   แสดงผลเมื่อเลื่อนมาถึง (IntersectionObserver ใน js/news.js)
+   - ข่าว/ประกาศสไลด์เข้าจากซ้าย · ลิงก์ที่เกี่ยวข้องสไลด์เข้าจากขวา
+   - ถ้า JS ไม่ทำงาน เนื้อหาจะแสดงปกติ (ไม่มีการซ่อน)
+   -------------------------------------------------------------------------- */
+
+.news.is-armed .news__head,
+.news.is-armed .news__panel,
+.news.is-armed .news-links {
+  opacity: 0;
+}
+
+.news.is-in .news__head {
+  animation: news-slide-left 560ms var(--ease) both;
+}
+
+.news.is-in .news__panel {
+  animation: news-slide-left 680ms var(--ease) 80ms both;
+}
+
+.news.is-in .news-links {
+  animation: news-slide-right 680ms var(--ease) 170ms both;
+}
+
+@keyframes news-slide-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-2.75rem, 0.4rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes news-slide-right {
+  from {
+    opacity: 0;
+    transform: translate3d(2.75rem, 0.4rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+/* Tablet & below: ลิงก์ที่เกี่ยวข้องย้ายลงไปใต้ข่าว */
+@media (max-width: 63.99rem) {
+  .news__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .news-links {
+    position: static;
+  }
+}
+
+/* Mobile: ภาพย่ออยู่ซ้ายคู่กับป้ายประเภท/วันที่ ส่วนหัวข้อขึ้นบรรทัดใหม่ */
+@media (max-width: 47.99rem) {
+  .news__panel-head {
+    padding: 0.7rem 0.9rem;
+  }
+
+  .news-card {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    padding: 0.6875rem 0.9rem;
+  }
+
+  .news-card__media {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: center;
+    width: 4.5rem;
+  }
+
+  .news-card__chip {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .news-card__date {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .news-card__title {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+    /* จอแคบ: ให้หัวข้อได้ 3 บรรทัดก่อนตัด เพื่อไม่เสียใจความสำคัญ */
+    -webkit-line-clamp: 3;
+  }
+}
