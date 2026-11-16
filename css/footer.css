@@ -1,0 +1,91 @@
+/* ==========================================================================
+   footer.css
+   แถบลิขสิทธิ์ท้ายสุดของหน้า (ต่อจากส่วนติดต่อเรา)
+   - พื้นม่วงเข้ม + เส้นทองบางด้านบน ให้เข้ากับธีม Amethyst Purple + Bright Gold
+   - ข้อความลิขสิทธิ์ + ลิงก์ที่มา/ผู้ดูแลระบบ (กดได้จริง)
+   ========================================================================== */
+
+.site-footer {
+  position: relative;
+  padding-block: clamp(1rem, 2vw, 1.35rem);
+  color: rgba(255, 255, 255, 0.72);
+  background: linear-gradient(135deg, #1a1227 0%, #241b32 55%, #2c1f42 100%);
+}
+
+/* เส้นทองบาง ๆ คั่นจากส่วนบน */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(214, 168, 63, 0.65) 24%,
+    rgba(214, 168, 63, 0.65) 76%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.site-footer__inner {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 5rem);
+}
+
+.site-footer__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem 0.7rem;
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.site-footer a {
+  color: #f0c96d;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--duration) var(--ease);
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: #ffe8a9;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+/* ชื่อหน่วยงานให้เด่นกว่าลิงก์ทั่วไป */
+.site-footer__brand {
+  color: #ffffff !important;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.site-footer__brand:hover,
+.site-footer__brand:focus-visible {
+  color: #ffe8a9 !important;
+}
+
+.site-footer__sep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+@media (max-width: 47.99rem) {
+  .site-footer__line {
+    gap: 0.3rem 0.55rem;
+  }
+
+  .site-footer__sep {
+    display: none;
+  }
+}

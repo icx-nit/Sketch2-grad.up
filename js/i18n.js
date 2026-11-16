@@ -134,6 +134,12 @@
       "support.visitors": "จำนวนผู้เข้าชม",
       "support.updated": "อัปเดตล่าสุด",
 
+      "footer.rights": "สงวนลิขสิทธิ์",
+      "footer.designedBy": "ออกแบบโดย",
+      "footer.logoSource": "และแหล่งที่มาของโลโก้โดย",
+      "footer.admin": "ผู้ดูแลระบบ",
+      "footer.login": "เข้าสู่ระบบ",
+
       "section.announceTitle": "ประกาศ",
       "section.appointment": "คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา",
       "section.forms": "แบบฟอร์ม",
@@ -265,6 +271,12 @@
       "support.emailLabel": "Email",
       "support.visitors": "Visitors",
       "support.updated": "Last updated",
+
+      "footer.rights": "All Rights Reserved",
+      "footer.designedBy": "Designed by",
+      "footer.logoSource": "and logo source by",
+      "footer.admin": "Admin",
+      "footer.login": "Login",
 
       "section.announceTitle": "Announcements",
       "section.appointment": "Graduate Faculty Appointment Orders",
