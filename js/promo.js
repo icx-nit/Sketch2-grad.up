@@ -701,18 +701,27 @@
     );
   });
 
-  window.setTimeout(function () {
-    if (!modal.hidden) {
-      return;
-    }
-    if (!isFirstView()) {
-      return;
-    }
-    if (interacted) {
-      dock.hidden = false;
-      startTimer();
-      return;
-    }
-    openModal(0);
-  }, 1100);
+  function schedulePopup() {
+    window.setTimeout(function () {
+      if (!modal.hidden) {
+        return;
+      }
+      if (!isFirstView()) {
+        return;
+      }
+      if (interacted) {
+        dock.hidden = false;
+        startTimer();
+        return;
+      }
+      openModal(0);
+    }, 1100);
+  }
+
+  /* ถ้ามีอนิเมชั่นเปิดหน้าเว็บ ให้รอจนอนิเมชั่นจบก่อน แล้วค่อยเริ่มนับเวลา */
+  if (document.documentElement.getAttribute("data-intro") === "on") {
+    document.addEventListener("gu:introdone", schedulePopup, { once: true });
+  } else {
+    schedulePopup();
+  }
 })();

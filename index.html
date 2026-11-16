@@ -16,6 +16,10 @@
     href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
+  <!-- โหลดภาพอนิเมชั่นเปิดหน้าและโลโก้ล่วงหน้า -->
+  <link rel="preload" as="image" href="assets/images/ปก.png" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/grad-logo.png">
+
   <link rel="stylesheet" href="css/variables.css?v=20261121c">
   <link rel="stylesheet" href="css/reset.css?v=20261121b">
   <link rel="stylesheet" href="css/style.css?v=20261121d">
@@ -26,6 +30,7 @@
   <link rel="stylesheet" href="css/stats.css?v=20261121c">
   <link rel="stylesheet" href="css/support.css?v=20261122a">
   <link rel="stylesheet" href="css/footer.css?v=20261122a">
+  <link rel="stylesheet" href="css/intro.css?v=20261122a">
   <link rel="stylesheet" href="css/responsive.css?v=20261121b">
 
   <!-- โหลดก่อน paint เพื่อไม่ให้จอกระพริบตอนสลับธีม -->
@@ -75,9 +80,43 @@
       window.addEventListener("keydown", revealOnKeydown, true);
     })();
   </script>
+  <!-- ล็อกการเลื่อนหน้าตั้งแต่ก่อน paint จนอนิเมชั่นเปิดหน้าเสร็จ -->
+  <script>
+    document.documentElement.setAttribute("data-intro", "on");
+  </script>
+  <noscript>
+    <style>
+      .intro {
+        display: none !important;
+      }
+
+      html[data-intro="on"] {
+        overflow: auto !important;
+      }
+    </style>
+  </noscript>
 </head>
 
 <body>
+  <!-- อนิเมชั่นก่อนเข้าสู่เว็บไซต์: ภาพเต็ม → เปิดกลาง → โลโก้บนพื้นขาว + กลีบดอกไม้ -->
+  <div class="intro" data-intro-screen aria-hidden="true">
+    <div class="intro__half intro__half--left" aria-hidden="true"></div>
+    <div class="intro__half intro__half--right" aria-hidden="true"></div>
+    <div class="intro__logo" aria-hidden="true">
+      <img src="assets/images/grad-logo.png" alt="" width="400" height="200" decoding="async">
+    </div>
+    <div class="intro__petals" aria-hidden="true">
+      <span class="intro__petal intro__petal--1"></span>
+      <span class="intro__petal intro__petal--2"></span>
+      <span class="intro__petal intro__petal--3"></span>
+      <span class="intro__petal intro__petal--4"></span>
+      <span class="intro__petal intro__petal--5"></span>
+      <span class="intro__petal intro__petal--6"></span>
+      <span class="intro__petal intro__petal--7"></span>
+      <span class="intro__petal intro__petal--8"></span>
+    </div>
+  </div>
+
   <a class="skip-link" href="#main" data-i18n="a11y.skip">ข้ามไปยังเนื้อหาหลัก</a>
 
   <!-- พื้นหลังภาพที่ 8 -->
@@ -1019,6 +1058,7 @@
   <!-- ประชาสัมพันธ์: ป๊อปอัพเปิดเว็บ + กล่องการ์ดมุมขวาล่าง (สร้างเนื้อหาด้วย js/promo.js) -->
   <div class="promo" data-promo></div>
 
+  <script src="js/intro.js?v=20261122a" defer></script>
   <script src="js/i18n.js?v=20261122b" defer></script>
   <script src="js/font-size.js?v=20261121b" defer></script>
   <script src="js/navigation.js?v=20261121b" defer></script>
