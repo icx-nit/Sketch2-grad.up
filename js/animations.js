@@ -90,6 +90,28 @@
       });
     }
 
+    /* --- แผง "พร้อมให้บริการ": เลื่อนขึ้นแบบ 3D เมื่อใกล้ถึงส่วนนั้น --- */
+    var supportSection = document.querySelector(".support-section");
+
+    if (supportSection) {
+      supportSection.classList.add("js-rise");
+
+      var riseObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            } else {
+              entry.target.classList.remove("is-visible");
+            }
+          });
+        },
+        { threshold: 0, rootMargin: "0px 0px -12% 0px" }
+      );
+
+      riseObserver.observe(supportSection);
+    }
+
     initStats();
     initChartLine();
   }

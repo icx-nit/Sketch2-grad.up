@@ -173,6 +173,27 @@
     stroke-dasharray: 2 100;
     transition: stroke-dasharray 60ms linear 1240ms;
   }
+
+  /* ------------------------------------------------------------------------
+     แผง "พร้อมให้บริการ": ยกนูนขึ้นมาแบบ 3 มิติ + เลื่อนขึ้นเมื่อเลื่อนถึง
+     (เล่นซ้ำทุกครั้งที่เลื่อนกลับเข้ามา เพราะ JS ถอดคลาส is-visible)
+     ------------------------------------------------------------------------ */
+
+  html.js-anim .support-section {
+    opacity: 0;
+    transform: perspective(1500px) rotateX(5deg) translate3d(0, 70px, 0)
+      scale(0.992);
+    transform-origin: 50% 0%;
+    transition: opacity 680ms var(--ease),
+      transform 1000ms cubic-bezier(0.22, 0.7, 0.2, 1);
+    will-change: opacity, transform;
+  }
+
+  html.js-anim .support-section.is-visible {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
 }
 
 /* ไฮไลต์เป้าหมายหลังกดผลการค้นหา */
