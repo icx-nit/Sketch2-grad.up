@@ -41,7 +41,7 @@ body {
   align-items: center;
   gap: clamp(0.75rem, 2vw, 1.5rem);
   width: 100%;
-  min-height: 5rem;
+  min-height: 7.5rem;
   margin: 0;
   padding-inline: var(--edge-pad, clamp(1rem, 2vw, 2rem));
   background: linear-gradient(180deg, #F8F3FF 0%, #EEE2FD 50%, #E2D1FB 100%);
@@ -351,8 +351,10 @@ body {
 .command-page {
   width: min(100% - 2rem, 72rem);
   min-height: calc(100vh - 9rem);
-  margin: 0 auto;
+  margin: -3rem auto 0;
   padding: var(--space-lg) 0 var(--space-3xl);
+  position: relative;
+  z-index: 1;
 }
 
 .command-breadcrumb {
