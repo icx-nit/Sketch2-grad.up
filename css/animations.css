@@ -2,7 +2,9 @@
    animations.css
    อนิเมชั่นเมื่อเลื่อนมาถึง (scroll reveal)
    - สถิติการดำเนินงาน: การ์ดสรุปซูม/ลอยขึ้น + แผงกราฟเลื่อนขึ้น
+     พร้อมตัวเลขวิ่ง กราฟแท่งงอก เส้นแนวโน้มวาด และโดนัทกวาด
    - ส่วนติดต่อเรา: หัวข้อและช่องทางติดต่อไล่ขึ้นทีละรายการ
+   - เล่นซ้ำทุกครั้งที่เลื่อนกลับเข้ามา (JS ถอดคลาส is-visible เมื่อพ้นจอ)
    - ใช้ร่วมกับ js/animations.js (IntersectionObserver)
    - ถ้าไม่เปิด JS หรือ prefers-reduced-motion: เนื้อหาปกติ ไม่ถูกซ่อน
    ========================================================================== */
@@ -42,6 +44,134 @@
     opacity: 1;
     transform: none;
     will-change: auto;
+  }
+
+  /* ------------------------------------------------------------------------
+     กราฟรายเดือน: แท่งกราฟงอกขึ้นจากฐานทีละแท่ง
+     ------------------------------------------------------------------------ */
+
+  html.js-anim .stats-chart__bars rect {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    transform: scaleY(0);
+    transition: transform 760ms cubic-bezier(0.22, 0.7, 0.2, 1);
+  }
+
+  html.js-anim .stats-panel.is-visible .stats-chart__bars rect {
+    transform: scaleY(1);
+  }
+
+  html.js-anim .stats-chart__bars rect:nth-child(1) {
+    transition-delay: 120ms;
+  }
+
+  html.js-anim .stats-chart__bars rect:nth-child(2) {
+    transition-delay: 210ms;
+  }
+
+  html.js-anim .stats-chart__bars rect:nth-child(3) {
+    transition-delay: 300ms;
+  }
+
+  html.js-anim .stats-chart__bars rect:nth-child(4) {
+    transition-delay: 390ms;
+  }
+
+  html.js-anim .stats-chart__bars rect:nth-child(5) {
+    transition-delay: 480ms;
+  }
+
+  html.js-anim .stats-chart__bars rect:nth-child(6) {
+    transition-delay: 570ms;
+  }
+
+  /* ------------------------------------------------------------------------
+     เส้นแนวโน้ม: วาดจากซ้ายไปขวาด้วย stroke-dashoffset
+     ------------------------------------------------------------------------ */
+
+  html.js-anim .stats-chart__trend-line {
+    stroke-dasharray: var(--chart-line-length, 1000);
+    stroke-dashoffset: var(--chart-line-length, 1000);
+    transition: stroke-dashoffset 500ms var(--ease);
+  }
+
+  html.js-anim .stats-panel.is-visible .stats-chart__trend-line {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1500ms cubic-bezier(0.22, 0.7, 0.2, 1)
+      260ms;
+  }
+
+  /* จุดบนเส้นแนวโน้ม: ผุดขึ้นหลังจากเส้นวาดมาถึง */
+  html.js-anim .stats-chart__points circle {
+    opacity: 0;
+    transform: scale(0.2);
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: opacity 320ms var(--ease), transform 440ms var(--ease);
+  }
+
+  html.js-anim .stats-panel.is-visible .stats-chart__points circle {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  html.js-anim .stats-chart__points circle:nth-child(1) {
+    transition-delay: 640ms;
+  }
+
+  html.js-anim .stats-chart__points circle:nth-child(2) {
+    transition-delay: 840ms;
+  }
+
+  html.js-anim .stats-chart__points circle:nth-child(3) {
+    transition-delay: 1040ms;
+  }
+
+  html.js-anim .stats-chart__points circle:nth-child(4) {
+    transition-delay: 1240ms;
+  }
+
+  html.js-anim .stats-chart__points circle:nth-child(5) {
+    transition-delay: 1440ms;
+  }
+
+  html.js-anim .stats-chart__points circle:nth-child(6) {
+    transition-delay: 1640ms;
+  }
+
+  /* ------------------------------------------------------------------------
+     โดนัทสถานะ: กวาดทีละส่วนต่อเนื่องกัน
+     ------------------------------------------------------------------------ */
+
+  html.js-anim .stats-donut__seg {
+    transition: stroke-dasharray 480ms var(--ease);
+  }
+
+  html.js-anim .stats-donut__seg--completed {
+    stroke-dasharray: 0 100;
+  }
+
+  html.js-anim .stats-donut__seg--review {
+    stroke-dasharray: 0 100;
+  }
+
+  html.js-anim .stats-donut__seg--documents {
+    stroke-dasharray: 0 100;
+  }
+
+  html.js-anim .stats-panel.is-visible .stats-donut__seg--completed {
+    stroke-dasharray: 92.4 100;
+    transition: stroke-dasharray 1000ms cubic-bezier(0.22, 0.7, 0.2, 1) 120ms;
+  }
+
+  html.js-anim .stats-panel.is-visible .stats-donut__seg--review {
+    stroke-dasharray: 5.6 100;
+    transition: stroke-dasharray 120ms linear 1120ms;
+  }
+
+  html.js-anim .stats-panel.is-visible .stats-donut__seg--documents {
+    stroke-dasharray: 2 100;
+    transition: stroke-dasharray 60ms linear 1240ms;
   }
 }
 

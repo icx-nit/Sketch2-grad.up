@@ -262,6 +262,8 @@ button:not(.promo-card) {
   height: calc(100svh - var(--header-h, var(--header-height)));
   min-height: 24rem;
   overflow: hidden;
+  /* มุมปกทั้งแผ่น: ใช้ค่าเดียวกับภาพปก (ซ้ายบน 51 · ขวาบน 24 · ขวาล่าง 0 · ซ้ายล่าง 84) */
+  border-radius: 51px 24px 0px 84px;
 }
 
 /* ภาพปกเติมเต็มพื้นที่ hero-stage ทั้งหมด */
@@ -277,6 +279,8 @@ button:not(.promo-card) {
   overflow: hidden;
   isolation: isolate;
   padding-inline: 0;
+  /* มุมปกทั้งแผ่นให้ตรงกับภาพปก */
+  border-radius: 51px 24px 0px 84px;
 }
 
 .hero__panel {

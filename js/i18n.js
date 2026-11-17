@@ -115,6 +115,7 @@
         "สถานะคำร้อง: สำเร็จ 3,290 ราย อยู่ระหว่างตรวจสอบ 198 ราย และรอเอกสาร 72 ราย",
       "stats.status.note":
         "คำร้องที่อยู่ระหว่างดำเนินการจะได้รับการอนุมัติภายใน 3-5 วันทำการ",
+      "stats.source": "ที่มา: ระบบสารสนเทศบัณฑิตศึกษา",
 
       "support.heroTitle": "พร้อมให้บริการ ทำงานเป็นทีม ยิ้มแย้มแจ่มใส ใส่ใจคุณภาพ",
       "support.services": "บริการของเรา",
@@ -257,6 +258,7 @@
         "Application status: 3,290 completed, 198 under review, and 72 awaiting documents.",
       "stats.status.note":
         "Applications in progress are expected to be approved within 3-5 business days.",
+      "stats.source": "Source: Graduate Information System",
 
       "support.heroTitle":
         "Ready to serve, working as a team, always smiling, committed to quality",

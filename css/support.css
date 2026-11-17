@@ -357,7 +357,178 @@
    -------------------------------------------------------------------------- */
 
 .support-contact {
+  position: relative;
   margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* --------------------------------------------------------------------------
+   กลีบดอกฟ้ามุ่ยลอยเบา ๆ ในส่วนติดต่อเรา
+   -------------------------------------------------------------------------- */
+
+.support-petals {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.support-contact__head,
+.support-contact__grid {
+  position: relative;
+  z-index: 1;
+}
+
+.support-petal {
+  position: absolute;
+  top: -12%;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e9c6fa'/%3E%3Cstop offset='1' stop-color='%238b4dc4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M16 1c5 4.5 9 10 9 15.5A9 9 0 0 1 7 16.5C7 11 11 5.5 16 1Z'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  animation: support-petal-fall var(--fall, 12s) linear var(--delay, 0s)
+    infinite;
+}
+
+.support-petal--1 {
+  left: 4%;
+  width: 14px;
+  height: 14px;
+  --fall: 11s;
+  --delay: -1.6s;
+  --drift: 3rem;
+  --petal-opacity: 0.85;
+}
+
+.support-petal--2 {
+  left: 13%;
+  width: 20px;
+  height: 20px;
+  --fall: 14s;
+  --delay: -6.2s;
+  --drift: -2.4rem;
+  --petal-opacity: 0.7;
+}
+
+.support-petal--3 {
+  left: 23%;
+  width: 12px;
+  height: 12px;
+  --fall: 10s;
+  --delay: -3.4s;
+  --drift: 2rem;
+  --petal-opacity: 0.9;
+}
+
+.support-petal--4 {
+  left: 34%;
+  width: 17px;
+  height: 17px;
+  --fall: 13s;
+  --delay: -8.1s;
+  --drift: -3.4rem;
+  --petal-opacity: 0.75;
+}
+
+.support-petal--5 {
+  left: 45%;
+  width: 13px;
+  height: 13px;
+  --fall: 11.5s;
+  --delay: -4.6s;
+  --drift: 2.6rem;
+  --petal-opacity: 0.88;
+}
+
+.support-petal--6 {
+  left: 56%;
+  width: 19px;
+  height: 19px;
+  --fall: 15s;
+  --delay: -9.6s;
+  --drift: -2rem;
+  --petal-opacity: 0.68;
+}
+
+.support-petal--7 {
+  left: 68%;
+  width: 12px;
+  height: 12px;
+  --fall: 10.5s;
+  --delay: -2.3s;
+  --drift: 3.4rem;
+  --petal-opacity: 0.9;
+}
+
+.support-petal--8 {
+  left: 78%;
+  width: 16px;
+  height: 16px;
+  --fall: 13.5s;
+  --delay: -7.2s;
+  --drift: -3rem;
+  --petal-opacity: 0.78;
+}
+
+.support-petal--9 {
+  left: 88%;
+  width: 14px;
+  height: 14px;
+  --fall: 12s;
+  --delay: -5.4s;
+  --drift: 2.2rem;
+  --petal-opacity: 0.84;
+}
+
+.support-petal--10 {
+  left: 96%;
+  width: 18px;
+  height: 18px;
+  --fall: 14.5s;
+  --delay: -10.2s;
+  --drift: -2.6rem;
+  --petal-opacity: 0.72;
+}
+
+@keyframes support-petal-fall {
+  0% {
+    top: -12%;
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  10% {
+    opacity: var(--petal-opacity, 0.85);
+  }
+
+  50% {
+    transform: translate3d(var(--drift, 2rem), 0, 0) rotate(180deg);
+  }
+
+  86% {
+    opacity: var(--petal-opacity, 0.85);
+  }
+
+  100% {
+    top: 112%;
+    opacity: 0;
+    transform: translate3d(calc(var(--drift, 2rem) * -0.6), 0, 0)
+      rotate(360deg);
+  }
+}
+
+[data-theme="dark"] .support-petal {
+  filter: drop-shadow(0 0 6px rgba(226, 184, 247, 0.32));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-petals {
+    display: none;
+  }
 }
 
 .support-contact__head {

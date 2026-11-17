@@ -31,6 +31,7 @@
 
 .stats-section__head {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: clamp(0.75rem, 1.4vw, 1.25rem);
   margin-bottom: clamp(1rem, 1.7vw, 1.5rem);
@@ -69,6 +70,37 @@
     rgba(214, 168, 63, 0.58),
     rgba(214, 168, 63, 0) 68%
   );
+}
+
+.stats-section__source {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--stats-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--duration) var(--ease);
+}
+
+.stats-section__source svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.stats-section__source:hover,
+.stats-section__source:focus-visible {
+  color: var(--color-primary-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+[data-theme="dark"] .stats-section__source:hover,
+[data-theme="dark"] .stats-section__source:focus-visible {
+  color: var(--color-accent);
 }
 
 .stats-summary {
@@ -377,21 +409,51 @@
 }
 
 .stats-donut {
+  position: relative;
   display: grid;
   place-items: center;
   width: min(100%, 12.5rem);
   aspect-ratio: 1;
   margin-inline: auto;
-  background: conic-gradient(
-    var(--stats-success) 0% 92.4%,
-    var(--stats-review) 92.4% 98%,
-    var(--stats-pending) 98% 100%
-  );
   border-radius: 50%;
   filter: drop-shadow(0 10px 16px rgba(77, 35, 141, 0.22));
 }
 
+.stats-donut__ring {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: rotate(-90deg);
+}
+
+.stats-donut__seg {
+  fill: none;
+  stroke-width: 14;
+}
+
+.stats-donut__seg--completed {
+  stroke: var(--stats-success);
+  stroke-dasharray: 92.4 100;
+}
+
+.stats-donut__seg--review {
+  stroke: var(--stats-review);
+  stroke-dasharray: 5.6 100;
+  stroke-dashoffset: -92.4;
+}
+
+.stats-donut__seg--documents {
+  stroke: var(--stats-pending);
+  stroke-dasharray: 2 100;
+  stroke-dashoffset: -98;
+}
+
 .stats-donut__center {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
