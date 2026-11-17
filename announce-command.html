@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4D238D">
+  <meta name="description"
+    content="คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา มหาวิทยาลัยพะเยา ย้อนหลังตามปีการศึกษา จากระบบจัดการสารสนเทศบัณฑิตศึกษา">
+  <title>คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา | GRAD UP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/announce-command.css">
+  <script src="js/theme.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <nav class="tabbar" role="navigation" aria-label="เมนูหลัก">
+    <div class="tabbar__inner">
+      <a class="tabbar__brand" href="index.html" aria-label="GRAD UP — กลับหน้าหลัก">
+        <img src="assets/images/grad-logo.png" alt="GRAD UP">
+      </a>
+
+      <ul class="tabbar__nav">
+        <li class="tabbar__item">
+          <a class="tabbar__link is-active" href="index.html">หน้าหลัก</a>
+        </li>
+
+        <li class="tabbar__item tabbar__dropdown">
+          <button class="tabbar__link" type="button" aria-haspopup="true" aria-expanded="false">
+            ประกาศมหาวิทยาลัยพะเยา
+            <svg class="tabbar__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+          <ul class="tabbar__dropdown-menu" role="menu">
+            <li role="menuitem"><a href="index.html#announcements">ประกาศ</a></li>
+            <li role="menuitem"><a href="announce-command.html">คำสั่ง</a></li>
+            <li role="menuitem"><a href="index.html">มติกรรมการ</a></li>
+          </ul>
+        </li>
+
+        <li class="tabbar__item">
+          <a class="tabbar__link" href="index.html#news">ข่าว</a>
+        </li>
+
+        <li class="tabbar__item tabbar__dropdown">
+          <button class="tabbar__link" type="button" aria-haspopup="true" aria-expanded="false">
+            วารสาร
+            <svg class="tabbar__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+          <ul class="tabbar__dropdown-menu" role="menu">
+            <li role="menuitem"><a href="index.html">วารสาร</a></li>
+          </ul>
+        </li>
+
+        <li class="tabbar__item">
+          <a class="tabbar__link" href="index.html#contact">ติดต่อเรา</a>
+        </li>
+      </ul>
+
+      <div class="tabbar__actions">
+        <div class="tabbar__font-sizes">
+          <button class="tabbar__size-btn" type="button" data-font-size="decrease" aria-label="ลดขนาดตัวอักษร">A<sub>-</sub></button>
+          <button class="tabbar__size-btn" type="button" data-font-size="reset" aria-label="ขนาดตัวอักษรปกติ">A</button>
+          <button class="tabbar__size-btn" type="button" data-font-size="increase" aria-label="เพิ่มขนาดตัวอักษร">A<sub>+</sub></button>
+        </div>
+        <button class="tabbar__icon-btn tabbar__language-btn" type="button" aria-label="เปลี่ยนภาษา">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </button>
+        <button class="tabbar__icon-btn tabbar__theme-toggle" type="button" data-theme-toggle aria-label="เปลี่ยนธีม">
+          <svg class="tabbar__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.2 15.4A8.4 8.4 0 0 1 8.6 3.8 8.5 8.5 0 1 0 20.2 15.4Z"></path>
+          </svg>
+          <svg class="tabbar__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+          </svg>
+        </button>
+        <button class="tabbar__icon-btn" type="button" aria-label="ค้นหา">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+        </button>
+        <button class="tabbar__menu-btn" type="button" aria-label="เมนู">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="command-page" id="main">
+    <nav class="command-breadcrumb" aria-label="เส้นทางนำทาง">
+      <a href="index.html">หน้าหลัก</a>
+      <span aria-hidden="true">/</span>
+      <a href="index.html#announcements">ประกาศ</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา</span>
+    </nav>
+
+    <section class="command-hero" aria-labelledby="command-title">
+      <div class="command-hero__copy">
+        <p class="command-eyebrow">ประกาศบัณฑิตศึกษา</p>
+        <h1 id="command-title">คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา</h1>
+        <p class="command-hero__description">
+          รวมคำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา มหาวิทยาลัยพะเยา ย้อนหลังตามปีการศึกษา
+        </p>
+      </div>
+
+      <div class="command-hero__side">
+        <dl class="command-stats">
+          <div class="command-stat">
+            <dt>ปีการศึกษาล่าสุด</dt>
+            <dd>2569</dd>
+          </div>
+          <div class="command-stat">
+            <dt>รายการในปีนี้</dt>
+            <dd id="stat-count">0</dd>
+          </div>
+        </dl>
+        <a class="command-source-link" href="https://grad.up.ac.th/announce/command"
+          target="_blank" rel="noopener noreferrer">
+          <span>ดูข้อมูลต้นฉบับบนเว็บไซต์ GRAD</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 4h6v6"></path>
+            <path d="m20 4-9 9"></path>
+            <path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="command-panel" aria-labelledby="command-list-title">
+      <div class="command-panel__head">
+        <div>
+          <h2 id="command-list-title">รายการคำสั่ง</h2>
+          <p>เลือกปีการศึกษาเพื่อดูคำสั่งแต่งตั้งของปีนั้น</p>
+        </div>
+      </div>
+
+      <div class="year-tabs" role="tablist" aria-label="เลือกปีการศึกษา" id="year-tabs">
+        <button class="year-tab" type="button" role="tab" id="tab-2569" data-year="2569"
+          aria-selected="true" aria-controls="command-panel-body" tabindex="0">2569</button>
+        <button class="year-tab" type="button" role="tab" id="tab-2568" data-year="2568"
+          aria-selected="false" aria-controls="command-panel-body" tabindex="-1">2568</button>
+        <button class="year-tab" type="button" role="tab" id="tab-2567" data-year="2567"
+          aria-selected="false" aria-controls="command-panel-body" tabindex="-1">2567</button>
+        <button class="year-tab" type="button" role="tab" id="tab-2566" data-year="2566"
+          aria-selected="false" aria-controls="command-panel-body" tabindex="-1">2566</button>
+        <button class="year-tab" type="button" role="tab" id="tab-2565" data-year="2565"
+          aria-selected="false" aria-controls="command-panel-body" tabindex="-1">2565</button>
+        <button class="year-tab" type="button" role="tab" id="tab-2564" data-year="2564"
+          aria-selected="false" aria-controls="command-panel-body" tabindex="-1">2564</button>
+        <button class="year-tab" type="button" role="tab" id="tab-2563" data-year="2563"
+          aria-selected="false" aria-controls="command-panel-body" tabindex="-1">2563</button>
+        <button class="year-tab" type="button" role="tab" id="tab-2562" data-year="2562"
+          aria-selected="false" aria-controls="command-panel-body" tabindex="-1">2562</button>
+        <button class="year-tab year-tab--manual" type="button" role="tab" id="tab-manual" data-year="manual"
+          aria-selected="false" aria-controls="command-panel-body" tabindex="-1">คู่มือ</button>
+      </div>
+
+      <div class="command-panel__body" id="command-panel-body" role="tabpanel" aria-labelledby="tab-2569"
+        aria-live="polite">
+        <div class="command-grid" id="command-grid"></div>
+      </div>
+
+      <p class="command-panel__note">
+        ข้อมูลและยอดเข้าชมอาจมีการเปลี่ยนแปลง ดูรายการล่าสุดได้ที่
+        <a href="https://grad.up.ac.th/announce/command" target="_blank" rel="noopener noreferrer">เว็บไซต์ GRAD</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="command-footer">
+    <p>มหาวิทยาลัยพะเยา · ระบบจัดการสารสนเทศบัณฑิตศึกษา (GRAD)</p>
+    <a href="index.html">กลับหน้าหลัก</a>
+  </footer>
+
+  <script src="js/announce-command.js" defer></script>
+</body>
+
+</html>
