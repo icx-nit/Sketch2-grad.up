@@ -258,12 +258,21 @@ button:not(.promo-card) {
 .hero-stage {
   position: relative;
   display: block;
-  height: calc(100vh - var(--header-h, var(--header-height)));
-  height: calc(100svh - var(--header-h, var(--header-height)));
-  min-height: 24rem;
+  /* ภาพปกแบบการ์ดลอย: เว้นขอบรอบภาพ + มุมโค้งมนทั้งสี่ด้านเหมือนภาพตัวอย่าง */
+  --hero-gap-block: clamp(0.75rem, 1.2vw, 1.25rem);
+  --hero-gap-inline: clamp(0.75rem, 2.2vw, 2rem);
+  --hero-radius: clamp(1.75rem, 5.2vw, 5rem);
+  margin: var(--hero-gap-block) var(--hero-gap-inline);
+  height: calc(
+    100vh - var(--header-h, var(--header-height)) - 2 * var(--hero-gap-block)
+  );
+  height: calc(
+    100svh - var(--header-h, var(--header-height)) - 2 * var(--hero-gap-block)
+  );
+  min-height: 22rem;
   overflow: hidden;
-  /* มุมปกทั้งแผ่น: ใช้ค่าเดียวกับภาพปก (ซ้ายบน 51 · ขวาบน 24 · ขวาล่าง 0 · ซ้ายล่าง 84) */
-  border-radius: 51px 24px 0px 84px;
+  /* มุมปกทั้งแผ่น: โค้งเท่ากันทั้งสี่ด้าน */
+  border-radius: var(--hero-radius);
 }
 
 /* ภาพปกเติมเต็มพื้นที่ hero-stage ทั้งหมด */
@@ -274,13 +283,13 @@ button:not(.promo-card) {
   width: 100%;
   max-width: none;
   height: 100%;
-  min-height: 24rem;
+  min-height: 22rem;
   /* ครอปภาพที่ถูกซูม/เลื่อนตอนทำอนิเมชัน ไม่ให้ล้นออกนอกจอ */
   overflow: hidden;
   isolation: isolate;
   padding-inline: 0;
   /* มุมปกทั้งแผ่นให้ตรงกับภาพปก */
-  border-radius: 51px 24px 0px 84px;
+  border-radius: inherit;
 }
 
 .hero__panel {
@@ -303,8 +312,8 @@ button:not(.promo-card) {
   object-fit: cover;
   object-position: center;
   transform-origin: center;
-  /* มุมปกตามที่กำหนด: ซ้ายบน 51px · ขวาบน 24px · ขวาล่าง 0 · ซ้ายล่าง 84px */
-  border-radius: 51px 24px 0px 84px;
+  /* มุมปกตามที่กำหนด: โค้งเท่ากันทั้งสี่ด้าน (รับค่าจาก hero-stage) */
+  border-radius: inherit;
 }
 
 .hero__title {
