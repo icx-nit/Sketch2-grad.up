@@ -92,11 +92,10 @@
 
 [data-theme="dark"] .site-header,
 [data-theme="dark"] .tabbar__inner {
-  border-color: rgba(214, 168, 63, 0.5);
+  border: 0;
   background-color: transparent;
-  background-image: linear-gradient(120deg, #2E2347 0%, #241A37 55%, #1E1830 100%);
-  box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  background-image: linear-gradient(120deg, #1C172A 0%, #17112A 55%, #120D21 100%);
+  box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.7);
 }
 
 /* ---------- เมนู (โหมดมืด) ---------- */
@@ -104,7 +103,8 @@
 [data-theme="dark"] .nav-link,
 [data-theme="dark"] .tabbar__link {
   background: none;
-  color: #241B32;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
 }
 
 [data-theme="dark"] .nav-link:hover,
@@ -116,15 +116,15 @@
 [data-theme="dark"] .tabbar__link.is-active,
 [data-theme="dark"] .tabbar__dropdown.open > .tabbar__link {
   background: none;
-  color: #4D238D;
+  color: #F0C96D;
 }
 
-/* ---------- ปุ่มขวา (โหมดมืด) ---------- */
+/* ---------- ปุ่มขวา (โหมดมืด) ไม่มีกรอบ ---------- */
 
 [data-theme="dark"] .font-size,
 [data-theme="dark"] .tabbar__font-sizes {
-  background: rgba(77, 35, 141, 0.08);
-  border-color: rgba(77, 35, 141, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: transparent;
 }
 
 [data-theme="dark"] .font-size__btn,
@@ -132,7 +132,7 @@
 [data-theme="dark"] .icon-btn,
 [data-theme="dark"] .tabbar__icon-btn,
 [data-theme="dark"] .tabbar__menu-btn {
-  color: #241B32;
+  color: #FFFFFF;
 }
 
 [data-theme="dark"] .font-size__btn:hover,
@@ -140,16 +140,15 @@
 [data-theme="dark"] .icon-btn:hover,
 [data-theme="dark"] .tabbar__icon-btn:hover,
 [data-theme="dark"] .tabbar__menu-btn:hover {
-  background: rgba(77, 35, 141, 0.12);
-  color: #4D238D;
+  background: rgba(240, 201, 109, 0.14);
+  color: #F0C96D;
 }
 
-/* โลโก้ในโหมดมืด: วางบนแผ่นขาวบาง ๆ ให้เห็นชัดบนแถบเข้ม */
-[data-theme="dark"] .brand,
-[data-theme="dark"] .tabbar__brand {
-  background: rgba(255, 255, 255, 0.94);
-  border-radius: 1rem;
-  box-shadow: 0 0 0 1px rgba(240, 201, 109, 0.55);
+/* โลโก้ในโหมดมืด: ไม่มีกรอบ ใช้แสงขอบบาง ๆ ให้เห็นชัดบนพื้นมืด */
+[data-theme="dark"] .brand__logo,
+[data-theme="dark"] .tabbar__brand img {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 8px rgba(240, 201, 109, 0.28));
 }
 
 .tabbar__brand {
