@@ -1522,3 +1522,14 @@ body {
 body .site-header {
   margin-inline: calc(clamp(0.75rem, 2vw, 1.5rem) + clamp(0.5rem, 1.5vw, 1.25rem));
 }
+
+/* Tabbar ของหน้า announce: ระยะซ้าย-ขวาเท่ากับกรอบเนื้อหา (เฉพาะหน้านี้ ไม่กระทบหน้าแรก) */
+body .site-header {
+  margin-inline: calc(clamp(0.75rem, 2vw, 1.5rem) + clamp(0.5rem, 1.5vw, 1.25rem));
+}
+
+@media (max-width: 767px) {
+  body .site-header {
+    margin-inline: calc(0.75rem + 0.5rem);
+  }
+}
