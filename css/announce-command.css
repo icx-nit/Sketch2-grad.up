@@ -375,11 +375,12 @@ body {
    ========================================================================== */
 
 .command-page {
-  --bar-gap: clamp(0.5rem, 1.5vw, 1.25rem);
+  /* ระยะเท่ากับขอบแถบนำทางจริง = padding ของ .tabbar + margin ของ .tabbar__inner */
+  --tabbar-inset: calc(clamp(0.75rem, 2vw, 1.5rem) + clamp(0.5rem, 1.5vw, 1.25rem));
   width: auto;
   max-width: none;
   min-height: calc(100vh - 9rem);
-  margin-inline: var(--bar-gap);
+  margin-inline: var(--tabbar-inset);
   padding: var(--space-lg) 0 var(--space-3xl);
 }
 
@@ -1499,5 +1500,12 @@ body {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* มือถือ: ระยะขอบ .tabbar (0.75rem) + margin ของ .tabbar__inner (0.5rem) */
+@media (max-width: 767px) {
+  .command-page {
+    margin-inline: calc(0.75rem + 0.5rem);
   }
 }
