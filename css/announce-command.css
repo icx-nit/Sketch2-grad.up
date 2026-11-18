@@ -45,6 +45,7 @@ body {
   left: 0;
   right: 0;
   z-index: 100;
+  padding: 0.75rem clamp(0.75rem, 2vw, 1.5rem) 0.5rem;
 }
 
 .tabbar__inner {
@@ -56,11 +57,12 @@ body {
   min-height: var(--header-height);
   margin: 0;
   padding-inline: var(--edge-pad, clamp(1rem, 2vw, 2rem));
-  background: linear-gradient(180deg, #F8F3FF 0%, #EEE2FD 50%, #E2D1FB 100%);
-  border-bottom: 1px solid rgba(77, 35, 141, 0.18);
-  border-radius: 0 0 1.5rem 1.5rem;
-  box-shadow: 0 1px 0 rgba(214, 168, 63, 0.55),
-    0 16px 30px -22px rgba(77, 35, 141, 0.6);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(236, 226, 252, 0.95) 55%, rgba(220, 204, 248, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  box-shadow: 0 12px 28px -12px rgba(30, 10, 70, 0.55),
+    0 2px 6px rgba(30, 10, 70, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .tabbar__brand {
@@ -120,7 +122,8 @@ body {
   position: relative;
   color: var(--color-primary);
   font-weight: 600;
-  border-radius: 0;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-pill);
 }
 
 .tabbar__link.is-active::after {
@@ -197,9 +200,10 @@ body {
   align-items: center;
   height: 2.5rem;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(77, 35, 141, 0.24);
-  border-radius: 0.625rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(77, 35, 141, 0.12);
 }
 
 .tabbar__size-btn {
@@ -289,9 +293,19 @@ body {
 }
 
 [data-theme="dark"] .tabbar__inner {
-  background: linear-gradient(180deg, #241A37 0%, #20172F 100%);
-  border-bottom-color: rgba(147, 100, 223, 0.6);
-  box-shadow: 0 8px 20px -16px rgba(0, 0, 0, 0.75);
+  background: linear-gradient(135deg, #2E2347 0%, #241A37 55%, #1E1830 100%);
+  border-color: rgba(185, 155, 242, 0.45);
+  box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .tabbar__link.is-active {
+  background: rgba(147, 100, 223, 0.22);
+}
+
+[data-theme="dark"] .tabbar__font-sizes {
+  background: rgba(147, 100, 223, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(185, 155, 242, 0.3);
 }
 
 [data-theme="dark"] .tabbar__link {
