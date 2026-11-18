@@ -1,0 +1,49 @@
+# ==========================================================================
+# uploads/ — ไฟล์เอกสารประกอบเว็บไซต์
+#
+# ไฟล์เอกสารจริงมีอยู่ 259 ไฟล์ (~479 MB) ซึ่งใหญ่เกินกว่าจะเก็บใน Git
+# จึงเพิกเฉยไฟล์ทั้งหมด แล้วยกเว้นเฉพาะ "ไฟล์ตัวอย่าง" แหล่งละ 3 ไฟล์
+# เพื่อให้ปุ่มดูตัวอย่าง / ดาวน์โหลด ยังสาธิตการทำงานได้
+#
+# หมายเหตุ: ไฟล์จริงทุกไฟล์ยังอยู่บนเครื่องครบถ้วน ไม่ได้ถูกลบ
+#           การเพิกเฉยมีผลกับ Git เท่านั้น
+# ==========================================================================
+
+# 1) เพิกเฉยทุกอย่างใต้ uploads/ (ไฟล์และโฟลเดอร์ ทุกระดับชั้น)
+uploads/**
+
+# 2) ยกเว้นโฟลเดอร์ เพื่อให้ Git ยังไล่เข้าไปดูไฟล์ตัวอย่างได้
+#    (Git ไม่เก็บโฟลเดอร์ว่าง จึงใช้ .gitkeep ค้ำโครงสร้างไว้)
+!uploads/**/
+!uploads/**/.gitkeep
+
+# 3) ยกเว้นไฟล์ตัวอย่างที่เลือกไว้ (แหล่งละ 3 ไฟล์)
+# --- uploads/announce/ : คำสั่งแต่งตั้ง (3 รายการแรกของหน้า) ---
+!uploads/announce/6ad5722e69289fw7GW.pdf
+!uploads/announce/6ad5714018b6etNwYQ.pdf
+!uploads/announce/6a965241806a078wso.pdf
+
+# --- uploads/exam/ : การสอบ (3 รายการแรกของหน้า) ---
+!uploads/exam/ann-219.pdf
+!uploads/exam/ann-218.pdf
+!uploads/exam/ann-210.pdf
+
+# --- uploads/forms/ : แบบฟอร์ม (บศ. 2–4) ---
+!uploads/forms/ann-71.pdf
+!uploads/forms/ann-72.pdf
+!uploads/forms/ann-73.pdf
+
+# --- uploads/guides/ : คู่มือ (ครบทั้ง 3 หมวด) ---
+!uploads/guides/ann-235.pdf
+!uploads/guides/ann-243.pdf
+!uploads/guides/ann-242.pdf
+
+# --- uploads/other/ : ประกาศอื่น ๆ (มีไฟล์จริง 1 + ไฟล์จำลอง 2) ---
+!uploads/other/ann-8.pdf
+!uploads/other/ann-mock-1.pdf
+!uploads/other/ann-mock-2.pdf
+
+# --- uploads/scholarship/ : ทุนอุดหนุน (2569 สองรายการแรก + 2568) ---
+!uploads/scholarship/ann-1297.pdf
+!uploads/scholarship/ann-1292.pdf
+!uploads/scholarship/ann-1290.pdf
