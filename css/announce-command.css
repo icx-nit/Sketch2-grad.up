@@ -374,13 +374,21 @@ body {
    Page layout
    ========================================================================== */
 
+:root {
+  /* ระยะซ้ายขวาร่วม: กรอบเนื้อหาและแถบนำทาง (หน้า announce เท่านั้น) */
+  --page-inset: clamp(0.5rem, 1.5vw, 1.25rem);
+}
+
+/* แถบนำทางให้ขอบเท่ากับกรอบเนื้อหา */
+.site-header {
+  margin-inline: var(--page-inset) !important;
+}
+
 .command-page {
-  /* ระยะเท่ากับขอบแถบนำทางจริง = padding ของ .tabbar + margin ของ .tabbar__inner */
-  --tabbar-inset: calc(clamp(0.75rem, 2vw, 1.5rem) + clamp(0.5rem, 1.5vw, 1.25rem));
   width: auto;
   max-width: none;
   min-height: calc(100vh - 9rem);
-  margin-inline: var(--tabbar-inset);
+  margin-inline: var(--page-inset);
   padding: var(--space-lg) 0 var(--space-3xl);
 }
 
@@ -1505,8 +1513,8 @@ body {
 
 /* มือถือ: ระยะขอบ .tabbar (0.75rem) + margin ของ .tabbar__inner (0.5rem) */
 @media (max-width: 767px) {
-  .command-page {
-    margin-inline: calc(0.75rem + 0.5rem);
+  :root {
+    --page-inset: 0.5rem;
   }
 }
 
