@@ -375,10 +375,11 @@ body {
    ========================================================================== */
 
 .command-page {
-  width: calc(100% - 2 * clamp(0.5rem, 1.5vw, 1.25rem));
+  --bar-gap: clamp(0.5rem, 1.5vw, 1.25rem);
+  width: auto;
   max-width: none;
   min-height: calc(100vh - 9rem);
-  margin: 0 auto;
+  margin-inline: var(--bar-gap);
   padding: var(--space-lg) 0 var(--space-3xl);
 }
 
