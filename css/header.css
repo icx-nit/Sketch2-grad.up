@@ -150,7 +150,7 @@
 /* โลโก้ในโหมดมืด: ไม่มีกรอบ ใช้แสงขอบบาง ๆ ให้เห็นชัดบนพื้นมืด */
 [data-theme="dark"] .brand__logo,
 [data-theme="dark"] .tabbar__brand img {
-  filter: brightness(1.4) saturate(1.1);
+  filter: brightness(1.05) saturate(1.15);
 }
 
 .tabbar__brand {
