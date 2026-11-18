@@ -370,7 +370,7 @@
     body.appendChild(meta);
 
     var actions = el("div", "doc-row__actions");
-    var download = el("a", "btn btn--solid");
+    var download = el("a", "cmd-btn cmd-btn--solid");
     download.href = item.pdf;
     download.target = "_blank";
     download.rel = "noopener noreferrer";
@@ -401,7 +401,7 @@
     box.appendChild(el("h3", null, message));
     box.appendChild(el("p", null, "ดูรายการทั้งหมดได้ที่เว็บไซต์ต้นฉบับ"));
     if (withSource) {
-      var link = el("a", "btn btn--outline");
+      var link = el("a", "cmd-btn cmd-btn--outline");
       link.href = SOURCE_URL;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
