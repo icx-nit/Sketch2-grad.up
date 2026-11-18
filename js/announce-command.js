@@ -308,6 +308,36 @@
      Rendering
      ========================================================================== */
 
+  function downloadFilename(item) {
+    var kind = item.special ? "พิเศษบัณฑิตศึกษา" : "บัณฑิตศึกษา";
+    var no = item.number ? "-ฉบับที่-" + item.number : "";
+    return "คำสั่งแต่งตั้ง" + kind + "-" + item.year + no + ".pdf";
+  }
+
+  /* ดึงไฟล์ PDF เป็น blob แล้วสั่งดาวน์โหลดจริง
+     ถ้าเซิร์ฟเวอร์ไม่อนุญาตให้ดึงข้ามโดเมน จะเปิดไฟล์ในแท็บใหม่แทน */
+  function downloadPdf(item) {
+    var filename = downloadFilename(item);
+    fetch(item.pdf, { mode: "cors" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("download failed");
+        return res.blob();
+      })
+      .then(function (blob) {
+        var objectUrl = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = objectUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(objectUrl); }, 1000);
+      })
+      .catch(function () {
+        window.open(item.pdf, "_blank", "noopener,noreferrer");
+      });
+  }
+
   function buildRow(item) {
     var row = el("article", "doc-row " + (item.special ? "doc-row--special" : "doc-row--board"));
 
@@ -344,7 +374,11 @@
     download.href = item.pdf;
     download.target = "_blank";
     download.rel = "noopener noreferrer";
-    download.setAttribute("download", "");
+    download.setAttribute("download", downloadFilename(item));
+    download.addEventListener("click", function (e) {
+      e.preventDefault();
+      downloadPdf(item);
+    });
     download.appendChild(svgIcon(ICONS.download));
     download.appendChild(el("span", null, "ดาวน์โหลด"));
     var preview = el("a", "doc-row__preview");
