@@ -136,6 +136,16 @@
   background-color: #F0C96D;
 }
 
+/* ---------- หน้าแรก: ภาพปกเต็มหน้า ไม่มีขอบขาว ----------
+   ดึงภาพปกขึ้นไปอยู่ใต้ header ที่ลอยทับ แล้วให้สูงเต็มจอ */
+
+.hero-stage {
+  margin: calc(-1 * (var(--header-height) + 0.75rem)) 0 0;
+  height: 100vh;
+  height: 100svh;
+  border-radius: 0;
+}
+
 /* ---------- มือถือ ---------- */
 
 @media (max-width: 767px) {
