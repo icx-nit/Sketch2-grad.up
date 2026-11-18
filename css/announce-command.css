@@ -502,7 +502,8 @@ body {
 }
 
 .hero h1 {
-  max-width: 22ch;
+  max-width: none;
+  white-space: nowrap;
   color: #FFFFFF;
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 3.6vw, 2.5rem);
@@ -1467,6 +1468,12 @@ body {
   .year-tab {
     min-width: 2.75rem;
     padding: 0.35rem 0.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero h1 {
+    white-space: normal;
   }
 }
 
