@@ -95,8 +95,8 @@
   border: 0;
   background-color: transparent;
   background-image:
-    radial-gradient(ellipse 60% 120% at 35% 0%, rgba(147, 100, 223, 0.32) 0%, transparent 70%),
-    linear-gradient(120deg, #3B2172 0%, #2C1657 45%, #1E0F3C 80%, #140A28 100%);
+    radial-gradient(ellipse 60% 120% at 35% 0%, rgba(147, 100, 223, 0.2) 0%, transparent 70%),
+    linear-gradient(120deg, #35206A 0%, #2C1657 45%, #1E0F3C 80%, #140A28 100%);
   box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.7);
 }
 
@@ -149,7 +149,7 @@
 /* โลโก้ในโหมดมืด: ไม่มีกรอบ ใช้แสงขอบบาง ๆ ให้เห็นชัดบนพื้นมืด */
 [data-theme="dark"] .brand__logo,
 [data-theme="dark"] .tabbar__brand img {
-  filter: none;
+  filter: brightness(1.4) saturate(1.1);
 }
 
 .tabbar__brand {
