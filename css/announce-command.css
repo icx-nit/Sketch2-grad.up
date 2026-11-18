@@ -1517,8 +1517,3 @@ body {
     --page-inset: 0.5rem;
   }
 }
-
-/* หน้าคำสั่ง: ระยะขอบซ้ายขวาของแถบนำทางให้เท่ากับกรอบเนื้อหา (เฉพาะหน้านี้) */
-body .site-header {
-  margin-inline: calc(clamp(0.75rem, 2vw, 1.5rem) + clamp(0.5rem, 1.5vw, 1.25rem));
-}
