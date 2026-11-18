@@ -94,7 +94,7 @@
 [data-theme="dark"] .tabbar__inner {
   border-color: rgba(214, 168, 63, 0.5);
   background-color: transparent;
-  background-image: linear-gradient(120deg, #FBF8FF 0%, #F0E6FD 50%, #E4D5FB 100%);
+  background-image: linear-gradient(120deg, #2E2347 0%, #241A37 55%, #1E1830 100%);
   box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
@@ -142,6 +142,19 @@
 [data-theme="dark"] .tabbar__menu-btn:hover {
   background: rgba(77, 35, 141, 0.12);
   color: #4D238D;
+}
+
+/* โลโก้ในโหมดมืด: วางบนแผ่นขาวบาง ๆ ให้เห็นชัดบนแถบเข้ม */
+[data-theme="dark"] .brand,
+[data-theme="dark"] .tabbar__brand {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 1rem;
+  box-shadow: 0 0 0 1px rgba(240, 201, 109, 0.55);
+}
+
+.tabbar__brand {
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
 }
 
 [data-theme="dark"] .tabbar__language-btn::after {
