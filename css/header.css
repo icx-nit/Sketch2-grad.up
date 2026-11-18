@@ -19,11 +19,11 @@
 /* ใช้ selector [data-theme] เพื่อให้เฉพาะเจาะจงเท่ากับ style.css และโหลดทีหลังจึงทับได้ */
 [data-theme="light"] .site-header,
 [data-theme="light"] .tabbar__inner {
-  border: 1px solid rgba(214, 168, 63, 0.45);
+  border: 1px solid rgba(77, 35, 141, 0.22);
   background-color: transparent;
-  background-image: linear-gradient(120deg, #4D238D 0%, #3A1D7A 60%, #2C1B5E 100%);
-  box-shadow: 0 14px 30px -14px rgba(77, 35, 141, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  background-image: linear-gradient(120deg, #FFFFFF 0%, #F7F3FD 60%, #EFE7FB 100%);
+  box-shadow: 0 14px 30px -14px rgba(20, 8, 40, 0.55),
+    inset 0 1px 0 #FFFFFF;
 }
 
 /* ---------- เมนู (โหมดสว่าง) ---------- */
@@ -31,7 +31,7 @@
 .nav-link,
 .tabbar__link {
   background: none;
-  color: #FFFFFF;
+  color: #241B32;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -42,13 +42,13 @@
 .nav-item--dropdown.is-open > .nav-link__toggle,
 .tabbar__dropdown.open > .tabbar__link {
   background: none;
-  color: #F7D980;
+  color: #4D238D;
 }
 
 .nav-link.is-active,
 .tabbar__link.is-active {
   background: none;
-  color: #F7D980;
+  color: #4D238D;
   font-weight: 700;
 }
 
@@ -56,8 +56,8 @@
 
 .font-size,
 .tabbar__font-sizes {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: #FFFFFF;
+  border: 1px solid rgba(77, 35, 141, 0.28);
 }
 
 .font-size__btn,
@@ -65,39 +65,38 @@
 .icon-btn,
 .tabbar__icon-btn,
 .tabbar__menu-btn {
-  color: #FFFFFF;
+  color: #241B32;
   font-weight: 600;
 }
 
 .font-size__btn:hover,
 .tabbar__size-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
-  color: #F7D980;
+  background: rgba(77, 35, 141, 0.08);
+  color: #4D238D;
 }
 
 .icon-btn:hover,
 .tabbar__icon-btn:hover,
 .tabbar__menu-btn:hover {
-  background: rgba(255, 255, 255, 0.14);
-  color: #F7D980;
+  background: rgba(77, 35, 141, 0.1);
+  color: #4D238D;
 }
 
-/* ป้าย TH ของปุ่มภาษา: ทองให้ตัดกับแถบม่วง */
+/* ป้าย TH ของปุ่มภาษา: ม่วงเข้มตัดกับแถบขาว */
 .tabbar__language-btn::after {
-  background: #D6A83F;
-  color: #241B32;
+  background: #4D238D;
+  color: #FFFFFF;
 }
 
 /* ---------- แถบ (โหมดมืด): เข้มกว่าพื้นหลัง ขอบม่วงเรืองแสง ---------- */
 
 [data-theme="dark"] .site-header,
 [data-theme="dark"] .tabbar__inner {
-  border-color: rgba(147, 100, 223, 0.55);
+  border-color: rgba(214, 168, 63, 0.5);
   background-color: transparent;
-  background-image: linear-gradient(120deg, #241C3D 0%, #1C172A 55%, #150F24 100%);
-  box-shadow: 0 0 0 1px rgba(147, 100, 223, 0.12),
-    0 14px 30px -12px rgba(0, 0, 0, 0.85),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  background-image: linear-gradient(120deg, #FBF8FF 0%, #F0E6FD 50%, #E4D5FB 100%);
+  box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* ---------- เมนู (โหมดมืด) ---------- */
@@ -105,7 +104,7 @@
 [data-theme="dark"] .nav-link,
 [data-theme="dark"] .tabbar__link {
   background: none;
-  color: #F5F1FC;
+  color: #241B32;
 }
 
 [data-theme="dark"] .nav-link:hover,
@@ -117,15 +116,15 @@
 [data-theme="dark"] .tabbar__link.is-active,
 [data-theme="dark"] .tabbar__dropdown.open > .tabbar__link {
   background: none;
-  color: #F0C96D;
+  color: #4D238D;
 }
 
 /* ---------- ปุ่มขวา (โหมดมืด) ---------- */
 
 [data-theme="dark"] .font-size,
 [data-theme="dark"] .tabbar__font-sizes {
-  background: rgba(147, 100, 223, 0.14);
-  border-color: rgba(147, 100, 223, 0.45);
+  background: rgba(77, 35, 141, 0.08);
+  border-color: rgba(77, 35, 141, 0.35);
 }
 
 [data-theme="dark"] .font-size__btn,
@@ -133,7 +132,7 @@
 [data-theme="dark"] .icon-btn,
 [data-theme="dark"] .tabbar__icon-btn,
 [data-theme="dark"] .tabbar__menu-btn {
-  color: #F5F1FC;
+  color: #241B32;
 }
 
 [data-theme="dark"] .font-size__btn:hover,
@@ -141,8 +140,8 @@
 [data-theme="dark"] .icon-btn:hover,
 [data-theme="dark"] .tabbar__icon-btn:hover,
 [data-theme="dark"] .tabbar__menu-btn:hover {
-  background: rgba(240, 201, 109, 0.14);
-  color: #F0C96D;
+  background: rgba(77, 35, 141, 0.12);
+  color: #4D238D;
 }
 
 [data-theme="dark"] .tabbar__language-btn::after {
@@ -159,7 +158,7 @@
 
 [data-theme="dark"] .nav-link.is-active[href]::after,
 [data-theme="dark"] .tabbar__link.is-active::after {
-  background-color: #F0C96D;
+  background-color: #D6A83F;
 }
 
 /* ---------- หน้าแรก: ภาพปกเต็มหน้า ไม่มีขอบขาว ----------
