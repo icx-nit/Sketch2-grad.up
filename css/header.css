@@ -1,23 +1,24 @@
 /* ==========================================================================
    Shared header / tab bar — ใช้เหมือนกันทั้งเว็บ (หน้าแรก .site-header
    และหน้าคำสั่ง .tabbar) โหลดเป็นไฟล์สุดท้ายเพื่อทับสไตล์เดิม
-   - แถบลอยมีไล่เฉดสี ขอบโค้งทั้ง 4 มุม
-   - เมนูไม่มีพื้นหลังรูปวงรี มีเพียงขีดใต้เมนูที่เลือก
-   - ข้อมูลและการทำงานของเมนู/dropdown/ปุ่มเดิมไม่เปลี่ยน
+   สีอ้างอิง DESIGN.md:
+   - สว่าง: primary #4D238D, accent #D6A83F, text #241B32
+   - มืด:   bg #100D1C, panel #1C172A, primary #9364DF, accent #F0C96D, text #F5F1FC
+   - เมนูไม่มีพื้นหลังวงรี มีเพียงขีดทองใต้เมนูที่เลือก
    ========================================================================== */
 
-/* ---------- แถบ (โหมดสว่าง) ---------- */
+/* ---------- แถบ (โหมดสว่าง): ม่วงเข้มเด่นกว่าพื้นหลัง ---------- */
 
 .site-header,
 .tabbar__inner {
   width: auto;
   margin: 0.75rem clamp(0.5rem, 1.5vw, 1.25rem) 0;
-  border: 1px solid rgba(77, 35, 141, 0.2);
+  border: 1px solid rgba(214, 168, 63, 0.45);
   border-radius: 1.75rem;
   background-color: transparent;
-  background-image: linear-gradient(120deg, #FBF8FF 0%, #F0E6FD 45%, #E3D2FA 100%);
-  box-shadow: 0 12px 28px -14px rgba(77, 35, 141, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  background-image: linear-gradient(120deg, #4D238D 0%, #3A1D7A 60%, #2C1B5E 100%);
+  box-shadow: 0 14px 30px -14px rgba(77, 35, 141, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
 /* ---------- เมนู (โหมดสว่าง) ---------- */
@@ -25,7 +26,7 @@
 .nav-link,
 .tabbar__link {
   background: none;
-  color: #241B32;
+  color: #FFFFFF;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -36,13 +37,13 @@
 .nav-item--dropdown.is-open > .nav-link__toggle,
 .tabbar__dropdown.open > .tabbar__link {
   background: none;
-  color: #4D238D;
+  color: #F7D980;
 }
 
 .nav-link.is-active,
 .tabbar__link.is-active {
   background: none;
-  color: #4D238D;
+  color: #F7D980;
   font-weight: 700;
 }
 
@@ -50,8 +51,8 @@
 
 .font-size,
 .tabbar__font-sizes {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(77, 35, 141, 0.28);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .font-size__btn,
@@ -59,26 +60,39 @@
 .icon-btn,
 .tabbar__icon-btn,
 .tabbar__menu-btn {
-  color: #241B32;
+  color: #FFFFFF;
   font-weight: 600;
+}
+
+.font-size__btn:hover,
+.tabbar__size-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #F7D980;
 }
 
 .icon-btn:hover,
 .tabbar__icon-btn:hover,
 .tabbar__menu-btn:hover {
-  background: rgba(77, 35, 141, 0.1);
-  color: #4D238D;
+  background: rgba(255, 255, 255, 0.14);
+  color: #F7D980;
 }
 
-/* ---------- แถบ (โหมดมืด) ---------- */
+/* ป้าย TH ของปุ่มภาษา: ทองให้ตัดกับแถบม่วง */
+.tabbar__language-btn::after {
+  background: #D6A83F;
+  color: #241B32;
+}
+
+/* ---------- แถบ (โหมดมืด): เข้มกว่าพื้นหลัง ขอบม่วงเรืองแสง ---------- */
 
 [data-theme="dark"] .site-header,
 [data-theme="dark"] .tabbar__inner {
-  border-color: rgba(185, 155, 242, 0.38);
+  border-color: rgba(147, 100, 223, 0.55);
   background-color: transparent;
-  background-image: linear-gradient(120deg, #2E2249 0%, #231A38 55%, #1B1430 100%);
-  box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.8),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background-image: linear-gradient(120deg, #241C3D 0%, #1C172A 55%, #150F24 100%);
+  box-shadow: 0 0 0 1px rgba(147, 100, 223, 0.12),
+    0 14px 30px -12px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 /* ---------- เมนู (โหมดมืด) ---------- */
@@ -105,8 +119,8 @@
 
 [data-theme="dark"] .font-size,
 [data-theme="dark"] .tabbar__font-sizes {
-  background: rgba(147, 100, 223, 0.12);
-  border-color: rgba(185, 155, 242, 0.4);
+  background: rgba(147, 100, 223, 0.14);
+  border-color: rgba(147, 100, 223, 0.45);
 }
 
 [data-theme="dark"] .font-size__btn,
@@ -117,11 +131,18 @@
   color: #F5F1FC;
 }
 
+[data-theme="dark"] .font-size__btn:hover,
+[data-theme="dark"] .tabbar__size-btn:hover,
 [data-theme="dark"] .icon-btn:hover,
 [data-theme="dark"] .tabbar__icon-btn:hover,
 [data-theme="dark"] .tabbar__menu-btn:hover {
   background: rgba(240, 201, 109, 0.14);
   color: #F0C96D;
+}
+
+[data-theme="dark"] .tabbar__language-btn::after {
+  background: #9364DF;
+  color: #120C1F;
 }
 
 /* ---------- ขีดใต้เมนูที่เลือก (ไม่มีวงรี) ---------- */
