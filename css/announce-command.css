@@ -599,14 +599,72 @@ body {
 
 .year-tabs {
   display: flex;
+  align-items: center;
   gap: var(--space-xs);
   max-width: 100%;
-  padding: var(--space-xs);
   overflow-x: auto;
   scrollbar-width: thin;
+  padding-bottom: 2px;
+}
+
+.year-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.year-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 2.5rem;
+  padding: 0.4rem 2.25rem 0.4rem var(--space-md);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  background: var(--color-surface-secondary);
+  border-radius: var(--radius-sm);
+  background: var(--color-panel);
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.year-select select:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.year-select svg {
+  position: absolute;
+  right: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.pager-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.pager__info {
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+}
+
+.page-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  color: var(--color-text-secondary);
+  font-weight: 700;
 }
 
 .year-tab {
@@ -614,10 +672,10 @@ body {
   min-width: 3.25rem;
   min-height: 2.5rem;
   padding: 0.4rem var(--space-md);
-  border: 1px solid transparent;
-  border-radius: var(--radius-pill);
-  background: transparent;
-  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-panel);
+  color: var(--color-text);
   font-family: var(--font-heading);
   font-size: 0.9375rem;
   font-weight: 700;
@@ -1108,13 +1166,25 @@ body {
   color: #B99BF2;
 }
 
-[data-theme="dark"] .year-tabs {
-  background: #15111F;
-  border-color: #5B4D7A;
+[data-theme="dark"] .year-tab {
+  background: #251E38;
+  border-color: #6A5A8C;
+  color: #E8E0F4;
 }
 
-[data-theme="dark"] .year-tab {
-  color: #CFC4E6;
+[data-theme="dark"] .year-select select {
+  background: #251E38;
+  border-color: #6A5A8C;
+  color: #E8E0F4;
+}
+
+[data-theme="dark"] .year-select svg {
+  color: #C9BEDF;
+}
+
+[data-theme="dark"] .pager__info,
+[data-theme="dark"] .page-ellipsis {
+  color: #C9BEDF;
 }
 
 [data-theme="dark"] .year-tab:hover {
