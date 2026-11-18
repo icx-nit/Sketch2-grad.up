@@ -9,6 +9,7 @@
 
   var SOURCE_URL = "https://grad.up.ac.th/announce/command";
   var PDF_BASE = "https://grad.up.ac.th/uploads/announce/";
+  var PAGE_SIZE = 10;
 
   var ROWS = {
     "2569": [
@@ -187,11 +188,14 @@
   function buildItems(year) {
     var rows = ROWS[year] || [];
     return rows.map(function (r) {
-      var type = r[0] === 1 ? "พิเศษบัณฑิตศึกษา" : "บัณฑิตศึกษา";
+      var isSpecial = r[0] === 1;
       var titleYear = r[5] || year;
-      var title = "คำสั่งมหาวิทยาลัยพะเยา เรื่อง แต่งตั้งอาจารย์" + type +
-        " มหาวิทยาลัยพะเยา ปีการศึกษา " + titleYear + (r[1] ? " ฉบับที่ " + r[1] : "");
+      var title = "คำสั่งมหาวิทยาลัยพะเยา เรื่อง แต่งตั้งอาจารย์" + (isSpecial ? "พิเศษ" : "") +
+        "บัณฑิตศึกษา มหาวิทยาลัยพะเยา ปีการศึกษา " + titleYear + (r[1] ? " ฉบับที่ " + r[1] : "");
       return {
+        year: year,
+        special: isSpecial,
+        number: r[1],
         title: title,
         pdf: PDF_BASE + r[2] + ".pdf",
         label: r[3],
@@ -206,19 +210,39 @@
     COMMANDS[year] = buildItems(year);
   });
 
+  var ALL_ITEMS = [];
+  Object.keys(COMMANDS).forEach(function (y) {
+    ALL_ITEMS = ALL_ITEMS.concat(COMMANDS[y]);
+  });
+
   /* ==========================================================================
-     Year tabs + list rendering
+     DOM references and icons
      ========================================================================== */
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll(".year-tab"));
-  var grid = document.getElementById("command-grid");
-  var panel = document.getElementById("command-panel-body");
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip[data-filter]"));
+  var listEl = document.getElementById("command-list");
+  var captionEl = document.getElementById("list-caption");
+  var paginationEl = document.getElementById("pagination");
+  var searchInput = document.getElementById("search-input");
+  var sortBtn = document.getElementById("sort-btn");
+  var sortLabel = document.getElementById("sort-label");
   var statCount = document.getElementById("stat-count");
+  var statTotal = document.getElementById("stat-total");
+  var statLatest = document.getElementById("stat-latest");
 
-  var ICON_EYE = "M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z";
-  var ICON_ARROW = "M7 17 17 7M7 7h10v10";
+  var ICONS = {
+    doc: ["M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z", "M14 2v6h6", "M16 13H8", "M16 17H8"],
+    person: ["M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", "M12 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"],
+    calendar: ["M8 2v4", "M16 2v4", "M3 10h18", "M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"],
+    eye: ["M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z", "M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"],
+    download: ["M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", "M7 10l5 5 5-5", "M12 15V3"],
+    external: ["M14 4h6v6", "M20 4l-9 9", "M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"],
+    chevronLeft: ["M15 18l-6-6 6-6"],
+    chevronRight: ["M9 18l6-6-6-6"]
+  };
 
-  function svgIcon(pathD) {
+  function svgIcon(paths, cls) {
     var NS = "http://www.w3.org/2000/svg";
     var svg = document.createElementNS(NS, "svg");
     svg.setAttribute("viewBox", "0 0 24 24");
@@ -228,141 +252,229 @@
     svg.setAttribute("stroke-linecap", "round");
     svg.setAttribute("stroke-linejoin", "round");
     svg.setAttribute("aria-hidden", "true");
-    var path = document.createElementNS(NS, "path");
-    path.setAttribute("d", pathD);
-    svg.appendChild(path);
-    if (pathD === ICON_EYE) {
-      var circle = document.createElementNS(NS, "circle");
-      circle.setAttribute("cx", "12");
-      circle.setAttribute("cy", "12");
-      circle.setAttribute("r", "3");
-      svg.appendChild(circle);
-    }
+    if (cls) svg.setAttribute("class", cls);
+    paths.forEach(function (d) {
+      var p = document.createElementNS(NS, "path");
+      p.setAttribute("d", d);
+      svg.appendChild(p);
+    });
     return svg;
   }
 
-  function buildCard(item, index) {
-    var card = document.createElement("article");
-    card.className = "cmd-card";
-
-    var top = document.createElement("div");
-    top.className = "cmd-card__top";
-
-    var badge = document.createElement("span");
-    badge.className = "cmd-card__badge";
-    badge.textContent = "คำสั่งแต่งตั้ง";
-
-    var num = document.createElement("span");
-    num.className = "cmd-card__index";
-    num.textContent = String(index + 1).padStart(2, "0");
-
-    top.appendChild(badge);
-    top.appendChild(num);
-
-    var title = document.createElement("h3");
-    title.className = "cmd-card__title";
-    title.textContent = item.title;
-
-    var foot = document.createElement("div");
-    foot.className = "cmd-card__foot";
-
-    var meta = document.createElement("ul");
-    meta.className = "cmd-card__meta";
-
-    var liDate = document.createElement("li");
-    var time = document.createElement("time");
-    if (item.date) time.setAttribute("datetime", item.date);
-    time.textContent = item.label;
-    liDate.appendChild(time);
-
-    var liViews = document.createElement("li");
-    liViews.className = "cmd-card__views";
-    liViews.appendChild(svgIcon(ICON_EYE));
-    var viewsText = document.createElement("span");
-    viewsText.textContent = item.views.toLocaleString("th-TH") + " ครั้ง";
-    liViews.appendChild(viewsText);
-
-    meta.appendChild(liDate);
-    meta.appendChild(liViews);
-
-    var link = document.createElement("a");
-    link.className = "cmd-card__pdf";
-    link.href = item.pdf;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    var linkText = document.createElement("span");
-    linkText.textContent = "เปิดอ่าน PDF";
-    link.appendChild(linkText);
-    link.appendChild(svgIcon(ICON_ARROW));
-
-    foot.appendChild(meta);
-    foot.appendChild(link);
-
-    card.appendChild(top);
-    card.appendChild(title);
-    card.appendChild(foot);
-    return card;
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
+    return node;
   }
 
-  function buildEmpty(year) {
-    var box = document.createElement("div");
-    box.className = "cmd-empty";
+  /* ==========================================================================
+     State
+     ========================================================================== */
 
-    var heading = document.createElement("h3");
-    heading.textContent = year === "manual"
-      ? "ยังไม่มีรายการคู่มือในหน้านี้"
-      : "ยังไม่มีรายการของปีการศึกษา " + year + " ในหน้านี้";
+  var state = {
+    year: "2569",
+    filter: "all",
+    query: "",
+    newestFirst: true,
+    page: 1
+  };
 
-    var desc = document.createElement("p");
-    desc.textContent = "ดูรายการทั้งหมดได้ที่เว็บไซต์ต้นฉบับ";
+  function itemsForYear(year) {
+    return COMMANDS[year] || [];
+  }
 
-    var link = document.createElement("a");
-    link.className = "command-source-link command-source-link--dark";
-    link.href = SOURCE_URL;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    var linkText = document.createElement("span");
-    linkText.textContent = "เปิดเว็บไซต์ GRAD";
-    link.appendChild(linkText);
-    link.appendChild(svgIcon(ICON_ARROW));
+  function filteredItems() {
+    var q = state.query.trim().toLowerCase();
+    var list = itemsForYear(state.year).filter(function (item) {
+      if (state.filter === "0" && item.special) return false;
+      if (state.filter === "1" && !item.special) return false;
+      if (q && item.title.toLowerCase().indexOf(q) === -1 && String(item.number).indexOf(q) === -1) return false;
+      return true;
+    });
+    list.sort(function (a, b) {
+      var cmp = a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+      return state.newestFirst ? -cmp : cmp;
+    });
+    return list;
+  }
 
-    box.appendChild(heading);
-    box.appendChild(desc);
-    box.appendChild(link);
+  /* ==========================================================================
+     Rendering
+     ========================================================================== */
+
+  function buildRow(item) {
+    var row = el("article", "doc-row " + (item.special ? "doc-row--special" : "doc-row--board"));
+
+    var icon = el("div", "doc-row__icon");
+    icon.appendChild(svgIcon(item.special ? ICONS.person : ICONS.doc));
+
+    var body = el("div", "doc-row__body");
+
+    var badges = el("div", "doc-row__badges");
+    badges.appendChild(el("span", "badge badge--type", item.special ? "อาจารย์พิเศษบัณฑิตศึกษา" : "อาจารย์บัณฑิตศึกษา"));
+    badges.appendChild(el("span", "badge badge--year", "ปีการศึกษา " + item.year));
+    if (item.number) badges.appendChild(el("span", "badge badge--no", "ฉบับที่ " + item.number));
+
+    var title = el("h3", "doc-row__title", item.title);
+
+    var meta = el("ul", "doc-row__meta");
+    var dateLi = el("li");
+    dateLi.appendChild(svgIcon(ICONS.calendar));
+    var time = el("time", null, item.label);
+    if (item.date) time.setAttribute("datetime", item.date);
+    dateLi.appendChild(time);
+    var viewLi = el("li");
+    viewLi.appendChild(svgIcon(ICONS.eye));
+    viewLi.appendChild(el("span", null, item.views.toLocaleString("th-TH") + " ครั้ง"));
+    meta.appendChild(dateLi);
+    meta.appendChild(viewLi);
+
+    body.appendChild(badges);
+    body.appendChild(title);
+    body.appendChild(meta);
+
+    var actions = el("div", "doc-row__actions");
+    var download = el("a", "btn btn--solid");
+    download.href = item.pdf;
+    download.target = "_blank";
+    download.rel = "noopener noreferrer";
+    download.setAttribute("download", "");
+    download.appendChild(svgIcon(ICONS.download));
+    download.appendChild(el("span", null, "ดาวน์โหลด"));
+    var preview = el("a", "doc-row__preview");
+    preview.href = item.pdf;
+    preview.target = "_blank";
+    preview.rel = "noopener noreferrer";
+    preview.appendChild(svgIcon(ICONS.eye));
+    preview.appendChild(el("span", null, "ดูตัวอย่าง"));
+    actions.appendChild(download);
+    actions.appendChild(preview);
+
+    row.appendChild(icon);
+    row.appendChild(body);
+    row.appendChild(actions);
+    return row;
+  }
+
+  function buildEmpty(message, withSource) {
+    var box = el("div", "doc-empty");
+    box.appendChild(el("h3", null, message));
+    box.appendChild(el("p", null, "ดูรายการทั้งหมดได้ที่เว็บไซต์ต้นฉบับ"));
+    if (withSource) {
+      var link = el("a", "btn btn--outline");
+      link.href = SOURCE_URL;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.appendChild(el("span", null, "เปิดเว็บไซต์ GRAD"));
+      link.appendChild(svgIcon(ICONS.external));
+      box.appendChild(link);
+    }
     return box;
   }
 
-  function render(year) {
-    var items = COMMANDS[year];
-    grid.textContent = "";
+  function renderPagination(total) {
+    paginationEl.textContent = "";
+    var pages = Math.ceil(total / PAGE_SIZE);
+    if (pages <= 1) return;
 
-    if (items && items.length) {
-      items.forEach(function (item, i) {
-        grid.appendChild(buildCard(item, i));
+    function pageButton(label, target, disabled, active, ariaLabel) {
+      var b = el("button", "page-btn" + (active ? " is-active" : ""), label);
+      b.type = "button";
+      b.disabled = disabled;
+      if (ariaLabel) b.setAttribute("aria-label", ariaLabel);
+      if (active) b.setAttribute("aria-current", "page");
+      b.addEventListener("click", function () {
+        state.page = target;
+        renderList();
+        listEl.scrollIntoView({ block: "nearest", behavior: "smooth" });
       });
-      statCount.textContent = String(items.length);
-    } else {
-      grid.appendChild(buildEmpty(year));
-      statCount.textContent = "0";
+      return b;
     }
+
+    paginationEl.appendChild(pageButton("", Math.max(1, state.page - 1), state.page === 1, false, "หน้าก่อนหน้า"));
+    paginationEl.lastChild.appendChild(svgIcon(ICONS.chevronLeft));
+    for (var p = 1; p <= pages; p++) {
+      paginationEl.appendChild(pageButton(String(p), p, false, p === state.page, "หน้า " + p));
+    }
+    paginationEl.appendChild(pageButton("", Math.min(pages, state.page + 1), state.page === pages, false, "หน้าถัดไป"));
+    paginationEl.lastChild.appendChild(svgIcon(ICONS.chevronRight));
   }
 
-  function activate(tab, moveFocus) {
+  function renderList() {
+    var list = filteredItems();
+    var pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+    if (state.page > pages) state.page = pages;
+
+    listEl.textContent = "";
+    var yearItems = itemsForYear(state.year);
+
+    if (!yearItems.length) {
+      listEl.appendChild(buildEmpty(
+        state.year === "manual" ? "ยังไม่มีรายการคู่มือในหน้านี้" : "ยังไม่มีรายการของปีการศึกษา " + state.year + " ในหน้านี้",
+        true
+      ));
+      captionEl.textContent = "";
+      paginationEl.textContent = "";
+      return;
+    }
+
+    if (!list.length) {
+      listEl.appendChild(buildEmpty("ไม่พบรายการที่ตรงกับการค้นหา", false));
+      captionEl.textContent = "";
+      paginationEl.textContent = "";
+      return;
+    }
+
+    var start = (state.page - 1) * PAGE_SIZE;
+    var pageItems = list.slice(start, start + PAGE_SIZE);
+    pageItems.forEach(function (item) {
+      listEl.appendChild(buildRow(item));
+    });
+
+    var from = start + 1;
+    var to = start + pageItems.length;
+    captionEl.textContent = "แสดง " + from + "–" + to + " จากทั้งหมด " + list.length + " ฉบับ · ปีการศึกษา " +
+      state.year + " · " + (state.newestFirst ? "เรียงจากล่าสุด" : "เรียงจากเก่าสุด");
+
+    renderPagination(list.length);
+  }
+
+  function renderCounts() {
+    var yearItems = itemsForYear(state.year);
+    var boardCount = yearItems.filter(function (i) { return !i.special; }).length;
+    var specialCount = yearItems.filter(function (i) { return i.special; }).length;
+    chips.forEach(function (chip) {
+      var key = chip.getAttribute("data-filter");
+      var count = key === "all" ? yearItems.length : key === "0" ? boardCount : specialCount;
+      var span = chip.querySelector(".chip__count");
+      if (span) span.textContent = String(count);
+    });
+    statCount.textContent = yearItems.length + " ฉบับ";
+    statTotal.textContent = ALL_ITEMS.length + " ฉบับ";
+  }
+
+  function setYear(tab) {
     tabs.forEach(function (t) {
       var selected = t === tab;
       t.setAttribute("aria-selected", String(selected));
       t.setAttribute("tabindex", selected ? "0" : "-1");
     });
-    panel.setAttribute("aria-labelledby", tab.id);
-    render(tab.getAttribute("data-year"));
-    if (moveFocus) tab.focus();
+    listEl.setAttribute("aria-labelledby", tab.id);
+    state.year = tab.getAttribute("data-year");
+    state.page = 1;
+    renderCounts();
+    renderList();
   }
+
+  /* ==========================================================================
+     Events
+     ========================================================================== */
 
   tabs.forEach(function (tab, i) {
     tab.addEventListener("click", function () {
-      activate(tab, false);
+      setYear(tab);
     });
-
     tab.addEventListener("keydown", function (e) {
       var next = null;
       if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
@@ -371,13 +483,45 @@
       if (e.key === "End") next = tabs[tabs.length - 1];
       if (next) {
         e.preventDefault();
-        activate(next, true);
+        next.focus();
+        setYear(next);
       }
     });
   });
 
-  var initial = document.querySelector(".year-tab[aria-selected='true']") || tabs[0];
-  if (initial) activate(initial, false);
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      state.filter = chip.getAttribute("data-filter");
+      state.page = 1;
+      chips.forEach(function (c) {
+        c.setAttribute("aria-pressed", String(c === chip));
+      });
+      renderList();
+    });
+  });
+
+  searchInput.addEventListener("input", function () {
+    state.query = searchInput.value;
+    state.page = 1;
+    renderList();
+  });
+
+  sortBtn.addEventListener("click", function () {
+    state.newestFirst = !state.newestFirst;
+    state.page = 1;
+    sortLabel.textContent = state.newestFirst ? "เรียงจากล่าสุด" : "เรียงจากเก่าสุด";
+    sortBtn.setAttribute("aria-pressed", String(state.newestFirst));
+    renderList();
+  });
+
+  /* ค่าสรุปเริ่มต้น: วันที่อัปเดตล่าสุดจากทุกปี */
+  var latest = ALL_ITEMS.reduce(function (acc, item) {
+    return item.date > acc.date ? item : acc;
+  }, { date: "", label: "-" });
+  statLatest.textContent = latest.label;
+
+  var initialTab = document.querySelector(".year-tab[aria-selected='true']") || tabs[0];
+  if (initialTab) setYear(initialTab);
 
   /* ==========================================================================
      Dropdown menus (click to toggle on touch, hover on desktop)
