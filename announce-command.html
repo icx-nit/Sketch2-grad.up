@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="css/style.css?v=20261124b">
   <link rel="stylesheet" href="css/components.css?v=20261123a">
   <link rel="stylesheet" href="css/responsive.css?v=20261124b">
-  <link rel="stylesheet" href="css/announce-command.css">
-  <link rel="stylesheet" href="css/header.css?v=20261118a">
+  <link rel="stylesheet" href="css/announce-command.css?v=20261118e">
+  <link rel="stylesheet" href="css/header.css?v=20261118d">
   <script src="js/theme.js"></script>
 </head>
 
@@ -75,8 +75,7 @@
                 </a>
               </li>
               <li>
-                <a class="dropdown__link" href="https://grad.up.ac.th/announce/other" target="_blank"
-                  rel="noopener noreferrer">
+                <a class="dropdown__link" href="announce-other.html">
                   <span data-i18n="announce.other">ประกาศอื่นๆ</span>
                 </a>
               </li>
@@ -84,7 +83,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#news">
+            <a class="nav-link" href="index.html#news">
               <span data-i18n="nav.news">ข่าว</span>
             </a>
           </li>
@@ -110,7 +109,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#contact">
+            <a class="nav-link" href="index.html#contact">
               <span data-i18n="nav.contact">ติดต่อเรา</span>
             </a>
           </li>
@@ -263,9 +262,19 @@
   </div>
 
   <main class="command-page" id="main">
+    <nav class="command-breadcrumb" aria-label="เส้นทางการนำทาง">
+      <a href="index.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        <span data-pt="crumb.home">หน้าหลัก</span>
+      </a>
+      <span aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+      </span>
+      <span aria-current="page" data-pt="crumb.current">คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา</span>
+    </nav>
     <section class="cmd-hero" aria-labelledby="command-title">
       <div class="cmd-hero__top">
-        <h1 id="command-title">คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา</h1>
+        <h1 id="command-title" data-pt="hero.title">คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา</h1>
       </div>
 
       <dl class="cmd-hero__stats">
@@ -274,7 +283,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
           </span>
           <div>
-            <dt>ปีการศึกษาปัจจุบัน</dt>
+            <dt data-pt="stat.year">ปีการศึกษาปัจจุบัน</dt>
             <dd>2569</dd>
           </div>
         </div>
@@ -292,7 +301,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 3v18M3 8h5"/></svg>
           </span>
           <div>
-            <dt>เอกสารทั้งหมด</dt>
+            <dt data-pt="stat.total">เอกสารทั้งหมด</dt>
             <dd id="stat-total">0</dd>
           </div>
         </div>
@@ -301,7 +310,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><path d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"/></svg>
           </span>
           <div>
-            <dt>ปรับปรุงล่าสุด</dt>
+            <dt data-pt="stat.updated">ปรับปรุงล่าสุด</dt>
             <dd id="stat-latest">-</dd>
           </div>
         </div>
@@ -312,7 +321,7 @@
       <div class="panel__years">
         <p class="panel__label" id="year-label">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
-          เลือกปีการศึกษา:
+          <span data-pt="year.label">เลือกปีการศึกษา:</span>
         </p>
         <div class="year-tabs" role="tablist" aria-labelledby="year-label" id="year-tabs">
           <button class="year-tab" type="button" role="tab" id="tab-2569" data-year="2569" aria-selected="true" aria-controls="command-list" tabindex="0">2569</button>
@@ -325,9 +334,9 @@
           <button class="year-tab" type="button" role="tab" id="tab-2562" data-year="2562" aria-selected="false" aria-controls="command-list" tabindex="-1">2562</button>
         </div>
         <label class="year-select">
-          <span class="visually-hidden">ดูทุกปี พ.ศ.</span>
+          <span class="visually-hidden" data-pt="year.all">ดูทุกปี พ.ศ.</span>
           <select id="year-select">
-            <option value="" selected disabled>ดูทุกปี พ.ศ.</option>
+            <option value="" selected disabled data-pt="year.all">ดูทุกปี พ.ศ.</option>
             <option value="2569">2569</option>
             <option value="2568">2568</option>
             <option value="2567">2567</option>
@@ -342,26 +351,27 @@
       </div>
 
       <div class="panel__toolbar">
-        <div class="filter-chips" role="group" aria-label="กรองตามประเภท">
+        <div class="filter-chips" role="group" data-pt-aria="chips.label" aria-label="กรองตามประเภท">
           <button class="chip" type="button" data-filter="all" aria-pressed="true">
-            ทั้งหมด <span class="chip__count" data-count="all">(0)</span>
+            <span data-pt="chip.all">ทั้งหมด</span> <span class="chip__count" data-count="all">(0)</span>
           </button>
           <button class="chip chip--board" type="button" data-filter="0" aria-pressed="false">
             <span class="chip__dot" aria-hidden="true"></span>
-            อาจารย์บัณฑิตศึกษา <span class="chip__count" data-count="0">(0)</span>
+            <span data-pt="chip.board">อาจารย์บัณฑิตศึกษา</span> <span class="chip__count" data-count="0">(0)</span>
           </button>
           <button class="chip chip--special" type="button" data-filter="1" aria-pressed="false">
             <span class="chip__dot" aria-hidden="true"></span>
-            อาจารย์พิเศษบัณฑิตศึกษา <span class="chip__count" data-count="1">(0)</span>
+            <span data-pt="chip.special">อาจารย์พิเศษบัณฑิตศึกษา</span> <span class="chip__count" data-count="1">(0)</span>
           </button>
         </div>
 
         <div class="toolbar__actions">
-          <label class="search">
-            <span class="visually-hidden">ค้นหาคำสั่ง</span>
+          <div class="search">
+            <span class="visually-hidden" data-pt="search.label">ค้นหาคำสั่ง</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="search" id="search-input" placeholder="ค้นหาจากชื่อคำสั่ง, เรื่อง, หรือคำสำคัญ...">
-          </label>
+            <input type="search" id="search-input" aria-controls="search-suggest" aria-autocomplete="list" data-pt-placeholder="search.placeholder" placeholder="ค้นหาจากชื่อคำสั่ง, เรื่อง, หรือคำสำคัญ...">
+            <ul class="search-suggest" id="search-suggest" role="listbox" aria-label="ผลการค้นหาแนะนำ" hidden></ul>
+          </div>
           <button class="cmd-btn cmd-btn--outline" type="button" id="sort-btn" aria-pressed="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
             <span id="sort-label">เรียงตามล่าสุด</span>
@@ -375,16 +385,17 @@
 
       <div class="pager-bar">
         <p class="pager__info" id="page-info" aria-live="polite"></p>
-        <nav class="pagination" id="pagination" aria-label="เปลี่ยนหน้า"></nav>
+        <nav class="pagination" id="pagination" data-pt-aria="pager.label" aria-label="เปลี่ยนหน้า"></nav>
       </div>
     </section>
   </main>
 
+  <script src="js/i18n.js?v=20261124a" defer></script>
   <script src="js/font-size.js?v=20261121b" defer></script>
   <script src="js/navigation.js?v=20261121b" defer></script>
   <script src="js/components.js?v=20261121b" defer></script>
-  <script src="js/search.js?v=20261123a" defer></script>
-  <script src="js/announce-command.js" defer></script>
+  <script src="js/search.js?v=20261124b" defer></script>
+  <script src="js/announce-command.js?v=20261124l" defer></script>
 </body>
 
 </html>

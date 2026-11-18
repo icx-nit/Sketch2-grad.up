@@ -621,3 +621,371 @@
     padding-inline: 0.55rem;
   }
 }
+
+/* ==========================================================================
+   Dark mode (final): follows DESIGN.md section 2.2 and section 12 tokens.
+   Surfaces use --color-surface / --color-surface-secondary on the dark
+   background; status colours are semantic (green = success, gold = review,
+   blue = information). Light mode is untouched.
+   ========================================================================== */
+
+[data-theme="dark"] .stats-section {
+  --stats-panel: var(--color-surface);
+  --stats-panel-soft: var(--color-surface-secondary);
+  --stats-border: var(--color-border);
+  --stats-muted: var(--color-text-secondary);
+  --stats-grid: rgba(184, 174, 201, 0.12);
+  --stats-bar: rgba(147, 100, 223, 0.26);
+  --stats-gold: var(--color-accent);
+  --stats-success: #5CC8A0;
+  --stats-review: #F0C96D;
+  --stats-pending: #7FB3F5;
+  background-color: var(--color-bg);
+  background-image: none;
+}
+
+/* title */
+[data-theme="dark"] .stats-section__title {
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .stats-section__title::before {
+  background: var(--color-primary);
+}
+
+[data-theme="dark"] .stats-section__rule {
+  background: linear-gradient(90deg, rgba(240, 201, 109, 0.5), rgba(240, 201, 109, 0) 70%);
+}
+
+/* summary cards: one accent per card, surfaces stay neutral */
+[data-theme="dark"] .stats-card {
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 14px 30px -20px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .stats-card::before {
+  content: "";
+  position: absolute;
+  top: 22%;
+  bottom: 22%;
+  left: 0;
+  width: 3px;
+  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+  background: var(--card-accent);
+}
+
+[data-theme="dark"] .stats-card--applicants { --card-accent: #7FB3F5; }
+[data-theme="dark"] .stats-card--total { --card-accent: #9364DF; }
+[data-theme="dark"] .stats-card--completed { --card-accent: #5CC8A0; }
+
+[data-theme="dark"] .stats-card__icon {
+  color: var(--card-accent);
+  border: 1px solid var(--card-accent);
+  background: color-mix(in srgb, var(--card-accent) 14%, transparent);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .stats-card__content h3,
+[data-theme="dark"] .stats-card__value span,
+[data-theme="dark"] .stats-card__trend {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .stats-card__value strong {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .stats-card__trend svg {
+  fill: var(--color-accent);
+}
+
+[data-theme="dark"] .stats-card__trend--badge {
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--card-accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 45%, transparent);
+}
+
+/* panels */
+[data-theme="dark"] .stats-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 18px 36px -24px rgba(0, 0, 0, 0.75);
+}
+
+[data-theme="dark"] .stats-panel::before {
+  content: none;
+}
+
+[data-theme="dark"] .stats-panel__head {
+  border-bottom-color: var(--color-border);
+}
+
+[data-theme="dark"] .stats-panel__head h3 {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .stats-panel__subtitle,
+[data-theme="dark"] .stats-legend {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .stats-panel__badge {
+  color: var(--color-accent);
+  background: var(--color-surface-secondary);
+  border: 1px solid rgba(240, 201, 109, 0.4);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .stats-legend__dot {
+  background: var(--color-primary);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .stats-legend__line {
+  background: var(--color-accent);
+}
+
+/* chart */
+[data-theme="dark"] .stats-chart__latest {
+  color: var(--color-accent);
+  background: var(--color-surface-secondary);
+  border: 1px solid rgba(240, 201, 109, 0.45);
+  box-shadow: none;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .stats-chart__grid line {
+  stroke: var(--stats-grid);
+}
+
+[data-theme="dark"] .stats-chart__axis text {
+  fill: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .stats-chart__axis .stats-chart__month {
+  fill: var(--color-text);
+}
+
+[data-theme="dark"] .stats-chart__bars rect {
+  fill: var(--stats-bar);
+}
+
+[data-theme="dark"] .stats-chart__bars .stats-chart__bar--latest {
+  fill: var(--color-primary);
+}
+
+[data-theme="dark"] .stats-chart__trend-line {
+  stroke: var(--color-accent);
+  stroke-width: 3;
+  filter: none;
+}
+
+[data-theme="dark"] .stats-chart__points circle {
+  fill: var(--color-surface);
+  stroke: var(--color-accent);
+}
+
+[data-theme="dark"] .stats-chart__points .stats-chart__point--latest {
+  fill: var(--color-accent);
+  stroke: var(--color-surface);
+}
+
+[data-theme="dark"] .stats-panel__note {
+  color: var(--color-text-secondary);
+  border-top: 1px dashed var(--color-border);
+}
+
+[data-theme="dark"] .stats-panel__note::before {
+  background: var(--color-primary);
+}
+
+/* donut */
+[data-theme="dark"] .stats-donut {
+  filter: none;
+}
+
+[data-theme="dark"] .stats-donut__center {
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .stats-donut__total {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .stats-donut__center strong {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .stats-donut__caption {
+  color: var(--color-accent);
+}
+
+/* status rows */
+[data-theme="dark"] .stats-status__item {
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+  transition: transform 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+
+[data-theme="dark"] .stats-status__item:hover {
+  transform: translateY(-1px);
+  border-color: rgba(147, 100, 223, 0.55);
+}
+
+[data-theme="dark"] .stats-status__label {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .stats-status__value {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .stats-status__value small {
+  color: var(--color-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="dark"] .stats-status__item {
+    transition: none;
+  }
+
+  [data-theme="dark"] .stats-status__item:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Dark mode: raised (embossed) surfaces. Subtle top highlight, soft shadow
+   below and a faint inner edge at the bottom. Overrides the final dark block.
+   ========================================================================== */
+
+[data-theme="dark"] .stats-section__title,
+[data-theme="dark"] .stats-card,
+[data-theme="dark"] .stats-panel,
+[data-theme="dark"] .stats-status__item,
+[data-theme="dark"] .stats-donut__center,
+[data-theme="dark"] .stats-chart__latest,
+[data-theme="dark"] .stats-card__icon {
+  border-top-color: rgba(255, 255, 255, 0.13);
+}
+
+[data-theme="dark"] .stats-card,
+[data-theme="dark"] .stats-panel {
+  background: linear-gradient(180deg, #252039 0%, #1C172A 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+    0 22px 34px -18px rgba(0, 0, 0, 0.9),
+    0 8px 14px -8px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .stats-section__title {
+  background: linear-gradient(180deg, #252039 0%, #1C172A 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 10px 18px -10px rgba(0, 0, 0, 0.85);
+}
+
+[data-theme="dark"] .stats-card__icon {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 16px -6px rgba(0, 0, 0, 0.75);
+}
+
+[data-theme="dark"] .stats-card__trend--badge,
+[data-theme="dark"] .stats-chart__latest,
+[data-theme="dark"] .stats-panel__badge {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 12px -6px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .stats-donut {
+  filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.55));
+}
+
+[data-theme="dark"] .stats-donut__center {
+  background: linear-gradient(180deg, #2A2345 0%, #1F1A33 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.35),
+    0 12px 22px -10px rgba(0, 0, 0, 0.85);
+}
+
+[data-theme="dark"] .stats-status__item {
+  background: linear-gradient(180deg, #2A2345 0%, #211B36 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.25),
+    0 10px 18px -12px rgba(0, 0, 0, 0.85);
+}
+
+[data-theme="dark"] .stats-status__item:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 16px 24px -14px rgba(0, 0, 0, 0.95);
+}
+
+[data-theme="dark"] .stats-chart__bars .stats-chart__bar--latest {
+  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.45));
+}
+
+[data-theme="dark"] .stats-chart__points circle {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+}
+
+/* ==========================================================================
+   Dark mode: summary cards stand out from the background.
+   Each card takes a light tint of its accent colour over the surface, with a
+   clearer accent border and a lifted shadow. Panels are unchanged.
+   ========================================================================== */
+
+[data-theme="dark"] .stats-card.stats-card--applicants,
+[data-theme="dark"] .stats-card.stats-card--total,
+[data-theme="dark"] .stats-card.stats-card--completed {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 45%),
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--card-accent) 26%, #1C172A) 0%,
+      color-mix(in srgb, var(--card-accent) 10%, #1C172A) 100%);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 60%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 0 0 1px color-mix(in srgb, var(--card-accent) 14%, transparent),
+    0 26px 40px -18px rgba(0, 0, 0, 0.95),
+    0 10px 18px -10px color-mix(in srgb, var(--card-accent) 45%, transparent);
+}
+
+[data-theme="dark"] .stats-card.stats-card--applicants { --card-accent: #7FB3F5; }
+[data-theme="dark"] .stats-card.stats-card--total { --card-accent: #A37CF0; }
+[data-theme="dark"] .stats-card.stats-card--completed { --card-accent: #5CC8A0; }
+
+[data-theme="dark"] .stats-card::before {
+  width: 4px;
+  top: 16%;
+  bottom: 16%;
+  box-shadow: 0 0 10px var(--card-accent);
+}
+
+[data-theme="dark"] .stats-card__icon {
+  background: color-mix(in srgb, var(--card-accent) 22%, #1C172A);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 75%, transparent);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .stats-card__content h3,
+[data-theme="dark"] .stats-card__value span,
+[data-theme="dark"] .stats-card__trend {
+  color: #E4DCF2;
+}
+
+[data-theme="dark"] .stats-card__value strong {
+  color: #FFFFFF;
+}

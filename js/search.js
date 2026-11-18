@@ -161,7 +161,7 @@
         th: "ระเบียบ ข้อบังคับ และประกาศอื่น ๆ",
         en: "Regulations, rules and other announcements"
       },
-      target: "https://grad.up.ac.th/announce/other",
+      target: "announce-other.html",
       kw: "ประกาศ ระเบียบ ข้อบังคับ announcement regulation",
       kind: "external"
     }
@@ -757,4 +757,37 @@
       runSearch();
     }
   });
+
+  /* ให้กล่องผลการค้นหามีความกว้างเท่ากับช่องค้นหา (ไม่รวมปุ่ม "ค้นหา")
+     คำนวณใหม่หลังการวาด (rAF) และเมื่อกล่องถูกแสดง/ซ่อน เพื่อไม่ให้ค่าเก่าค้าง */
+  function alignResults() {
+    window.requestAnimationFrame(function () {
+      var inner = box.firstElementChild;
+      if (!inner) {
+        return;
+      }
+      var inputRect = input.getBoundingClientRect();
+      if (!inputRect.width) {
+        inner.style.maxWidth = "";
+        inner.style.width = "";
+        inner.style.marginLeft = "";
+        inner.style.marginRight = "";
+        return;
+      }
+      var boxRect = box.getBoundingClientRect();
+      inner.style.maxWidth = "none";
+      inner.style.width = inputRect.width + "px";
+      inner.style.marginLeft = (inputRect.left - boxRect.left) + "px";
+      inner.style.marginRight = "0";
+    });
+  }
+
+  input.addEventListener("input", alignResults);
+  window.addEventListener("resize", alignResults);
+  if (typeof MutationObserver === "function") {
+    var alignObserver = new MutationObserver(alignResults);
+    alignObserver.observe(box, { attributes: true, attributeFilter: ["hidden"] });
+    alignObserver.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+  }
+  alignResults();
 })();

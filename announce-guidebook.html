@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4D238D">
+  <meta name="description"
+    content="คู่มือบัณฑิตศึกษา มหาวิทยาลัยพะเยา">
+  <title>คู่มือบัณฑิตศึกษา | GRAD UP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css?v=20261124b">
+  <link rel="stylesheet" href="css/components.css?v=20261123a">
+  <link rel="stylesheet" href="css/responsive.css?v=20261124b">
+  <link rel="stylesheet" href="css/announce-command.css?v=20261118e">
+  <link rel="stylesheet" href="css/header.css?v=20261118d">
+  <script src="js/theme.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+
+      <!-- โลโก้ GRAD UP -->
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="assets/images/grad-logo.png" alt="GRAD UP">
+      </a>
+
+      <!-- เมนูกลาง -->
+      <nav class="primary-nav" aria-label="เมนูหลัก" data-i18n-aria-label="nav.label">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a class="nav-link is-active" href="index.html" aria-current="page">
+              <span data-i18n="nav.home">หน้าหลัก</span>
+            </a>
+          </li>
+
+          <li class="nav-item nav-item--dropdown">
+            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false"
+              aria-haspopup="true" aria-controls="menu-announcements">
+              <span data-i18n="nav.announcements">ประกาศมหาวิทยาลัยพะเยา</span>
+              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                focusable="false">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="dropdown" id="menu-announcements">
+              <li>
+                <a class="dropdown__link" href="https://does.up.ac.th/announce" target="_blank"
+                  rel="noopener noreferrer">
+                  <span data-i18n="announce.regulations">ระเบียบ • ข้อบังคับ • ประกาศ</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://reg.up.ac.th/announce/calendaracademic" target="_blank"
+                  rel="noopener noreferrer">
+                  <span data-i18n="announce.calendar">ปฏิทินการศึกษา</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://reg.up.ac.th/announce/fee" target="_blank"
+                  rel="noopener noreferrer">
+                  <span data-i18n="announce.fees">อัตราค่าธรรมเนียมการศึกษา</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="announce-other.html">
+                  <span data-i18n="announce.other">ประกาศอื่นๆ</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#news">
+              <span data-i18n="nav.news">ข่าว</span>
+            </a>
+          </li>
+
+          <li class="nav-item nav-item--dropdown">
+            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false"
+              aria-haspopup="true" aria-controls="menu-journal">
+              <span data-i18n="nav.journal">วารสาร</span>
+              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                focusable="false">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="dropdown" id="menu-journal">
+              <li>
+                <a class="dropdown__link" href="https://grad.up.ac.th/Journal" target="_blank"
+                  rel="noopener noreferrer">
+                  <span data-i18n="journal.scopus">รายชื่อวารสารในฐานข้อมูล Scopus/ISI/TCI/ERIC</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact">
+              <span data-i18n="nav.contact">ติดต่อเรา</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- แถบขวา: ขนาดตัวอักษร / เปลี่ยนภาษา / ธีม / ค้นหา / เมนู 3 ขีด -->
+      <div class="header-actions">
+        <div class="font-size" role="group" aria-label="ขนาดตัวอักษร"
+          data-i18n-aria-label="action.fontGroup" data-font-size>
+          <button class="font-size__btn" type="button" data-font="decrease" aria-label="ลดขนาดตัวอักษร"
+            data-i18n-aria-label="action.fontDecrease">A-</button>
+          <button class="font-size__btn" type="button" data-font="reset" aria-label="ขนาดตัวอักษรปกติ"
+            data-i18n-aria-label="action.fontReset">A</button>
+          <button class="font-size__btn" type="button" data-font="increase" aria-label="เพิ่มขนาดตัวอักษร"
+            data-i18n-aria-label="action.fontIncrease">A+</button>
+        </div>
+
+        <button class="lang-btn" type="button" data-lang-toggle>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9"></circle>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"></path>
+          </svg>
+          <span class="visually-hidden" data-i18n="action.language">เปลี่ยนภาษา</span>
+          <span class="lang-btn__badge" data-lang-badge lang="th" aria-hidden="true">TH</span>
+        </button>
+
+        <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false"
+          aria-label="สลับโหมดมืดและสว่าง" data-i18n-aria-label="action.theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+            focusable="false">
+            <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3A6.5 6.5 0 0 0 21 12.8Z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+            focusable="false">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41">
+            </path>
+          </svg>
+        </button>
+
+        <button class="icon-btn" type="button" data-search-toggle aria-expanded="false"
+          aria-controls="site-search" aria-label="ค้นหา" data-i18n-aria-label="action.search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+
+        <button class="icon-btn" type="button" data-drawer-open aria-expanded="false"
+          aria-controls="site-drawer" aria-label="เมนู" data-i18n-aria-label="action.menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <line x1="4" y1="7" x2="20" y2="7"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="17" x2="20" y2="17"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ช่องค้นหา -->
+    <div class="search-panel" id="site-search" hidden>
+      <form class="container search-panel__inner" role="search" action="#" method="get">
+        <label class="visually-hidden" for="site-search-input" data-i18n="search.label">ค้นหาในเว็บไซต์</label>
+        <input class="search-panel__input" id="site-search-input" type="search" name="q"
+          placeholder="ค้นหาในเว็บไซต์..." data-i18n-placeholder="search.placeholder"
+          autocomplete="off" aria-controls="site-search-results" aria-expanded="false"
+          aria-autocomplete="list">
+        <button class="btn btn--primary" type="submit" data-i18n="search.submit">ค้นหา</button>
+      </form>
+
+      <div class="search-results" id="site-search-results" data-search-results hidden>
+        <div class="search-results__inner container">
+          <p class="search-results__status" data-search-status role="status" aria-live="polite"></p>
+          <ul class="search-results__list" data-search-list role="listbox"
+            aria-label="ผลการค้นหา" data-i18n-aria-label="search.results"></ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="drawer" id="site-drawer" hidden inert aria-hidden="true">
+    <div class="drawer__backdrop" data-drawer-close></div>
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <div class="drawer__header">
+        <h2 class="drawer__title" id="drawer-title" data-i18n="drawer.title">เมนูเพิ่มเติม</h2>
+        <button class="icon-btn" type="button" data-drawer-close aria-label="ปิดเมนู"
+          data-i18n-aria-label="drawer.close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="drawer__list">
+        <li>
+          <a class="drawer__link" href="https://forms.gle/6c73eaxoZytt5Krc8" target="_blank"
+            rel="noopener noreferrer">
+            <span data-i18n="drawer.satisfaction">ประเมินความพึงพอใจ</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="drawer__link" href="https://doga.up.ac.th/emeeting" target="_blank"
+            rel="noopener noreferrer">
+            <span data-i18n="drawer.upmeeting">UP-Meeting</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="drawer__link" href="https://app.ithesis.co/" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="drawer.ithesis">iThesis</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="drawer__link" href="login.html" target="_self"
+            rel="noopener noreferrer">
+            <span data-i18n="drawer.login">เข้าสู่ระบบ</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+    <main class="command-page form-page" id="main">
+    <nav class="command-breadcrumb" aria-label="เส้นทางการนำทาง">
+      <a href="index.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+        <span data-pt="crumb.home">หน้าหลัก</span>
+      </a>
+      <span aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+      </span>
+      <span aria-current="page" data-pt="page.title">คู่มือบัณฑิตศึกษา</span>
+    </nav>
+
+    <section class="cmd-hero" aria-labelledby="command-title">
+      <div class="cmd-hero__top">
+        <h1 id="command-title" data-pt="page.title">คู่มือบัณฑิตศึกษา</h1>
+      </div>
+      <dl class="cmd-hero__stats">
+        <div class="cmd-hero__stat">
+          <span class="cmd-hero__stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+          </span>
+          <div>
+            <dt data-pt="stat.cats">หมวดคู่มือ</dt>
+            <dd id="stat-cats">0 หมวด</dd>
+          </div>
+        </div>
+        <div class="cmd-hero__stat">
+          <span class="cmd-hero__stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8"/></svg>
+          </span>
+          <div>
+            <dt data-pt="stat.total">คู่มือทั้งหมด</dt>
+            <dd id="stat-total">0 ฉบับ</dd>
+          </div>
+        </div>
+        <div class="cmd-hero__stat">
+          <span class="cmd-hero__stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 3v18M3 8h5"/></svg>
+          </span>
+          <div>
+            <dt data-pt="stat.files">มีไฟล์แล้ว</dt>
+            <dd id="stat-with">0 ฉบับ</dd>
+          </div>
+        </div>
+        <div class="cmd-hero__stat">
+          <span class="cmd-hero__stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><path d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"/></svg>
+          </span>
+          <div>
+            <dt data-pt="stat.latest">อัปเดตล่าสุด</dt>
+            <dd id="stat-latest">-</dd>
+          </div>
+        </div>
+      </dl>
+    </section>
+
+    <section class="panel" aria-labelledby="command-title">
+      <div class="panel__years">
+        <p class="panel__label" id="cat-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+          <span data-pt="cat.label">หมวดคู่มือ:</span>
+        </p>
+        <div class="year-tabs" role="tablist" aria-labelledby="cat-label" id="cat-tabs"></div>
+      </div>
+
+      <div class="panel__toolbar">
+        <div class="filter-chips" role="group" aria-label="จำนวนรายการ">
+          <button class="chip" type="button" aria-pressed="true">
+            <span data-pt="chip.all">ทั้งหมด</span> <span class="chip__count" id="chip-count">(0)</span>
+          </button>
+        </div>
+
+        <div class="toolbar__actions">
+          <div class="search">
+            <span class="visually-hidden" data-pt="search.label">ค้นหาคู่มือ</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="search" id="search-input" aria-controls="search-suggest" aria-autocomplete="list" placeholder="ค้นหาจากชื่อคู่มือ" data-pt-placeholder="search.placeholder">
+            <ul class="search-suggest" id="search-suggest" role="listbox" aria-label="ผลการค้นหาแนะนำ" hidden></ul>
+          </div>
+          <button class="cmd-btn cmd-btn--outline" type="button" id="sort-btn" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+            <span id="sort-label">ลำดับเดิมจากเว็บ</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="panel__caption" id="list-caption" aria-live="polite"></p>
+
+      <div class="doc-list" id="command-list" role="tabpanel" aria-labelledby="cat-label" aria-live="polite"></div>
+
+      <div class="pager-bar">
+        <p class="pager__info" id="page-info" aria-live="polite"></p>
+        <nav class="pagination" id="pagination" aria-label="เปลี่ยนหน้า" data-pt-aria="pager.label"></nav>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/i18n.js?v=20261124a" defer></script>
+  <script src="js/font-size.js?v=20261121b" defer></script>
+  <script src="js/navigation.js?v=20261121b" defer></script>
+  <script src="js/components.js?v=20261121b" defer></script>
+  <script src="js/search.js?v=20261124b" defer></script>
+  <script src="js/announce-guidebook.js?v=20261118f" defer></script>
+</body>
+
+</html>

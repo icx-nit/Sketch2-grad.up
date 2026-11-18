@@ -64,7 +64,13 @@
   top: 0;
   height: min(30rem, 80%);
   border-radius: inherit;
-  background: radial-gradient(
+  background: radial-gradient(circle, rgba(49, 174, 166, 0.15) 0 49%, transparent 50%)
+      7% 18% / 13rem 13rem no-repeat,
+    linear-gradient(135deg, transparent 49.5%, rgba(232, 126, 104, 0.14) 50%)
+      86% 14% / 11rem 11rem no-repeat,
+    linear-gradient(45deg, transparent 49.5%, rgba(99, 143, 213, 0.13) 50%)
+      94% 74% / 9rem 9rem no-repeat,
+    radial-gradient(
       55% 90% at 12% 0%,
       rgba(77, 35, 141, 0.1),
       transparent 72%
@@ -470,7 +476,13 @@
 }
 
 [data-theme="dark"] .news::after {
-  background: radial-gradient(
+  background: radial-gradient(circle, rgba(68, 196, 184, 0.13) 0 49%, transparent 50%)
+      7% 18% / 13rem 13rem no-repeat,
+    linear-gradient(135deg, transparent 49.5%, rgba(245, 145, 123, 0.12) 50%)
+      86% 14% / 11rem 11rem no-repeat,
+    linear-gradient(45deg, transparent 49.5%, rgba(132, 170, 239, 0.12) 50%)
+      94% 74% / 9rem 9rem no-repeat,
+    radial-gradient(
       55% 90% at 12% 0%,
       rgba(147, 100, 223, 0.22),
       transparent 72%
@@ -632,4 +644,13 @@
     /* จอแคบ: ให้หัวข้อได้ 3 บรรทัดก่อนตัด เพื่อไม่เสียใจความสำคัญ */
     -webkit-line-clamp: 3;
   }
+}
+
+/* โหมดมืด: ป้ายหมวดข่าว (ประกาศสอบ / อบรม / แจ้งปิดระบบ) เป็นพื้นทองทึบ ตัวอักษรเข้ม ให้สะดุดตาและอ่านสบาย */
+[data-theme="dark"] .news-card__chip {
+  color: #241B32;
+  background: linear-gradient(135deg, #F7DE8E 0%, #E8B94F 100%);
+  border: 1px solid #FFE9A8;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 12px rgba(232, 185, 79, 0.30);
+  font-weight: 800;
 }

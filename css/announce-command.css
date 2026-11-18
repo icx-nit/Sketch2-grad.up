@@ -379,11 +379,6 @@ body {
   --page-inset: 40px;
 }
 
-/* แถบนำทางให้ขอบเท่ากับกรอบเนื้อหา */
-.site-header {
-  margin-inline: var(--page-inset) !important;
-}
-
 .command-page {
   width: auto;
   max-width: none;
@@ -425,6 +420,20 @@ body {
 .command-breadcrumb > span {
   color: var(--color-primary);
   opacity: 0.5;
+}
+
+/* ให้ไอคอน ลูกศร และข้อความอยู่บรรทัดเดียวกัน */
+.command-breadcrumb a,
+.command-breadcrumb > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  white-space: nowrap;
+}
+
+.command-breadcrumb a svg,
+.command-breadcrumb > span svg {
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -511,7 +520,10 @@ body {
   background:
     radial-gradient(ellipse at 100% 0%, rgba(214, 168, 63, 0.22), transparent 45%),
     linear-gradient(125deg, var(--color-primary) 0%, #38206a 72%, #2c1b4e 100%);
-  box-shadow: var(--shadow-lg);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 22px 40px rgba(40, 20, 70, 0.38),
+    0 6px 14px rgba(40, 20, 70, 0.24);
   color: #FFFFFF;
 }
 
@@ -550,9 +562,14 @@ body {
   gap: var(--space-sm);
   min-width: 0;
   padding: var(--space-sm) var(--space-md);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.14),
+    0 12px 24px rgba(0, 0, 0, 0.32),
+    0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .cmd-hero__stat-icon {
@@ -560,21 +577,26 @@ body {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: var(--radius-sm);
-  background: rgba(240, 201, 109, 0.14);
-  color: #F7D980;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: linear-gradient(150deg, #FFFFFF 0%, #E4D8F7 100%);
+  color: #4B2A86;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 8px 18px rgba(0, 0, 0, 0.35), 0 0 0 4px rgba(255, 255, 255, 0.12);
 }
 
 .cmd-hero__stat-icon svg {
-  width: 1.125rem;
-  height: 1.125rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .cmd-hero__stat dt {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.75rem;
+  color: #F7D980;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .cmd-hero__stat dd {
@@ -595,7 +617,12 @@ body {
   border: 1px solid var(--color-border);
   border-radius: 1.5rem;
   background: var(--color-panel);
-  box-shadow: var(--shadow-md);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 0 rgba(77, 35, 141, 0.06),
+    0 36px 60px -18px rgba(77, 35, 141, 0.32),
+    0 14px 28px -10px rgba(77, 35, 141, 0.2),
+    0 4px 8px rgba(77, 35, 141, 0.1);
 }
 
 .panel__years {
@@ -1166,22 +1193,31 @@ body {
     radial-gradient(ellipse at 100% 0%, rgba(240, 201, 109, 0.14), transparent 45%),
     linear-gradient(125deg, #34234f 0%, #241a37 72%, #1c172a 100%);
   border-color: #5B4D7A;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 24px 44px rgba(0, 0, 0, 0.6),
+    0 8px 16px rgba(0, 0, 0, 0.35);
 }
 
 [data-theme="dark"] .cmd-hero__stat {
-  background: rgba(147, 100, 223, 0.14);
-  border-color: #6A5A8C;
+  background: rgba(147, 100, 223, 0.24);
+  border-color: rgba(240, 201, 109, 0.55);
 }
 
 [data-theme="dark"] .cmd-hero__stat-icon {
-  background: rgba(240, 201, 109, 0.12);
-  color: #F0C96D;
+  background: linear-gradient(150deg, #FFFFFF 0%, #E4D8F7 100%);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #4B2A86;
 }
 
 [data-theme="dark"] .panel {
-  background: #1E1830;
-  border-color: #5B4D7A;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  background: linear-gradient(180deg, #2B2348 0%, #1E1830 100%);
+  border-color: #6A5A8C;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.3),
+    0 40px 64px -18px rgba(0, 0, 0, 0.75),
+    0 14px 28px -10px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="dark"] .panel__label {
@@ -1254,8 +1290,13 @@ body {
 }
 
 [data-theme="dark"] .panel__toolbar {
-  background: #15111F;
-  border-color: #5B4D7A;
+  background: linear-gradient(180deg, #2A2143 0%, #1A1530 100%);
+  border-color: #7A6BA0;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+    0 14px 28px -10px rgba(0, 0, 0, 0.6),
+    0 4px 10px rgba(0, 0, 0, 0.35);
 }
 
 [data-theme="dark"] .search input {
@@ -1516,4 +1557,259 @@ body {
   :root {
     --page-inset: 0.5rem;
   }
+}
+
+/* ==========================================================================
+   Entrance animation (เข้าหน้าครั้งแรกเท่านั้น, เคารพ reduced-motion)
+   ใช้ fill-mode: backwards เพื่อไม่ทับ transform ของ hover
+   ========================================================================== */
+
+@keyframes cmd-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes cmd-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cmd-hero {
+  animation: cmd-rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+}
+
+.cmd-hero__stat {
+  animation: cmd-rise 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+}
+
+.cmd-hero__stat:nth-child(1) { animation-delay: 0.2s; }
+.cmd-hero__stat:nth-child(2) { animation-delay: 0.28s; }
+.cmd-hero__stat:nth-child(3) { animation-delay: 0.36s; }
+.cmd-hero__stat:nth-child(4) { animation-delay: 0.44s; }
+
+.panel {
+  animation: cmd-fade 0.6s ease 0.25s backwards;
+}
+
+.cmd-intro .doc-row {
+  animation: cmd-rise 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+}
+
+.cmd-intro .doc-row:nth-child(1) { animation-delay: 0.35s; }
+.cmd-intro .doc-row:nth-child(2) { animation-delay: 0.42s; }
+.cmd-intro .doc-row:nth-child(3) { animation-delay: 0.49s; }
+.cmd-intro .doc-row:nth-child(4) { animation-delay: 0.56s; }
+.cmd-intro .doc-row:nth-child(5) { animation-delay: 0.63s; }
+.cmd-intro .doc-row:nth-child(6) { animation-delay: 0.7s; }
+.cmd-intro .doc-row:nth-child(n + 7) { animation-delay: 0.77s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cmd-hero,
+  .cmd-hero__stat,
+  .panel,
+  .cmd-intro .doc-row {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Search suggestions (รายการแนะนำขณะพิมพ์ค้นหา)
+   ========================================================================== */
+
+.search-suggest {
+  position: absolute;
+  top: calc(100% + 0.375rem);
+  right: 0;
+  z-index: 20;
+  width: max(100%, 22rem);
+  max-height: 18rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.375rem;
+  list-style: none;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.search-suggest[hidden] {
+  display: none;
+}
+
+.search-suggest__btn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: none;
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-suggest__btn:hover,
+.search-suggest__btn:focus-visible {
+  background: var(--color-surface-secondary);
+  outline: none;
+}
+
+.search-suggest__title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.search-suggest__meta {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .search-suggest {
+  background: #1E1830;
+  border-color: #6A5A8C;
+}
+
+/* โทนแถบตัวกรองโหมดมืด ให้สว่างและเด่นขึ้น */
+[data-theme="dark"] .panel__toolbar {
+  background: linear-gradient(180deg, #342654 0%, #221A3C 100%);
+  border-color: #8A78B8;
+}
+
+/* ==========================================================================
+   ปุ่มที่ยังใช้งานไม่ได้ (เช่น ยังไม่มีลิงก์ไฟล์)
+   ========================================================================== */
+
+.cmd-btn.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ปุ่มที่ยังไม่พร้อมใช้งาน (เช่น ยังไม่มีไฟล์) */
+.cmd-btn.is-disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.doc-row__preview.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   หน้าแบบฟอร์ม: ทำให้แถวรายการเด่นและแยกจากพื้นหลังชัดขึ้น (เฉพาะหน้า form)
+   ========================================================================== */
+
+.form-page .doc-row {
+  background: linear-gradient(180deg, #ffffff 0%, #f7f3fd 100%);
+  border-color: #C9B8E8;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 14px 28px -14px rgba(77, 35, 141, 0.35);
+  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.form-page .doc-row:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 20px 36px -14px rgba(77, 35, 141, 0.5);
+}
+
+[data-theme="dark"] .form-page .doc-row {
+  background: linear-gradient(180deg, #2E2650 0%, #221B3C 100%);
+  border-color: #B99BF2;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 16px 30px -12px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .form-page .doc-row:hover {
+  border-color: #D7C4FA;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 22px 40px -12px rgba(0, 0, 0, 0.8), 0 0 0 3px rgba(185, 155, 242, 0.18);
+}
+
+/* หน้าแบบฟอร์ม: เปลี่ยนสีกรอบป้ายหมวดและเลขฉบับรอบตัวหนังสือ */
+.form-page .doc-row__badges .badge--type {
+  background: linear-gradient(135deg, #9B6BE8 0%, #6E3FC4 100%);
+  border: 1px solid #D9C6FF;
+  color: #FFFFFF;
+}
+
+.form-page .doc-row__badges .badge--year {
+  background: #F3EDFF;
+  border: 1px solid #CBB6F5;
+  color: #4B2A86;
+}
+
+[data-theme="dark"] .form-page .doc-row__badges .badge--year {
+  background: #F3EDFF;
+  border-color: #CBB6F5;
+  color: #4B2A86;
+}
+
+/* หน้าแบบฟอร์ม: ปุ่มกรอง "ทั้งหมด" ที่เลือกอยู่ ใช้โทนขาวอมม่วงให้เข้ากับป้ายเลข บศ. */
+.form-page .filter-chips .chip[aria-pressed="true"] {
+  background: #F3EDFF;
+  border: 1px solid #CBB6F5;
+  color: #4B2A86;
+}
+
+.form-page .filter-chips .chip[aria-pressed="true"] .chip__count {
+  color: #6E3FC4;
+}
+
+/* หน้าแบบฟอร์ม: แท็บหมวดที่เลือกอยู่ใช้สีและกรอบเดียวกับปุ่ม "ทั้งหมด" */
+.form-page .year-tab[aria-selected="true"] {
+  background: #F3EDFF;
+  border: 1px solid #CBB6F5;
+  color: #4B2A86;
+  box-shadow: none;
+}
+
+
+/* หน้าคำสั่งแต่งตั้ง (ทั้งสองโหมด): ปุ่มที่เลือกอยู่ (ทั้งหมด / ปีการศึกษา) ใช้สีแบบหน้าแบบฟอร์ม */
+.command-page .chip[aria-pressed="true"] {
+  background: #F3EDFF;
+  border: 1px solid #CBB6F5;
+  color: #4B2A86;
+}
+
+.command-page .chip[aria-pressed="true"] .chip__count {
+  color: #6E3FC4;
+}
+
+.command-page .year-tab[aria-selected="true"] {
+  background: #F3EDFF;
+  border: 1px solid #CBB6F5;
+  color: #4B2A86;
+}
+
+/* หน้าคำสั่งแต่งตั้ง: ป้ายหมวดวิทยานิพนธ์/บศ. (ไม่ใช่รายการพิเศษ) ใช้สีม่วงไล่ระดับและกรอบเดียวกับหน้าแบบฟอร์ม */
+.command-page .doc-row:not(.doc-row--special) .badge--type {
+  background: linear-gradient(135deg, #9B6BE8 0%, #6E3FC4 100%);
+  border: 1px solid #D9C6FF;
+  color: #FFFFFF;
+}
+
+/* โหมดมืด: ปุ่มดาวน์โหลดสีม่วง (รายการทั่วไป) ให้เด่นกว่าพื้นหลังและอ่านสบายตา */
+[data-theme="dark"] .doc-row:not(.doc-row--special) .cmd-btn--solid {
+  background: linear-gradient(135deg, #B48BFA 0%, #8B55E6 100%);
+  border: 1px solid #E2D2FF;
+  color: #FFFFFF;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 6px 16px rgba(147, 100, 223, 0.42);
+}
+
+[data-theme="dark"] .doc-row:not(.doc-row--special) .cmd-btn--solid:hover {
+  background: linear-gradient(135deg, #C7A3FF 0%, #9B66F0 100%);
+  border-color: #F0E6FF;
+  transform: translateY(-1px);
+}
+
+/* หน้าการสอบต่าง ๆ: ปุ่มประกาศอื่น ๆ วางเหนือแถบหมวด */
+.exam-other {
+  margin: 0 0 1rem;
 }

@@ -8,7 +8,9 @@
      ========================================================================== */
 
   var SOURCE_URL = "https://grad.up.ac.th/announce/command";
-  var PDF_BASE = "https://grad.up.ac.th/uploads/announce/";
+  /* ไฟล์ PDF เก็บไว้ในโปรเจกต์ (uploads/announce) เพื่อให้ดาวน์โหลดได้จริง
+     เนื่องจากเซิร์ฟเวอร์ต้นทางไม่เปิด CORS จึงดึงข้ามโดเมนไม่ได้ */
+  var PDF_BASE = "uploads/announce/";
   var PAGE_SIZE = 6;
 
   var ROWS = {
@@ -194,6 +196,7 @@
         "บัณฑิตศึกษา มหาวิทยาลัยพะเยา ปีการศึกษา " + titleYear + (r[1] ? " ฉบับที่ " + r[1] : "");
       return {
         year: year,
+        titleYear: titleYear,
         special: isSpecial,
         number: r[1],
         title: title,
@@ -233,6 +236,126 @@
   var statCount = document.getElementById("stat-count");
   var statTotal = document.getElementById("stat-total");
   var statLatest = document.getElementById("stat-latest");
+
+  /* ==========================================================================
+     ภาษา (ไทย / English) — ข้อความของหน้านี้ + ตัวช่วยแปล
+     ========================================================================== */
+
+  var PT = {
+    th: {
+      "doc.title": "คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา | GRAD UP",
+      "crumb.home": "หน้าหลัก",
+      "crumb.current": "คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา",
+      "hero.title": "คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา",
+      "stat.year": "ปีการศึกษาปัจจุบัน",
+      "stat.count": "คำสั่งปี {year}",
+      "stat.total": "เอกสารทั้งหมด",
+      "stat.updated": "ปรับปรุงล่าสุด",
+      "unit.orders": "ฉบับ",
+      "unit.views": "ครั้ง",
+      "year.label": "เลือกปีการศึกษา:",
+      "year.all": "ดูทุกปี พ.ศ.",
+      "chips.label": "กรองตามประเภท",
+      "chip.all": "ทั้งหมด",
+      "chip.board": "อาจารย์บัณฑิตศึกษา",
+      "chip.special": "อาจารย์พิเศษบัณฑิตศึกษา",
+      "search.label": "ค้นหาคำสั่ง",
+      "search.placeholder": "ค้นหาจากชื่อคำสั่ง, เรื่อง, หรือคำสำคัญ...",
+      "sort.newest": "เรียงตามล่าสุด",
+      "sort.oldest": "เรียงตามเก่าสุด",
+      "sort.captionNew": "เรียงจากล่าสุด",
+      "sort.captionOld": "เรียงจากเก่าสุด",
+      "caption": "แสดงรายการคำสั่งปีการศึกษา {year} • {sort}",
+      "type.board": "อาจารย์บัณฑิตศึกษา",
+      "type.special": "อาจารย์พิเศษบัณฑิตศึกษา",
+      "badge.year": "ปีการศึกษา",
+      "badge.no": "ฉบับที่",
+      "btn.download": "ดาวน์โหลด",
+      "btn.preview": "ดูตัวอย่าง",
+      "btn.source": "เปิดเว็บไซต์ GRAD",
+      "empty.year": "ยังไม่มีรายการของปีการศึกษา {year} ในหน้านี้",
+      "empty.search": "ไม่พบรายการที่ตรงกับการค้นหา",
+      "empty.source": "ดูรายการทั้งหมดได้ที่เว็บไซต์ต้นฉบับ",
+      "pager.info": "แสดง {from} - {to} จากทั้งหมด {total} ฉบับ",
+      "pager.label": "เปลี่ยนหน้า",
+      "pager.first": "หน้าแรก",
+      "pager.prev": "หน้าก่อนหน้า",
+      "pager.next": "หน้าถัดไป",
+      "pager.last": "หน้าสุดท้าย",
+      "pager.page": "หน้า"
+    },
+    en: {
+      "doc.title": "Graduate Faculty Appointment Orders | GRAD UP",
+      "crumb.home": "Home",
+      "crumb.current": "Graduate Faculty Appointment Orders",
+      "hero.title": "Graduate Faculty Appointment Orders",
+      "stat.year": "Current Academic Year",
+      "stat.count": "Orders {year}",
+      "stat.total": "Total Documents",
+      "stat.updated": "Last Updated",
+      "unit.orders": "items",
+      "unit.views": "views",
+      "year.label": "Academic year:",
+      "year.all": "All years (B.E.)",
+      "chips.label": "Filter by type",
+      "chip.all": "All",
+      "chip.board": "Graduate Faculty",
+      "chip.special": "Special Graduate Faculty",
+      "search.label": "Search orders",
+      "search.placeholder": "Search by title, subject or keyword...",
+      "sort.newest": "Newest first",
+      "sort.oldest": "Oldest first",
+      "sort.captionNew": "newest first",
+      "sort.captionOld": "oldest first",
+      "caption": "Showing orders for academic year {year} • {sort}",
+      "type.board": "Graduate Faculty",
+      "type.special": "Special Graduate Faculty",
+      "badge.year": "Academic Year",
+      "badge.no": "No.",
+      "btn.download": "Download",
+      "btn.preview": "Preview",
+      "btn.source": "Open GRAD website",
+      "empty.year": "No orders for academic year {year} on this page yet",
+      "empty.search": "No orders match your search",
+      "empty.source": "See all items on the original website",
+      "pager.info": "Showing {from}–{to} of {total} items",
+      "pager.label": "Pagination",
+      "pager.first": "First page",
+      "pager.prev": "Previous page",
+      "pager.next": "Next page",
+      "pager.last": "Last page",
+      "pager.page": "Page"
+    }
+  };
+
+  function lang() {
+    return document.documentElement.getAttribute("data-lang") === "en" ? "en" : "th";
+  }
+
+  function t(key, vars) {
+    var s = PT[lang()][key] || PT.th[key] || key;
+    if (vars) {
+      Object.keys(vars).forEach(function (k) {
+        s = s.split("{" + k + "}").join(String(vars[k]));
+      });
+    }
+    return s;
+  }
+
+  /* วันที่แบบอังกฤษจากค่า ISO (ค.ศ.) */
+  function dateLabel(item) {
+    if (lang() !== "en" || !item.date) return item.label;
+    var d = new Date(item.date + "T00:00:00");
+    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+
+  /* ชื่อคำสั่งฉบับภาษาอังกฤษ (ข้อมูลต้นทางเป็นภาษาไทย) */
+  function itemTitle(item) {
+    if (lang() !== "en") return item.title;
+    return "Announcement of University of Phayao on Appointment of Graduate Faculty" +
+      (item.special ? " (Special)" : "") + ", Academic Year " + item.titleYear +
+      (item.number ? ", No. " + item.number : "");
+  }
 
   var ICONS = {
     doc: ["M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z", "M14 2v6h6", "M16 13H8", "M16 17H8"],
@@ -289,12 +412,24 @@
     return COMMANDS[year] || [];
   }
 
+  /* ทุกคำที่พิมพ์ต้องพบในรายการ (ค้นหาแบบ AND) ตัวเลขล้วนจับกับคำเป็นคำเต็ม เช่น 3 ไม่ไปตรงกับ 2563 */
+  function matchesAllTokens(item, tokens) {
+    var hay = (item.title + " " + item.label).toLowerCase();
+    var words = hay.split(/\s+/);
+    return tokens.every(function (token) {
+      if (/^\d+$/.test(token)) {
+        return String(item.number) === token || words.indexOf(token) !== -1;
+      }
+      return hay.indexOf(token) !== -1;
+    });
+  }
+
   function filteredItems() {
-    var q = state.query.trim().toLowerCase();
+    var tokens = state.query.trim().toLowerCase().split(/\s+/).filter(Boolean);
     var list = itemsForYear(state.year).filter(function (item) {
       if (state.filter === "0" && item.special) return false;
       if (state.filter === "1" && !item.special) return false;
-      if (q && item.title.toLowerCase().indexOf(q) === -1 && String(item.number).indexOf(q) === -1) return false;
+      if (tokens.length && !matchesAllTokens(item, tokens)) return false;
       return true;
     });
     list.sort(function (a, b) {
@@ -314,30 +449,6 @@
     return "คำสั่งแต่งตั้ง" + kind + "-" + item.year + no + ".pdf";
   }
 
-  /* ดึงไฟล์ PDF เป็น blob แล้วสั่งดาวน์โหลดจริง
-     ถ้าเซิร์ฟเวอร์ไม่อนุญาตให้ดึงข้ามโดเมน จะเปิดไฟล์ในแท็บใหม่แทน */
-  function downloadPdf(item) {
-    var filename = downloadFilename(item);
-    fetch(item.pdf, { mode: "cors" })
-      .then(function (res) {
-        if (!res.ok) throw new Error("download failed");
-        return res.blob();
-      })
-      .then(function (blob) {
-        var objectUrl = URL.createObjectURL(blob);
-        var a = document.createElement("a");
-        a.href = objectUrl;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(function () { URL.revokeObjectURL(objectUrl); }, 1000);
-      })
-      .catch(function () {
-        window.open(item.pdf, "_blank", "noopener,noreferrer");
-      });
-  }
-
   function buildRow(item) {
     var row = el("article", "doc-row " + (item.special ? "doc-row--special" : "doc-row--board"));
 
@@ -347,21 +458,21 @@
     var body = el("div", "doc-row__body");
 
     var badges = el("div", "doc-row__badges");
-    badges.appendChild(el("span", "badge badge--type", item.special ? "อาจารย์พิเศษบัณฑิตศึกษา" : "อาจารย์บัณฑิตศึกษา"));
-    badges.appendChild(el("span", "badge badge--year", "ปีการศึกษา " + item.year));
-    if (item.number) badges.appendChild(el("span", "badge badge--no", "ฉบับที่ " + item.number));
+    badges.appendChild(el("span", "badge badge--type", item.special ? t("type.special") : t("type.board")));
+    badges.appendChild(el("span", "badge badge--year", t("badge.year") + " " + item.year));
+    if (item.number) badges.appendChild(el("span", "badge badge--no", t("badge.no") + " " + item.number));
 
-    var title = el("h3", "doc-row__title", item.title);
+    var title = el("h3", "doc-row__title", itemTitle(item));
 
     var meta = el("ul", "doc-row__meta");
     var dateLi = el("li");
     dateLi.appendChild(svgIcon(ICONS.calendar));
-    var time = el("time", null, item.label);
+    var time = el("time", null, dateLabel(item));
     if (item.date) time.setAttribute("datetime", item.date);
     dateLi.appendChild(time);
     var viewLi = el("li");
     viewLi.appendChild(svgIcon(ICONS.eye));
-    viewLi.appendChild(el("span", null, item.views.toLocaleString("th-TH") + " ครั้ง"));
+    viewLi.appendChild(el("span", null, item.views.toLocaleString(lang() === "en" ? "en-US" : "th-TH") + " " + t("unit.views")));
     meta.appendChild(dateLi);
     meta.appendChild(viewLi);
 
@@ -372,21 +483,15 @@
     var actions = el("div", "doc-row__actions");
     var download = el("a", "cmd-btn cmd-btn--solid");
     download.href = item.pdf;
-    download.target = "_blank";
-    download.rel = "noopener noreferrer";
     download.setAttribute("download", downloadFilename(item));
-    download.addEventListener("click", function (e) {
-      e.preventDefault();
-      downloadPdf(item);
-    });
     download.appendChild(svgIcon(ICONS.download));
-    download.appendChild(el("span", null, "ดาวน์โหลด"));
+    download.appendChild(el("span", null, t("btn.download")));
     var preview = el("a", "doc-row__preview");
     preview.href = item.pdf;
     preview.target = "_blank";
     preview.rel = "noopener noreferrer";
     preview.appendChild(svgIcon(ICONS.eye));
-    preview.appendChild(el("span", null, "ดูตัวอย่าง"));
+    preview.appendChild(el("span", null, t("btn.preview")));
     actions.appendChild(download);
     actions.appendChild(preview);
 
@@ -399,13 +504,13 @@
   function buildEmpty(message, withSource) {
     var box = el("div", "doc-empty");
     box.appendChild(el("h3", null, message));
-    box.appendChild(el("p", null, "ดูรายการทั้งหมดได้ที่เว็บไซต์ต้นฉบับ"));
+    box.appendChild(el("p", null, t("empty.source")));
     if (withSource) {
       var link = el("a", "cmd-btn cmd-btn--outline");
       link.href = SOURCE_URL;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
-      link.appendChild(el("span", null, "เปิดเว็บไซต์ GRAD"));
+      link.appendChild(el("span", null, t("btn.source")));
       link.appendChild(svgIcon(ICONS.external));
       box.appendChild(link);
     }
@@ -429,7 +534,7 @@
     var cur = state.page;
     var from = (cur - 1) * PAGE_SIZE + 1;
     var to = Math.min(total, cur * PAGE_SIZE);
-    pageInfoEl.textContent = "แสดง " + from + " - " + to + " จากทั้งหมด " + total + " ฉบับ";
+    pageInfoEl.textContent = t("pager.info", { from: from, to: to, total: total });
     paginationEl.textContent = "";
 
     function go(target) {
@@ -451,20 +556,20 @@
     function numButton(p) {
       var b = el("button", "page-btn" + (p === cur ? " is-active" : ""), String(p));
       b.type = "button";
-      b.setAttribute("aria-label", "หน้า " + p);
+      b.setAttribute("aria-label", t("pager.page") + " " + p);
       if (p === cur) b.setAttribute("aria-current", "page");
       b.addEventListener("click", function () { go(p); });
       return b;
     }
 
-    paginationEl.appendChild(navButton(ICONS.chevronsLeft, "หน้าแรก", 1, cur === 1));
-    paginationEl.appendChild(navButton(ICONS.chevronLeft, "หน้าก่อนหน้า", Math.max(1, cur - 1), cur === 1));
+    paginationEl.appendChild(navButton(ICONS.chevronsLeft, t("pager.first"), 1, cur === 1));
+    paginationEl.appendChild(navButton(ICONS.chevronLeft, t("pager.prev"), Math.max(1, cur - 1), cur === 1));
     pageSequence(pages, cur).forEach(function (p) {
       if (p === "…") paginationEl.appendChild(el("span", "page-ellipsis", "…"));
       else paginationEl.appendChild(numButton(p));
     });
-    paginationEl.appendChild(navButton(ICONS.chevronRight, "หน้าถัดไป", Math.min(pages, cur + 1), cur === pages));
-    paginationEl.appendChild(navButton(ICONS.chevronsRight, "หน้าสุดท้าย", pages, cur === pages));
+    paginationEl.appendChild(navButton(ICONS.chevronRight, t("pager.next"), Math.min(pages, cur + 1), cur === pages));
+    paginationEl.appendChild(navButton(ICONS.chevronsRight, t("pager.last"), pages, cur === pages));
   }
 
   function renderList() {
@@ -474,18 +579,18 @@
 
     listEl.textContent = "";
     var yearItems = itemsForYear(state.year);
-    var sortText = state.newestFirst ? "เรียงจากล่าสุด" : "เรียงจากเก่าสุด";
-    captionEl.textContent = "แสดงรายการคำสั่งปีการศึกษา " + state.year + " • " + sortText;
+    var sortText = state.newestFirst ? t("sort.captionNew") : t("sort.captionOld");
+    captionEl.textContent = t("caption", { year: state.year, sort: sortText });
 
     if (!yearItems.length) {
-      listEl.appendChild(buildEmpty("ยังไม่มีรายการของปีการศึกษา " + state.year + " ในหน้านี้", true));
+      listEl.appendChild(buildEmpty(t("empty.year", { year: state.year }), true));
       pageInfoEl.textContent = "";
       paginationEl.textContent = "";
       return;
     }
 
     if (!list.length) {
-      listEl.appendChild(buildEmpty("ไม่พบรายการที่ตรงกับการค้นหา", false));
+      listEl.appendChild(buildEmpty(t("empty.search"), false));
       pageInfoEl.textContent = "";
       paginationEl.textContent = "";
       return;
@@ -509,9 +614,9 @@
       var span = chip.querySelector(".chip__count");
       if (span) span.textContent = "(" + count + ")";
     });
-    statCountLabel.textContent = "คำสั่งปี " + state.year;
-    statCount.textContent = yearItems.length + " ฉบับ";
-    statTotal.textContent = ALL_ITEMS.length + " ฉบับ";
+    statCountLabel.textContent = t("stat.count", { year: state.year });
+    statCount.textContent = yearItems.length + " " + t("unit.orders");
+    statTotal.textContent = ALL_ITEMS.length + " " + t("unit.orders");
   }
 
   function setYear(tab) {
@@ -560,10 +665,63 @@
     });
   });
 
+  var suggestEl = document.getElementById("search-suggest");
+
+  /* แสดงรายการแนะนำขณะพิมพ์ เช่น พิมพ์ "คำสั่ง" จะเห็นทุกฉบับที่ตรงให้เลือก */
+  function renderSuggest() {
+    var tokens = searchInput.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    suggestEl.textContent = "";
+    if (!tokens.length) {
+      suggestEl.hidden = true;
+      return;
+    }
+    var matches = itemsForYear(state.year).filter(function (item) {
+      return matchesAllTokens(item, tokens);
+    }).slice(0, 8);
+    if (!matches.length) {
+      suggestEl.hidden = true;
+      return;
+    }
+    matches.forEach(function (item) {
+      var li = el("li", null);
+      var btn = el("button", "search-suggest__btn");
+      btn.type = "button";
+      btn.appendChild(el("span", "search-suggest__title", item.title));
+      var meta = (item.special ? t("type.special") : t("type.board")) +
+        (item.number ? " · " + t("badge.no") + " " + item.number : "") + " · " + dateLabel(item);
+      btn.appendChild(el("span", "search-suggest__meta", meta));
+      btn.addEventListener("click", function () {
+        searchInput.value = item.title;
+        state.query = item.title;
+        state.page = 1;
+        suggestEl.hidden = true;
+        renderList();
+      });
+      li.appendChild(btn);
+      suggestEl.appendChild(li);
+    });
+    suggestEl.hidden = false;
+  }
+
   searchInput.addEventListener("input", function () {
     state.query = searchInput.value;
     state.page = 1;
     renderList();
+    renderSuggest();
+  });
+
+  /* คลิกรายการแนะนำโดยไม่ทำให้ช่องค้นหาเสียโฟกัส */
+  suggestEl.addEventListener("mousedown", function (e) {
+    e.preventDefault();
+  });
+  searchInput.addEventListener("blur", function () {
+    suggestEl.hidden = true;
+  });
+  searchInput.addEventListener("focus", function () {
+    if (searchInput.value.trim()) renderSuggest();
+  });
+  searchInput.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") suggestEl.hidden = true;
   });
 
   yearSelect.addEventListener("change", function () {
@@ -577,7 +735,7 @@
   sortBtn.addEventListener("click", function () {
     state.newestFirst = !state.newestFirst;
     state.page = 1;
-    sortLabel.textContent = state.newestFirst ? "เรียงตามล่าสุด" : "เรียงตามเก่าสุด";
+    sortLabel.textContent = state.newestFirst ? t("sort.newest") : t("sort.oldest");
     sortBtn.setAttribute("aria-pressed", String(state.newestFirst));
     renderList();
   });
@@ -586,7 +744,7 @@
   var latest = ALL_ITEMS.reduce(function (acc, item) {
     return item.date > acc.date ? item : acc;
   }, { date: "", label: "-" });
-  statLatest.textContent = latest.label;
+  statLatest.textContent = dateLabel(latest);
 
   var initialTab = document.querySelector(".year-tab[aria-selected='true']") || tabs[0];
   if (initialTab) setYear(initialTab);
@@ -634,51 +792,53 @@
      Font size controls
      ========================================================================== */
 
-  var BASE_FONT_SIZE = 16;
-  var STORAGE_KEY = "gu-font-size";
-  var root = document.documentElement;
+  /* เล่นอนิเมชันเข้าหน้าให้รายการเฉพาะตอนโหลดครั้งแรก ไม่ให้เล่นซ้ำทุกครั้งที่กรองหรือค้นหา */
+  document.documentElement.classList.add("cmd-intro");
+  setTimeout(function () {
+    document.documentElement.classList.remove("cmd-intro");
+  }, 1600);
 
-  function readFontSize() {
-    try {
-      var saved = localStorage.getItem(STORAGE_KEY);
-      var val = saved ? parseInt(saved, 10) : 0;
-      return (val >= 12 && val <= 24) ? val : 0;
-    } catch {
-      return 0;
+  /* สลับภาษาไทย / English ของหน้านี้ (ปุ่มภาษาใช้ตัวควบคุมกลางจาก i18n.js) */
+  function applyPageLang() {
+    document.querySelectorAll("[data-pt]").forEach(function (node) {
+      node.textContent = t(node.getAttribute("data-pt"));
+    });
+    document.querySelectorAll("[data-pt-aria]").forEach(function (node) {
+      node.setAttribute("aria-label", t(node.getAttribute("data-pt-aria")));
+    });
+    document.querySelectorAll("[data-pt-placeholder]").forEach(function (node) {
+      node.setAttribute("placeholder", t(node.getAttribute("data-pt-placeholder")));
+    });
+    document.title = t("doc.title");
+    renderCounts();
+    renderList();
+    if (sortLabel) {
+      sortLabel.textContent = state.newestFirst ? t("sort.newest") : t("sort.oldest");
     }
   }
 
-  function writeFontSize(size) {
-    try {
-      localStorage.setItem(STORAGE_KEY, String(size));
-    } catch { /* localStorage ถูกปิดใช้งาน */ }
+  if (window.GUI18n) {
+    document.addEventListener("gu:languagechange", applyPageLang);
+    var langBtn = document.querySelector("[data-lang-toggle]");
+    if (langBtn) {
+      langBtn.addEventListener("click", function () {
+        window.GUI18n.toggle();
+      });
+    }
+    window.GUI18n.apply(window.GUI18n.stored());
+  } else {
+    applyPageLang();
   }
 
-  var savedSize = readFontSize();
-  if (savedSize > 0) {
-    root.style.setProperty("--font-scale", savedSize / BASE_FONT_SIZE);
+  /* ใช้ตัวควบคุมกลางจาก font-size.js (ปุ่มมี data-font, ไม่ใช่ data-font-size) */
+  if (window.GUFontSize) {
+    window.GUFontSize.init();
   }
 
-  var sizeButtons = document.querySelectorAll("[data-font-size]");
-  sizeButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var action = btn.getAttribute("data-font-size");
-      var currentSize = savedSize || BASE_FONT_SIZE;
-      var newSize = currentSize;
-
-      if (action === "decrease") {
-        newSize = Math.max(12, currentSize - 1);
-      } else if (action === "increase") {
-        newSize = Math.min(24, currentSize + 1);
-      } else if (action === "reset") {
-        newSize = BASE_FONT_SIZE;
-      }
-
-      savedSize = newSize;
-      root.style.setProperty("--font-scale", newSize / BASE_FONT_SIZE);
-      writeFontSize(newSize);
-    });
-  });
+  /* เปิดใช้ปุ่มค้นหาและเมนูมือถือของ header (ปกติเรียกจาก main.js ซึ่งหน้านี้ไม่ได้โหลด) */
+  if (window.GUComponents) {
+    window.GUComponents.init();
+  }
 
   /* ==========================================================================
      Theme toggle (tabbar button)

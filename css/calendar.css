@@ -6,11 +6,6 @@
   position: relative;
   padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(4rem, 7vw, 6rem);
   background-color: var(--color-bg);
-  background-image: url("../assets/images/พื้นหลังปฎิทิน.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 30px 30px 0 0;
   border-top: 1px solid var(--calendar-border);
   scroll-margin-top: calc(var(--header-h, var(--header-height)) + 0.5rem);
   --calendar-surface: #FFFFFF;
@@ -452,9 +447,7 @@
   --calendar-muted: #DED3ED;
   --calendar-shadow: 0 20px 46px -24px rgba(0, 0, 0, 0.8),
     0 0 28px -18px rgba(147, 100, 223, 0.72);
-  background-image:
-    linear-gradient(rgba(16, 13, 28, 0.52), rgba(16, 13, 28, 0.52)),
-    url("../assets/images/พื้นหลังปฎิทิน.png");
+  background-color: var(--color-bg);
 }
 
 [data-theme="dark"] .calendar-section__title {
@@ -605,4 +598,63 @@
   .calendar__day:hover {
     transform: none;
   }
+}
+
+/* ---------- ปฏิทิน (โหมดมืด): การ์ดไล่สี ขอบม่วงเรืองแสง ช่องวันมีมิติ วันนี้เป็นกรอบทองเรือง ---------- */
+[data-theme="dark"] .calendar__panel {
+  background: linear-gradient(160deg, #3B2B5E 0%, #2A1F45 55%, #211735 100%);
+  border: 1px solid rgba(214, 178, 255, 0.45);
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.85),
+    0 0 0 4px rgba(147, 100, 223, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .calendar__month {
+  color: #FFF3CC;
+  background: linear-gradient(135deg, #6A4BA8 0%, #40297A 100%);
+  border-color: rgba(240, 201, 109, 0.6);
+  box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="dark"] .calendar__weekday {
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #9B6BE8 0%, #5E36A8 100%);
+  border: 1px solid rgba(240, 201, 109, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .calendar__day {
+  background: linear-gradient(160deg, #48366A 0%, #33264F 100%);
+  border-color: #7C64A6;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 10px -6px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .calendar__outside-day {
+  background: linear-gradient(160deg, #2F2446 0%, #261C3B 100%);
+  border-color: #5A4878;
+}
+
+[data-theme="dark"] .calendar__day:hover {
+  background: linear-gradient(160deg, #5A4283 0%, #3F2D63 100%);
+  border-color: #C9A8FF;
+  box-shadow: 0 10px 18px -10px rgba(147, 100, 223, 0.7);
+}
+
+[data-theme="dark"] .calendar__day--today:not([aria-pressed="true"]) {
+  border: 1.5px solid #F0C96D;
+  box-shadow: 0 0 0 3px rgba(240, 201, 109, 0.18), 0 6px 14px -8px rgba(240, 201, 109, 0.6);
+}
+
+[data-theme="dark"] .calendar__day[aria-pressed="true"] {
+  background: linear-gradient(160deg, #5F4590 0%, #46326E 100%);
+  border-color: #E2D2FF;
+  box-shadow: 0 0 0 3px rgba(185, 155, 242, 0.35), 0 10px 20px -10px rgba(147, 100, 223, 0.8);
+}
+
+[data-theme="dark"] .calendar__event-label {
+  color: #241B32;
+  background: linear-gradient(90deg, #F7DE8E 0%, #E8B94F 100%);
+  font-weight: 700;
 }

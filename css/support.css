@@ -881,3 +881,43 @@
     transform: none;
   }
 }
+
+/* ---------- โหมดมืด: การ์ดบริการ/หน่วยงานไล่สี ขอบม่วงเรืองแสง รายการยกขึ้นเมื่อชี้ ไอคอนมีขอบทอง ---------- */
+[data-theme="dark"] .support-card {
+  background: linear-gradient(165deg, #3A2A5E 0%, #261C3E 60%, #1E1632 100%);
+  border: 1px solid rgba(214, 178, 255, 0.42);
+  box-shadow: 0 22px 44px -22px rgba(0, 0, 0, 0.85),
+    0 0 0 4px rgba(147, 100, 223, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .support-service,
+[data-theme="dark"] .support-agency {
+  background: linear-gradient(135deg, #43306C 0%, #2D2148 100%);
+  border: 1px solid rgba(190, 160, 255, 0.38);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 6px 14px -8px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .support-service:hover,
+[data-theme="dark"] .support-service:focus-visible,
+[data-theme="dark"] .support-agency:hover,
+[data-theme="dark"] .support-agency:focus-visible {
+  background: linear-gradient(135deg, #53398A 0%, #372858 100%);
+  border-color: rgba(240, 201, 109, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 10px 20px -10px rgba(147, 100, 223, 0.7);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .support-service__icon,
+[data-theme="dark"] .support-agency__logo {
+  border: 1px solid rgba(240, 201, 109, 0.5);
+  box-shadow: 0 0 0 3px rgba(240, 201, 109, 0.12);
+}
+
+[data-theme="dark"] .support-contact__icon {
+  background: linear-gradient(135deg, #6F4FB0 0%, #3D2A70 100%);
+  border: 1px solid rgba(240, 201, 109, 0.5);
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.8), 0 0 0 4px rgba(147, 100, 223, 0.18);
+}

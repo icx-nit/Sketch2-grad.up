@@ -110,6 +110,7 @@
 
   /* --- Font size control (A- / A / A+) ---
      ขอบม่วง + พื้นขาว ใช้หน้าตาเดียวกันทั้ง Light/Dark */
+  --font-scale: 1;
   --font-control-bg: #FFFFFF;
   --font-control-border: #CBBBE8;
   --font-control-text: #4D238D;
