@@ -72,13 +72,16 @@
       "calendar.next": "เดือนถัดไป",
       "calendar.today": "วันนี้",
       "calendar.prompt": "เลือกวันที่เพื่อดูรายละเอียดกำหนดการ",
+      "calendar.noEventsMonth": "เดือนนี้ไม่มีกิจกรรมสำคัญของงานทะเบียนและบัณฑิตศึกษา",
       "calendar.back": "กลับไปปฏิทิน",
       "calendar.detailsKicker": "กำหนดการของวันที่เลือก",
       "calendar.emptyTitle": "ยังไม่มีข้อมูลกำหนดการ",
       "calendar.emptyDescription":
         "ขณะนี้ยังไม่มีข้อมูลกิจกรรมที่ยืนยันได้สำหรับวันที่นี้",
+      "calendar.staffManage": "จัดการกำหนดการ (เจ้าหน้าที่)",
+      "calendar.staffModalTitle": "จัดการกำหนดการปฏิทินการศึกษา (สำหรับเจ้าหน้าที่)",
       "calendar.sourceNote":
-        "กำหนดการและเอกสารจะแสดงเมื่อมีข้อมูลที่ยืนยันได้จากเว็บไซต์ทางการ",
+        "ข้อมูลจากประกาศปฏิทินการศึกษาบัณฑิตศึกษา ปีการศึกษา 2569 (reg.up.ac.th) และประกาศ/ข่าวของบัณฑิตวิทยาลัย (grad.up.ac.th) — ตรวจสอบกำหนดการล่าสุดได้ที่ grad.up.ac.th",
 
       "stats.title": "สถิติการดำเนินงาน",
       "stats.applicants.label": "จำนวนผู้ยื่นคำร้อง บศ.1",
@@ -214,13 +217,16 @@
       "calendar.next": "Next month",
       "calendar.today": "Today",
       "calendar.prompt": "Select a date to view its schedule",
+      "calendar.noEventsMonth": "No scheduled events for this month",
       "calendar.back": "Back to calendar",
       "calendar.detailsKicker": "Schedule for selected date",
       "calendar.emptyTitle": "No verified schedule yet",
       "calendar.emptyDescription":
         "There is no verified event information for this date yet.",
+      "calendar.staffManage": "Manage schedule (Staff)",
+      "calendar.staffModalTitle": "Manage Academic Calendar (Staff)",
       "calendar.sourceNote":
-        "Events and documents will appear when verified information is available from the official website.",
+        "Data from the 2026 graduate academic calendar (reg.up.ac.th) and Graduate School announcements and news (grad.up.ac.th) — check the latest schedule at grad.up.ac.th",
 
       "stats.title": "Graduate application statistics",
       "stats.applicants.label": "Form บศ.1 applicants",

@@ -222,7 +222,6 @@
      DOM references and icons
      ========================================================================== */
 
-  var tabs = Array.prototype.slice.call(document.querySelectorAll(".year-tab"));
   var chips = Array.prototype.slice.call(document.querySelectorAll(".chip[data-filter]"));
   var listEl = document.getElementById("command-list");
   var captionEl = document.getElementById("list-caption");
@@ -254,7 +253,7 @@
       "unit.orders": "ฉบับ",
       "unit.views": "ครั้ง",
       "year.label": "เลือกปีการศึกษา:",
-      "year.all": "ดูทุกปี พ.ศ.",
+      "year.option": "พ.ศ. {year}",
       "chips.label": "กรองตามประเภท",
       "chip.all": "ทั้งหมด",
       "chip.board": "อาจารย์บัณฑิตศึกษา",
@@ -296,7 +295,7 @@
       "unit.orders": "items",
       "unit.views": "views",
       "year.label": "Academic year:",
-      "year.all": "All years (B.E.)",
+      "year.option": "B.E. {year}",
       "chips.label": "Filter by type",
       "chip.all": "All",
       "chip.board": "Graduate Faculty",
@@ -604,7 +603,15 @@
     renderPagination(list.length);
   }
 
+  /* ชื่อปีในตัวเลือก: พ.ศ. 2569 (ภาษาไทย) / B.E. 2569 (English) */
+  function renderYearOptions() {
+    Array.prototype.forEach.call(yearSelect.options, function (o) {
+      o.textContent = t("year.option", { year: o.value });
+    });
+  }
+
   function renderCounts() {
+    renderYearOptions();
     var yearItems = itemsForYear(state.year);
     var boardCount = yearItems.filter(function (i) { return !i.special; }).length;
     var specialCount = yearItems.filter(function (i) { return i.special; }).length;
@@ -619,14 +626,10 @@
     statTotal.textContent = ALL_ITEMS.length + " " + t("unit.orders");
   }
 
-  function setYear(tab) {
-    tabs.forEach(function (t) {
-      var selected = t === tab;
-      t.setAttribute("aria-selected", String(selected));
-      t.setAttribute("tabindex", selected ? "0" : "-1");
-    });
-    listEl.setAttribute("aria-labelledby", tab.id);
-    state.year = tab.getAttribute("data-year");
+  /* เลือกปีเดียว: แสดงเฉพาะปีที่เลือกทั้งรายการ จำนวน และป้ายปี */
+  function setYear(year) {
+    state.year = String(year);
+    yearSelect.value = state.year;
     state.page = 1;
     renderCounts();
     renderList();
@@ -635,24 +638,6 @@
   /* ==========================================================================
      Events
      ========================================================================== */
-
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener("click", function () {
-      setYear(tab);
-    });
-    tab.addEventListener("keydown", function (e) {
-      var next = null;
-      if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
-      if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
-      if (e.key === "Home") next = tabs[0];
-      if (e.key === "End") next = tabs[tabs.length - 1];
-      if (next) {
-        e.preventDefault();
-        next.focus();
-        setYear(next);
-      }
-    });
-  });
 
   chips.forEach(function (chip) {
     chip.addEventListener("click", function () {
@@ -725,11 +710,7 @@
   });
 
   yearSelect.addEventListener("change", function () {
-    var target = tabs.filter(function (t) {
-      return t.getAttribute("data-year") === yearSelect.value;
-    })[0];
-    if (target) setYear(target);
-    yearSelect.value = "";
+    setYear(yearSelect.value);
   });
 
   sortBtn.addEventListener("click", function () {
@@ -746,8 +727,7 @@
   }, { date: "", label: "-" });
   statLatest.textContent = dateLabel(latest);
 
-  var initialTab = document.querySelector(".year-tab[aria-selected='true']") || tabs[0];
-  if (initialTab) setYear(initialTab);
+  setYear(yearSelect.value || "2569");
 
   /* ==========================================================================
      Dropdown menus (click to toggle on touch, hover on desktop)

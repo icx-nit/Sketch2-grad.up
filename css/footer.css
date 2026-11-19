@@ -89,3 +89,14 @@
     display: none;
   }
 }
+
+/* มือถือ: บรรทัดลิขสิทธิ์อยู่บรรทัดแรกของตัวเอง ที่เหลือจัดต่อกันในบรรทัดถัดไป */
+@media (max-width: 47.99rem) {
+  .site-footer__line {
+    font-size: 0.75rem;
+  }
+
+  .site-footer__line > span:first-child {
+    flex: 0 0 100%;
+  }
+}

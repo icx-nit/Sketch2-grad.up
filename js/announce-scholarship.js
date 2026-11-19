@@ -97,8 +97,6 @@
   var paginationEl = document.getElementById("pagination");
   var searchInput = document.getElementById("search-input");
   var suggestEl = document.getElementById("search-suggest");
-  var sortBtn = document.getElementById("sort-btn");
-  var sortLabel = document.getElementById("sort-label");
   var chipCountEl = document.getElementById("chip-count");
 
   if (!tabsEl || !listEl) {
@@ -114,6 +112,7 @@
       "crumb.home": "หน้าหลัก",
       "page.title": "ทุนอุดหนุนการทำวิทยานิพนธ์",
       "cat.label": "เลือกปีการศึกษา:",
+      "year.option": "พ.ศ. {y}",
       "stat.cats": "ปีการศึกษา",
       "stat.total": "รายการทั้งหมด",
       "stat.files": "มีไฟล์แล้ว",
@@ -125,7 +124,7 @@
       "search.placeholder": "ค้นหาจากชื่อประกาศ หรือเลขฉบับ",
       "sort.asc": "ลำดับเก่าไปใหม่",
       "sort.desc": "ลำดับเดิมจากเว็บ",
-      "caption": "แสดงรายชื่อผู้ได้รับทุนปีการศึกษา {cat} • {sort}",
+      "caption": "แสดงรายชื่อผู้ได้รับทุนปีการศึกษา {cat}",
       "year.label": "ปีการศึกษา {y}",
       "badge.num": "ฉบับที่ {n}",
       "btn.download": "ดาวน์โหลด",
@@ -151,6 +150,7 @@
       "crumb.home": "Home",
       "page.title": "Thesis Research Scholarship Recipients",
       "cat.label": "Academic year:",
+      "year.option": "B.E. {y}",
       "stat.cats": "Academic years",
       "stat.total": "Total entries",
       "stat.files": "With files",
@@ -162,7 +162,7 @@
       "search.placeholder": "Search by title or issue number",
       "sort.asc": "Oldest to newest",
       "sort.desc": "Original website order",
-      "caption": "Showing recipients for academic year {cat} • {sort}",
+      "caption": "Showing recipients for academic year {cat}",
       "year.label": "Academic Year {y}",
       "badge.num": "Issue {n}",
       "btn.download": "Download",
@@ -271,11 +271,6 @@
     return item.label;
   }
 
-  /* คู่มือทุกหมวดเรียงตามลำดับเดิมของเว็บ (num) */
-  function sortText() {
-    return state.ascending ? t("sort.asc") : t("sort.desc");
-  }
-
   /* ค้นหาแบบ AND ทุกคำที่พิมพ์ ตัวเลขล้วนจับกับเลข บศ./บข. หรือวันที่เป็นคำเต็ม */
   function matchesAllTokens(item, tokens) {
     var hay = (item.title + " " + item.label).toLowerCase();
@@ -298,50 +293,46 @@
       return !tokens.length || matchesAllTokens(item, tokens);
     });
     list.sort(function (a, b) {
-      var cmp = numberOf(a) - numberOf(b);
-      return state.ascending ? cmp : -cmp;
+      return numberOf(b) - numberOf(a);
     });
     return list;
   }
 
-  function updateSortLabel() {
-    if (sortLabel) sortLabel.textContent = sortText();
-  }
-
   /* ---------- แท็บหมวด ---------- */
 
+  /* ปีเดียว: กล่องเลือกปีแบบเดียวกับหน้าคำสั่ง แสดงเฉพาะปีที่เลือก */
   function renderTabs() {
     tabsEl.textContent = "";
-    CATEGORIES.forEach(function (cat, i) {
-      var selected = cat.id === state.cat;
-      var count = itemsForCat(cat.id).length;
-      var tab = el("button", "year-tab", cat.label);
-      tab.type = "button";
-      tab.setAttribute("role", "tab");
-      tab.id = "cat-tab-" + cat.id;
-      tab.setAttribute("aria-selected", String(selected));
-      tab.setAttribute("aria-controls", "command-list");
-      tab.tabIndex = selected ? 0 : -1;
-      tab.addEventListener("click", function () {
-        state.cat = cat.id;
-        state.page = 1;
-        renderAll();
-      });
-      tab.addEventListener("keydown", function (e) {
-        var next = null;
-        if (e.key === "ArrowRight") next = CATEGORIES[(i + 1) % CATEGORIES.length];
-        if (e.key === "ArrowLeft") next = CATEGORIES[(i - 1 + CATEGORIES.length) % CATEGORIES.length];
-        if (next) {
-          e.preventDefault();
-          state.cat = next.id;
-          state.page = 1;
-          renderAll();
-          var target = document.getElementById("cat-tab-" + next.id);
-          if (target) target.focus();
-        }
-      });
-      tabsEl.appendChild(tab);
+    var label = el("label", "year-select");
+    var srOnly = el("span", "visually-hidden", t("cat.label"));
+    var select = el("select");
+    select.id = "cat-select";
+    CATEGORIES.forEach(function (cat) {
+      var option = el("option", null, t("year.option", { y: cat.id }));
+      option.value = cat.id;
+      if (cat.id === state.cat) option.selected = true;
+      select.appendChild(option);
     });
+    select.addEventListener("change", function () {
+      state.cat = select.value;
+      state.page = 1;
+      renderAll();
+    });
+    var icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("fill", "none");
+    icon.setAttribute("stroke", "currentColor");
+    icon.setAttribute("stroke-width", "2");
+    icon.setAttribute("stroke-linecap", "round");
+    icon.setAttribute("stroke-linejoin", "round");
+    icon.setAttribute("aria-hidden", "true");
+    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "m6 9 6 6 6-6");
+    icon.appendChild(path);
+    label.appendChild(srOnly);
+    label.appendChild(select);
+    label.appendChild(icon);
+    tabsEl.appendChild(label);
   }
 
   /* ---------- แถวรายการ ---------- */
@@ -475,8 +466,7 @@
     if (state.page > pages) state.page = pages;
 
     listEl.textContent = "";
-    captionEl.textContent = t("caption", { cat: state.cat, sort: sortText() });
-    updateSortLabel();
+    captionEl.textContent = t("caption", { cat: state.cat });
 
     if (!itemsForCat(state.cat).length) {
       listEl.appendChild(buildEmpty(t("empty.none")));
@@ -579,15 +569,6 @@
     });
   }
 
-  if (sortBtn) {
-    sortBtn.addEventListener("click", function () {
-      state.ascending = !state.ascending;
-      state.page = 1;
-      sortBtn.setAttribute("aria-pressed", String(!state.ascending));
-      renderList();
-    });
-  }
-
   /* สลับภาษาไทย / English ของหน้านี้ (ปุ่มภาษาใช้ตัวควบคุมกลางจาก i18n.js) */
   function applyPageLang() {
     document.querySelectorAll("[data-pt]").forEach(function (node) {
@@ -601,7 +582,6 @@
     });
     document.title = t("doc.title");
     renderAll();
-    updateSortLabel();
   }
 
   if (window.GUI18n) {

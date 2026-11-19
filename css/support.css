@@ -921,3 +921,21 @@
   border: 1px solid rgba(240, 201, 109, 0.5);
   box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.8), 0 0 0 4px rgba(147, 100, 223, 0.18);
 }
+
+/* โหมดมืด: ไอคอนและตัวหนังสือติดต่อเรา เด่นกว่าพื้นหลังเข้ม */
+[data-theme="dark"] .support-contact__icon {
+  color: #FFFFFF;
+  background: #8A62D6;
+  border: 1.5px solid #E6D9FA;
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .support-contact__org,
+[data-theme="dark"] .support-contact__value,
+[data-theme="dark"] .support-contact__value--link {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .support-contact__label {
+  color: #FFE08A;
+}

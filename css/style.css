@@ -651,9 +651,10 @@ html[data-announce="wait"] .announce-card {
   animation-delay: 720ms;
 }
 
+/* ไม่ยกการ์ดขึ้นตอนชี้: การยกทำให้การ์ดหลุดจากตำแหน่งเมาส์แล้วกลับมาซ้ำ ๆ (กระพริบ) จึงเน้นด้วยเงากับกรอบแทน */
 .announce-card:hover,
 .announce-card:focus-visible {
-  transform: translateY(-6px);
+  transform: none;
   box-shadow: 0 30px 60px -22px rgba(16, 13, 28, 0.72),
     0 0 0 1px rgba(214, 168, 63, 0.45);
   color: var(--color-primary-ink);

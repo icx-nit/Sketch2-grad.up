@@ -10,7 +10,7 @@
 .news {
   position: relative;
   /* เผื่อที่ด้านล่างให้การ์ดประชาสัมพันธ์มุมขวาล่างไม่ทับเนื้อหาส่วนสุดท้าย */
-  padding-block: clamp(2rem, 3.4vw, 3rem) clamp(5rem, 8vw, 7.5rem);
+  padding-block: clamp(2rem, 3.4vw, 3rem) clamp(3rem, 5vw, 4.5rem);
   /* มุมบนโค้งรับกับพื้นหลังหน้าหลัก (แบบเดียวกับส่วนปฏิทิน) */
   border-radius: 30px 30px 0 0;
   background-color: var(--color-bg);

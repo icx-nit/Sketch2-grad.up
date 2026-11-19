@@ -22,18 +22,18 @@
 
   <link rel="stylesheet" href="css/variables.css?v=20261123a">
   <link rel="stylesheet" href="css/reset.css?v=20261121b">
-  <link rel="stylesheet" href="css/style.css?v=20261124b">
+  <link rel="stylesheet" href="css/style.css?v=20261124c">
   <link rel="stylesheet" href="css/components.css?v=20261123a">
   <link rel="stylesheet" href="css/promo.css?v=20261121b">
-  <link rel="stylesheet" href="css/news.css?v=20261118a">
-  <link rel="stylesheet" href="css/calendar.css?v=20261118a">
-  <link rel="stylesheet" href="css/stats.css?v=20261118h">
-  <link rel="stylesheet" href="css/support.css?v=20261118a">
-  <link rel="stylesheet" href="css/footer.css?v=20261122a">
+  <link rel="stylesheet" href="css/news.css?v=20261119a">
+  <link rel="stylesheet" href="css/calendar.css?v=20261119t">
+  <link rel="stylesheet" href="css/stats.css?v=20261119d">
+  <link rel="stylesheet" href="css/support.css?v=20261119b">
+  <link rel="stylesheet" href="css/footer.css?v=20261119a">
   <link rel="stylesheet" href="css/intro.css?v=20261122a">
   <link rel="stylesheet" href="css/animations.css?v=20261124b">
-  <link rel="stylesheet" href="css/responsive.css?v=20261124b">
-  <link rel="stylesheet" href="css/header.css?v=20261118d">
+  <link rel="stylesheet" href="css/responsive.css?v=20261119a">
+  <link rel="stylesheet" href="css/header.css?v=20261119zg">
 
   <!-- โหลดก่อน paint เพื่อไม่ให้จอกระพริบตอนสลับธีม -->
   <script src="js/theme.js?v=20261121b"></script>
@@ -44,7 +44,8 @@
       var root = document.documentElement;
       root.setAttribute("data-announce", "wait");
 
-      var events = ["wheel", "touchmove", "scroll"];
+      /* ไม่ฟัง "scroll" เพราะเบราว์เซอร์คืนตำแหน่งเลื่อนตอนรีเฟรช ทำให้ประกาศขึ้นเองทันที */
+      var events = ["wheel", "touchmove"];
 
       /* ยังอยู่หน้าแรกหรือไม่ (เปิดหน้ามาโดยเลื่อนค้างอยู่ = ยังไม่ต้องโชว์ประกาศ) */
       function inFirstView() {
@@ -551,16 +552,13 @@
               <p class="calendar__prompt" data-calendar-prompt data-i18n="calendar.prompt">
                 เลือกวันที่เพื่อดูรายละเอียดกำหนดการ
               </p>
-              <button class="calendar__today" type="button" data-calendar-today data-i18n="calendar.today">
-                วันนี้
-              </button>
             </div>
 
             <div class="calendar__weekdays" data-calendar-weekdays role="row"></div>
             <div class="calendar__grid" data-calendar-grid role="grid" aria-labelledby="calendar-month-label"></div>
 
             <p class="calendar__source-note" data-i18n="calendar.sourceNote">
-              กำหนดการและเอกสารจะแสดงเมื่อมีข้อมูลที่ยืนยันได้จากเว็บไซต์ทางการ
+              ข้อมูลจากประกาศปฏิทินการศึกษาบัณฑิตศึกษา ปีการศึกษา 2569 (reg.up.ac.th) และประกาศ/ข่าวของบัณฑิตวิทยาลัย (grad.up.ac.th)
             </p>
           </div>
 
@@ -598,6 +596,100 @@
             </div>
           </aside>
         </div>
+
+        <!-- Staff Management Modal -->
+        <dialog class="calendar-dialog" data-calendar-dialog aria-labelledby="calendar-dialog-title">
+          <div class="calendar-dialog__content">
+            <div class="calendar-dialog__head">
+              <div class="calendar-dialog__title-wrap">
+                <span class="calendar-dialog__badge">Staff / Admin</span>
+                <h3 class="calendar-dialog__title" id="calendar-dialog-title" data-i18n="calendar.staffModalTitle">
+                  จัดการกำหนดการปฏิทินการศึกษา
+                </h3>
+              </div>
+              <button class="calendar-dialog__close" type="button" data-calendar-dialog-close aria-label="ปิดหน้าต่าง">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            <p class="calendar-dialog__desc">
+              เจ้าหน้าที่สามารถกำหนดวันเริ่มต้น-สิ้นสุด แก้ไข หรือเพิ่มกิจกรรมกำหนดการสำคัญได้ ข้อมูลจะบันทึกและแสดงผลบนปฏิทินทันที
+            </p>
+
+            <!-- Add / Edit Form -->
+            <form class="calendar-form" data-calendar-form>
+              <input type="hidden" data-form-id value="" />
+              <div class="calendar-form__head-row">
+                <h4 class="calendar-form__heading" data-form-heading>เพิ่ม / แก้ไขกำหนดการ</h4>
+                <span class="calendar-form__mode-indicator" data-form-mode>โหมด: เพิ่มรายการใหม่</span>
+              </div>
+              
+              <div class="calendar-form__grid">
+                <div class="calendar-form__field calendar-form__field--full">
+                  <label for="cal-event-title">ชื่อกิจกรรม / กำหนดการ *</label>
+                  <input type="text" id="cal-event-title" data-form-title required placeholder="เช่น ช่วงเวลายื่น บศ.1, วันเปิดภาคการศึกษา" />
+                </div>
+
+                <div class="calendar-form__field">
+                  <label for="cal-event-cat">หมวดหมู่กิจกรรม *</label>
+                  <select id="cal-event-cat" data-form-category required>
+                    <option value="gs1">ยื่นคำร้อง บศ.1</option>
+                    <option value="review">ช่วงเวลาพิจารณาคำร้อง</option>
+                    <option value="register">งานทะเบียน / เปิด-ปิดภาค</option>
+                    <option value="petition">ยื่นคำร้องต่าง ๆ (เทียบโอน/ผ่อนผัน/ถอน)</option>
+                    <option value="exam">การสอบ (QE / วัดคุณสมบัติ / ปลายภาค)</option>
+                    <option value="thesis">วิทยานิพนธ์ / บศ.16 / บศ.17 / สำเร็จการศึกษา</option>
+                    <option value="grant">ทุนอุดหนุนการศึกษา</option>
+                  </select>
+                </div>
+
+                <div class="calendar-form__field">
+                  <label for="cal-event-link">ลิงก์บริการ / แบบฟอร์ม</label>
+                  <input type="text" id="cal-event-link" data-form-link placeholder="เช่น announce-form.html หรือ https://reg.up.ac.th" />
+                </div>
+
+                <div class="calendar-form__field">
+                  <label for="cal-event-start">วันเริ่มต้น (ปี ค.ศ.) *</label>
+                  <input type="date" id="cal-event-start" data-form-start required />
+                </div>
+
+                <div class="calendar-form__field">
+                  <label for="cal-event-end">วันสิ้นสุด (ปี ค.ศ.) *</label>
+                  <input type="date" id="cal-event-end" data-form-end required />
+                </div>
+
+                <div class="calendar-form__field calendar-form__field--full">
+                  <label for="cal-event-desc">คำอธิบายเพิ่มเติม</label>
+                  <textarea id="cal-event-desc" data-form-desc rows="2" placeholder="ระบุรายละเอียด ขั้นตอน หรือข้อกำหนดเพิ่มเติม"></textarea>
+                </div>
+              </div>
+
+              <div class="calendar-form__actions">
+                <button class="calendar__btn calendar__btn--primary" type="submit" data-form-save>
+                  บันทึกกำหนดการ
+                </button>
+                <button class="calendar__btn calendar__btn--secondary" type="button" data-form-cancel style="display:none;">
+                  ยกเลิกการแก้ไข
+                </button>
+                <button class="calendar__btn calendar__btn--outline" type="button" data-calendar-reset title="รีเซ็ตกลับเป็นข้อมูลทางการตามประกาศปฏิทินการศึกษา 2569">
+                  คืนค่าเริ่มต้นตามประกาศ
+                </button>
+              </div>
+            </form>
+
+            <!-- List of activities -->
+            <div class="calendar-dialog__list-wrap">
+              <div class="calendar-dialog__list-header">
+                <h4>รายการกำหนดการทั้งหมด (<span data-calendar-event-count>0</span> รายการ)</h4>
+                <input class="calendar-dialog__search" type="search" data-calendar-search placeholder="ค้นหากำหนดการ..." />
+              </div>
+              <div class="calendar-dialog__list" data-calendar-table-list></div>
+            </div>
+          </div>
+        </dialog>
       </div>
     </section>
 
@@ -832,19 +924,11 @@
                 </span>
                 <span data-i18n="support.services">บริการของเรา</span>
               </h3>
-              <a class="support-card__more" href="https://reg.up.ac.th/" target="_blank" rel="noopener noreferrer">
-                <span data-i18n="support.openSystem">เปิดระบบ</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                  <path d="M7 17 17 7"></path>
-                  <path d="M8 7h9v9"></path>
-                </svg>
-              </a>
             </div>
 
             <ul class="support-services">
               <li>
-                <a class="support-service" href="https://reg.up.ac.th/" target="_blank" rel="noopener noreferrer">
+                <div class="support-service">
                   <span class="support-service__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                       stroke-linecap="round" stroke-linejoin="round" focusable="false">
@@ -859,17 +943,10 @@
                       การยื่นเอกสารคำร้อง และสามารถตรวจสอบได้อย่างรวดเร็ว
                     </span>
                   </span>
-                  <span class="support-service__go" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <path d="M5 12h14"></path>
-                      <path d="m13 6 6 6-6 6"></path>
-                    </svg>
-                  </span>
-                </a>
+                </div>
               </li>
               <li>
-                <a class="support-service" href="https://grad.up.ac.th/" target="_blank" rel="noopener noreferrer">
+                <div class="support-service">
                   <span class="support-service__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                       stroke-linecap="round" stroke-linejoin="round" focusable="false">
@@ -885,14 +962,7 @@
                       ข้อมูลบัณฑิตศึกษาของมหาวิทยาลัยพะเยา
                     </span>
                   </span>
-                  <span class="support-service__go" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <path d="M5 12h14"></path>
-                      <path d="m13 6 6 6-6 6"></path>
-                    </svg>
-                  </span>
-                </a>
+                </div>
               </li>
             </ul>
           </article>
@@ -1112,12 +1182,13 @@
   <script src="js/font-size.js?v=20261121b" defer></script>
   <script src="js/navigation.js?v=20261121b" defer></script>
   <script src="js/components.js?v=20261121b" defer></script>
-  <script src="js/main.js?v=20261121b" defer></script>
+  <script src="js/main.js?v=20261119a" defer></script>
   <script src="js/promo.js?v=20261121b" defer></script>
   <script src="js/news.js?v=20261121c" defer></script>
-  <script src="js/calendar.js?v=20261121d" defer></script>
+  <script src="js/calendar.js?v=20261119i" defer></script>
   <script src="js/animations.js?v=20261124b" defer></script>
   <script src="js/search.js?v=20261124b" defer></script>
+  <script src="js/stats-chart.js?v=20261119a" defer></script>
 </body>
 
 </html>

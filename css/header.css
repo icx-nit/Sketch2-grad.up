@@ -220,3 +220,264 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     inset 0 -2px 0 rgba(0, 0, 0, 0.40);
 }
+
+/* ==========================================================================
+   Mobile (≤767px): responsive fixes only. Desktop and design are unchanged.
+   - The menu row scrolls sideways on one line instead of wrapping into rows.
+   - The hero picture fills its panel and is cropped, never pushed off-screen.
+   ========================================================================== */
+@media (max-width: 767px) {
+  .nav-list {
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-list > li {
+    flex: 0 0 auto;
+  }
+
+  /* ภาพปกเต็มจอ และประกาศลอยทับภาพปกด้านล่างเหมือนเดสก์ท็อป */
+  .hero-stage {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .hero__image {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    /* ครอปกลางภาพ ให้โลโก้และข้อความ UP GRADUATE อยู่กึ่งกลางจอมือถือ */
+    object-position: 50% 35%;
+  }
+
+  .announce {
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    padding-block: 0 clamp(1.25rem, 4.5vh, 2.5rem);
+  }
+}
+
+
+/* ---------- มือถือ: ภาพปกเริ่มจากขอบบนของจอพอดี (ใช้ความสูงจริงของ header ที่วัดด้วย JS) ---------- */
+@media (max-width: 767px) {
+  .hero-stage {
+    margin: calc(-1 * (var(--header-h, var(--header-height)) + 0.75rem)) 0 0;
+  }
+}
+
+/* มือถือ: แถบเมนูต้องไม่กว้างเกินจอ (ป้องกันแถบดำด้านข้างจากการล้นแนวนอน 14px) */
+@media (max-width: 767px) {
+  .site-header__inner,
+  .primary-nav {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+/* ---------- มือถือ: ประกาศแบบเดียวกับเดสก์ท็อป (การ์ดขนาดเดิม เรียงแนวนอนเลื่อนได้) ---------- */
+@media (max-width: 767px) {
+  .announce > .container {
+    max-width: 100%;
+  }
+
+  .announce__grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: var(--space-md);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 0.5rem var(--container-pad) 0.75rem;
+  }
+
+  .announce__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .announce__grid li {
+    flex: 0 0 10.5rem;
+    max-width: none;
+    scroll-snap-align: start;
+  }
+}
+
+/* ---------- มือถือ: กล่องข่าวลอยย่อลงและย้ายขึ้นไปใต้เมนู ไม่ทับแถวประกาศ ---------- */
+@media (max-width: 767px) {
+  /* กลางจอแนวตั้ง ทับชื่อมหาวิทยาลัยบนภาพปก */
+  .promo {
+    top: 55%;
+    bottom: auto;
+    inset-block-start: 55%;
+    inset-block-end: auto;
+    inset-inline-start: auto;
+    left: auto;
+    right: 1.25rem;
+    inset-inline-end: 1.25rem;
+    width: 14rem;
+    max-width: calc(100vw - 1.5rem);
+    /* ย่อทั้งการ์ดตามสัดส่วนเดิม (รูปแบบเดิมไม่เปลี่ยน) ให้ขอบขวาอยู่ที่เดิม */
+    transform: translateY(-50%) scale(0.8);
+    transform-origin: right center;
+    /* ตัดส่วนที่เลยกรอบกล่องออก ไม่ให้ขอบที่เกินโผล่ออกนอกหน้าจอ */
+    overflow: hidden;
+  }
+
+  .promo__stage,
+  .promo__dock {
+    max-width: 100%;
+  }
+}
+
+/* ---------- มือถือ: ป๊อปอัพประชาสัมพันธ์ย่อให้พอดีจอ (ขนาดเดสก์ท็อปไม่เปลี่ยน) ---------- */
+@media (max-width: 767px) {
+  .promo__modal {
+    padding: 1.25rem;
+  }
+
+  /* กล่องอยู่กึ่งกลางคอลัมน์ของป๊อปอัพ ระยะซ้ายขวาจึงเท่ากันเสมอ */
+  .promo__dialog {
+    width: 100%;
+    max-width: 24rem;
+    justify-self: center;
+    margin-inline: auto;
+  }
+}
+
+/* ---------- มือถือ: ภาพปกเต็มจอถึงขอบล่างและขอบขวา (ไม่มีช่องว่างเหลือจากการคำนวณความสูงเดิม) ---------- */
+@media (max-width: 767px) {
+  .hero-stage {
+    height: 100svh;
+    min-height: 0;
+  }
+
+  .hero {
+    border-radius: 0;
+  }
+}
+
+/* Mobile: no reserved scrollbar gutter, so the page fills the full width */
+@media (max-width: 767px) {
+  html {
+    scrollbar-gutter: auto;
+  }
+}
+
+/* มือถือ: โลโก้และไอคอนลดตามปุ่ม A- ได้ แต่ล็อกไม่ขยายเกินขนาดเริ่มต้น (16px) เพื่อให้ทั้งแถวอยู่บรรทัดเดียวเสมอ */
+@media (max-width: 767px) {
+  .brand__logo {
+    height: min(3rem, 48px);
+  }
+
+  .icon-btn,
+  .lang-btn,
+  .font-size {
+    height: min(2.5rem, 40px);
+  }
+
+  .icon-btn,
+  .lang-btn {
+    width: min(2.5rem, 40px);
+  }
+
+  .icon-btn svg,
+  .lang-btn svg {
+    width: min(1.25rem, 20px);
+    height: min(1.25rem, 20px);
+  }
+
+  .font-size__btn {
+    font-size: min(0.8125rem, 13px);
+    min-width: min(1.75rem, 28px);
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+
+  .site-header__inner {
+    padding-inline: 12px;
+    column-gap: 8px;
+  }
+}
+
+/* มือถือ: กดเมนูประกาศแล้วเฉพาะรายการย่อยลอยทับเนื้อหา กรอบแถบเมนูไม่ขยายตาม */
+@media (max-width: 767px) {
+  .nav-item--dropdown {
+    position: static;
+  }
+
+  .nav-item--dropdown .dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    z-index: 60;
+    width: max-content;
+    min-width: 15rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0.375rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 16px 30px -14px rgba(40, 15, 80, 0.55);
+  }
+}
+
+/* มือถือ: โลโก้กับไอคอนอยู่แถวเดียวกันเสมอเมื่อเพิ่ม/ลดตัวอักษร (ใช้กริด: โลโก้หดได้ ไอคอนไม่หดและไม่ตกแถว, เมนูอยู่แถวล่างเต็มความกว้าง) */
+@media (max-width: 767px) {
+  .site-header__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .brand {
+    min-width: 0;
+    align-items: flex-start;
+  }
+
+  .brand__logo {
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .header-actions {
+    grid-column: 2;
+  }
+
+  .primary-nav {
+    grid-column: 1 / -1;
+  }
+}
+
+/* มือถือ: ประกาศซ่อนไว้ตอนเปิดหน้า/รีเฟรช และจะขึ้นเมื่อผู้ใช้เลื่อนขึ้น (เหมือนเดสก์ท็อป) */
+@media (max-width: 767px) {
+  html[data-announce="wait"] .announce {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4rem);
+    transition: opacity 220ms var(--ease), transform 220ms var(--ease);
+  }
+
+  html[data-announce="wait"] .announce > .container {
+    pointer-events: none;
+  }
+
+  html[data-announce="wait"] .announce-card {
+    opacity: 0;
+  }
+}

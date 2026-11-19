@@ -33,6 +33,14 @@ uploads/**
 !uploads/forms/ann-72.pdf
 !uploads/forms/ann-73.pdf
 
+# --- uploads/forms/ : แบบฟอร์มขออนุมัติสำเร็จการศึกษา (ใช้ในปฏิทินกำหนดการสำคัญ) ---
+!uploads/forms/ann-85.pdf
+!uploads/forms/ann-86.pdf
+
+# --- uploads/calendar/ : ประกาศปฏิทินการศึกษาบัณฑิตศึกษา 2569 ---
+!uploads/calendar/.gitkeep
+!uploads/calendar/ann-grad-calendar-2569.pdf
+
 # --- uploads/guides/ : คู่มือ (ครบทั้ง 3 หมวด) ---
 !uploads/guides/ann-235.pdf
 !uploads/guides/ann-243.pdf

@@ -75,7 +75,7 @@
     var revealed = false;
     var revealComplete = false;
     var lockTimer = 0;
-    var desktopQuery = window.matchMedia("(min-width: 48rem)");
+    var desktopQuery = window.matchMedia("(min-width: 0px)");
     /* เฉพาะการเลื่อนเว็บเท่านั้น (ไม่นับคลิก/กดแป้น/โฟกัส) */
     var triggers = ["wheel", "touchmove"];
     /* ปุ่มเลื่อนหน้าที่ใช้เริ่มแอนิเมชันประกาศ */
