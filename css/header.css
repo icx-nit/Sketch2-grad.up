@@ -532,3 +532,45 @@
   white-space: nowrap;
   width: auto;
 }
+
+/* ==========================================================================
+   Desktop 1200–1919px: แถบเมนูเต็มความกว้างเลยขอบบน และเมนูอยู่บรรทัดเดียวกับโลโก้/ไอคอน
+   - ไม่มีช่องว่างด้านบนและด้านข้าง (แถบติดขอบบนจอ)
+   - กริด 1 แถว: โลโก้ซ้าย / เมนูกึ่งกลาง / ไอคอนขวา
+   - ลดขนาดตัวอักษรและระยะห่างเมนูลงเล็กน้อยให้พอดีบรรทัดเดียว
+   ========================================================================== */
+@media (min-width: 1200px) and (max-width: 1919px) {
+  .site-header {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .site-header .site-header__inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 16px;
+    padding-inline: 24px;
+  }
+
+  .site-header .primary-nav {
+    grid-row: auto;
+    grid-column: auto;
+    justify-self: center;
+    margin-inline: 0;
+    min-width: 0;
+  }
+
+  .site-header .nav-list {
+    flex-wrap: nowrap;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  .site-header .nav-link {
+    font-size: 0.875rem;
+    padding-inline: 0.375rem;
+  }
+
+  .site-header .header-actions {
+    gap: 8px;
+  }
+}
