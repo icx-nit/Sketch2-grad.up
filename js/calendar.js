@@ -1045,15 +1045,12 @@
   }
 
   function formatMonth(date) {
-    var thai = new Intl.DateTimeFormat("th-TH", {
+    /* แสดงเฉพาะภาษาที่เลือก: ไทย = พฤศจิกายน 2569 / อังกฤษ = November 2026 */
+    var lang = currentLanguage();
+    return new Intl.DateTimeFormat(lang === "en" ? "en-US" : "th-TH", {
       month: "long",
       year: "numeric"
     }).format(date);
-    var english = new Intl.DateTimeFormat("en-US", {
-      month: "long",
-      year: "numeric"
-    }).format(date);
-    return thai + " / " + english;
   }
 
   function eventText(value) {

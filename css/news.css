@@ -2934,13 +2934,13 @@ html[data-theme="dark"] .stats-section .btn--primary:focus-visible {
 /* ป๊อปอัปประชาสัมพันธ์: ขยายให้ใหญ่และสูงขึ้น (จอ 768px ขึ้นไป) */
 @media (min-width: 48rem) {
   .promo__dialog {
-    width: min(58rem, 100%);
-    max-height: min(92svh, 60rem);
+    width: min(46rem, 100%);
+    max-height: min(84svh, 40rem);
   }
 
   .promo__media {
-    aspect-ratio: 2.3 / 1;
-    min-height: 12rem;
+    aspect-ratio: 2.6 / 1;
+    min-height: 10rem;
   }
 }
 
@@ -3004,4 +3004,11 @@ html[data-theme="dark"] .news-modal__card .news-card__chip {
   background: #2a1f47 !important;
   border-color: #6d56a0 !important;
   color: #e9dcff !important;
+}
+
+/* ไม่ให้หน้าเลื่อนซ้าย-ขวาได้: ตัดส่วนที่ล้นจอออก ไม่ให้เกิดแถบสีขาวด้านข้างและแถบเลื่อนแนวนอน */
+html,
+body {
+  overflow-x: clip !important;
+  max-width: 100%;
 }

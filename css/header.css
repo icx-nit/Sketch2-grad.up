@@ -532,3 +532,40 @@
   white-space: nowrap;
   width: auto;
 }
+
+/* ==========================================================================
+   เดสก์ท็อป (1200–1919px): เมนูหลักมี 8 รายการ กว้างเกินพื้นที่ 3 คอลัมน์
+   จึงย้ายเมนูลงแถวที่ 2 ให้อยู่กึ่งกลางและขึ้นบรรทัดได้ เพื่อให้โลโก้และปุ่มเข้าสู่ระบบมองเห็นครบ
+   จอ 1920px ขึ้นไปยังคงเป็นแถวเดียว 3 คอลัมน์แบบเดิม (ลดช่องว่างเมนูเล็กน้อย)
+   ========================================================================== */
+@media (min-width: 1200px) and (max-width: 1919px) {
+  .site-header .site-header__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 0.4rem;
+  }
+
+  .site-header .primary-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: stretch;
+    margin-inline: 0;
+    min-width: 0;
+  }
+
+  .site-header .nav-list {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.1rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .site-header .nav-list {
+    gap: 12px;
+  }
+
+  .site-header .nav-link {
+    font-size: 0.92rem;
+    padding-inline: 0.55rem;
+  }
+}
