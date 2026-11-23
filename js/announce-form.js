@@ -349,7 +349,7 @@
 
     var body = el("div", "doc-row__body");
     var badges = el("div", "doc-row__badges");
-    badges.appendChild(el("span", "badge badge--type", categoryLabel(item.cat)));
+    /* ไม่แสดงป้ายหมวดในรายการแบบฟอร์ม เหลือเฉพาะป้ายปี */
     badges.appendChild(el("span", "badge badge--year", badgeText(item)));
 
     var title = el("h3", "doc-row__title", titleOf(item));

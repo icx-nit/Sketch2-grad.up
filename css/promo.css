@@ -435,8 +435,8 @@
 
 .promo__dialog {
   position: relative;
-  width: min(35rem, 100%);
-  max-height: min(88svh, 44rem);
+  width: min(46rem, 100%);
+  max-height: min(90svh, 52rem);
   overflow: auto;
   overscroll-behavior: contain;
   /* ไม่มีกรอบ/แผ่นซ้อน: การ์ดพื้นเรียบ + ภาพปกด้านบน (อ่านง่าย ทันสมัย) */

@@ -1,93 +1,76 @@
-# Sketch2 grad.up
+# เว็บไซต์บัณฑิตวิทยาลัย มหาวิทยาลัยพะเยา (GRAD UP)
 
+เว็บไซต์ข้อมูลของบัณฑิตวิทยาลัย มหาวิทยาลัยพะเยา ใช้เผยแพร่ข่าวสาร ประกาศ คู่มือ แบบฟอร์ม ปฏิทินการศึกษา
+สถิติการยื่นคำร้อง บศ.1 และลิงก์ไปยังระบบบริการต่าง ๆ ของมหาวิทยาลัย
 
+## สถานะปัจจุบัน
 
-## Getting started
+- เป็นเว็บไซต์ Static ทำงานได้โดยไม่ต้องมีเซิร์ฟเวอร์ฐานข้อมูล
+- ข้อมูลสถิติและข่าวบางส่วนเป็นข้อมูลจำลอง ดูรายละเอียดใน `DATA_SOURCE.md`
+- รายการงานที่เสร็จและค้างอยู่ดูใน `PLAN.md`
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## เทคโนโลยี
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- HTML5, CSS3, Vanilla JavaScript
+- ไม่ใช้เฟรมเวิร์ก ไม่ใช้ Build Tool และไม่ต้องติดตั้ง Dependencies
+- ต้องใช้เบราว์เซอร์รุ่นใหม่ที่รองรับ CSS Variables, `clip-path` และ `IntersectionObserver`
 
-## Add your files
-
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## โครงสร้างโฟลเดอร์
 
 ```
-cd existing_repo
-git remote add origin https://git.up.ac.th/67026416/sketch2-grad.up.git
-git branch -M main
-git push -uf origin main
+Sketch2 grad.up/
+├── index.html              หน้าหลัก: Header, ประกาศป๊อปอัป, ประกาศ, ข่าว, ลิงก์, ติดต่อ, ปฏิทิน, สถิติ, Footer
+├── statistics.html         หน้า "สถิติการยื่นคำร้อง บศ.1 ทั้งหมด" (มีตัวกรอง)
+├── login.html              หน้าเข้าสู่ระบบ
+├── announce-command.html   คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา
+├── announce-exam.html      การสอบต่าง ๆ
+├── announce-form.html      แบบฟอร์มบัณฑิตศึกษา
+├── announce-guidebook.html คู่มือบัณฑิตศึกษา
+├── announce-other.html     ประกาศอื่น ๆ
+├── announce-scholarship.html ทุนอุดหนุนการทำวิทยานิพนธ์
+├── css/                    ไฟล์สไตล์ แยกตามส่วนของเว็บ
+├── js/                     สคริปต์ แยกตามฟีเจอร์
+├── assets/images/          รูปภาพและรูปข่าว (assets/images/news/)
+├── uploads/                เอกสารประกอบ แยกตามหมวด (announce, calendar, exam, forms, guides, other, scholarship)
+├── .agents/skills/         ชุดคำสั่งช่วยออกแบบและตรวจการเข้าถึง
+├── AGENTS.md               กฎการออกแบบและข้อห้าม
+├── CLAUDE.md               คู่มือการทำงานสำหรับ Claude
+├── DESIGN.md               ระบบดีไซน์ (สี ฟอนต์ ระยะ คอมโพเนนต์)
+├── REQUIREMENTS.md         สเปกฟีเจอร์
+├── PLAN.md                 แผนพัฒนาและสถานะงาน
+├── DATA_SOURCE.md          แหล่งข้อมูล โครงสร้างข้อมูล และนโยบายไฟล์
+└── .gitignore              ยกเว้นไฟล์ uploads/ ส่วนใหญ่ออกจาก Git
 ```
 
-## Integrate with your tools
+## การรันในเครื่อง (Local Development)
 
-* [Set up project integrations](https://git.up.ac.th/67026416/sketch2-grad.up/-/settings/integrations)
+ไม่มีขั้นตอนติดตั้งหรือ Build ให้เปิดผ่านเซิร์ฟเวอร์แบบ Static ก็พอ
 
-## Collaborate with your team
+วิธีที่ 1: ใช้ Python ที่มีอยู่แล้วในเครื่อง รันคำสั่งนี้ในโฟลเดอร์โปรเจกต์
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+```
+python -m http.server 8000
+```
 
-## Test and Deploy
+แล้วเปิด `http://localhost:8000/index.html` ในเบราว์เซอร์
 
-Use the built-in continuous integration in GitLab.
+วิธีที่ 2: ใช้ส่วนขยาย Live Server ใน VS Code แล้วคลิก "Go Live" ที่ `index.html`
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+หมายเหตุ: ควรใช้เซิร์ฟเวอร์ในเครื่องแทนการดับเบิลคลิกไฟล์ เพราะการเปิดจาก `file://` อาจทำให้บางฟีเจอร์ทำงานไม่ถูกต้อง (ยังไม่ได้ทดสอบทุกกรณี)
 
-***
+## การ Build และการ Deploy
 
-# Editing this README
+- ไม่มีขั้นตอน Build ให้คัดลอกไฟล์ในโฟลเดอร์โปรเจกต์ขึ้นเว็บเซิร์ฟเวอร์แบบ Static ได้เลย
+- ไฟล์ใน `uploads/` ไม่อยู่ใน Git ต้องนำขึ้นเซิร์ฟเวอร์แยกต่างหาก ตามโครงสร้างโฟลเดอร์เดิม
+- ก่อน Deploy ให้ตรวจว่า `?v=` ของ CSS และ JS ถูกเปลี่ยนแล้วทุกครั้งที่มีการแก้ไข
+- ก่อน Deploy ให้ตรวจว่ามีข้อมูลจำลองที่ยังไม่ได้เปลี่ยนเป็นข้อมูลจริงหรือไม่ (ดู `DATA_SOURCE.md`)
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## การจัดการ Git
 
-## Suggestions for a good README
+- `.gitignore` ยกเว้นไฟล์ใน `uploads/` ทั้งหมด ยกเว้นไฟล์ตัวอย่างแหล่งละ 3 ไฟล์
+- ไม่ควร Commit ไฟล์ขนาดใหญ่ใน `uploads/` เพราะรวมแล้วประมาณ 479 MB
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## ข้อมูลติดต่อทีมพัฒนา
 
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- ผู้ตรวจงานและให้ข้อเสนอแนะการออกแบบ: พี่หนึ่ง
+- การเชื่อมข้อมูลสถิติกับระบบ REG หรือดึงเฉพาะสถิติระดับบัณฑิตศึกษา: ต้องยืนยันกับพี่แม็กก่อน

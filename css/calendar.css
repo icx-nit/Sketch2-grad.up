@@ -1504,3 +1504,290 @@
   color: #24173A;
   font-weight: 700;
 }
+
+/* ==========================================================================
+   ปฏิทินกำหนดการสำคัญ: ให้กรอบและหัวข้อเด่นกว่าพื้นหลัง (สอดคล้องกับกรอบข่าว)
+   ========================================================================== */
+.calendar__panel,
+.calendar__detail {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(143, 91, 214, 0.28);
+  border-radius: 1.2rem;
+  box-shadow:
+    0 22px 48px rgba(91, 47, 163, 0.18),
+    0 0 0 5px rgba(217, 166, 51, 0.09);
+}
+
+.calendar__panel::before,
+.calendar__detail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #5b2fa3, #8f5bd6 55%, #d9a633);
+  z-index: 1;
+}
+
+.calendar-section__title {
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  font-weight: 900;
+  color: #3b1a7a;
+  letter-spacing: -0.01em;
+}
+
+.calendar__month {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 900;
+  color: #3b1a7a;
+}
+
+.calendar__month-button {
+  box-shadow: 0 6px 16px rgba(91, 47, 163, 0.14);
+  border-color: rgba(143, 91, 214, 0.35);
+}
+
+.calendar__subhead {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3f3656;
+}
+
+.calendar-event {
+  box-shadow: 0 2px 8px rgba(91, 47, 163, 0.08);
+}
+
+.calendar-event:hover {
+  box-shadow: 0 8px 18px rgba(91, 47, 163, 0.18);
+}
+
+html[data-theme="dark"] .calendar__panel,
+html[data-theme="dark"] .calendar__detail {
+  background: var(--news-card-bg, #1c1730);
+  border-color: rgba(217, 166, 51, 0.28);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.38),
+    0 0 0 5px rgba(217, 166, 51, 0.08);
+}
+
+html[data-theme="dark"] .calendar-section__title,
+html[data-theme="dark"] .calendar__month {
+  color: #f7d77a;
+}
+
+/* ==========================================================================
+   รายละเอียดกำหนดการของวันที่เลือก: ทันสมัย สวยงาม และอ่านง่าย
+   ========================================================================== */
+.calendar__details {
+  position: relative;
+  overflow: hidden;
+  padding: 1.35rem;
+  border: 1px solid rgba(143, 91, 214, 0.22);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(120% 70% at 100% 0%, rgba(217, 166, 51, 0.1) 0%, rgba(217, 166, 51, 0) 60%),
+    linear-gradient(165deg, #ffffff 0%, #f6f0ff 100%);
+  box-shadow: 0 20px 44px rgba(91, 47, 163, 0.14);
+}
+
+.calendar__details::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5b2fa3, #8f5bd6 60%, #d9a633);
+}
+
+.calendar__details .calendar-event {
+  position: relative;
+  padding: 1.1rem 1.2rem 1.15rem 1.35rem;
+  border: 1px solid rgba(143, 91, 214, 0.18);
+  border-left: 5px solid #8f5bd6;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 12px 26px rgba(91, 47, 163, 0.1);
+  transition: transform 0.3s var(--ease, ease), box-shadow 0.3s var(--ease, ease);
+}
+
+.calendar__details .calendar-event:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(91, 47, 163, 0.18);
+}
+
+.calendar__details .calendar-event__category {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ede2ff, #dcc9ff);
+  color: #3b1a7a;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.calendar__details .calendar-event__title {
+  margin-top: 0.7rem;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.5;
+  color: #2a1560;
+}
+
+.calendar__details .calendar-event__row {
+  color: #4a3f66;
+  font-weight: 600;
+}
+
+.calendar__details .calendar-event__icon {
+  color: #8f5bd6;
+}
+
+.calendar__details .calendar-event__divider {
+  margin: 0.8rem 0;
+  border-top: 1px dashed rgba(143, 91, 214, 0.3);
+}
+
+.calendar__details .calendar-event__heading {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #3b1a7a;
+}
+
+.calendar__details .calendar-event__text {
+  color: #4f4668;
+  line-height: 1.65;
+}
+
+.calendar__details .calendar-event__actions {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.calendar__details .calendar-event__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #5b2fa3, #8f5bd6);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(91, 47, 163, 0.28);
+  transition: transform 0.25s var(--ease, ease), box-shadow 0.25s var(--ease, ease);
+}
+
+.calendar__details .calendar-event__link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(91, 47, 163, 0.36);
+}
+
+html[data-theme="dark"] .calendar__details {
+  background:
+    radial-gradient(120% 70% at 100% 0%, rgba(217, 166, 51, 0.1) 0%, rgba(217, 166, 51, 0) 60%),
+    linear-gradient(165deg, #1e1838 0%, #241b44 100%);
+  border-color: rgba(217, 166, 51, 0.22);
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event {
+  background: #1c1730;
+  border-color: rgba(217, 166, 51, 0.2);
+  border-left-color: #d9a633;
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__title,
+html[data-theme="dark"] .calendar__details .calendar-event__heading {
+  color: #f7d77a;
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__category {
+  background: rgba(217, 166, 51, 0.18);
+  color: #f7d77a;
+}
+
+/* โหมดมืด: หัวข้อปฏิทินและชื่อเดือนเป็นสีขาว */
+html[data-theme="dark"] .calendar-section .calendar-section__title,
+html[data-theme="dark"] .calendar-section .calendar__month {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+}
+
+/* โหมดมืด: ตัวหนังสือรายละเอียดกำหนดการให้สว่างและเด่นกว่าพื้นหลัง */
+html[data-theme="dark"] .calendar__details {
+  color: #f5f1fc;
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__title,
+html[data-theme="dark"] .calendar__details .calendar-event__heading {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__row,
+html[data-theme="dark"] .calendar__details .calendar-event__meta,
+html[data-theme="dark"] .calendar__details .calendar-event__text {
+  color: #ece6f7;
+  opacity: 1;
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__icon {
+  color: #f0c96d;
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__divider {
+  border-top-color: rgba(240, 201, 109, 0.35);
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__category {
+  background: #f0c96d;
+  color: #2a1a00;
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__link {
+  background: linear-gradient(135deg, #9364df, #b28cf0);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .calendar__details h3,
+html[data-theme="dark"] .calendar__details h4,
+html[data-theme="dark"] .calendar__details .calendar-dialog__title {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .calendar__details p {
+  color: #ece6f7;
+}
+
+/* โหมดมืด: หัวข้อกิจกรรมเป็นสีทอง หัวข้อ "รายละเอียด" เป็นสีม่วงอ่อน ปุ่มแบบฟอร์มตัวหนังสือไม่ใช่สีขาว */
+html[data-theme="dark"] .calendar__details .calendar-event__title {
+  color: #f0c96d;
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__heading {
+  color: #cbb8ff;
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__link {
+  background: linear-gradient(135deg, #e9dcff 0%, #cdb5ff 100%);
+  color: #1c0f3d;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="dark"] .calendar__details .calendar-event__link .calendar-event__icon {
+  color: #1c0f3d;
+}
+
+/* โหมดมืด: ป้ายประเภทกิจกรรมไม่ใช้สีเหลือง เป็นสีม่วงอ่อนแทน */
+html[data-theme="dark"] .calendar__details .calendar-event__category {
+  background: rgba(147, 100, 223, 0.32);
+  color: #e9dcff;
+  border: 1px solid rgba(203, 184, 255, 0.45);
+}

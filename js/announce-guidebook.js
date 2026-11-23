@@ -301,7 +301,35 @@
 
   /* ---------- แถวรายการ ---------- */
 
-  function buildRow(item) {
+  /* รายการ TH กับ EN ที่อยู่ติดกันในหมวดเดียวกัน รวมเป็นแถวเดียว (ให้เลือกภาษาได้) */
+  function groupEntries(list) {
+    var entries = [];
+    for (var i = 0; i < list.length; i++) {
+      var a = list[i];
+      var b = list[i + 1];
+      if (a.code && b && b.code && b.cat === a.cat && b.code !== a.code) {
+        entries.push({ items: [a, b], cat: a.cat, num: a.num });
+        i++;
+      } else {
+        entries.push({ items: [a], cat: a.cat, num: a.num });
+      }
+    }
+    return entries;
+  }
+
+  function itemByCode(entry, code) {
+    return entry.items.filter(function (x) { return x.code === code; })[0] || entry.items[0];
+  }
+
+  /* ชื่อที่แสดง: ตัดรหัส (TH) / (EN) ท้ายชื่อออก */
+  function pairTitle(item) {
+    return item.title.replace(/\s*\((TH|EN)\)\s*$/, "");
+  }
+
+  function buildRow(entry, activeCode) {
+    var isPair = entry.items.length > 1;
+    var item = isPair ? itemByCode(entry, activeCode) : entry.items[0];
+
     var row = el("article", "doc-row doc-row--board");
 
     var icon = el("div", "doc-row__icon");
@@ -309,11 +337,29 @@
 
     var body = el("div", "doc-row__body");
     var badges = el("div", "doc-row__badges");
-    badges.appendChild(el("span", "badge badge--type", categoryLabel(item.cat)));
-    /* รายการที่มีรหัส EN/TH (ขั้นตอนการศึกษา) แสดงแค่ป้ายหมวด */
-    if (!item.code) badges.appendChild(el("span", "badge badge--year", badgeText(item)));
+    if (isPair) {
+      var toggle = el("div", "doc-row__lang");
+      toggle.setAttribute("role", "group");
+      ["TH", "EN"].forEach(function (code) {
+        var on = code === item.code;
+        var b = el("button", "doc-row__lang-btn" + (on ? " is-active" : ""), code === "TH" ? "ไทย" : "EN");
+        b.type = "button";
+        b.setAttribute("aria-pressed", String(on));
+        b.addEventListener("click", function () {
+          if (on) return;
+          row.replaceWith(buildRow(entry, code));
+        });
+        toggle.appendChild(b);
+      });
+      badges.appendChild(toggle);
+    } else {
+      if (item.cat !== "study-steps" && item.cat !== "thesis-guide") {
+        /* ไม่แสดงป้ายหมวดในรายการคู่มือ */
+      }
+      if (!item.code) badges.appendChild(el("span", "badge badge--year", badgeText(item)));
+    }
 
-    var title = el("h3", "doc-row__title", titleOf(item));
+    var title = el("h3", "doc-row__title", isPair ? pairTitle(item) : titleOf(item));
 
     var meta = el("ul", "doc-row__meta");
     var dateLi = el("li");
@@ -427,7 +473,8 @@
 
   function renderList() {
     var list = filteredItems();
-    var pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+    var entries = groupEntries(list);
+    var pages = Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
     if (state.page > pages) state.page = pages;
 
     listEl.textContent = "";
@@ -448,10 +495,12 @@
     }
 
     var start = (state.page - 1) * PAGE_SIZE;
-    list.slice(start, start + PAGE_SIZE).forEach(function (item) {
-      listEl.appendChild(buildRow(item));
+    entries.slice(start, start + PAGE_SIZE).forEach(function (entry) {
+      var first = entry.items[0];
+      var defaultCode = entry.items.length > 1 ? (lang() === "en" ? "EN" : "TH") : first.code;
+      listEl.appendChild(buildRow(entry, defaultCode));
     });
-    renderPagination(list.length);
+    renderPagination(entries.length);
   }
 
   function renderCounts() {

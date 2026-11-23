@@ -71,7 +71,8 @@
       return;
     }
 
-    var news = document.querySelector("#news");
+    /* ขอบเขต "หน้าแรก": ประกาศจะซ่อนเมื่อส่วนหน่วยงานอื่นๆ (ใต้ภาพปก) ขึ้นมาถึงจอ */
+    var news = document.querySelector("#news-links") || document.querySelector("#news");
     var revealed = false;
     var revealComplete = false;
     var lockTimer = 0;

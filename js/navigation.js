@@ -134,9 +134,9 @@
     desktopQuery.addListener(onBreakpointChange);
   }
 
-  /* คงเส้นสีทองไว้ที่เมนูที่ถูกกด (active) */
+  /* คงเส้นสีทองไว้ที่เมนูที่ถูกกด (active) — ลิงก์เปิดแท็บใหม่ (เช่น ประเมินความพึงพอใจ) ไม่ใช้เส้นนี้ */
   var topLinks = Array.prototype.slice.call(
-    document.querySelectorAll(".nav-list > .nav-item > .nav-link")
+    document.querySelectorAll(".nav-list > .nav-item > .nav-link:not([target=\"_blank\"])")
   );
 
   function select(link) {
@@ -160,3 +160,67 @@
 
   window.GUNavigation = { closeAll: closeAll };
 })();
+
+/* ------------------------------------------------------------------------
+   เมนูหลักตามตำแหน่งการเลื่อน (หน้าแรก): ลิงก์ที่มี data-spy จะติดสว่างเมื่อส่วนนั้นอยู่ในจอ
+   ------------------------------------------------------------------------ */
+(function () {
+  "use strict";
+
+  var topLinks = Array.prototype.slice.call(
+    document.querySelectorAll(".nav-list > .nav-item > a.nav-link")
+  );
+  var spyLinks = topLinks.filter(function (link) {
+    return link.hasAttribute("data-spy");
+  });
+  if (!spyLinks.length) {
+    return;
+  }
+
+  var home = document.querySelector('.nav-list > .nav-item > a.nav-link[href="index.html"]');
+  var targets = spyLinks
+    .map(function (link) {
+      return { link: link, el: document.getElementById(link.getAttribute("data-spy")) };
+    })
+    .filter(function (t) {
+      return !!t.el;
+    });
+  if (!targets.length) {
+    return;
+  }
+
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var line = window.innerHeight * 0.4;
+    var current = null;
+    targets.forEach(function (t) {
+      var r = t.el.getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) {
+        current = t.link;
+      }
+    });
+    var active = current || home;
+    topLinks.forEach(function (link) {
+      link.classList.remove("is-active");
+      link.removeAttribute("aria-current");
+    });
+    if (active) {
+      active.classList.add("is-active");
+      active.setAttribute("aria-current", "page");
+    }
+  }
+
+  function requestUpdate() {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+  }
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate);
+  update();
+})();
+

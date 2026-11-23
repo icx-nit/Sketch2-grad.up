@@ -1734,9 +1734,16 @@ body {
 
 /* หน้าแบบฟอร์ม: เปลี่ยนสีกรอบป้ายหมวดและเลขฉบับรอบตัวหนังสือ */
 .form-page .doc-row__badges .badge--type {
-  background: linear-gradient(135deg, #9B6BE8 0%, #6E3FC4 100%);
-  border: 1px solid #D9C6FF;
-  color: #FFFFFF;
+  background: none;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: #6E3FC4;
+}
+
+[data-theme="dark"] .form-page .doc-row__badges .badge--type {
+  color: #D9C6FF;
 }
 
 .form-page .doc-row__badges .badge--year {
@@ -1812,4 +1819,42 @@ body {
 /* หน้าการสอบต่าง ๆ: ปุ่มประกาศอื่น ๆ วางเหนือแถบหมวด */
 .exam-other {
   margin: 0 0 1rem;
+}
+
+/* ปุ่มเลือกภาษาไทย/อังกฤษ สำหรับรายการที่รวมคู่ TH กับ EN */
+.doc-row__lang {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+}
+
+.doc-row__lang-btn {
+  padding: 0.2rem 0.8rem;
+  border: 0;
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.doc-row__lang-btn.is-active {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.doc-row__lang-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+[data-theme="dark"] .doc-row__lang-btn {
+  background: #302440;
+  color: #E5D4FF;
+}
+
+[data-theme="dark"] .doc-row__lang-btn.is-active {
+  background: #E6D9FA;
+  color: #24173A;
 }

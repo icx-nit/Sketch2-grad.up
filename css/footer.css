@@ -7,9 +7,23 @@
 
 .site-footer {
   position: relative;
-  padding-block: clamp(1rem, 2vw, 1.35rem);
-  color: rgba(255, 255, 255, 0.72);
-  background: linear-gradient(135deg, #1a1227 0%, #241b32 55%, #2c1f42 100%);
+  z-index: 2;
+  overflow: hidden;
+  /* กรอบนูนครอบส่วนท้ายทั้งหมด (แบบแผงเดียวกับส่วนบริการ) */
+  --foot-lift: clamp(1.25rem, 2.4vw, 2rem);
+  margin-top: calc(-1 * var(--foot-lift));
+  padding-block: calc(var(--foot-lift) + clamp(2.5rem, 4.5vw, 3.5rem)) clamp(1.25rem, 2vw, 1.6rem);
+  border-radius: clamp(1.25rem, 2.2vw, 2rem) clamp(1.25rem, 2.2vw, 2rem) 0 0;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse at 10% 0%, rgba(147, 100, 223, 0.14), transparent 45%),
+    radial-gradient(ellipse at 90% 100%, rgba(214, 168, 63, 0.14), transparent 42%),
+    linear-gradient(135deg, #f8f6fc 0%, var(--color-bg) 55%, #efe8f8 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 -1px 0 rgba(214, 168, 63, 0.42),
+    0 -26px 50px -30px rgba(61, 24, 110, 0.45);
 }
 
 /* เส้นทองบาง ๆ คั่นจากส่วนบน */
@@ -99,4 +113,455 @@
   .site-footer__line > span:first-child {
     flex: 0 0 100%;
   }
+}
+
+/* ==========================================================================
+   ส่วนท้ายรวม: โลโก้+หัวข้อ+คำอธิบายซ้าย / บริการและติดต่อขวา / บรรทัดลิขสิทธิ์ล่าง
+   โหมดสว่าง = ไล่สีม่วงอ่อนตามแบบ, โหมดมืด = ไล่สีเข้มของธีมมืด
+   ========================================================================== */
+
+.site-footer__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.foot-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.foot-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.foot-logo {
+  display: block;
+  width: 4.5rem;
+  height: auto;
+}
+
+.foot-brand .support-hero__title {
+  max-width: none;
+  margin: 0;
+  text-align: start;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+}
+
+.foot-brand .support-hero__rule {
+  width: 4rem;
+  height: 3px;
+  margin: 0.4rem 0 0;
+  background: var(--color-accent);
+}
+
+.foot-desc {
+  max-width: 40rem;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+.foot-hours {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.foot-hours svg {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.1rem;
+  color: var(--color-primary-ink);
+}
+
+.foot-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.foot-col__title {
+  position: relative;
+  margin: 0 0 1rem;
+  padding-bottom: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-primary-ink);
+}
+
+.foot-col__title::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 0;
+  width: 2.25rem;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+}
+
+.foot-services {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foot-service {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+}
+
+.foot-contact {
+  display: grid;
+  gap: 1rem;
+}
+
+.foot-contact__item {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.foot-col__label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent-strong);
+}
+
+.foot-col__org {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.foot-col__text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.foot-col__link {
+  font-weight: 700;
+  color: var(--color-primary-ink);
+}
+
+.foot-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(75, 42, 134, 0.14);
+}
+
+.foot-bottom .support-visitors {
+  margin: 0;
+}
+
+/* ลิงก์และข้อความลิขสิทธิ์ในโหมดสว่าง (แทนสีทองของโหมดมืด) */
+.site-footer a {
+  color: var(--color-primary-ink);
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--color-primary);
+}
+
+.site-footer__brand {
+  color: var(--color-primary-ink) !important;
+}
+
+.site-footer__brand:hover,
+.site-footer__brand:focus-visible {
+  color: var(--color-primary) !important;
+}
+
+.site-footer__sep {
+  background: rgba(75, 42, 134, 0.28);
+}
+
+/* ---------- โหมดมืด ---------- */
+[data-theme="dark"] .site-footer {
+  color: rgba(255, 255, 255, 0.72);
+  background-color: #1a1227;
+  background-image: linear-gradient(135deg, #1a1227 0%, #241b32 55%, #2c1f42 100%);
+}
+
+[data-theme="dark"] .foot-brand .support-hero__title,
+[data-theme="dark"] .foot-col__title,
+[data-theme="dark"] .foot-col__org,
+[data-theme="dark"] .foot-hours {
+  color: #f2e9ff;
+}
+
+[data-theme="dark"] .foot-desc,
+[data-theme="dark"] .foot-service,
+[data-theme="dark"] .foot-col__text {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+[data-theme="dark"] .foot-hours svg {
+  color: #f0c96d;
+}
+
+[data-theme="dark"] .foot-col__label {
+  color: #f0c96d;
+}
+
+[data-theme="dark"] .foot-col__title::after,
+[data-theme="dark"] .foot-brand .support-hero__rule {
+  background: #d6a83f;
+}
+
+[data-theme="dark"] .site-footer a {
+  color: #f0c96d;
+}
+
+[data-theme="dark"] .site-footer a:hover,
+[data-theme="dark"] .site-footer a:focus-visible {
+  color: #ffe8a9;
+}
+
+[data-theme="dark"] .site-footer__brand {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .foot-bottom {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .site-footer__sep {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* มือถือ: คอลัมน์เรียงเป็นแนวเดียว */
+@media (max-width: 47.99rem) {
+  .foot-main {
+    grid-template-columns: 1fr;
+  }
+
+  .foot-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- ปรับระยะและขนาดให้เหมาะสม ---------- */
+.foot-logo {
+  width: clamp(7rem, 12vw, 10rem);
+  margin-bottom: 0.25rem;
+}
+
+.foot-brand {
+  gap: 0.7rem;
+}
+
+.foot-brand .support-hero {
+  margin: 0;
+}
+
+.foot-brand .support-hero__title {
+  line-height: 1.35;
+}
+
+.foot-brand .support-hero__rule {
+  margin: 0.6rem 0 0;
+}
+
+.foot-desc {
+  margin-top: 0.4rem;
+  line-height: 1.75;
+}
+
+.foot-hours {
+  margin-top: 0.2rem;
+  line-height: 1.6;
+}
+
+.foot-col__title {
+  margin-bottom: 0.9rem;
+}
+
+.foot-contact {
+  gap: 0.9rem;
+}
+
+.foot-contact__item {
+  gap: 0.2rem;
+}
+
+.foot-bottom {
+  gap: 0.75rem;
+  margin-top: clamp(1.75rem, 3.5vw, 2.25rem);
+}
+
+/* ---------- โหมดมืด: กรอบนูนและเงาตามธีมมืด ---------- */
+[data-theme="dark"] .site-footer {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 -1px 0 rgba(240, 201, 109, 0.36),
+    0 -26px 50px -30px rgba(0, 0, 0, 0.8);
+}
+
+/* ---------- รอบที่ 3: หัวข้อคอลัมน์ใหญ่ขึ้น โลโก้ใหญ่ขึ้น ระยะหัวให้พอเหมาะ ---------- */
+.foot-logo {
+  width: clamp(9rem, 15vw, 13rem);
+  margin-bottom: 0.5rem;
+}
+
+.foot-brand {
+  gap: 1.1rem;
+}
+
+.foot-col__title {
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.75rem;
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  font-weight: 800;
+}
+
+.foot-col__title::after {
+  width: 2.75rem;
+  height: 4px;
+}
+
+.foot-brand .support-hero__rule {
+  margin-top: 0.75rem;
+}
+
+.foot-desc {
+  margin-top: 0.6rem;
+}
+
+/* ---------- โลโก้และหัวข้อหลักอยู่บรรทัดเดียวกัน ---------- */
+.foot-brand__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.foot-brand__head .foot-logo {
+  flex: none;
+  margin-bottom: 0;
+}
+
+.foot-brand__head .support-hero {
+  flex: 1 1 22rem;
+  min-width: 0;
+}
+
+/* ---------- แถบลิขสิทธิ์ทึบเต็มความกว้าง ตัวหนังสือชัดขึ้น (ตามภาพอ้างอิงแถบมืด) ---------- */
+.site-footer {
+  padding-bottom: 0;
+}
+
+.site-footer__bar {
+  position: relative;
+  z-index: 1;
+  padding: clamp(0.9rem, 1.6vw, 1.1rem) clamp(1rem, 4vw, 5rem);
+  background-color: #1a1227;
+  background-image: linear-gradient(135deg, #1a1227 0%, #241b32 55%, #2c1f42 100%);
+  box-shadow: inset 0 1px 0 rgba(240, 201, 109, 0.35);
+}
+
+.site-footer__bar .site-footer__line {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.site-footer__bar a {
+  color: #f0c96d;
+  font-weight: 700;
+}
+
+.site-footer__bar a:hover,
+.site-footer__bar a:focus-visible {
+  color: #ffe8a9;
+}
+
+.site-footer__bar .site-footer__brand {
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+.site-footer__bar .site-footer__sep {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 47.99rem) {
+  .site-footer__bar .site-footer__line {
+    font-size: 0.75rem;
+  }
+}
+
+/* ---------- รอบที่ 4: ลดระยะด้านบน และยกตัวนับผู้เข้าชมให้ห่างจากแถบล่าง ---------- */
+.site-footer {
+  padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.foot-bottom {
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* ---------- รอบที่ 5: ตัวนับผู้เข้าชมลงมาอีกนิด และเพิ่มระยะขอบด้านบน ---------- */
+.site-footer {
+  padding-top: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.foot-bottom {
+  padding-bottom: clamp(1rem, 2vw, 1.4rem);
+}
+
+/* ---------- เวลาทำการ: แสดงเป็นสองบรรทัดเมื่อแยกเป็นสองข้อความ (รองรับหลายภาษา) ---------- */
+.foot-hours__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.foot-hours__note {
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
+/* ---------- โหมดมืด: เบอร์โทรและอีเมลเป็นสีขาว ---------- */
+[data-theme="dark"] .site-footer .foot-col__link {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .site-footer .foot-col__link:hover,
+[data-theme="dark"] .site-footer .foot-col__link:focus-visible {
+  color: #ffe8a9;
+}
+
+
+/* ---------- กรอบส่วนท้าย: ตัดเส้นขอบทองออก ใช้เงาและแสงขอบบนให้ดูนูนขึ้น ---------- */
+.site-footer::before {
+  display: none;
+}
+.site-footer {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 -10px 22px -10px rgba(61, 24, 110, 0.32),
+    0 -3px 8px -4px rgba(61, 24, 110, 0.18);
+}
+[data-theme="dark"] .site-footer {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 -12px 26px -12px rgba(0, 0, 0, 0.65);
 }

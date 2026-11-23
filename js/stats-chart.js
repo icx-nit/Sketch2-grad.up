@@ -14,7 +14,7 @@
   }
 
   var NS = "http://www.w3.org/2000/svg";
-  var MAX_VALUE = 328;
+  var MAX_VALUE = 0;
   var bars = Array.prototype.slice.call(svg.querySelectorAll(".stats-chart__bars rect"));
   if (!bars.length) {
     return;
@@ -23,8 +23,8 @@
   var tallest = bars.reduce(function (acc, rect) {
     return Math.max(acc, parseFloat(rect.getAttribute("height")));
   }, 0);
-  var scale = MAX_VALUE / tallest;
-  var unit = document.documentElement.getAttribute("data-lang") === "en" ? " cases" : " ราย";
+  var scale = tallest ? MAX_VALUE / tallest : 0;
+  var unit = document.documentElement.getAttribute("data-lang") === "en" ? " cases" : " คำร้อง";
 
   var layer = document.createElementNS(NS, "g");
   layer.setAttribute("class", "stats-chart__tips");
@@ -60,7 +60,7 @@
     var x = parseFloat(rect.getAttribute("x"));
     var width = parseFloat(rect.getAttribute("width"));
     var top = parseFloat(rect.getAttribute("y"));
-    var value = Math.round(parseFloat(rect.getAttribute("height")) * scale);
+    var value = rect.getAttribute("data-value") !== null ? Number(rect.getAttribute("data-value")) : Math.round(parseFloat(rect.getAttribute("height")) * scale);
     var centerX = x + width / 2;
 
     /* พื้นที่รับเมาส์กว้างกว่าแท่ง เพื่อให้ชี้ง่าย */

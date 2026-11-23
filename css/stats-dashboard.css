@@ -1,0 +1,324 @@
+/* ==========================================================================
+   stats-dashboard.css: ส่วนเสริมของระบบสถิติ ซ้อนทับ stats.css เดิม
+   คงโทนม่วง-ทอง การ์ดมุมโค้ง และ Typography เดิมทั้งหมด
+   ========================================================================== */
+
+.stats-panels > .stats-panel--wide { grid-column: auto; }
+
+.stats-actions { display: flex; justify-content: center; margin-top: clamp(1.25rem, 2.5vw, 1.75rem); }
+.stats-actions .btn { min-width: 12rem; }
+
+.stats-empty { margin: 0; padding: 1.5rem 1rem; text-align: center; color: var(--color-text-secondary, #5d5670); font-size: .95rem; list-style: none; }
+
+.stats-donut__track { fill: none; stroke: #ece6f5; stroke-width: 12; }
+.stats-donut__seg--completed { fill: none; stroke-width: 12; stroke-linecap: round; }
+.stats-status__item--total .stats-status__dot { background: #c9bfe0; }
+
+/* แถบเปรียบเทียบรายคณะ / รายสาขา */
+.stats-rank { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+.stats-rank__head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: .2rem; font-weight: 700; color: var(--color-text, #1f1a2e); }
+.stats-rank__rate { font-size: .85rem; font-weight: 800; color: var(--color-primary, #4D238D); white-space: nowrap; }
+.stats-rank__bar { position: relative; height: 1.25rem; margin-top: .3rem; border-radius: 999px; background: rgba(77,35,141,.07); overflow: hidden; }
+.stats-rank__bar span { position: absolute; inset: 0 auto 0 0; border-radius: 999px; transition: width .6s ease; }
+.stats-rank__bar--sub span { background: linear-gradient(90deg, #4D238D, #7a3fc0); }
+.stats-rank__bar--done span { background: linear-gradient(90deg, #D6A83F, #ecc96c); }
+.stats-rank__bar em { position: absolute; right: .7rem; top: 50%; transform: translateY(-50%); font-style: normal; font-size: .75rem; font-weight: 800; color: #2a1656; font-variant-numeric: tabular-nums; }
+
+/* หน้าสถิติทั้งหมด */
+.stats-page-head { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.25rem; }
+.stats-back { align-self: flex-start; font-size: .9rem; font-weight: 800; color: var(--color-primary, #4D238D); text-decoration: none; border-bottom: 2px solid var(--color-accent, #D6A83F); }
+
+.stats-filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: .9rem; align-items: end; margin-bottom: 1.1rem; padding: 1.1rem 1.2rem; border-radius: 20px; background: var(--color-surface, #fff); border: 1px solid rgba(77,35,141,.08); box-shadow: 0 10px 26px rgba(77,35,141,.07); }
+.stats-filters label { display: grid; gap: .35rem; font-size: .85rem; font-weight: 700; color: var(--color-text-secondary, #5d5670); }
+.stats-filters select { height: 2.75rem; padding: 0 2.2rem 0 .9rem; border-radius: 12px; border: 1px solid rgba(77,35,141,.2); background: #fff; color: var(--color-text, #1f1a2e); font: inherit; min-width: 0; }
+.stats-filters select:focus-visible { outline: 3px solid rgba(214,168,63,.55); outline-offset: 2px; }
+.stats-filters select:disabled { opacity: .6; }
+.stats-reset { height: 2.75rem; padding: 0 1.1rem; border-radius: 999px; border: 1.5px solid var(--color-primary, #4D238D); background: transparent; color: var(--color-primary, #4D238D); font: inherit; font-weight: 800; cursor: pointer; white-space: nowrap; }
+.stats-reset:hover, .stats-reset:focus-visible { background: var(--color-primary, #4D238D); color: #fff; outline: none; }
+
+.stats-table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid #ece6f5; }
+.stats-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: .92rem; }
+.stats-table th, .stats-table td { padding: .8rem 1rem; text-align: right; border-bottom: 1px solid #f0ebf7; font-variant-numeric: tabular-nums; }
+.stats-table th:first-child, .stats-table td:first-child { text-align: left; }
+.stats-table thead th { background: #f7f4fc; font-size: .85rem; font-weight: 800; color: var(--color-primary-ink, #2a1656); }
+.stats-table tbody th { font-weight: 700; }
+.stats-table tbody td.stats-empty { text-align: center; }
+
+@media (max-width: 860px) {
+  .stats-filters { grid-template-columns: 1fr 1fr; }
+  .stats-filters .stats-reset { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 520px) {
+  .stats-filters { grid-template-columns: 1fr; }
+}
+
+[data-theme="dark"] .stats-filters { background: #1d1630; border-color: rgba(255,255,255,.07); }
+[data-theme="dark"] .stats-filters select { background: #241b3b; color: #eee8fb; border-color: rgba(255,255,255,.14); }
+[data-theme="dark"] .stats-rank__head { color: #eee8fb; }
+[data-theme="dark"] .stats-rank__bar { background: rgba(255,255,255,.08); }
+[data-theme="dark"] .stats-table-wrap { border-color: rgba(255,255,255,.08); }
+[data-theme="dark"] .stats-table th, [data-theme="dark"] .stats-table td { border-color: rgba(255,255,255,.07); }
+[data-theme="dark"] .stats-table thead th { background: #241b3b; color: #eee8fb; }
+[data-theme="dark"] .stats-donut__track { stroke: #2d2446; }
+
+/* ---- จัดระยะการวางองค์ประกอบ: การ์ดคู่กันไม่ยืดให้ความสูงเท่ากัน ---- */
+.stats-panels { align-items: stretch; }
+.stats-panels > .stats-panel--wide .stats-rank { gap: .9rem; margin-bottom: 1.25rem; }
+.stats-panels > .stats-panel--wide .stats-table-wrap { margin-top: .25rem; }
+.stats-panels > .stats-panel--wide .stats-table th,
+.stats-panels > .stats-panel--wide .stats-table td { padding: .6rem .8rem; }
+.stats-panels > .stats-panel--wide .stats-table th:first-child,
+.stats-panels > .stats-panel--wide .stats-table td:first-child { white-space: nowrap; }
+.stats-panel > .stats-panel__note { margin-top: 1rem; }
+
+/* ---- กล่องแยกตามคณะ: สูงเท่ากับกล่องกราฟรายเดือน และเลื่อนดูข้อมูลภายในได้ ---- */
+.stats-panels > .stats-panel--wide {
+  contain: size;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.stats-scroll {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: .35rem;
+  margin-top: .5rem;
+  overscroll-behavior: contain;
+}
+.stats-scroll .stats-table thead th { position: sticky; top: 0; z-index: 1; }
+@media (max-width: 1024px) {
+  .stats-panels > .stats-panel--wide { contain: none; overflow: visible; }
+  .stats-scroll { overflow: visible; flex: none; }
+}
+
+/* ---- กล่องแยกตามคณะ: แสดงแถบกราฟและตาราง แต่ละส่วนเลื่อนดูภายในของตัวเอง ---- */
+.stats-split { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; gap: .9rem; }
+.stats-scroll--bars, .stats-scroll--table { flex: 1 1 0; min-height: 0; overflow-y: auto; margin-top: 0; }
+.stats-scroll--table .stats-table-wrap { border: 0; border-radius: 0; }
+@media (max-width: 1024px) {
+  .stats-split { flex: none; }
+  .stats-scroll--bars, .stats-scroll--table { flex: none; overflow: visible; }
+}
+
+/* ==========================================================================
+   โหมดมืด: ใช้ชุดสีตาม DESING.MD (Background #100D1C, Surface #1C172A,
+   Secondary #272038, Border #393047, Primary #9364DF, Gold #F0C96D,
+   Text #F5F1FC, Secondary Text #B8AEC9) ให้การ์ดและกล่องเด่นกว่าพื้นหลัง
+   ========================================================================== */
+[data-theme="dark"] .stats-section .stats-section__title {
+  color: #F5F1FC;
+  background: #1C172A;
+  border: 1px solid #393047;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .35);
+}
+[data-theme="dark"] .stats-section .stats-section__rule {
+  background: linear-gradient(90deg, #F0C96D, rgba(240, 201, 109, 0));
+}
+
+/* การ์ดสรุป: พื้นม่วงลึกไล่เฉด ตัวอักษรสว่าง */
+[data-theme="dark"] .stats-section .stats-card {
+  background: linear-gradient(115deg, #3a1d6e 0%, #5b2fa6 100%);
+  border: 1px solid rgba(147, 100, 223, .55);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .03) inset;
+}
+[data-theme="dark"] .stats-section .stats-card__icon {
+  border: 2px solid rgba(240, 201, 109, .6);
+  background: rgba(255, 255, 255, .06);
+  color: #F0C96D;
+}
+[data-theme="dark"] .stats-section .stats-card__content h3,
+[data-theme="dark"] .stats-section .stats-card__value span {
+  color: #E9E1F7;
+}
+[data-theme="dark"] .stats-section .stats-card__value strong {
+  color: #FFFFFF;
+}
+[data-theme="dark"] .stats-section .stats-card__trend {
+  color: #E9E1F7;
+}
+[data-theme="dark"] .stats-section .stats-card__trend svg {
+  fill: #F0C96D;
+}
+[data-theme="dark"] .stats-section .stats-card__trend strong,
+[data-theme="dark"] .stats-section .stats-card__trend--badge strong {
+  color: #F0C96D;
+}
+[data-theme="dark"] .stats-section .stats-card__trend--badge {
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(240, 201, 109, .45);
+  color: #F5F1FC;
+}
+
+/* กล่องกราฟและตาราง */
+[data-theme="dark"] .stats-section .stats-panel {
+  background: #1C172A;
+  border: 1px solid #393047;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .4);
+  color: #F5F1FC;
+}
+[data-theme="dark"] .stats-section .stats-panel__head { border-bottom-color: #393047; }
+[data-theme="dark"] .stats-section .stats-panel__head h3 { color: #F5F1FC; }
+[data-theme="dark"] .stats-section .stats-panel__subtitle,
+[data-theme="dark"] .stats-section .stats-panel__note,
+[data-theme="dark"] .stats-section .stats-legend { color: #B8AEC9; }
+[data-theme="dark"] .stats-section .stats-panel__note { border-top-color: #393047; }
+[data-theme="dark"] .stats-section .stats-panel__badge {
+  background: #272038;
+  border: 1px solid #393047;
+  color: #F0C96D;
+}
+[data-theme="dark"] .stats-section .stats-legend__dot { background: #9364DF; }
+[data-theme="dark"] .stats-section .stats-legend__line { background: #F0C96D; }
+
+/* กราฟรายเดือน */
+[data-theme="dark"] .stats-section .stats-chart__grid line { stroke: #393047; }
+[data-theme="dark"] .stats-section .stats-chart__axis text { fill: #B8AEC9; }
+[data-theme="dark"] .stats-section .stats-chart__bars rect { fill: #3B3054; }
+[data-theme="dark"] .stats-section .stats-chart__bars rect.stats-chart__bar--latest { fill: #9364DF; }
+[data-theme="dark"] .stats-section .stats-chart__trend-line { stroke: #F0C96D; }
+[data-theme="dark"] .stats-section .stats-chart__points circle { fill: #1C172A; stroke: #F0C96D; }
+[data-theme="dark"] .stats-section .stats-chart__points circle.stats-chart__point--latest { fill: #F0C96D; }
+[data-theme="dark"] .stats-section .stats-chart__latest { background: #9364DF; color: #FFFFFF; }
+
+/* วงกลมความสำเร็จ */
+[data-theme="dark"] .stats-section .stats-donut__track,
+[data-theme="dark"] .stats-section .stats-donut__ring circle.stats-donut__track { stroke: #272038; }
+[data-theme="dark"] .stats-section .stats-donut__seg--completed { stroke: #9364DF; }
+[data-theme="dark"] .stats-section .stats-donut__seg--review { stroke: #C9A24A; }
+[data-theme="dark"] .stats-section .stats-donut__center strong { color: #F5F1FC; }
+[data-theme="dark"] .stats-section .stats-donut__total,
+[data-theme="dark"] .stats-section .stats-donut__caption { color: #B8AEC9; }
+
+/* รายการสถานะ */
+[data-theme="dark"] .stats-section .stats-status__item {
+  background: #272038;
+  border-color: #393047;
+  color: #F5F1FC;
+}
+[data-theme="dark"] .stats-section .stats-status__value small { color: #B8AEC9; }
+[data-theme="dark"] .stats-section .stats-status__item--completed .stats-status__dot { background: #9364DF; }
+[data-theme="dark"] .stats-section .stats-status__item--review .stats-status__dot { background: #F0C96D; }
+[data-theme="dark"] .stats-section .stats-status__item--total .stats-status__dot { background: #B8AEC9; }
+
+/* แถบเปรียบเทียบรายคณะ */
+[data-theme="dark"] .stats-section .stats-rank__head { color: #F5F1FC; }
+[data-theme="dark"] .stats-section .stats-rank__rate { color: #F0C96D; }
+[data-theme="dark"] .stats-section .stats-rank__bar { background: #272038; }
+[data-theme="dark"] .stats-section .stats-rank__bar--sub span { background: linear-gradient(90deg, #6B3FC0, #9364DF); }
+[data-theme="dark"] .stats-section .stats-rank__bar--done span { background: linear-gradient(90deg, #B08A3A, #F0C96D); }
+[data-theme="dark"] .stats-section .stats-rank__bar em { color: #F5F1FC; text-shadow: 0 1px 2px rgba(0, 0, 0, .6); }
+
+/* ตารางสรุป */
+[data-theme="dark"] .stats-section .stats-table-wrap,
+[data-theme="dark"] .stats-section .stats-table { border-color: #393047; }
+[data-theme="dark"] .stats-section .stats-table thead th { background: #272038; color: #F0C96D; }
+[data-theme="dark"] .stats-section .stats-table th,
+[data-theme="dark"] .stats-section .stats-table td { color: #F5F1FC; border-bottom-color: #393047; }
+
+/* ตัวกรองและปุ่ม */
+[data-theme="dark"] .stats-section .stats-filters { background: #1C172A; border-color: #393047; box-shadow: 0 10px 26px rgba(0, 0, 0, .35); }
+[data-theme="dark"] .stats-section .stats-filters label { color: #B8AEC9; }
+[data-theme="dark"] .stats-section .stats-filters select { background: #272038; color: #F5F1FC; border-color: #393047; }
+[data-theme="dark"] .stats-section .stats-reset { border-color: #9364DF; color: #D5C2F7; }
+[data-theme="dark"] .stats-section .stats-reset:hover,
+[data-theme="dark"] .stats-section .stats-reset:focus-visible { background: #9364DF; color: #FFFFFF; }
+[data-theme="dark"] .stats-section .stats-back { color: #D5C2F7; border-bottom-color: #F0C96D; }
+[data-theme="dark"] .stats-section .stats-empty { color: #B8AEC9; }
+
+
+/* ---- โหมดมืด: กล่องใช้ Secondary Surface (#272038) พร้อมกรอบ Border (#393047) เพื่อแยกจากพื้นหลัง ---- */
+[data-theme="dark"] .stats-section .stats-panel {
+  background: #272038;
+  border: 1px solid #393047;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, .5);
+}
+[data-theme="dark"] .stats-section .stats-panel::before { background: #9364DF; }
+[data-theme="dark"] .stats-section .stats-panel__badge,
+[data-theme="dark"] .stats-section .stats-status__item,
+[data-theme="dark"] .stats-section .stats-filters select { background: #1C172A; border-color: #393047; }
+[data-theme="dark"] .stats-section .stats-filters { background: #272038; border-color: #393047; }
+
+/* ---- หน้าแรก: กราฟรายเดือน แยกตามคณะ และสัดส่วนความสำเร็จ อยู่บรรทัดเดียวกัน ---- */
+.stats-section[data-stats-home] .stats-panels {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.1rem;
+}
+.stats-section[data-stats-home] .stats-panels > .stats-panel--wide {
+  grid-column: auto;
+}
+@media (max-width: 1100px) {
+  .stats-section[data-stats-home] .stats-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- ตัวกรองสถิติ: ระยะซ้าย-ขวาและลูกศรสมมาตร ตัวอักษรกับลูกศรกึ่งกลางแนวตั้ง ---- */
+.stats-filters select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0 40px 0 16px;
+  line-height: normal;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%234D238D' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px 8px;
+}
+[data-theme="dark"] .stats-section .stats-filters select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23D5C2F7' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   อนิเมชั่นเข้าหน้า "สถิติการยื่นคำร้อง บศ.1 ทั้งหมด"
+   ค่อยๆ ลอยขึ้นตามลำดับ (หัวข้อ > ตัวกรอง > การ์ดสรุป > กราฟ/ตาราง)
+   ใช้ backwards เพื่อไม่ทับ hover ของการ์ดหลังอนิเมชั่นจบ
+   ========================================================================== */
+@keyframes stats-pg-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.stats-page .stats-back,
+.stats-page .stats-section__title,
+.stats-page .stats-filters,
+.stats-page .stats-summary > .stats-card,
+.stats-page .stats-panels > .stats-panel,
+.stats-page .stats-table-wrap {
+  animation: stats-pg-in 0.6s var(--ease, cubic-bezier(0.22, 1, 0.36, 1)) backwards;
+}
+
+.stats-page .stats-back { animation-delay: 0.02s; }
+.stats-page .stats-section__title { animation-delay: 0.08s; }
+.stats-page .stats-filters { animation-delay: 0.16s; }
+.stats-page .stats-summary > .stats-card:nth-child(1) { animation-delay: 0.24s; }
+.stats-page .stats-summary > .stats-card:nth-child(2) { animation-delay: 0.32s; }
+.stats-page .stats-summary > .stats-card:nth-child(3) { animation-delay: 0.4s; }
+.stats-page .stats-panels > .stats-panel:nth-child(1) { animation-delay: 0.5s; }
+.stats-page .stats-panels > .stats-panel:nth-child(2) { animation-delay: 0.6s; }
+.stats-page .stats-table-wrap { animation-delay: 0.7s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-page .stats-back,
+  .stats-page .stats-section__title,
+  .stats-page .stats-filters,
+  .stats-page .stats-summary > .stats-card,
+  .stats-page .stats-panels > .stats-panel,
+  .stats-page .stats-table-wrap {
+    animation: none;
+  }
+}
+
+/* ตัวกรองเดือน: แสดง 4 ช่องในแถวเดียวบนจอกว้าง และไฮไลต์แท่งเดือนที่เลือก */
+@media (min-width: 1024px) {
+  .stats-filters { grid-template-columns: repeat(4, minmax(0, 1fr)) auto; }
+}
+.stats-chart__bars rect.is-selected { stroke: #F0C96D; stroke-width: 2.5; }

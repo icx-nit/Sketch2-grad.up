@@ -171,6 +171,46 @@
   color: var(--color-primary-ink);
 }
 
+/* รายการฐานข้อมูล: ชื่อเว็บ + คำอธิบายสั้นให้รู้ว่ากดอันไหน */
+.dropdown--wide {
+  min-width: 24rem;
+}
+
+.dropdown__title {
+  display: block;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.dropdown__desc {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+.dropdown__link--sub {
+  padding-left: 1.75rem;
+}
+
+.dropdown__group {
+  padding: 0.625rem 0.75rem 0.25rem;
+}
+
+.dropdown__group-title {
+  display: block;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.dropdown__group-desc {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
 /* --------------------------------------------------------------------------
    Search panel
    -------------------------------------------------------------------------- */
@@ -582,4 +622,137 @@
 /* ล็อกการเลื่อนหน้าขณะเปิด drawer */
 body.is-locked {
   overflow: hidden;
+}
+
+
+/* ---------- เมนูขนาดตัวอักษร: ปุ่ม A เปิดเมนู A- A A+ ---------- */
+.font-size--menu {
+  position: relative;
+}
+
+.font-size__menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  right: 0;
+  z-index: 40;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.font-size__menu[hidden] {
+  display: none;
+}
+
+.font-size__menu .font-size__btn {
+  min-width: 2.5rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- แก้เมนู A ถูกตัดขอบ: กรอบเดิมมี overflow:hidden ทำให้เมนูที่ลอยอยู่ถูกซ่อน ---------- */
+.font-size.font-size--menu {
+  overflow: visible;
+}
+
+
+/* ---------- ปุ่มเดียว: ช่องซ้ายแสดงโหมด (A- / A / A+) ช่องขวาเป็นลูกศรเปิดเมนู ---------- */
+.font-size__act {
+  min-width: 2.75rem;
+  padding-inline: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--font-control-text);
+}
+
+.font-size__act:hover,
+.font-size__act:active,
+.font-size__chev:hover {
+  background-color: var(--font-control-hover);
+}
+
+.font-size__chev {
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  padding: 0;
+  border-left: 1px solid var(--font-control-border);
+  color: var(--font-control-text);
+}
+
+.font-size__chev svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  transition: transform var(--duration) var(--ease);
+}
+
+.font-size__chev[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+
+/* ---------- รายการเรียงลงมาแนวตั้ง: แถวบนเป็นโหมดที่เลือก ด้านล่างเป็นโหมดอื่น ---------- */
+.font-size__menu {
+  top: calc(100% + 0.35rem);
+  right: auto;
+  left: 0;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.font-size__menu .font-size__btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 2.75rem;
+  min-width: 0;
+  padding-inline: 0.9rem;
+  border: 0;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.font-size__menu .font-size__btn + .font-size__btn {
+  border-top: 1px solid var(--font-control-border);
+  border-left: 0;
+}
+
+.font-size__menu .font-size__btn[hidden] {
+  display: none;
+}
+
+.font-size__menu[hidden] {
+  display: none;
+}
+
+/* ---- ปุ่มขนาดตัวอักษร (A- A A+) ในโหมดมืด: ให้ตัวอักษรและกรอบเด่นกว่าแถบเมนู ---- */
+[data-theme="dark"] .site-header .font-size {
+  background: rgba(255, 255, 255, .12);
+  border-color: rgba(255, 255, 255, .34);
+}
+[data-theme="dark"] .site-header .font-size__act,
+[data-theme="dark"] .site-header .font-size__chev,
+[data-theme="dark"] .site-header .font-size__btn {
+  color: #ffffff;
+  font-weight: 700;
+}
+[data-theme="dark"] .site-header .font-size__act,
+[data-theme="dark"] .site-header .font-size__chev {
+  opacity: 1;
+}
+[data-theme="dark"] .site-header .font-size__menu {
+  background: #1d1630;
+  border-color: rgba(255, 255, 255, .22);
+}
+[data-theme="dark"] .site-header .font-size__menu .font-size__btn {
+  color: #f4efff;
 }

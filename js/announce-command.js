@@ -713,7 +713,7 @@
     setYear(yearSelect.value);
   });
 
-  sortBtn.addEventListener("click", function () {
+  if (sortBtn) sortBtn.addEventListener("click", function () {
     state.newestFirst = !state.newestFirst;
     state.page = 1;
     sortLabel.textContent = state.newestFirst ? t("sort.newest") : t("sort.oldest");

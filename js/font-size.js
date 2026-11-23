@@ -74,9 +74,80 @@
     return apply(DEFAULT_SIZE);
   }
 
+  /* ปุ่มหลัก = โหมดที่เลือกอยู่ (A- / A / A+) กดซ้ำได้ไม่จำกัด
+     ลูกศรเปิดรายการด้านล่าง แสดงเฉพาะโหมดอื่นที่ยังไม่ได้เลือก
+     เลือกจากรายการ = เปลี่ยนโหมดและปรับขนาดหนึ่งขั้น แล้วปิดรายการ */
+  function bindMenu() {
+    var act = document.querySelector("[data-font-act]");
+    var toggle = document.querySelector("[data-font-toggle]");
+    var menu = document.querySelector(".font-size__menu");
+    if (!act || !toggle || !menu) {
+      return;
+    }
+
+    var LABELS = { decrease: "A-", reset: "A", increase: "A+" };
+    var TITLES = {
+      decrease: "ลดขนาดตัวอักษร",
+      reset: "ขนาดตัวอักษรปกติ",
+      increase: "เพิ่มขนาดตัวอักษร"
+    };
+    var items = Array.prototype.slice.call(menu.querySelectorAll("[data-font-pick]"));
+
+    function setMode(mode) {
+      act.setAttribute("data-font", mode);
+      act.textContent = LABELS[mode];
+      act.setAttribute("aria-label", TITLES[mode]);
+      items.forEach(function (item) {
+        item.hidden = item.getAttribute("data-font-pick") === mode;
+      });
+    }
+
+    function setOpen(open) {
+      menu.hidden = !open;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    items.forEach(function (item) {
+      item.addEventListener("click", function () {
+        var mode = item.getAttribute("data-font-pick");
+        setMode(mode);
+        if (mode === "decrease") {
+          decrease();
+        } else if (mode === "increase") {
+          increase();
+        } else {
+          reset();
+        }
+        setOpen(false);
+      });
+    });
+
+    toggle.addEventListener("click", function (event) {
+      event.stopPropagation();
+      setOpen(menu.hidden);
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!menu.hidden && !event.target.closest(".font-size--menu")) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !menu.hidden) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    setMode(act.getAttribute("data-font") || "reset");
+    setOpen(false);
+  }
+
   function init() {
     var size = readSize();
     apply(size, false);
+    bindMenu();
 
     var controls = document.querySelectorAll("[data-font]");
     Array.prototype.forEach.call(controls, function (button) {

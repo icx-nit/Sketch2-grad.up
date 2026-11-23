@@ -1,430 +1,158 @@
 # PLAN.md
-# University Website Development Plan
 
-## 1. Project Overview
+แผนการพัฒนาและสถานะงานของเว็บไซต์บัณฑิตวิทยาลัย มหาวิทยาลัยพะเยา (GRAD UP)
 
-### Project Name
-Modern University Website
+สัญลักษณ์: [x] ทำเสร็จแล้วในโค้ดปัจจุบัน · [ ] ยังไม่ได้ทำ · [?] มีร่องรอยในโค้ดแต่ยังต้องตรวจในเบราว์เซอร์
 
-### Project Description
-Develop a modern, professional, responsive, and user-friendly university website using standard web technologies.
+ข้อมูลนี้สรุปจากการสแกนโค้ดและการคุยงานล่าสุด ยังไม่ได้ผ่านการตรวจด้วยตาในเบราว์เซอร์ทุกรายการ
 
-The website will focus on presenting university information, academic services, news, announcements, events, and other important information in an organized and accessible way.
+## ภาพรวม
 
-### Main Objectives
-- Create a modern and professional university website.
-- Improve the accessibility of university information.
-- Provide intuitive navigation and user-friendly interfaces.
-- Support both Light Mode and Dark Mode.
-- Ensure responsive layouts across desktop, tablet, and mobile devices.
-- Maintain clean, reusable, and easy-to-understand code.
+- ระยะที่ 1 โครงสร้างหน้าและระบบพื้นฐาน: เสร็จเกือบทั้งหมด
+- ระยะที่ 2 หน้าแรก ข่าว ปฏิทิน และป๊อปอัป: เสร็จเป็นส่วนใหญ่ ยังมีรายการค้าง
+- ระยะที่ 3 หน้าสถิติและหน้าเอกสาร: เสร็จส่วนหน้าแสดงผล ยังไม่มีข้อมูลจริง
+- ระยะที่ 4 ระบบหลังบ้าน CRUD และการเชื่อมข้อมูลจริง: ยังไม่ได้เริ่ม
 
 ---
 
-## 2. Technology Stack
-
-### 2.1 Allowed Technologies
-
-The project must use ONLY the following technologies:
-
-| Technology | Purpose |
-|---|---|
-| HTML5 | Website structure and content |
-| CSS3 | Styling, layout, animations, and responsive design |
-| Vanilla JavaScript (ES6+) | Interactions and dynamic functionality |
-
-### 2.2 Technology Restrictions
-
-The following technologies and frameworks are NOT allowed:
-
-- React
-- Next.js
-- Vue.js
-- Angular
-- Svelte
-- Tailwind CSS
-- Bootstrap
-- jQuery
-- TypeScript
-- Frontend UI Frameworks
-- Node.js-based frontend build tools
-- Vite or Webpack
-
-### 2.3 Implementation Requirements
-
-- Write standard HTML, CSS, and JavaScript.
-- Do not use frontend frameworks.
-- Do not require a compilation or build process.
-- Use native browser APIs whenever possible.
-- Use CSS variables for consistent design tokens.
-- Use JavaScript ES Modules when necessary.
-- Keep code modular and reusable.
-- Ensure the website can run directly in a modern browser.
-
----
-
-## 3. Project Design Direction
-
-Follow the design specifications defined in `DESIGN.md`.
-
-### Theme
-Amethyst Purple – Bright Gold – Modern University
-
-### Light Mode
-
-| Token | Color |
-|---|---|
-| Background | #F4F2F8 |
-| Primary Purple | #4D238D |
-| Accent Gold | #D6A83F |
-| Surface | #FFFFFF |
-| Primary Text | #241B32 |
-
-### Dark Mode
-
-| Token | Color |
-|---|---|
-| Background | #100D1C |
-| Primary Purple | #9364DF |
-| Accent Gold | #F0C96D |
-| Surface | #1C172A |
-| Primary Text | #F5F1FC |
-
-### Design Requirements
-- Professional university identity.
-- Minimal and modern interface.
-- Consistent typography and spacing.
-- Clear visual hierarchy.
-- Responsive navigation.
-- Subtle transitions and animations.
-- Accessible color contrast.
-
----
-
-## 4. Development Phases
-
-The project will be divided into the following development phases.
-
-### Phase 1: Project Preparation
-
-Objectives:
-- Review project requirements.
-- Identify website pages and features.
-- Review the design system.
-- Prepare project folders and files.
-- Establish naming conventions.
-
-Tasks:
-- [ ] Analyze project requirements.
-- [ ] Review DESIGN.md.
-- [ ] Define website structure.
-- [ ] Create the project directory.
-- [ ] Prepare HTML, CSS, and JavaScript files.
-
-Deliverable:
-A prepared project structure and development specification.
-
-### Phase 2: UI/UX Design and Layout
-
-Objectives:
-Create a consistent user interface before implementing functionality.
-
-Tasks:
-- [ ] Design the overall website layout.
-- [ ] Define header and navigation.
-- [ ] Design the main content area.
-- [ ] Design footer.
-- [ ] Define reusable UI components.
-- [ ] Establish responsive layouts.
-- [ ] Review Light Mode and Dark Mode.
-- [ ] Check visual consistency.
-
-Deliverable:
-A complete UI layout ready for frontend implementation.
-
-### Phase 3: HTML Structure
-
-Objectives:
-Build the semantic structure of the website.
-
-Tasks:
-- [ ] Create HTML pages.
-- [ ] Use semantic HTML5 elements.
-- [ ] Implement navigation links.
-- [ ] Organize content sections.
-- [ ] Add images and alternative text.
-- [ ] Create accessible forms where required.
-- [ ] Check HTML structure.
-
-Deliverable:
-Complete HTML page structures.
-
-### Phase 4: CSS Styling
-
-Objectives:
-Implement the visual design system.
-
-Tasks:
-- [ ] Create global CSS variables.
-- [ ] Implement Light Mode colors.
-- [ ] Implement Dark Mode colors.
-- [ ] Style navigation and header.
-- [ ] Style content sections.
-- [ ] Style cards, buttons, and forms.
-- [ ] Implement typography.
-- [ ] Implement spacing and layout.
-- [ ] Add hover and focus states.
-- [ ] Implement responsive breakpoints.
-- [ ] Add subtle animations.
-
-Deliverable:
-Fully styled responsive website.
-
-### Phase 5: JavaScript Functionality
-
-Objectives:
-Implement website interactions using Vanilla JavaScript.
-
-Tasks:
-- [ ] Implement mobile navigation.
-- [ ] Implement Light/Dark Mode toggle.
-- [ ] Save theme preference using localStorage.
-- [ ] Implement dropdown menus.
-- [ ] Implement search functionality when required.
-- [ ] Implement filtering and sorting when required.
-- [ ] Implement interactive components.
-- [ ] Add form validation.
-- [ ] Implement pagination or load more when required.
-- [ ] Handle user interaction states.
-
-Deliverable:
-Interactive website without frontend frameworks.
-
-### Phase 6: Responsive and Cross-Browser Testing
-
-Objectives:
-Ensure the website works correctly across devices and browsers.
-
-Tasks:
-- [ ] Test desktop layouts.
-- [ ] Test tablet layouts.
-- [ ] Test mobile layouts.
-- [ ] Test navigation.
-- [ ] Test theme switching.
-- [ ] Test interactive components.
-- [ ] Check horizontal overflow.
-- [ ] Check image scaling.
-- [ ] Test Chrome, Edge, and Firefox.
-- [ ] Fix layout and interaction issues.
-
-Deliverable:
-Responsive and functional website.
-
-### Phase 7: Accessibility and Quality Assurance
-
-Objectives:
-Improve accessibility, usability, and code quality.
-
-Tasks:
-- [ ] Check text contrast.
-- [ ] Check keyboard navigation.
-- [ ] Check focus indicators.
-- [ ] Check image alternative text.
-- [ ] Check semantic HTML.
-- [ ] Check JavaScript console errors.
-- [ ] Remove unused CSS and JavaScript.
-- [ ] Optimize image sizes.
-- [ ] Verify all internal links.
-- [ ] Perform final UI review.
-
-Deliverable:
-Tested and quality-checked website.
-
-### Phase 8: Final Delivery
-
-Objectives:
-Prepare the completed website for presentation and deployment.
-
-Tasks:
-- [ ] Review all pages.
-- [ ] Verify all required features.
-- [ ] Verify responsive behavior.
-- [ ] Organize source files.
-- [ ] Update README.md.
-- [ ] Document important implementation details.
-- [ ] Prepare final project files.
-- [ ] Present the completed website.
-
-Deliverable:
-Completed university website project.
-
----
-
-## 5. Suggested Project Structure
-
-Use a simple and organized folder structure.
-
-```text
-university-website/
-│
-├── index.html
-├── README.md
-├── PLAN.md
-├── DESIGN.md
-│
-├── pages/
-│   ├── about.html
-│   ├── news.html
-│   ├── news-detail.html
-│   ├── services.html
-│   └── contact.html
-│
-├── css/
-│   ├── variables.css
-│   ├── reset.css
-│   ├── style.css
-│   ├── components.css
-│   └── responsive.css
-│
-├── js/
-│   ├── main.js
-│   ├── theme.js
-│   ├── navigation.js
-│   └── components.js
-│
-└── assets/
-    ├── images/
-    ├── icons/
-    └── fonts/
-```
-
-Note:
-The folder structure may be adjusted according to the actual project requirements. Do not create unnecessary files or folders.
-
----
-
-## 6. Coding Standards
-
-### HTML
-- Use HTML5 semantic elements.
-- Use meaningful IDs and class names.
-- Keep the document structure organized.
-- Include appropriate metadata.
-- Use accessible form labels.
-- Avoid unnecessary nested elements.
-
-### CSS
-- Use CSS custom properties.
-- Use Flexbox and CSS Grid for layouts.
-- Avoid duplicated styles.
-- Organize CSS by component or responsibility.
-- Use responsive media queries.
-- Avoid excessive !important declarations.
-- Maintain consistent naming conventions.
-
-### JavaScript
-- Use Vanilla JavaScript only.
-- Use modern ES6+ syntax.
-- Prefer const and let.
-- Avoid unnecessary global variables.
-- Use reusable functions.
-- Separate functionality into logical files.
-- Use addEventListener for event handling.
-- Handle errors appropriately.
-- Avoid inline JavaScript in HTML.
-
----
-
-## 7. Responsive Design Requirements
-
-The website must support the following screen sizes:
-
-| Device | Screen Width |
-|---|---|
-| Mobile | 320px – 767px |
-| Tablet | 768px – 1023px |
-| Desktop | 1024px – 1439px |
-| Large Desktop | 1440px and above |
-
-Requirements:
-- Mobile-first or responsive implementation.
-- Navigation adapts to screen size.
-- Content remains readable.
-- Images scale proportionally.
-- Cards adapt to available width.
-- Tables remain accessible.
-- No unwanted horizontal scrolling.
-
----
-
-## 8. Performance Requirements
-
-- Minimize unnecessary JavaScript.
-- Optimize images.
-- Avoid excessive animations.
-- Use lazy loading for suitable images.
-- Minimize duplicated CSS.
-- Avoid unnecessary external dependencies.
-- Keep page loading efficient.
-- Use native browser functionality where possible.
-
----
-
-## 9. Development Rules for AI Agents
-
-Any AI agent or coding assistant working on this project must follow these rules:
-
-1. Read PLAN.md and DESIGN.md before making changes.
-2. Use HTML5, CSS3, and Vanilla JavaScript only.
-3. Never introduce frontend frameworks or CSS frameworks.
-4. Do not install unnecessary packages or dependencies.
-5. Do not introduce build tools.
-6. Follow the established design system.
-7. Maintain existing project structure unless changes are necessary.
-8. Reuse existing CSS classes and components where possible.
-9. Keep code readable and beginner-friendly.
-10. Do not remove existing functionality without approval.
-11. Do not modify unrelated files.
-12. Test changes before considering a task complete.
-13. Explain important changes and affected files.
-14. Ask for approval before introducing new technologies or expanding project scope.
-
-### Important Restriction
-
-If a requested feature cannot be implemented using HTML, CSS, and Vanilla JavaScript alone, explain the limitation and propose an alternative before changing the technology stack.
-
----
-
-## 10. Project Completion Checklist
-
-The project is considered complete when:
-
-- [ ] All required pages are implemented.
-- [ ] The design follows DESIGN.md.
-- [ ] Light Mode works correctly.
-- [ ] Dark Mode works correctly.
-- [ ] Navigation works correctly.
-- [ ] Responsive layouts work across devices.
-- [ ] JavaScript interactions work correctly.
-- [ ] No major console errors remain.
-- [ ] HTML, CSS, and JavaScript are organized.
-- [ ] Accessibility requirements are addressed.
-- [ ] No prohibited frontend frameworks are used.
-- [ ] README.md contains setup and usage instructions.
-
----
-
-## 11. Final Project Goal
-
-Deliver a modern, professional, responsive, and accessible university website using only HTML5, CSS3, and Vanilla JavaScript.
-
-The project must prioritize:
-- User experience.
-- Institutional identity.
-- Clean and maintainable code.
-- Responsive design.
-- Accessibility.
-- Consistent visual design.
-- Lightweight implementation.
-
-**The website must be built entirely with standard web technologies, without relying on frontend frameworks or build tools.**
+## ระยะที่ 1: โครงสร้างหลักและแถบนำทาง
+
+- [x] โครงสร้างหน้า `index.html`, `statistics.html`, `login.html` และหน้า `announce-*.html`
+- [x] ระบบสี Light Mode และ Dark Mode ผ่าน `data-theme` และ `css/variables.css`
+- [x] ระบบภาษาไทยและอังกฤษ ผ่าน `data-i18n` และ `js/i18n.js`
+- [x] ปุ่มปรับขนาดตัวอักษร (`js/font-size.js`)
+- [x] ช่องค้นหา (`js/search.js`)
+- [x] ปุ่มเข้าสู่ระบบบนแถบบน (`header-login`) ไม่ซ่อนในเมนู
+- [x] เปลี่ยนชื่อเมนู "วารสาร" เป็น "ฐานข้อมูล" และมีรายการย่อย
+- [x] เมนู "หน่วยงานอื่นๆ" และ "ระบบอื่นๆ" ปรากฏในโค้ดแล้ว
+- [x] ปุ่มเข้าสู่ระบบในโหมดมืดเป็นพื้นม่วงอ่อน ตัวหนังสือม่วงเข้ม
+- [ ] [?] ตรวจว่าปุ่ม A-, A, A+ เป็น Drop-down และย้ายออกมาอยู่นอกเมนูตามที่ขอ
+- [ ] [?] ตรวจว่าเมนูบนมือถือพับเก็บอัตโนมัติเมื่อกดลิงก์
+- [ ] ย้ายลิงก์ "ประเมินความพึงพอใจ" ไปอยู่ตามตำแหน่งที่ผู้ตรวจงานกำหนด (ยังต้องตรวจ)
+- [ ] เพิ่มลิงก์ **Google Scholar** ในเมนูฐานข้อมูล (ยังไม่พบในโค้ด)
+- [ ] ตรวจลิงก์ Scopus, ISI, TCI, ERIC และ PubMed ให้ทำงานจริง (ยังไม่ได้ตรวจ)
+- [ ] เพิ่มลิงก์ **ITC** และ **UP Meeting** ในเมนูระบบอื่นๆ (ยังไม่พบในโค้ด และยังไม่มีลิงก์ที่ยืนยันแล้ว)
+- [ ] ย้ายรายการ "ข่าว" ออกจากแถบบนตามที่ผู้ตรวจงานกำหนด (ยังต้องตรวจ)
+- [ ] ตรวจลำดับเมนูว่าตรงตามสเปก `REQUIREMENTS.md` ข้อ 1
+
+## ระยะที่ 2: หน้าแรก ข่าว ป๊อปอัป ปฏิทิน
+
+### ป๊อปอัปประชาสัมพันธ์
+
+- [x] ป๊อปอัปเปิดเมื่อเข้าหน้า มีปุ่มปิด (`js/promo.js`)
+- [x] ปุ่ม "อ่านประกาศฉบับเต็ม" อยู่ในป๊อปอัปโหมดมืดตามกติกาสี
+- [ ] เก็บประวัติข่าวที่ปิดไว้ให้ค้นดูย้อนหลังได้ (ยังไม่ได้ทำ ต้องมีระบบหลังบ้านหรือจำในเบราว์เซอร์)
+- [ ] ปิดป๊อปอัปแล้วไม่บังหน้าจอมือถือ (ยังต้องตรวจ)
+
+### ข่าวสารล่าสุด (สไลด์)
+
+- [x] สไลด์ข่าวเด่น เลื่อนอัตโนมัติ 5 วินาที หยุดเมื่อชี้หรือโฟกัส รองรับการปัด (`js/news.js`)
+- [x] ป้าย NEW รูปดาวสีทองไล่สีแดง มุมขวาบนของรูป
+- [x] ปุ่มซ้าย-ขวา และจุดบอกตำแหน่ง
+- [x] กรอบเด่นขึ้นในโหมดมืด
+- [x] หัวข้อ "ข่าวสารล่าสุด" เด่นที่สุดในส่วนข่าว
+
+### ประกาศและข่าวสารทั่วไป
+
+- [x] กริด 2 คอลัมน์ มีรูป ป้ายประเภท หัวข้อ คำอธิบาย วันที่ และ "อ่านต่อ"
+- [x] ความสูงเท่ากับข่าวล่าสุด และเลื่อนดูภายในกล่องเมื่อยาว
+- [x] วันที่ชิดซ้าย "อ่านต่อ" ชิดขวา
+- [x] ปุ่มเลื่อนซ้าย-ขวาของส่วนนี้ถูกซ่อน
+- [x] หัวข้อ "ประกาศและข่าวสารทั่วไป" เด่นกว่าพื้นหลัง รองจากหัวข้อข่าวล่าสุด (ถูกย้อนกลับตามคำขอ ต้องยืนยันว่าเป็นแบบที่ต้องการ)
+- [x] กรอบการ์ดข่าวทั่วไปเด่นกว่าพื้นหลังแต่เบากว่าข่าวล่าสุด
+- [x] ลิงก์ของทั้ง 6 ข่าวชี้ไปยังลิงก์ที่ผู้ใช้ให้มา (`js/news.js`)
+- [ ] ยืนยันว่าลิงก์เปิดในแท็บใหม่ทำงานและเปิดได้จริง (ยังไม่ได้ทดสอบ)
+- [ ] ตรวจคำแปลภาษาอังกฤษของข่าวทั้ง 6 รายการ (ทีมเขียนเอง)
+
+### Pop-up "ดูข่าวทั้งหมด"
+
+- [x] 3 คอลัมน์บนจอ 768px ขึ้นไป มองเห็น 2 แถวและเลื่อนได้
+- [x] ปิดด้วย ✕ คลิกพื้นหลัง หรือ Esc
+- [x] แก้การมองไม่เห็นตัวหนังสือในโหมดมืด
+- [ ] ล็อกการเลื่อนหน้าหลักขณะเปิด Pop-up (ยังต้องตรวจ)
+
+### ปฏิทิน
+
+- [x] แสดงวันและรายการกิจกรรม มีปุ่มเปลี่ยนเดือน (`js/calendar.js`)
+- [x] กรอบและแผงรายละเอียดวันมีสไตล์ใหม่ ตัวหนังสือโหมดมืดอ่านได้
+- [x] ลบข้อความแหล่งที่มาของปฏิทินออกจากหน้าแล้ว
+- [ ] ตรวจว่าข้อมูลกิจกรรมปฏิทินเป็นข้อมูลจริงทั้งหมด (ยังมีบางส่วนเป็นข้อมูลตัวอย่าง)
+
+### ลำดับบล็อกหน้าแรก
+
+- [ ] ย้าย "พร้อมให้บริการทำงานเป็นทีม" (บริการ/หน่วยงานที่เกี่ยวข้อง) ขึ้นบนสุด (ยังต้องตรวจ)
+- [ ] ย้ายข่าวและข้อมูลสารสนเทศลงมาอยู่ล่างบริการ (ยังต้องตรวจ)
+- [ ] ปรับลำดับบนมือถือให้ สถิติอยู่ล่างสุด (ยังต้องตรวจ)
+
+### การ์ดสรุปและส่วนติดต่อ
+
+- [x] กรอบ "ลิงก์ที่เกี่ยวข้อง" และ "ติดต่อเรา" ให้ความสูงเท่ากัน (`css/news.css`)
+- [ ] เปลี่ยนชื่อหมวด "หน่วยงานที่เกี่ยวข้อง" เป็น "หน่วยงานอื่นๆ" (มีข้อความ "หน่วยงานอื่นๆ" แล้ว แต่ยังต้องตรวจทุกที่)
+
+## ระยะที่ 3: หน้าสถิติและหน้าเอกสาร
+
+### หน้าแรกส่วนสถิติ
+
+- [x] แสดงปีล่าสุดโดยไม่มีตัวกรอง มีการ์ดสรุป กราฟรายเดือน กราฟวงกลม และรายการแยกคณะ (`js/stats-dashboard.js`)
+- [x] ลิงก์ "ดูสถิติทั้งหมด" ไปยัง `statistics.html`
+- [x] ปุ่ม "ดูสถิติทั้งหมด" ในโหมดมืดเป็นพื้นม่วงอ่อน
+- [x] กราฟรายเดือนเรียงตามปฏิทิน ม.ค.–ธ.ค. และเว้นเดือนที่ไม่มีข้อมูล
+- [ ] [?] ตรวจว่าหัวข้อสถิติในโหมดมืดเทียบเท่าหัวข้อข่าวตามที่ขอ
+
+### หน้า "สถิติการยื่นคำร้อง บศ.1 ทั้งหมด" (`statistics.html`)
+
+- [x] ตัวกรอง 4 ช่อง: ปีการศึกษา เดือน คณะ สาขา และปุ่มล้างตัวกรอง (`js/stats-page.js`)
+- [x] ตัวกรองเดือนแสดงเฉพาะเดือนที่มีข้อมูล เรียง ม.ค.–ธ.ค.
+- [x] ตัวเลือกค่าเริ่มต้นของเดือนแสดงคำว่า "เดือน"
+- [x] เลือกเดือนแล้วการ์ดสรุป ตาราง และกราฟวงกลมเปลี่ยนตามเดือนนั้น
+- [x] อนิเมชันตอนเข้าหน้า ปิดได้เมื่อตั้งค่าลดการเคลื่อนไหว
+- [x] ลิงก์กลับหน้าแรกไม่มีเส้นใต้
+- [x] ระยะช่องตัวกรองสมมาตร และลูกศรอยู่กึ่งกลาง
+- [x] ช่องตัวกรองในโหมดมืดใช้พื้นทึบ ไม่มีลายซิกแซก
+- [ ] [?] ตรวจว่าช่องตัวกรองแสดงอย่างถูกต้องบนทุกขนาดจอ
+- [ ] ดูข้อมูลย้อนหลังรายเดือนได้ (มีตัวกรองเดือนแล้ว ยังต้องทดสอบ)
+- [ ] ตรวจชื่อหมวดสถานะ ให้มี "ไม่สำเร็จ" หรือ "แก้ไข" ตามที่ผู้ตรวจงานขอ (ยังไม่ชัดเจน)
+- [ ] เพิ่มการแยกตามคณะและสาขาในตารางให้ตรงทุกตัวกรอง (มีแล้ว ยังต้องตรวจ)
+- [ ] ยืนยันเรื่องการเชื่อมกับระบบ REG หรือดึงเฉพาะสถิติระดับบัณฑิตศึกษา (ต้องถามพี่แม็ก)
+- [ ] เตรียม Prompt สำหรับ AI ที่ใช้ปรับส่วนเว็บ (ยังไม่ได้เขียน)
+
+### หน้าเอกสารและประกาศ (`announce-*.html`)
+
+- [x] หน้าประกาศทั้ง 6 หมวดมีข้อมูลและปุ่มดูตัวอย่าง/ดาวน์โหลด
+- [x] ไฟล์ตัวอย่างใน `uploads/` ถูกยกเว้นจาก `.gitignore`
+- [ ] รวมเอกสารไทย-อังกฤษเป็นรายการเดียว แสดง 2 บรรทัด (ยังไม่ได้ทำ)
+- [ ] ตัดวงเล็บภาษาอังกฤษต่อท้ายชื่อเอกสาร (ยังไม่ได้ทำ)
+- [ ] ให้รายการแสดงภาษาที่เลือกขึ้นก่อนเมื่อสลับภาษา (ยังไม่ได้ทำ)
+- [ ] ตรวจหัวข้อหมวดคู่มือ (มี 3 หมวดในคำพูดผู้ตรวจงาน ยังต้องยืนยัน)
+- [ ] เพิ่มหมวด "สัญญาลิขสิทธิ์" เป็นหน้าแยก (ยังไม่มี)
+- [ ] ส่วนด้านล่างของหน้าเอกสารที่เป็น Mock-up ต้องแยกให้ชัดว่าไม่ใช่ข้อมูลจริง
+
+## ระยะที่ 4: ระบบหลังบ้านและข้อมูลจริง
+
+- [ ] เลือกเทคโนโลยีหลังบ้านและยืนยันกับผู้ดูแลก่อน (ขัดกับกฎ Static ใน `AGENTS.md` จึงต้องตัดสินใจก่อน)
+- [ ] ระบบเพิ่ม ลบ แก้ไข ข่าว ประกาศ เอกสาร และคู่มือ (CRUD)
+- [ ] ซ่อนข่าวเก่าโดยเก็บ Log ไว้
+- [ ] แก้คำแปลภาษาอังกฤษที่สร้างด้วย AI ได้ในระบบ
+- [ ] เชื่อมข้อมูลสถิติจริง แทนค่า `SOURCE` ใน `js/stats-data.js`
+- [ ] เชื่อมข้อมูลกิจกรรมปฏิทินจริง
+- [ ] จัดการกรณีแหล่งข้อมูลไม่ตอบสนองโดยไม่ทำให้หน้าเว็บพัง
+- [ ] ตรวจว่าไม่มีข้อมูลจำลองหลงเหลือใน Production
+- [ ] ระบบเก็บ Log การเปิดข่าวและป๊อปอัป
+
+## ระยะที่ 5: การตรวจสอบก่อนขึ้นระบบจริง
+
+- [ ] ตรวจทุกหน้าใน Light Mode และ Dark Mode
+- [ ] ตรวจ Responsive บนมือถือ แท็บเล็ต และเดสก์ท็อป
+- [ ] ตรวจ Accessibility ด้วยคีย์บอร์ดและตัวอ่านหน้าจอ
+- [ ] ตรวจ Console ไม่มี Error
+- [ ] ตรวจลิงก์ทั้งหมดว่าเปิดได้จริง
+- [ ] ตรวจการโหลด `?v=` ของ CSS และ JS ว่าเปลี่ยนแล้ว
+- [ ] ตรวจการนำโฟลเดอร์ `uploads/` ขึ้นเซิร์ฟเวอร์
+- [ ] ลบหรือยืนยันไฟล์ที่ไม่ได้ใช้: `_probe-reveal.html`, `sedV4ok6q`, `DESING.MD`
+
+## รายการที่ต้องการการตัดสินใจจากผู้ใช้
+
+1. การเชื่อมสถิติกับระบบ REG หรือให้ทีม REG จัดการเอง
+2. การมีระบบหลังบ้านสำหรับ CRUD (ขัดกับกฎ Static)
+3. ลิงก์ของ ITC, UP Meeting และฐานข้อมูลบางรายการ
+4. ชื่อหมวดสถานะของสถิติ ("ไม่สำเร็จ" หรือ "แก้ไข")

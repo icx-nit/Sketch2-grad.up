@@ -179,7 +179,7 @@
      (เล่นซ้ำทุกครั้งที่เลื่อนกลับเข้ามา เพราะ JS ถอดคลาส is-visible)
      ------------------------------------------------------------------------ */
 
-  html.js-anim .support-section {
+  html.js-anim .site-footer {
     opacity: 0;
     transform: perspective(1500px) rotateX(5deg) translate3d(0, 70px, 0)
       scale(0.992);
@@ -189,7 +189,7 @@
     will-change: opacity, transform;
   }
 
-  html.js-anim .support-section.is-visible {
+  html.js-anim .site-footer.is-visible {
     opacity: 1;
     transform: none;
     will-change: auto;

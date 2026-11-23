@@ -481,3 +481,54 @@
     opacity: 0;
   }
 }
+
+/* ==========================================================================
+   Desktop ≥1200px: สมดุลระยะขอบและช่องไฟของ Navbar
+   - padding ซ้าย-ขวา 28px (โลโก้ถึงขอบซ้าย = ปุ่มเข้าสู่ระบบถึงขอบขวา)
+   - margin ซ้าย-ขวาของแถบเท่ากัน 40px
+   - กริด 3 คอลัมน์: โลโก้ชิดซ้าย / เมนูกึ่งกลาง / ไอคอนชิดขวา
+   - เมนูกลางเว้นช่อง 24px ไม่ตัดบรรทัด และห่างจากกลุ่มไอคอนอย่างน้อย 32px
+   - กลุ่มไอคอนฝั่งขวาเว้นช่อง 12px
+   มือถือและแท็บเล็ตไม่เปลี่ยน
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .site-header {
+    margin-inline: 40px;
+  }
+
+  .site-header .site-header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding-inline: 28px;
+  }
+
+  .site-header .brand {
+    justify-self: start;
+  }
+
+  .site-header .primary-nav {
+    justify-self: center;
+    margin-inline: 32px;
+  }
+
+  .site-header .nav-list {
+    flex-wrap: nowrap;
+    gap: 24px;
+  }
+
+  .site-header .nav-link {
+    white-space: nowrap;
+  }
+
+  .site-header .header-actions {
+    justify-self: end;
+    gap: 12px;
+  }
+}
+
+/* ปุ่มเข้าสู่ระบบ: ตัวหนังสือบรรทัดเดียวเสมอ (ไม่ตัดเป็นสองบรรทัด) */
+.site-header .header-login {
+  white-space: nowrap;
+  width: auto;
+}

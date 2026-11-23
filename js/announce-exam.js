@@ -32,6 +32,7 @@
     { cat: "exam", code: "", num: 14, title: "ประกาศมหาวิทยาลัยพะเยา เรื่อง รายชื่อผู้มีสิทธิ์สอบวัดคุณสมบัติ ปีการศึกษา 2563 (ครั้งที่ 2) สำหรับนิสิตระดับปริญญาเอก", en: "University of Phayao: List of candidates eligible for the qualifying examination, Academic Year 2563 (B.E.) (Round 2), for doctoral students", label: "25 ธ.ค. 2563", date: "2020-12-25", views: 0, file: "ann-123.pdf", ext: "pdf" },
     { cat: "exam", code: "", num: 15, title: "ประกาศรายชื่อผู้มีสิทธิ์สอบวัดคุณสมบัติ ปีการศึกษา 2563 ครั้งที่ 1 สำหรับนิสิตปริญญาเอก", en: "Announcement: list of candidates eligible for the qualifying examination, Academic Year 2563 (B.E.), Round 1, for doctoral students", label: "31 ก.ค. 2563", date: "2020-07-31", views: 0, file: "ann-102.pdf", ext: "pdf" },
     { cat: "exam", code: "", num: 16, title: "ประกาศมหาวิทยาลัยพะเยา เรื่อง กำหนดเนื้อหาสาระการสอบวัดคุณสมบัติ สำหรับนิสิตระดับปริยญาเอก (เพิ่มเติม) ฉบับที่ 8 พ.ศ. 2562", en: "University of Phayao: Scope of content for the qualifying examination for doctoral students (supplement), No. 8, B.E. 2562", label: "20 ก.ค. 2563", date: "2020-07-20", views: 1, file: "ann-48.pdf", ext: "pdf" },
+    { cat: "exam", code: "", num: 17, title: "ประกาศ ก.พ.อ. เรื่องหลักเกณฑ์การพิจารณาวารสารทางวิชาการ สำหรับเผยแพร่ผลงานทางวิชาการ พ.ศ. 2562", en: "Announcement of the Higher Education Civil Service Committee (ก.พ.อ.): criteria for considering academic journals for publishing academic work, B.E. 2562", label: "19 ก.พ. 2563", date: "2020-02-19", views: 11, file: "ann-8.pdf", ext: "pdf", dir: "uploads/other/" },
   ];
 
   var ICONS = {
@@ -56,12 +57,13 @@
   var sortBtn = document.getElementById("sort-btn");
   var sortLabel = document.getElementById("sort-label");
   var chipCountEl = document.getElementById("chip-count");
+  var beSelectEl = document.getElementById("be-select");
 
-  if (!tabsEl || !listEl) {
+  if (!listEl) {
     return;
   }
 
-  var state = { cat: "exam", query: "", ascending: true, page: 1 };
+  var state = { cat: "exam", be: null, query: "", ascending: true, page: 1 };
 
   /* ---------- ข้อความสองภาษา (ไทย / English) ---------- */
   var PT = {
@@ -202,16 +204,38 @@
     return FORMS.filter(function (f) { return f.cat === cat; });
   }
 
+  /* ปี พ.ศ. ของรายการ คำนวณจากวันที่ประกาศ (ค.ศ. + 543) */
+  function beYearOf(item) {
+    return item.date ? parseInt(item.date.slice(0, 4), 10) + 543 : null;
+  }
+
+  /* รายการในหมวดที่เลือก และกรองตามปี พ.ศ. ที่เลือก (null = ทุกปี) */
+  function itemsForFilter() {
+    return itemsForCat(state.cat).filter(function (item) {
+      return state.be === null || beYearOf(item) === state.be;
+    });
+  }
+
+  function availableBeYears() {
+    var years = [];
+    itemsForCat(state.cat).forEach(function (item) {
+      var y = beYearOf(item);
+      if (y && years.indexOf(y) === -1) years.push(y);
+    });
+    return years.sort(function (a, b) { return b - a; });
+  }
+
   function numberOf(item) {
     return item.num || 0;
   }
 
+  /* รายการที่รวมมาจากหน้าอื่นมี dir กำกับโฟลเดอร์ไฟล์ของตัวเอง */
   function fileUrl(item) {
-    return FILE_BASE + item.file;
+    return (item.dir || FILE_BASE) + item.file;
   }
 
   function previewUrl(item) {
-    if (item.ext === "pdf") return FILE_BASE + item.file;
+    if (item.ext === "pdf") return fileUrl(item);
     return PREVIEW_BASE + item.file.replace(/\.[^.]+$/, "") + ".pdf";
   }
 
@@ -250,7 +274,7 @@
 
   function filteredItems() {
     var tokens = tokensOf(state.query);
-    var list = itemsForCat(state.cat).filter(function (item) {
+    var list = itemsForFilter().filter(function (item) {
       return !tokens.length || matchesAllTokens(item, tokens);
     });
     list.sort(function (a, b) {
@@ -267,6 +291,7 @@
   /* ---------- แท็บหมวด ---------- */
 
   function renderTabs() {
+    if (!tabsEl) return;
     tabsEl.textContent = "";
     CATEGORIES.forEach(function (cat, i) {
       var selected = cat.id === state.cat;
@@ -310,7 +335,6 @@
 
     var body = el("div", "doc-row__body");
     var badges = el("div", "doc-row__badges");
-    badges.appendChild(el("span", "badge badge--type", categoryLabel(item.cat)));
     /* รายการที่มีรหัส EN/TH (ขั้นตอนการศึกษา) แสดงแค่ป้ายหมวด */
     if (!item.code) badges.appendChild(el("span", "badge badge--year", badgeText(item)));
 
@@ -435,7 +459,7 @@
     captionEl.textContent = t("caption", { cat: categoryLabel(state.cat), sort: sortText() });
     updateSortLabel();
 
-    if (!itemsForCat(state.cat).length) {
+    if (!itemsForFilter().length) {
       listEl.appendChild(buildEmpty(t("empty.none")));
       pageInfoEl.textContent = "";
       paginationEl.textContent = "";
@@ -456,7 +480,7 @@
   }
 
   function renderCounts() {
-    var n = itemsForCat(state.cat).length;
+    var n = itemsForFilter().length;
     if (chipCountEl) chipCountEl.textContent = "(" + n + ")";
     var withFile = FORMS.filter(function (f) { return !!f.file; }).length;
     var latest = FORMS.reduce(function (acc, f) {
@@ -472,8 +496,35 @@
     set("stat-latest", latest ? dateLabel(latest) : "-");
   }
 
+  /* ---------- ตัวเลือกปี พ.ศ. (แบบเดียวกับหน้าคำสั่งแต่งตั้ง) ---------- */
+
+  function renderBeTabs() {
+    if (!beSelectEl) return;
+    beSelectEl.textContent = "";
+    var all = document.createElement("option");
+    all.value = "all";
+    all.textContent = t("chip.all");
+    beSelectEl.appendChild(all);
+    availableBeYears().forEach(function (y) {
+      var opt = document.createElement("option");
+      opt.value = String(y);
+      opt.textContent = t("badge.be") + y;
+      beSelectEl.appendChild(opt);
+    });
+    beSelectEl.value = state.be === null ? "all" : String(state.be);
+  }
+
+  if (beSelectEl) {
+    beSelectEl.addEventListener("change", function () {
+      state.be = beSelectEl.value === "all" ? null : parseInt(beSelectEl.value, 10);
+      state.page = 1;
+      renderAll();
+    });
+  }
+
   function renderAll() {
     renderTabs();
+    renderBeTabs();
     renderCounts();
     renderList();
   }
@@ -487,7 +538,7 @@
       suggestEl.hidden = true;
       return;
     }
-    var matches = itemsForCat(state.cat).filter(function (item) {
+    var matches = itemsForFilter().filter(function (item) {
       return matchesAllTokens(item, tokens);
     }).slice(0, 8);
     if (!matches.length) {

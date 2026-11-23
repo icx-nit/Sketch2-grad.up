@@ -345,7 +345,6 @@
 
     var body = el("div", "doc-row__body");
     var badges = el("div", "doc-row__badges");
-    badges.appendChild(el("span", "badge badge--type", t("year.label", { y: item.cat })));
     if (item.num) badges.appendChild(el("span", "badge badge--year", t("badge.num", { n: item.num })));
 
     var title = el("h3", "doc-row__title", titleOf(item));

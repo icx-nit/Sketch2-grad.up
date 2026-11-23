@@ -26,9 +26,8 @@
     },
     { selector: ".support-hero__title", className: "js-reveal" },
     { selector: ".support-hero__rule", className: "js-reveal--line" },
-    { selector: ".support-contact__title", className: "js-reveal" },
     {
-      selector: ".support-contact__item",
+      selector: ".foot-contact__item",
       className: "js-reveal",
       step: 120
     }
@@ -91,7 +90,7 @@
     }
 
     /* --- แผง "พร้อมให้บริการ": เลื่อนขึ้นแบบ 3D เมื่อใกล้ถึงส่วนนั้น --- */
-    var supportSection = document.querySelector(".support-section");
+    var supportSection = document.querySelector(".site-footer");
 
     if (supportSection) {
       supportSection.classList.add("js-rise");

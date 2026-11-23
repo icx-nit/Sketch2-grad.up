@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#4D238D">
-  <meta name="description"
-    content="เว็บไซต์มหาวิทยาลัยพะเยา ข่าว ประกาศ วารสาร และบริการสำหรับนักศึกษา">
+  <meta name="description" content="เว็บไซต์มหาวิทยาลัยพะเยา ข่าว ประกาศ วารสาร และบริการสำหรับนักศึกษา">
   <title>มหาวิทยาลัยพะเยา | University of Phayao</title>
 
   <!-- Typography: Anuphan สำหรับหัวข้อและส่วนควบคุม, Sarabun สำหรับเนื้อหา -->
@@ -24,16 +23,17 @@
   <link rel="stylesheet" href="css/reset.css?v=20261121b">
   <link rel="stylesheet" href="css/style.css?v=20261124c">
   <link rel="stylesheet" href="css/components.css?v=20261123a">
-  <link rel="stylesheet" href="css/promo.css?v=20261121b">
-  <link rel="stylesheet" href="css/news.css?v=20261119a">
-  <link rel="stylesheet" href="css/calendar.css?v=20261119t">
+  <link rel="stylesheet" href="css/promo.css?v=20261123b">
+  <link rel="stylesheet" href="css/news.css?v=20261123bz">
+  <link rel="stylesheet" href="css/calendar.css?v=20261123g">
   <link rel="stylesheet" href="css/stats.css?v=20261119d">
+  <link rel="stylesheet" href="css/stats-dashboard.css?v=20261123f">
   <link rel="stylesheet" href="css/support.css?v=20261119b">
-  <link rel="stylesheet" href="css/footer.css?v=20261119a">
+  <link rel="stylesheet" href="css/footer.css?v=20261123b">
   <link rel="stylesheet" href="css/intro.css?v=20261122a">
-  <link rel="stylesheet" href="css/animations.css?v=20261124b">
+  <link rel="stylesheet" href="css/animations.css?v=20261125b">
   <link rel="stylesheet" href="css/responsive.css?v=20261119a">
-  <link rel="stylesheet" href="css/header.css?v=20261119zg">
+  <link rel="stylesheet" href="css/header.css?v=20261123h">
 
   <!-- โหลดก่อน paint เพื่อไม่ให้จอกระพริบตอนสลับธีม -->
   <script src="js/theme.js?v=20261121b"></script>
@@ -124,7 +124,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
     <defs>
       <clipPath id="tabbar-arch" clipPathUnits="objectBoundingBox">
-        <path d="M 0 0 L 1 0 L 1 0.75 C 0.75 0.9, 0.6 0.97, 0.5 0.97 C 0.4 0.97, 0.25 0.9, 0 0.75 Z"/>
+        <path d="M 0 0 L 1 0 L 1 0.75 C 0.75 0.9, 0.6 0.97, 0.5 0.97 C 0.4 0.97, 0.25 0.9, 0 0.75 Z" />
       </clipPath>
     </defs>
   </svg>
@@ -152,12 +152,11 @@
           </li>
 
           <li class="nav-item nav-item--dropdown">
-            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false"
-              aria-haspopup="true" aria-controls="menu-announcements">
-              <span data-i18n="nav.announcements">ประกาศมหาวิทยาลัยพะเยา</span>
-              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-                focusable="false">
+            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false" aria-haspopup="true"
+              aria-controls="menu-announcements">
+              <span data-i18n="nav.announcements">ข้อบังคับ / ประกาศ</span>
+              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
@@ -188,35 +187,130 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#news">
-              <span data-i18n="nav.news">ข่าว</span>
-            </a>
-          </li>
-
           <li class="nav-item nav-item--dropdown">
-            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false"
-              aria-haspopup="true" aria-controls="menu-journal">
-              <span data-i18n="nav.journal">วารสาร</span>
-              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-                focusable="false">
+            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false" aria-haspopup="true"
+              aria-controls="menu-systems">
+              <span data-i18n="nav.systems">ระบบอื่นๆ</span>
+              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
-            <ul class="dropdown" id="menu-journal">
+            <ul class="dropdown" id="menu-systems">
               <li>
-                <a class="dropdown__link" href="https://grad.up.ac.th/Journal" target="_blank"
+                <a class="dropdown__link" href="https://app.ithesis.co/" target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="drawer.ithesis">iThesis</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://doga.up.ac.th/emeeting" target="_blank"
                   rel="noopener noreferrer">
-                  <span data-i18n="journal.scopus">รายชื่อวารสารในฐานข้อมูล Scopus/ISI/TCI/ERIC</span>
+                  <span data-i18n="drawer.upmeeting">UP-Meeting</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item--dropdown">
+            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false" aria-haspopup="true"
+              aria-controls="menu-journal">
+              <span data-i18n="nav.journal">ฐานข้อมูล</span>
+              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="dropdown dropdown--wide" id="menu-journal">
+              <li>
+                <a class="dropdown__link" href="https://www.scopus.com/pages/home#basic" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title">Scopus</span>
+                  <span class="dropdown__desc"
+                    data-i18n="db.scopus.desc">ฐานข้อมูลบทคัดย่อและการอ้างอิงของวารสารวิชาการที่ผ่านการพิจารณาโดยผู้ทรงคุณวุฒิ</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://apps.webofknowledge.com/" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title">ISI (Web of Knowledge)</span>
+                  <span class="dropdown__desc" data-i18n="db.isi.desc">ฐานข้อมูลการอ้างอิงและค้นหางานวิจัยของ
+                    Clarivate</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://tci-thailand.org/list%20journal.php" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title">TCI (Thai-Journal Citation Index)</span>
+                  <span class="dropdown__desc" data-i18n="db.tci.desc">รายชื่อวารสารวิชาการไทยที่ได้รับการรับรองจากศูนย์
+                    TCI</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://eric.ed.gov/" target="_blank" rel="noopener noreferrer">
+                  <span class="dropdown__title">ERIC</span>
+                  <span class="dropdown__desc"
+                    data-i18n="db.eric.desc">ห้องสมุดออนไลน์ด้านงานวิจัยและข้อมูลทางการศึกษา</span>
+                </a>
+              </li>
+              <li class="dropdown__group">
+                <span class="dropdown__group-title">PubMed</span>
+                <span class="dropdown__group-desc"
+                  data-i18n="db.pubmed.desc">ฐานข้อมูลงานวิจัยด้านชีวการแพทย์และวิทยาศาสตร์สุขภาพ (MEDLINE)</span>
+                <a class="dropdown__link dropdown__link--sub" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="db.pubmed.enter">เข้าสู่ PubMed</span>
+                  <span class="dropdown__desc"
+                    data-i18n="db.pubmed.enterDesc">ค้นหาบทความวิจัยทางการแพทย์และสุขภาพ</span>
+                </a>
+                <a class="dropdown__link dropdown__link--sub" href="https://www.nlm.nih.gov/medline/medline_faq.html"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="db.pubmed.faq">คำถามที่พบบ่อย (FAQ)</span>
+                  <span class="dropdown__desc" data-i18n="db.pubmed.faqDesc">วิธีค้นหาและตรวจสอบวารสารที่อยู่ใน
+                    MEDLINE</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://mjl.clarivate.com/home" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title">Web of Science Master Journal List</span>
+                  <span class="dropdown__desc" data-i18n="db.wos.desc">ค้นหาวารสารที่เหมาะกับงานวิจัย
+                    จากหลายดัชนีบนแพลตฟอร์ม Web of Science</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link"
+                  href="https://web.archive.org/web/20170112125427/https://scholarlyoa.com/publishers/" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title"
+                    data-i18n="db.predatory.title">รายชื่อสำนักพิมพ์/วารสารที่ควรระมัดระวังในการตีพิมพ์</span>
+                  <span class="dropdown__desc" data-i18n="db.predatory.desc">รายชื่อที่จัดทำโดย Scholarly Open Access
+                    (เก็บถาวรจาก Web Archive)</span>
                 </a>
               </li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#contact">
+            <a class="nav-link" href="index.html#news-links" data-spy="news-links">
+              <span data-i18n="nav.agencies">หน่วยงานอื่นๆ</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#news" data-spy="news">
+              <span data-i18n="nav.news">ข่าว</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact" data-spy="contact">
               <span data-i18n="nav.contact">ติดต่อเรา</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://forms.gle/6c73eaxoZytt5Krc8" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="drawer.satisfaction">ประเมินความพึงพอใจ</span>
             </a>
           </li>
         </ul>
@@ -224,19 +318,25 @@
 
       <!-- แถบขวา: ขนาดตัวอักษร / เปลี่ยนภาษา / ธีม / ค้นหา / เมนู 3 ขีด -->
       <div class="header-actions">
-        <div class="font-size" role="group" aria-label="ขนาดตัวอักษร"
+        <div class="font-size font-size--menu" role="group" aria-label="ขนาดตัวอักษร"
           data-i18n-aria-label="action.fontGroup" data-font-size>
-          <button class="font-size__btn" type="button" data-font="decrease" aria-label="ลดขนาดตัวอักษร"
-            data-i18n-aria-label="action.fontDecrease">A-</button>
-          <button class="font-size__btn" type="button" data-font="reset" aria-label="ขนาดตัวอักษรปกติ"
-            data-i18n-aria-label="action.fontReset">A</button>
-          <button class="font-size__btn" type="button" data-font="increase" aria-label="เพิ่มขนาดตัวอักษร"
-            data-i18n-aria-label="action.fontIncrease">A+</button>
+          <button class="font-size__act" type="button" data-font="reset" data-font-act
+            aria-label="ขนาดตัวอักษรปกติ" data-i18n-aria-label="action.fontReset">A</button>
+          <button class="font-size__chev" type="button" aria-expanded="false" aria-controls="font-size-menu"
+            aria-label="เลือกขนาดตัวอักษร" data-i18n-aria-label="action.fontGroup" data-font-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div class="font-size__menu" id="font-size-menu" hidden>
+            <button class="font-size__btn" type="button" data-font-pick="increase" aria-label="เพิ่มขนาดตัวอักษร"
+              data-i18n-aria-label="action.fontIncrease">A+</button>
+            <button class="font-size__btn" type="button" data-font-pick="reset" aria-label="ขนาดตัวอักษรปกติ"
+              data-i18n-aria-label="action.fontReset">A</button>
+            <button class="font-size__btn" type="button" data-font-pick="decrease" aria-label="ลดขนาดตัวอักษร"
+              data-i18n-aria-label="action.fontDecrease">A-</button>
+          </div>
         </div>
 
         <button class="lang-btn" type="button" data-lang-toggle>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true" focusable="false">
             <circle cx="12" cy="12" r="9"></circle>
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"></path>
@@ -245,16 +345,14 @@
           <span class="lang-btn__badge" data-lang-badge lang="th" aria-hidden="true">TH</span>
         </button>
 
-        <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false"
-          aria-label="สลับโหมดมืดและสว่าง" data-i18n-aria-label="action.theme">
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-            focusable="false">
+        <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="สลับโหมดมืดและสว่าง"
+          data-i18n-aria-label="action.theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3A6.5 6.5 0 0 0 21 12.8Z"></path>
           </svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
-            focusable="false">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <circle cx="12" cy="12" r="4"></circle>
             <path
               d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41">
@@ -262,24 +360,16 @@
           </svg>
         </button>
 
-        <button class="icon-btn" type="button" data-search-toggle aria-expanded="false"
-          aria-controls="site-search" aria-label="ค้นหา" data-i18n-aria-label="action.search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <button class="icon-btn" type="button" data-search-toggle aria-expanded="false" aria-controls="site-search"
+          aria-label="ค้นหา" data-i18n-aria-label="action.search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true" focusable="false">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
           </svg>
         </button>
 
-        <button class="icon-btn" type="button" data-drawer-open aria-expanded="false"
-          aria-controls="site-drawer" aria-label="เมนู" data-i18n-aria-label="action.menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <line x1="4" y1="7" x2="20" y2="7"></line>
-            <line x1="4" y1="12" x2="20" y2="12"></line>
-            <line x1="4" y1="17" x2="20" y2="17"></line>
-          </svg>
-        </button>
+        <a class="btn btn--primary header-login" href="login.html" data-i18n="drawer.login">เข้าสู่ระบบ</a>
       </div>
     </div>
 
@@ -288,85 +378,20 @@
       <form class="container search-panel__inner" role="search" action="#" method="get">
         <label class="visually-hidden" for="site-search-input" data-i18n="search.label">ค้นหาในเว็บไซต์</label>
         <input class="search-panel__input" id="site-search-input" type="search" name="q"
-          placeholder="ค้นหาในเว็บไซต์..." data-i18n-placeholder="search.placeholder"
-          autocomplete="off" aria-controls="site-search-results" aria-expanded="false"
-          aria-autocomplete="list">
+          placeholder="ค้นหาในเว็บไซต์..." data-i18n-placeholder="search.placeholder" autocomplete="off"
+          aria-controls="site-search-results" aria-expanded="false" aria-autocomplete="list">
         <button class="btn btn--primary" type="submit" data-i18n="search.submit">ค้นหา</button>
       </form>
 
       <div class="search-results" id="site-search-results" data-search-results hidden>
         <div class="search-results__inner container">
           <p class="search-results__status" data-search-status role="status" aria-live="polite"></p>
-          <ul class="search-results__list" data-search-list role="listbox"
-            aria-label="ผลการค้นหา" data-i18n-aria-label="search.results"></ul>
+          <ul class="search-results__list" data-search-list role="listbox" aria-label="ผลการค้นหา"
+            data-i18n-aria-label="search.results"></ul>
         </div>
       </div>
     </div>
   </header>
-
-  <!-- เมนู 3 ขีด -->
-  <div class="drawer" id="site-drawer" hidden inert aria-hidden="true">
-    <div class="drawer__backdrop" data-drawer-close></div>
-    <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
-      <div class="drawer__header">
-        <h2 class="drawer__title" id="drawer-title" data-i18n="drawer.title">เมนูเพิ่มเติม</h2>
-        <button class="icon-btn" type="button" data-drawer-close aria-label="ปิดเมนู"
-          data-i18n-aria-label="drawer.close">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-
-      <ul class="drawer__list">
-        <li>
-          <a class="drawer__link" href="https://forms.gle/6c73eaxoZytt5Krc8" target="_blank"
-            rel="noopener noreferrer">
-            <span data-i18n="drawer.satisfaction">ประเมินความพึงพอใจ</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a class="drawer__link" href="https://doga.up.ac.th/emeeting" target="_blank"
-            rel="noopener noreferrer">
-            <span data-i18n="drawer.upmeeting">UP-Meeting</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a class="drawer__link" href="https://app.ithesis.co/" target="_blank" rel="noopener noreferrer">
-            <span data-i18n="drawer.ithesis">iThesis</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a class="drawer__link" href="login.html" target="_self"
-            rel="noopener noreferrer">
-            <span data-i18n="drawer.login">เข้าสู่ระบบ</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 
   <main class="page-main" id="main">
     <!-- ชั้นแรกของหน้า: ภาพปก + ประกาศ (ประกาศลอยทับเฉพาะชั้นนี้) -->
@@ -392,23 +417,25 @@
             <li>
               <a class="announce-card" href="announce-command.html">
                 <span class="announce-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" focusable="false">
                     <path d="M5 22h14"></path>
-                    <path d="M19.27 13.73A2.5 2.5 0 0 0 17.5 13h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1.5c0-.66-.26-1.3-.73-1.77Z"></path>
+                    <path
+                      d="M19.27 13.73A2.5 2.5 0 0 0 17.5 13h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1.5c0-.66-.26-1.3-.73-1.77Z">
+                    </path>
                     <path d="M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-6 0c0 2 1 2 1 3.5V13"></path>
                   </svg>
                 </span>
-                <span class="announce-card__label" data-i18n="section.appointment">คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา</span>
+                <span class="announce-card__label"
+                  data-i18n="section.appointment">คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา</span>
               </a>
             </li>
 
             <li>
-              <a class="announce-card" href="announce-form.html"
-                rel="noopener noreferrer">
+              <a class="announce-card" href="announce-form.html" rel="noopener noreferrer">
                 <span class="announce-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" focusable="false">
                     <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
                     <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
                     <path d="M10 9H8"></path>
@@ -421,13 +448,14 @@
             </li>
 
             <li>
-              <a class="announce-card" href="announce-guidebook.html"
-                rel="noopener noreferrer">
+              <a class="announce-card" href="announce-guidebook.html" rel="noopener noreferrer">
                 <span class="announce-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" focusable="false">
                     <path d="M12 7v14"></path>
-                    <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
+                    <path
+                      d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                    </path>
                   </svg>
                 </span>
                 <span class="announce-card__label" data-i18n="section.manual">คู่มือบัณฑิตศึกษา</span>
@@ -435,11 +463,10 @@
             </li>
 
             <li>
-              <a class="announce-card" href="announce-scholarship.html"
-                rel="noopener noreferrer">
+              <a class="announce-card" href="announce-scholarship.html" rel="noopener noreferrer">
                 <span class="announce-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" focusable="false">
                     <rect width="20" height="12" x="2" y="6" rx="2"></rect>
                     <circle cx="12" cy="12" r="2"></circle>
                     <path d="M6 12h.01M18 12h.01"></path>
@@ -450,11 +477,10 @@
             </li>
 
             <li>
-              <a class="announce-card" href="announce-exam.html"
-                rel="noopener noreferrer">
+              <a class="announce-card" href="announce-exam.html" rel="noopener noreferrer">
                 <span class="announce-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" focusable="false">
                     <path d="M8 2v4"></path>
                     <path d="M16 2v4"></path>
                     <rect width="18" height="18" x="3" y="4" rx="2"></rect>
@@ -473,47 +499,118 @@
     <!-- ชั้นที่ 2: ข่าวสารและประกาศ (การ์ดเดียว: หัวข้อ + "ดูข่าวทั้งหมด" + รายการข่าว)
          คู่กับลิงก์ที่เกี่ยวข้อง — เนื้อหาสร้างด้วย js/news.js
          เข้าถึงได้หลังประกาศเลื่อนขึ้นแล้วเท่านั้น (ดู js/main.js) -->
-    <section class="news" id="news" aria-labelledby="news-title" data-news>
+    <section class="news news--links" id="news-links" aria-labelledby="news-links-title" data-news-links-section>
+  <div class="news-flowers" aria-hidden="true">
+      <span class="news-flower" style="--x:2%;--y:12%;--s:96px;--d:18s;--delay:0s;--rot:-12deg;--op:0.55" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+      <span class="news-flower" style="--x:9%;--y:68%;--s:64px;--d:22s;--delay:-6s;--rot:18deg;--op:0.45" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+      <span class="news-flower" style="--x:22%;--y:30%;--s:44px;--d:16s;--delay:-3s;--rot:8deg;--op:0.38" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+      <span class="news-flower" style="--x:38%;--y:78%;--s:56px;--d:20s;--delay:-10s;--rot:-20deg;--op:0.4" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+      <span class="news-flower" style="--x:55%;--y:14%;--s:70px;--d:24s;--delay:-4s;--rot:14deg;--op:0.42" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+      <span class="news-flower" style="--x:70%;--y:62%;--s:92px;--d:19s;--delay:-8s;--rot:-8deg;--op:0.5" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+      <span class="news-flower" style="--x:84%;--y:20%;--s:58px;--d:21s;--delay:-12s;--rot:22deg;--op:0.45" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+      <span class="news-flower" style="--x:93%;--y:74%;--s:104px;--d:17s;--delay:-2s;--rot:-16deg;--op:0.52" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+      <span class="news-flower" style="--x:46%;--y:44%;--s:36px;--d:15s;--delay:-7s;--rot:30deg;--op:0.3" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+      <span class="news-flower" style="--x:78%;--y:88%;--s:48px;--d:23s;--delay:-5s;--rot:-26deg;--op:0.4" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#orchid-flower"/></svg></span>
+  </div>
+  <svg class="news-flower-defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <defs>
+      <pattern id="orchid-mesh" width="7" height="7" patternUnits="userSpaceOnUse">
+        <path d="M0 3.5H7M3.5 0V7" stroke="rgba(255,255,255,0.42)" stroke-width="0.7" fill="none"/>
+      </pattern>
+      <linearGradient id="orchid-petal" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#B58AEB"/>
+        <stop offset="1" stop-color="#6A3DB8"/>
+      </linearGradient>
+      <symbol id="orchid-flower" viewBox="0 0 100 100">
+        <g>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-petal)"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-mesh)"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-petal)" transform="rotate(72 50 50)"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-mesh)" transform="rotate(72 50 50)"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-petal)" transform="rotate(144 50 50)"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-mesh)" transform="rotate(144 50 50)"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-petal)" transform="rotate(216 50 50)"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-mesh)" transform="rotate(216 50 50)"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-petal)" transform="rotate(288 50 50)"/>
+          <ellipse cx="50" cy="26" rx="18" ry="24" fill="url(#orchid-mesh)" transform="rotate(288 50 50)"/>
+          <circle cx="50" cy="50" r="7" fill="#F5E6B8"/>
+          <ellipse cx="50" cy="56" rx="4" ry="5" fill="#4B1F7A"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+      <svg class="news-petals__defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <defs>
+          <symbol id="orchid-flower" viewBox="0 0 100 100">
+            <g fill="#9364DF" fill-opacity="0.9" stroke="#6E3FC4" stroke-opacity="0.35" stroke-width="1">
+              <ellipse cx="50" cy="26" rx="18" ry="26"/>
+              <ellipse cx="50" cy="26" rx="18" ry="26" transform="rotate(72 50 50)"/>
+              <ellipse cx="50" cy="26" rx="18" ry="26" transform="rotate(144 50 50)"/>
+              <ellipse cx="50" cy="26" rx="18" ry="26" transform="rotate(216 50 50)"/>
+              <ellipse cx="50" cy="26" rx="18" ry="26" transform="rotate(288 50 50)"/>
+            </g>
+            <g fill="#F0E6FF" fill-opacity="0.35">
+              <circle cx="42" cy="22" r="3"/><circle cx="60" cy="30" r="2.5"/><circle cx="34" cy="44" r="2.5"/>
+            </g>
+            <circle cx="50" cy="50" r="7" fill="#D6A83F"/>
+            <circle cx="50" cy="50" r="3" fill="#4D238D"/>
+          </symbol>
+        </defs>
+      </svg>
+      <div class="news-petals" aria-hidden="true">
+        <svg class="news-petal news-petal--1" viewBox="0 0 100 100"><use href="#orchid-flower"/></svg>
+        <svg class="news-petal news-petal--2" viewBox="0 0 100 100"><use href="#orchid-flower"/></svg>
+        <svg class="news-petal news-petal--3" viewBox="0 0 100 100"><use href="#orchid-flower"/></svg>
+        <svg class="news-petal news-petal--4" viewBox="0 0 100 100"><use href="#orchid-flower"/></svg>
+        <svg class="news-petal news-petal--5" viewBox="0 0 100 100"><use href="#orchid-flower"/></svg>
+        <svg class="news-petal news-petal--6" viewBox="0 0 100 100"><use href="#orchid-flower"/></svg>
+      </div>
       <div class="news__inner">
-        <!-- หัวข้อด้านบนของหน้าข่าว -->
-        <div class="news__head">
-          <h2 class="news__title" id="news-title" data-i18n="news.title">ข่าวสารและประกาศ</h2>
-          <span class="news__rule" aria-hidden="true"></span>
-        </div>
-
-        <div class="news__layout">
-          <div class="news__panel">
-            <div class="news__panel-head">
-              <p class="news__panel-label">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                  <path d="m3 11 18-5v12L3 14v-3Z"></path>
-                  <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path>
-                </svg>
-                <span data-i18n="news.latest">ข่าวล่าสุด</span>
-              </p>
-
-              <a class="news__more" href="https://grad.up.ac.th/news/all" target="_blank" rel="noopener noreferrer">
-                <span data-i18n="news.all">ดูข่าวทั้งหมด</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                  <path d="M4 12h15"></path>
-                  <path d="m13 6 6 6-6 6"></path>
-                </svg>
-              </a>
-            </div>
-
-            <div class="news__grid" data-news-list></div>
-          </div>
-
+        <div class="news__layout news__layout--links">
           <aside class="news-links" aria-labelledby="news-links-title">
             <h3 class="news-links__title" id="news-links-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="M9.5 14.5 14.5 9.5"></path>
                 <path d="M11 6.5 12.4 5a4.2 4.2 0 0 1 6 6L17 12.4"></path>
                 <path d="M13 17.5 11.6 19a4.2 4.2 0 0 1-6-6L7 11.6"></path>
               </svg>
-              <span data-i18n="news.linksTitle">ลิงก์ที่เกี่ยวข้อง</span>
+              <span data-i18n="news.linksTitle">หน่วยงานอื่นๆ</span>
             </h3>
             <ul class="news-links__list" data-news-links></ul>
+          </aside>
+
+          <aside class="news-contact" aria-labelledby="news-contact-title">
+            <h3 class="news-links__title" id="news-contact-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+              <span><span class="lang-th">ติดต่อเรา</span><span class="lang-en">Contact Us</span></span>
+            </h3>
+            <ul class="news-contact__list">
+              <li class="news-contact__item">
+                <span class="news-links__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+                <div class="news-contact__text">
+                  <span class="news-contact__label"><span class="lang-th">ที่อยู่</span><span class="lang-en">Address</span></span>
+                  <p class="news-contact__value"><span class="lang-th">กองบริการการศึกษา มหาวิทยาลัยพะเยา</span><span class="lang-en">Division of Educational Services, University of Phayao</span></p>
+                  <p class="news-contact__sub"><span class="lang-th">เลขที่ 19 หมู่ที่ 2 ตำบลแม่กา อำเภอเมืองพะเยา จังหวัดพะเยา 56000</span><span class="lang-en">19 Moo 2, Maeka, Mueang Phayao, Phayao 56000</span></p>
+                </div>
+              </li>
+              <li class="news-contact__item">
+                <span class="news-links__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+                <div class="news-contact__text">
+                  <span class="news-contact__label"><span class="lang-th">โทรศัพท์</span><span class="lang-en">Phone</span></span>
+                  <p class="news-contact__value"><a href="tel:+6654466666">054-466-666 ต่อ 1831, 1832</a></p>
+                </div>
+              </li>
+              <li class="news-contact__item">
+                <span class="news-links__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+                <div class="news-contact__text">
+                  <span class="news-contact__label"><span class="lang-th">อีเมล</span><span class="lang-en">Email</span></span>
+                  <p class="news-contact__value"><a href="mailto:reg@up.ac.th">reg@up.ac.th</a></p>
+                </div>
+              </li>
+            </ul>
           </aside>
         </div>
       </div>
@@ -531,18 +628,18 @@
         <div class="calendar__layout" data-calendar-layout>
           <div class="calendar__panel">
             <div class="calendar__toolbar">
-              <button class="calendar__month-button" type="button" data-calendar-prev
-                aria-label="เดือนก่อนหน้า" data-i18n-aria-label="calendar.previous">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <button class="calendar__month-button" type="button" data-calendar-prev aria-label="เดือนก่อนหน้า"
+                data-i18n-aria-label="calendar.previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="m15 18-6-6 6-6"></path>
                 </svg>
               </button>
               <h3 class="calendar__month" id="calendar-month-label" data-calendar-month aria-live="polite"></h3>
-              <button class="calendar__month-button" type="button" data-calendar-next
-                aria-label="เดือนถัดไป" data-i18n-aria-label="calendar.next">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <button class="calendar__month-button" type="button" data-calendar-next aria-label="เดือนถัดไป"
+                data-i18n-aria-label="calendar.next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="m9 18 6-6-6-6"></path>
                 </svg>
               </button>
@@ -556,17 +653,13 @@
 
             <div class="calendar__weekdays" data-calendar-weekdays role="row"></div>
             <div class="calendar__grid" data-calendar-grid role="grid" aria-labelledby="calendar-month-label"></div>
-
-            <p class="calendar__source-note" data-i18n="calendar.sourceNote">
-              ข้อมูลจากประกาศปฏิทินการศึกษาบัณฑิตศึกษา ปีการศึกษา 2569 (reg.up.ac.th) และประกาศ/ข่าวของบัณฑิตวิทยาลัย (grad.up.ac.th)
-            </p>
           </div>
 
           <aside class="calendar__details" data-calendar-details aria-labelledby="calendar-selected-date" hidden>
             <div class="calendar__details-head">
               <button class="calendar__back" type="button" data-calendar-back>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <path d="m15 18-6-6 6-6"></path>
                 </svg>
                 <span data-i18n="calendar.back">กลับไปปฏิทิน</span>
@@ -582,8 +675,8 @@
 
             <div class="calendar__empty" data-calendar-empty>
               <span class="calendar__empty-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" focusable="false">
                   <rect x="3" y="5" width="18" height="16" rx="2"></rect>
                   <path d="M16 3v4M8 3v4M3 10h18"></path>
                   <path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01"></path>
@@ -608,7 +701,8 @@
                 </h3>
               </div>
               <button class="calendar-dialog__close" type="button" data-calendar-dialog-close aria-label="ปิดหน้าต่าง">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true" width="20" height="20">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
@@ -616,7 +710,8 @@
             </div>
 
             <p class="calendar-dialog__desc">
-              เจ้าหน้าที่สามารถกำหนดวันเริ่มต้น-สิ้นสุด แก้ไข หรือเพิ่มกิจกรรมกำหนดการสำคัญได้ ข้อมูลจะบันทึกและแสดงผลบนปฏิทินทันที
+              เจ้าหน้าที่สามารถกำหนดวันเริ่มต้น-สิ้นสุด แก้ไข หรือเพิ่มกิจกรรมกำหนดการสำคัญได้
+              ข้อมูลจะบันทึกและแสดงผลบนปฏิทินทันที
             </p>
 
             <!-- Add / Edit Form -->
@@ -626,11 +721,12 @@
                 <h4 class="calendar-form__heading" data-form-heading>เพิ่ม / แก้ไขกำหนดการ</h4>
                 <span class="calendar-form__mode-indicator" data-form-mode>โหมด: เพิ่มรายการใหม่</span>
               </div>
-              
+
               <div class="calendar-form__grid">
                 <div class="calendar-form__field calendar-form__field--full">
                   <label for="cal-event-title">ชื่อกิจกรรม / กำหนดการ *</label>
-                  <input type="text" id="cal-event-title" data-form-title required placeholder="เช่น ช่วงเวลายื่น บศ.1, วันเปิดภาคการศึกษา" />
+                  <input type="text" id="cal-event-title" data-form-title required
+                    placeholder="เช่น ช่วงเวลายื่น บศ.1, วันเปิดภาคการศึกษา" />
                 </div>
 
                 <div class="calendar-form__field">
@@ -648,7 +744,8 @@
 
                 <div class="calendar-form__field">
                   <label for="cal-event-link">ลิงก์บริการ / แบบฟอร์ม</label>
-                  <input type="text" id="cal-event-link" data-form-link placeholder="เช่น announce-form.html หรือ https://reg.up.ac.th" />
+                  <input type="text" id="cal-event-link" data-form-link
+                    placeholder="เช่น announce-form.html หรือ https://reg.up.ac.th" />
                 </div>
 
                 <div class="calendar-form__field">
@@ -663,7 +760,8 @@
 
                 <div class="calendar-form__field calendar-form__field--full">
                   <label for="cal-event-desc">คำอธิบายเพิ่มเติม</label>
-                  <textarea id="cal-event-desc" data-form-desc rows="2" placeholder="ระบุรายละเอียด ขั้นตอน หรือข้อกำหนดเพิ่มเติม"></textarea>
+                  <textarea id="cal-event-desc" data-form-desc rows="2"
+                    placeholder="ระบุรายละเอียด ขั้นตอน หรือข้อกำหนดเพิ่มเติม"></textarea>
                 </div>
               </div>
 
@@ -671,10 +769,12 @@
                 <button class="calendar__btn calendar__btn--primary" type="submit" data-form-save>
                   บันทึกกำหนดการ
                 </button>
-                <button class="calendar__btn calendar__btn--secondary" type="button" data-form-cancel style="display:none;">
+                <button class="calendar__btn calendar__btn--secondary" type="button" data-form-cancel
+                  style="display:none;">
                   ยกเลิกการแก้ไข
                 </button>
-                <button class="calendar__btn calendar__btn--outline" type="button" data-calendar-reset title="รีเซ็ตกลับเป็นข้อมูลทางการตามประกาศปฏิทินการศึกษา 2569">
+                <button class="calendar__btn calendar__btn--outline" type="button" data-calendar-reset
+                  title="รีเซ็ตกลับเป็นข้อมูลทางการตามประกาศปฏิทินการศึกษา 2569">
                   คืนค่าเริ่มต้นตามประกาศ
                 </button>
               </div>
@@ -684,7 +784,8 @@
             <div class="calendar-dialog__list-wrap">
               <div class="calendar-dialog__list-header">
                 <h4>รายการกำหนดการทั้งหมด (<span data-calendar-event-count>0</span> รายการ)</h4>
-                <input class="calendar-dialog__search" type="search" data-calendar-search placeholder="ค้นหากำหนดการ..." />
+                <input class="calendar-dialog__search" type="search" data-calendar-search
+                  placeholder="ค้นหากำหนดการ..." />
               </div>
               <div class="calendar-dialog__list" data-calendar-table-list></div>
             </div>
@@ -693,72 +794,104 @@
       </div>
     </section>
 
-    <section class="stats-section" id="statistics" aria-labelledby="statistics-title">
+    <section class="news" id="news" aria-labelledby="news-title" data-news>
+      <div class="news__inner">
+        <!-- หัวข้อด้านบนของหน้าข่าว -->
+        <div class="news__head">
+          <h2 class="news__title" id="news-title" data-i18n="news.title">ข่าวสารและประกาศ</h2>
+          <span class="news__rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="news__layout news__layout--list">
+          <div class="news__feed">
+            <section class="news-new" aria-label="ข่าวสารล่าสุด" data-news-new>
+              <div class="news-new__head">
+                <div class="news-new__titles">
+                  <p class="news-new__label">
+                    <span>ข่าวสารล่าสุด</span>
+                    <span class="news-new__pill">NEW</span>
+                  </p>
+                  <p class="news-new__sub">อัปเดตข่าวสารและประกาศล่าสุดจากบัณฑิตวิทยาลัย</p>
+                </div>
+                <div class="news-new__controls">
+                  <div class="news-new__dots" data-news-dots></div>
+                  <button class="news-new__btn" type="button" data-news-prev aria-label="ข่าวก่อนหน้า">&#8249;</button>
+                  <button class="news-new__btn" type="button" data-news-next aria-label="ข่าวถัดไป">&#8250;</button>
+                </div>
+              </div>
+              <div class="news-new__viewport" data-news-new-viewport></div>
+            </section>
+
+            <section class="news-row" aria-label="ประกาศและข่าวสารทั่วไป" data-news-row>
+              <div class="news-row__head">
+                <p class="news__panel-label"><span>ประกาศและข่าวสารทั่วไป</span></p>
+                <button class="news__more news-row__all" type="button" data-news-open>
+                  <span data-i18n="news.all">ดูข่าวทั้งหมด</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true" focusable="false">
+                    <path d="M4 12h15"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="news-row__body">
+                <button class="news-row__btn news-row__btn--prev" type="button" data-news-row-prev aria-label="ข่าวก่อนหน้า">&#8249;</button>
+                <div class="news-row__viewport">
+                  <div class="news__grid news-row__track" data-news-list></div>
+                </div>
+                <button class="news-row__btn news-row__btn--next" type="button" data-news-row-next aria-label="ข่าวถัดไป">&#8250;</button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pop-up: ข่าวสารและประกาศทั้งหมด -->
+    <div class="news-modal" data-news-modal hidden>
+      <div class="news-modal__backdrop" data-news-modal-close></div>
+      <div class="news-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="news-modal-title">
+        <div class="news-modal__head">
+          <p class="news__panel-label" id="news-modal-title"><span>ข่าวสารและประกาศทั้งหมด</span></p>
+          <button class="news-modal__close" type="button" data-news-modal-close aria-label="ปิด">&#10005;</button>
+        </div>
+        <div class="news-modal__list" data-news-modal-list></div>
+      </div>
+    </div>
+
+    <section class="stats-section" id="statistics" aria-labelledby="statistics-title" data-stats-home>
       <div class="stats-section__inner">
         <div class="stats-section__head">
-          <h2 class="stats-section__title" id="statistics-title" data-i18n="stats.title">
-            สถิติการดำเนินงาน
-          </h2>
+          <h2 class="stats-section__title" id="statistics-title" data-i18n="stats.title">ภาพรวมสถิติ</h2>
           <span class="stats-section__rule" aria-hidden="true"></span>
         </div>
 
         <div class="stats-summary">
           <article class="stats-card stats-card--applicants">
-            <span class="stats-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </span>
+            <span class="stats-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
             <div class="stats-card__content">
               <h3 data-i18n="stats.applicants.label">จำนวนผู้ยื่นคำร้อง บศ.1</h3>
-              <p class="stats-card__value"><strong data-count="1248">1,248</strong><span data-i18n="stats.people">คน</span></p>
-              <p class="stats-card__trend">
-                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-                  <path d="M8 3 14 13H2L8 3Z"></path>
-                </svg>
-                <strong data-count="14.8" data-count-decimals="1" data-count-prefix="+" data-count-suffix="%" data-count-delay="240">+14.8%</strong>
-                <span data-i18n="stats.previousTerm">จากเทอมก่อน</span>
-              </p>
+              <p class="stats-card__value"><strong data-stat="applicants">-</strong><span data-i18n="stats.people">คน</span></p>
+              <p class="stats-card__trend"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3 14 13H2L8 3Z"></path></svg><strong data-stat="applicantsTrend">-</strong><span data-i18n="stats.previousTerm">จากปีการศึกษาก่อน</span></p>
             </div>
           </article>
 
           <article class="stats-card stats-card--total">
-            <span class="stats-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
-                <path d="M14 2v6h6M8 13h8M8 17h8"></path>
-              </svg>
-            </span>
+            <span class="stats-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6M8 13h8M8 17h8"></path></svg></span>
             <div class="stats-card__content">
               <h3 data-i18n="stats.total.label">จำนวนคำร้องทั้งหมด</h3>
-              <p class="stats-card__value"><strong data-count="3560" data-count-delay="120">3,560</strong><span data-i18n="stats.requests">คำร้อง</span></p>
-              <p class="stats-card__trend">
-                <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-                  <path d="M8 3 14 13H2L8 3Z"></path>
-                </svg>
-                <strong data-count="8.2" data-count-decimals="1" data-count-prefix="+" data-count-suffix="%" data-count-delay="360">+8.2%</strong>
-                <span data-i18n="stats.previousSemester">จากภาคที่ผ่านมา</span>
-              </p>
+              <p class="stats-card__value"><strong data-stat="requests">-</strong><span data-i18n="stats.requests">คำร้อง</span></p>
+              <p class="stats-card__trend"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 3 14 13H2L8 3Z"></path></svg><strong data-stat="requestsTrend">-</strong><span data-i18n="stats.previousSemester">จากปีการศึกษาก่อน</span></p>
             </div>
           </article>
 
           <article class="stats-card stats-card--completed">
-            <span class="stats-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                <circle cx="12" cy="12" r="9"></circle>
-                <path d="m8 12 2.5 2.5L16 9"></path>
-              </svg>
-            </span>
+            <span class="stats-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.5 2.5L16 9"></path></svg></span>
             <div class="stats-card__content">
               <h3 data-i18n="stats.completed.label">จำนวนคำร้องที่ดำเนินการสำเร็จ</h3>
-              <p class="stats-card__value"><strong data-count="3290" data-count-delay="240">3,290</strong><span data-i18n="stats.requests">คำร้อง</span></p>
+              <p class="stats-card__value"><strong data-stat="completed">-</strong><span data-i18n="stats.requests">คำร้อง</span></p>
               <p class="stats-card__trend stats-card__trend--badge">
-                <strong data-count="92.4" data-count-decimals="1" data-count-suffix="%" data-count-delay="480">92.4%</strong>
+                <strong data-stat="rate">-</strong>
                 <span data-i18n="stats.successRate">อัตราความสำเร็จ</span>
               </p>
             </div>
@@ -769,106 +902,53 @@
           <article class="stats-panel" aria-labelledby="stats-monthly-title">
             <div class="stats-panel__head">
               <div>
-                <h3 id="stats-monthly-title" data-i18n="stats.monthly.title">
-                  สถิติการยื่นคำร้อง บศ.1 รายเดือน
-                </h3>
-                <p class="stats-panel__subtitle" data-i18n="stats.monthly.period">
-                  ภาคการศึกษาที่ 1/2569 (มิ.ย. - พ.ย. 2569)
-                </p>
+                <h3 id="stats-monthly-title" data-i18n="stats.monthly.title">สถิติการยื่นคำร้อง บศ.1 รายเดือน</h3>
+                <p class="stats-panel__subtitle" data-stat="period"></p>
               </div>
-              <ul class="stats-legend" aria-label="คำอธิบายกราฟ"
-                data-i18n-aria-label="stats.chart.legend">
-                <li><span class="stats-legend__dot"></span><span data-i18n="stats.monthly.requests">จำนวน บศ.1</span></li>
-                <li><span class="stats-legend__line"></span><span data-i18n="stats.monthly.trend">แนวโน้มเฉลี่ย</span></li>
-              </ul>
+              <ul class="stats-legend" aria-label="คำอธิบายกราฟ" data-i18n-aria-label="stats.chart.legend"><li><span class="stats-legend__dot"></span><span data-i18n="stats.monthly.requests">จำนวน บศ.1</span></li><li><span class="stats-legend__line"></span><span data-i18n="stats.monthly.trend">ดำเนินการสำเร็จ</span></li></ul>
             </div>
-
-            <div class="stats-chart-wrap">
-              <span class="stats-chart__latest" data-i18n="stats.monthly.latest">ล่าสุด 328 ราย</span>
-              <svg class="stats-chart" viewBox="0 0 760 300" role="img"
-                aria-labelledby="stats-chart-title stats-chart-description">
-                <title id="stats-chart-title" data-i18n="stats.monthly.svgTitle">
-                  จำนวนคำร้อง บศ.1 รายเดือน
-                </title>
-                <desc id="stats-chart-description" data-i18n="stats.monthly.svgDescription">
-                  กราฟตั้งแต่เดือนมิถุนายนถึงพฤศจิกายน โดยพฤศจิกายนมีคำร้อง 328 ราย
-                </desc>
-                <g class="stats-chart__grid" aria-hidden="true">
-                  <line x1="66" y1="34" x2="730" y2="34"></line>
-                  <line x1="66" y1="90" x2="730" y2="90"></line>
-                  <line x1="66" y1="146" x2="730" y2="146"></line>
-                  <line x1="66" y1="202" x2="730" y2="202"></line>
-                  <line x1="66" y1="234" x2="730" y2="234"></line>
-                </g>
-                <g class="stats-chart__axis" aria-hidden="true">
-                  <text x="54" y="38">350</text>
-                  <text x="54" y="94">250</text>
-                  <text x="54" y="150">150</text>
-                  <text x="54" y="206">50</text>
-                  <text x="54" y="238">0</text>
-                  <text class="stats-chart__month" x="100" y="270" data-i18n="stats.month.jun">มิ.ย.</text>
-                  <text class="stats-chart__month" x="220" y="270" data-i18n="stats.month.jul">ก.ค.</text>
-                  <text class="stats-chart__month" x="340" y="270" data-i18n="stats.month.aug">ส.ค.</text>
-                  <text class="stats-chart__month" x="460" y="270" data-i18n="stats.month.sep">ก.ย.</text>
-                  <text class="stats-chart__month" x="580" y="270" data-i18n="stats.month.oct">ต.ค.</text>
-                  <text class="stats-chart__month" x="700" y="270" data-i18n="stats.month.nov">พ.ย.</text>
-                </g>
-                <g class="stats-chart__bars" aria-hidden="true">
-                  <rect x="84" y="188" width="32" height="46" rx="8"></rect>
-                  <rect x="204" y="142" width="32" height="92" rx="8"></rect>
-                  <rect x="324" y="103" width="32" height="131" rx="8"></rect>
-                  <rect x="444" y="120" width="32" height="114" rx="8"></rect>
-                  <rect x="564" y="157" width="32" height="77" rx="8"></rect>
-                  <rect class="stats-chart__bar--latest" x="684" y="47" width="32" height="187" rx="8"></rect>
-                </g>
-                <path class="stats-chart__trend-line"
-                  d="M100 188 C144 178 179 146 220 142 S299 103 340 103 S420 119 460 120 S540 150 580 157 S659 67 700 47"></path>
-                <g class="stats-chart__points" aria-hidden="true">
-                  <circle cx="100" cy="188" r="5"></circle>
-                  <circle cx="220" cy="142" r="5"></circle>
-                  <circle cx="340" cy="103" r="5"></circle>
-                  <circle cx="460" cy="120" r="5"></circle>
-                  <circle cx="580" cy="157" r="5"></circle>
-                  <circle class="stats-chart__point--latest" cx="700" cy="47" r="5"></circle>
-                </g>
-              </svg>
+            <div class="stats-chart-wrap" data-stats-monthly>
+              <span class="stats-chart__latest"></span>
             </div>
-
-            <p class="stats-panel__note" data-i18n="stats.monthly.note">
-              เดือนพฤศจิกายนมีผู้ยื่นคำร้อง บศ.1 สูงสุด 328 ราย
-            </p>
+            <p class="stats-panel__note" data-stat="peakNote"></p>
           </article>
 
+          <article class="stats-panel stats-panel--wide" aria-labelledby="stats-faculty-title">
+            <div class="stats-panel__head">
+              <div>
+                <h3 id="stats-faculty-title">สถิติการยื่นคำร้อง บศ.1 แยกตามคณะ</h3>
+                <p class="stats-panel__subtitle" data-stat="facultyPeriod"></p>
+              </div>
+              <ul class="stats-legend" aria-label="คำอธิบายกราฟ" data-i18n-aria-label="stats.chart.legend"><li><span class="stats-legend__dot"></span><span data-i18n="stats.monthly.requests">จำนวน บศ.1</span></li><li><span class="stats-legend__line"></span><span data-i18n="stats.monthly.trend">ดำเนินการสำเร็จ</span></li></ul>
+            </div>
+            <div class="stats-split">
+              <div class="stats-scroll stats-scroll--bars">
+                <ol class="stats-rank" data-stats-faculty></ol>
+              </div>
+            </div>
+            <p class="stats-panel__note">เรียงตามจำนวนคำร้องที่ยื่นจากมากไปน้อย</p>
+          </article>
           <article class="stats-panel" aria-labelledby="stats-status-title">
             <div class="stats-panel__head">
               <div>
-                <h3 id="stats-status-title" data-i18n="stats.status.title">
-                  สัดส่วนสถานะคำร้องทั้งหมด
-                </h3>
-                <p class="stats-panel__subtitle" data-i18n="stats.status.subtitle">
-                  จำแนกตามขั้นตอนการดำเนินการในระบบ
-                </p>
+                <h3 id="stats-status-title" data-i18n="stats.status.title">สัดส่วนคำร้องที่ดำเนินการสำเร็จ</h3>
+                <p class="stats-panel__subtitle" data-i18n="stats.status.subtitle">เทียบกับจำนวนคำร้องที่ยื่นทั้งหมด</p>
               </div>
               <span class="stats-panel__badge">
-                <strong data-count="3560" data-count-delay="200">3,560</strong>
+                <strong data-stat="badgeTotal">-</strong>
                 <span data-i18n="stats.requests">คำร้อง</span>
               </span>
             </div>
 
             <div class="stats-status__body">
-              <div class="stats-donut" role="img" data-i18n-aria-label="stats.status.accessible"
-                aria-label="สถานะคำร้อง: สำเร็จ 3,290 ราย อยู่ระหว่างตรวจสอบ 198 ราย และรอเอกสาร 72 ราย">
+              <div class="stats-donut" role="img" data-stats-donut aria-label="">
                 <svg class="stats-donut__ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                  <circle class="stats-donut__seg stats-donut__seg--completed" cx="50" cy="50" r="43"
-                    pathLength="100"></circle>
-                  <circle class="stats-donut__seg stats-donut__seg--review" cx="50" cy="50" r="43"
-                    pathLength="100"></circle>
-                  <circle class="stats-donut__seg stats-donut__seg--documents" cx="50" cy="50" r="43"
-                    pathLength="100"></circle>
+                  <circle class="stats-donut__seg stats-donut__seg--review" cx="50" cy="50" r="43" pathLength="100"></circle>
+                  <circle class="stats-donut__seg stats-donut__seg--completed" cx="50" cy="50" r="43" pathLength="100"></circle>
                 </svg>
                 <div class="stats-donut__center">
                   <span class="stats-donut__total" data-i18n="stats.status.total">ทั้งหมด</span>
-                  <strong data-count="92.4" data-count-decimals="1" data-count-suffix="%" data-count-delay="120" data-count-duration="1100">92.4%</strong>
+                  <strong data-stat="donutRate">-</strong>
                   <span class="stats-donut__caption" data-i18n="stats.status.completed">สำเร็จ</span>
                 </div>
               </div>
@@ -877,190 +957,31 @@
                 <li class="stats-status__item stats-status__item--completed">
                   <span class="stats-status__dot" aria-hidden="true"></span>
                   <span class="stats-status__label" data-i18n="stats.status.completed">ดำเนินการสำเร็จ</span>
-                  <span class="stats-status__value"><strong data-count="3290" data-count-delay="420">3,290</strong><small data-count="92.4" data-count-decimals="1" data-count-suffix="%" data-count-delay="780">92.4%</small></span>
+                  <span class="stats-status__value"><strong data-stat="listDone">-</strong><small data-stat="listDonePct">-</small></span>
                 </li>
                 <li class="stats-status__item stats-status__item--review">
                   <span class="stats-status__dot" aria-hidden="true"></span>
-                  <span class="stats-status__label" data-i18n="stats.status.review">อยู่ระหว่างตรวจสอบ</span>
-                  <span class="stats-status__value"><strong data-count="198" data-count-delay="540">198</strong><small data-count="5.6" data-count-decimals="1" data-count-suffix="%" data-count-delay="900">5.6%</small></span>
-                </li>
-                <li class="stats-status__item stats-status__item--documents">
-                  <span class="stats-status__dot" aria-hidden="true"></span>
-                  <span class="stats-status__label" data-i18n="stats.status.documents">รอนิสิตแก้ไข/เอกสารเพิ่ม</span>
-                  <span class="stats-status__value"><strong data-count="72" data-count-delay="660">72</strong><small data-count="2.0" data-count-decimals="1" data-count-suffix="%" data-count-delay="1020">2.0%</small></span>
+                  <span class="stats-status__label" data-i18n="stats.total.label">จำนวนคำร้องทั้งหมด</span>
+                  <span class="stats-status__value"><strong data-stat="listTotal">-</strong></span>
                 </li>
               </ul>
             </div>
 
-            <p class="stats-panel__note" data-i18n="stats.status.note">
-              คำร้องที่อยู่ระหว่างดำเนินการจะได้รับการอนุมัติภายใน 3–5 วันทำการ
-            </p>
+            <p class="stats-panel__note">อัตราความสำเร็จ = คำร้องที่ดำเนินการสำเร็จ ÷ คำร้องที่ยื่นทั้งหมด × 100</p>
           </article>
+
+        </div>
+
+        <div class="stats-actions">
+          <a class="btn btn--primary" href="statistics.html">ดูสถิติทั้งหมด</a>
         </div>
       </div>
     </section>
 
-    <section class="support-section" id="contact" aria-labelledby="support-title">
-      <div class="support-section__inner">
-        <header class="support-hero">
-          <h2 class="support-hero__title" id="support-title" data-i18n="support.heroTitle">
-            พร้อมให้บริการ ทำงานเป็นทีม ยิ้มแย้มแจ่มใส ใส่ใจคุณภาพ
-          </h2>
-          <span class="support-hero__rule" aria-hidden="true"></span>
-        </header>
+  </main>
 
-        <div class="support-grid">
-          <article class="support-card" aria-labelledby="support-services-title">
-            <div class="support-card__head">
-              <h3 class="support-card__title" id="support-services-title">
-                <span class="support-card__badge support-card__badge--primary" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
-                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
-                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
-                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
-                  </svg>
-                </span>
-                <span data-i18n="support.services">บริการของเรา</span>
-              </h3>
-            </div>
-
-            <ul class="support-services">
-              <li>
-                <div class="support-service">
-                  <span class="support-service__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path>
-                      <path d="M14 2v6h6"></path>
-                      <path d="M8 13h8M8 17h5"></path>
-                    </svg>
-                  </span>
-                  <span class="support-service__body">
-                    <span class="support-service__name" data-i18n="support.serviceRequest">คำร้องออนไลน์</span>
-                    <span class="support-service__desc" data-i18n="support.serviceRequestDesc">
-                      การยื่นเอกสารคำร้อง และสามารถตรวจสอบได้อย่างรวดเร็ว
-                    </span>
-                  </span>
-                </div>
-              </li>
-              <li>
-                <div class="support-service">
-                  <span class="support-service__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <path d="M3 3v18h18"></path>
-                      <rect x="7" y="12" width="3" height="6" rx="1"></rect>
-                      <rect x="12" y="8" width="3" height="10" rx="1"></rect>
-                      <rect x="17" y="5" width="3" height="13" rx="1"></rect>
-                    </svg>
-                  </span>
-                  <span class="support-service__body">
-                    <span class="support-service__name" data-i18n="support.serviceInfo">ข้อมูลสารสนเทศ</span>
-                    <span class="support-service__desc" data-i18n="support.serviceInfoDesc">
-                      ข้อมูลบัณฑิตศึกษาของมหาวิทยาลัยพะเยา
-                    </span>
-                  </span>
-                </div>
-              </li>
-            </ul>
-          </article>
-
-          <article class="support-card" aria-labelledby="support-agencies-title">
-            <div class="support-card__head">
-              <h3 class="support-card__title" id="support-agencies-title">
-                <span class="support-card__badge support-card__badge--primary" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                    <path d="M3 21h18"></path>
-                    <path d="M5 21V9l7-4 7 4v12"></path>
-                    <path d="M9 21v-5h6v5"></path>
-                    <path d="M9 13h.01M15 13h.01"></path>
-                  </svg>
-                </span>
-                <span data-i18n="support.agencies">หน่วยงานที่เกี่ยวข้อง</span>
-              </h3>
-            </div>
-
-            <ul class="support-agencies">
-              <li>
-                <a class="support-agency" href="https://www.mua.go.th/index2.html" target="_blank"
-                  rel="noopener noreferrer">
-                  <span class="support-agency__logo" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <path d="M22 10 12 5 2 10l10 5 10-5Z"></path>
-                      <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path>
-                    </svg>
-                  </span>
-                  <span class="support-agency__body">
-                    <span class="support-agency__name" data-i18n="support.agencyMua">
-                      สำนักงานคณะกรรมการการอุดมศึกษา
-                    </span>
-                    <span class="support-agency__host">mua.go.th</span>
-                  </span>
-                  <span class="support-agency__arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <path d="M7 17 17 7"></path>
-                      <path d="M8 7h9v9"></path>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="support-agency" href="https://www.up.ac.th" target="_blank" rel="noopener noreferrer">
-                  <span class="support-agency__logo" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <path d="M3 21h18"></path>
-                      <path d="M5 21V9l7-4 7 4v12"></path>
-                      <path d="M9 21v-5h6v5"></path>
-                    </svg>
-                  </span>
-                  <span class="support-agency__body">
-                    <span class="support-agency__name" data-i18n="support.agencyUp">มหาวิทยาลัยพะเยา</span>
-                    <span class="support-agency__host">up.ac.th</span>
-                  </span>
-                  <span class="support-agency__arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <path d="M7 17 17 7"></path>
-                      <path d="M8 7h9v9"></path>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="support-agency" href="https://does.ac.th" target="_blank" rel="noopener noreferrer">
-                  <span class="support-agency__logo" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <rect x="3" y="7" width="18" height="13" rx="2"></rect>
-                      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                      <path d="M3 12h18"></path>
-                    </svg>
-                  </span>
-                  <span class="support-agency__body">
-                    <span class="support-agency__name" data-i18n="support.agencyDoes">กองบริการการศึกษา</span>
-                    <span class="support-agency__host">does.ac.th</span>
-                  </span>
-                  <span class="support-agency__arrow" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                      <path d="M7 17 17 7"></path>
-                      <path d="M8 7h9v9"></path>
-                    </svg>
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="support-contact">
-          <div class="support-petals" aria-hidden="true">
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__petals support-petals" aria-hidden="true">
             <span class="support-petal support-petal--1"></span>
             <span class="support-petal support-petal--2"></span>
             <span class="support-petal support-petal--3"></span>
@@ -1072,105 +993,99 @@
             <span class="support-petal support-petal--9"></span>
             <span class="support-petal support-petal--10"></span>
           </div>
-
-          <div class="support-contact__head">
-            <span class="support-contact__rule" aria-hidden="true"></span>
-            <h3 class="support-contact__title" data-i18n="support.contactTitle">ติดต่อเรา</h3>
-            <span class="support-contact__rule" aria-hidden="true"></span>
+    <div class="site-footer__inner">
+      <div class="foot-main">
+        <div class="foot-brand">
+          <div class="foot-brand__head">
+            <img class="foot-logo" src="assets/images/grad-logo.png" alt="GRAD UP" width="72" height="auto" loading="lazy">
+            <header class="support-hero">
+            <h2 class="support-hero__title" id="support-title" data-i18n="support.heroTitle">
+              พร้อมให้บริการ ทำงานเป็น⁠ทีม ยิ้มแย้มแจ่มใส ใส่ใจคุณภาพ
+            </h2>
+            <span class="support-hero__rule" aria-hidden="true"></span>
+          </header>
           </div>
-
-          <div class="support-contact__grid">
-            <div class="support-contact__item">
-              <span class="support-contact__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </span>
-              <span class="support-contact__label" data-i18n="support.addressLabel">ที่อยู่</span>
-              <p class="support-contact__org" data-i18n="support.addressOrg">
-                กองบริการการศึกษา มหาวิทยาลัยพะเยา
-              </p>
-              <p class="support-contact__value" data-i18n="support.address">
-                เลขที่ 19 หมู่ที่ 2 ตำบลแม่กา อำเภอเมืองพะเยา จังหวัดพะเยา 56000
-              </p>
-            </div>
-
-            <div class="support-contact__item">
-              <span class="support-contact__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <path
-                    d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z">
-                  </path>
-                </svg>
-              </span>
-              <span class="support-contact__label" data-i18n="support.phoneLabel">โทรศัพท์</span>
-              <a class="support-contact__value support-contact__value--link" href="tel:+6654466666"
-                data-i18n="support.phone">054-466-666 ต่อ 1831, 1832</a>
-            </div>
-
-            <div class="support-contact__item">
-              <span class="support-contact__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                  stroke-linecap="round" stroke-linejoin="round" focusable="false">
-                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                  <path d="m3 7 9 6 9-6"></path>
-                </svg>
-              </span>
-              <span class="support-contact__label" data-i18n="support.emailLabel">อีเมล</span>
-              <a class="support-contact__value support-contact__value--link"
-                href="mailto:reg@up.ac.th">reg@up.ac.th</a>
-            </div>
-          </div>
+          <p class="foot-desc" data-i18n="foot.desc">ศูนย์บริการและส่งเสริมการศึกษา มหาวิทยาลัยพะเยา มุ่งมั่นพัฒนาการให้บริการด้วย ระบบดิจิทัลที่ทันสมัย สะดวก รวดเร็ว และตรวจสอบได้</p>
+          <p class="foot-hours">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            <span class="foot-hours__text"><span data-i18n="foot.hoursMain">เวลาทำการ 08:30 - 16:30 น.</span><span class="foot-hours__note" data-i18n="foot.hoursNote">(ยกเว้น : วันหยุดราชการ)</span></span>
+          </p>
         </div>
 
-        <div class="support-visitors">
-          <span class="support-visitors__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round" focusable="false">
-              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-          </span>
-          <span class="support-visitors__label" data-i18n="support.visitors">จำนวนผู้เข้าชม</span>
-          <strong class="support-visitors__count" data-visitor-count>15,121</strong>
-          <span class="support-visitors__sep" aria-hidden="true"></span>
-          <span class="support-visitors__updated">
-            <span data-i18n="support.updated">อัปเดตล่าสุด</span>
-            <time datetime="2026-11-16T08:54:50" data-visitor-updated>2026-11-16 08:54:50</time>
-          </span>
+        <div class="foot-links">
+          <div class="foot-col">
+            <h3 class="foot-col__title" data-i18n="support.services">บริการของเรา</h3>
+            <ul class="foot-services">
+              <li><span class="foot-service" data-i18n="support.serviceRequest">คำร้องออนไลน์</span></li>
+              <li><span class="foot-service" data-i18n="support.serviceInfo">ข้อมูลสารสนเทศ</span></li>
+            </ul>
+          </div>
+
+          <div class="foot-col">
+            <h3 class="foot-col__title" data-i18n="support.contactTitle">ติดต่อเรา</h3>
+            <div class="foot-contact">
+              <div class="foot-contact__item">
+                <span class="foot-col__label" data-i18n="support.addressLabel">ที่อยู่</span>
+                <p class="foot-col__org" data-i18n="support.addressOrg">กองบริการการศึกษา มหาวิทยาลัยพะเยา</p>
+                <p class="foot-col__text" data-i18n="support.address">เลขที่ 19 หมู่ที่ 2 ตำบลแม่กา อำเภอเมืองพะเยา จังหวัดพะเยา 56000</p>
+              </div>
+              <div class="foot-contact__item">
+                <span class="foot-col__label" data-i18n="support.phoneLabel">โทรศัพท์</span>
+                <a class="foot-col__text foot-col__link" href="tel:+6654466666">054-466-666 ต่อ 1831, 1832</a>
+              </div>
+              <div class="foot-contact__item">
+                <span class="foot-col__label" data-i18n="support.emailLabel">อีเมล</span>
+                <a class="foot-col__text foot-col__link" href="mailto:reg@up.ac.th">reg@up.ac.th</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
+      <div class="foot-bottom">
+        <div class="support-visitors">
+        <span class="support-visitors__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round" focusable="false">
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        </span>
+        <span class="support-visitors__label" data-i18n="support.visitors">จำนวนผู้เข้าชม</span>
+        <strong class="support-visitors__count" data-visitor-count>15,121</strong>
+        <span class="support-visitors__sep" aria-hidden="true"></span>
+        <span class="support-visitors__updated">
+        <span data-i18n="support.updated">อัปเดตล่าสุด</span>
+        <time datetime="2026-11-16T08:54:50" data-visitor-updated>2026-11-16 08:54:50</time>
+        </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__bar">
       <p class="site-footer__line">
         <span>
-          Copyright © 2019
-          <a class="site-footer__brand" href="https://does.up.ac.th" target="_blank"
-            rel="noopener noreferrer">DOESUP</a>,
-          <span data-i18n="footer.rights">สงวนลิขสิทธิ์</span>
+        Copyright © 2019
+        <a class="site-footer__brand" href="https://does.up.ac.th" target="_blank"
+        rel="noopener noreferrer">DOESUP</a>,
+        <span data-i18n="footer.rights">สงวนลิขสิทธิ์</span>
         </span>
         <span class="site-footer__sep" aria-hidden="true"></span>
         <span>
-          <span data-i18n="footer.designedBy">ออกแบบโดย</span>
-          <a href="https://bootstrapmade.com/" target="_blank" rel="noopener noreferrer">BootstrapMade</a>
+        <span data-i18n="footer.designedBy">ออกแบบโดย</span>
+        <a href="https://bootstrapmade.com/" target="_blank" rel="noopener noreferrer">BootstrapMade</a>
         </span>
         <span class="site-footer__sep" aria-hidden="true"></span>
         <span>
-          <span data-i18n="footer.logoSource">และแหล่งที่มาของโลโก้โดย</span>
-          <a href="https://www.logodesign.net/" target="_blank" rel="noopener noreferrer">Logodesign.net</a>
+        <span data-i18n="footer.logoSource">และแหล่งที่มาของโลโก้โดย</span>
+        <a href="https://www.logodesign.net/" target="_blank" rel="noopener noreferrer">Logodesign.net</a>
         </span>
         <span class="site-footer__sep" aria-hidden="true"></span>
         <a href="login.html" target="_blank" rel="noopener noreferrer">
-          <span data-i18n="footer.admin">ผู้ดูแลระบบ</span>
-          <span data-i18n="footer.login">เข้าสู่ระบบ</span>
+        <span data-i18n="footer.admin">ผู้ดูแลระบบ</span>
+        <span data-i18n="footer.login">เข้าสู่ระบบ</span>
         </a>
-      </p>
+        </p>
     </div>
   </footer>
 
@@ -1179,15 +1094,17 @@
 
   <script src="js/intro.js?v=20261122a" defer></script>
   <script src="js/i18n.js?v=20261124a" defer></script>
-  <script src="js/font-size.js?v=20261121b" defer></script>
-  <script src="js/navigation.js?v=20261121b" defer></script>
+  <script src="js/stats-data.js?v=20261123k" defer></script>
+  <script src="js/stats-dashboard.js?v=20261123j" defer></script>
+  <script src="js/font-size.js?v=20261125e" defer></script>
+  <script src="js/navigation.js?v=20261123b" defer></script>
   <script src="js/components.js?v=20261121b" defer></script>
-  <script src="js/main.js?v=20261119a" defer></script>
+  <script src="js/main.js?v=20261123a" defer></script>
   <script src="js/promo.js?v=20261121b" defer></script>
-  <script src="js/news.js?v=20261121c" defer></script>
+  <script src="js/news.js?v=20261123u" defer></script>
   <script src="js/calendar.js?v=20261119i" defer></script>
-  <script src="js/animations.js?v=20261124b" defer></script>
-  <script src="js/search.js?v=20261124b" defer></script>
+  <script src="js/animations.js?v=20261125b" defer></script>
+  <script src="js/search.js?v=20261123b" defer></script>
   <script src="js/stats-chart.js?v=20261119a" defer></script>
 </body>
 

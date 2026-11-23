@@ -61,7 +61,7 @@
         th: "คำร้องออนไลน์ และข้อมูลสารสนเทศบัณฑิตศึกษา",
         en: "Online requests and graduate study information"
       },
-      target: "#contact",
+      target: "#support-title",
       kw: "บริการ service คำร้อง request ระบบ reg",
       kind: "page"
     },
@@ -91,7 +91,7 @@
         th: "ฐานข้อมูลวารสารสำหรับนิสิตบัณฑิตศึกษา",
         en: "Journal databases for graduate students"
       },
-      target: "https://grad.up.ac.th/Journal",
+      target: "https://grad.up.ac.th/",
       kw: "วารสาร journal scopus isi tci eric",
       kind: "external"
     },
@@ -103,16 +103,6 @@
       },
       target: "https://forms.gle/6c73eaxoZytt5Krc8",
       kw: "ประเมิน ความพึงพอใจ survey satisfaction form",
-      kind: "external"
-    },
-    {
-      title: { th: "UP-Meeting", en: "UP-Meeting" },
-      desc: {
-        th: "ระบบประชุมออนไลน์ของมหาวิทยาลัยพะเยา",
-        en: "University of Phayao online meeting system"
-      },
-      target: "https://doga.up.ac.th/emeeting",
-      kw: "meeting ประชุม up meeting",
       kind: "external"
     },
     {
@@ -131,7 +121,7 @@
         th: "เข้าสู่ระบบสำหรับผู้ดูแลและนิสิตบัณฑิตศึกษา",
         en: "Sign in for administrators and graduate students"
       },
-      target: "https://grad.up.ac.th/graduate/signin",
+      target: "login.html",
       kw: "เข้าสู่ระบบ login sign in admin ผู้ดูแล",
       kind: "external"
     },
@@ -141,7 +131,7 @@
         th: "กำหนดการเปิด-ปิดภาคเรียนและการลงทะเบียน",
         en: "Semester dates and registration schedule"
       },
-      target: "https://reg.up.ac.th/announce/calendaracademic",
+      target: "https://reg.up.ac.th/",
       kw: "ปฏิทินการศึกษา academic calendar ลงทะเบียน",
       kind: "external"
     },
@@ -151,7 +141,7 @@
         th: "ค่าธรรมเนียมการศึกษาระดับบัณฑิตศึกษา",
         en: "Graduate tuition and fees"
       },
-      target: "https://reg.up.ac.th/announce/fee",
+      target: "https://reg.up.ac.th/",
       kw: "ค่าธรรมเนียม fee tuition ค่าเทอม",
       kind: "external"
     },
@@ -267,7 +257,7 @@
               th: "ประกาศและบริการสำหรับนิสิตบัณฑิตศึกษา",
               en: "Announcements and services for graduate students"
             },
-            target: "#main",
+            target: card.getAttribute("href") || "#announcements",
             kw: "ประกาศ announcement",
             kind: "page",
             category: { th: "ประกาศ", en: "Announcements" }
@@ -512,15 +502,23 @@
     }
   }
 
+  function isHomePage() {
+    var path = window.location.pathname;
+    return path === "" || path === "/" || /index\.html$/i.test(path);
+  }
+
   function metaText(entry) {
     var parts = [];
     if (entry.category) {
       parts.push(pick(entry.category));
     }
+    var target = entry.target || "";
     parts.push(
-      entry.kind === "page"
+      target.charAt(0) === "#"
         ? t("search.onPage", "ในหน้านี้")
-        : t("search.external", "ลิงก์ภายนอก")
+        : /^https?:/i.test(target)
+          ? t("search.external", "ลิงก์ภายนอก")
+          : t("search.pageLink", "หน้าเว็บ")
     );
     return parts.join(" · ");
   }
@@ -554,7 +552,8 @@
 
       link.className = "search-result";
       link.id = "search-result-" + index;
-      link.href = entry.target;
+      var isHash = entry.target.charAt(0) === "#";
+      link.href = isHash && !isHomePage() ? "index.html" + entry.target : entry.target;
       link.setAttribute("role", "option");
 
       if (/^https?:/i.test(entry.target)) {
@@ -588,7 +587,7 @@
       link.appendChild(body);
       link.appendChild(arrow);
 
-      if (entry.target.charAt(0) === "#") {
+      if (isHash && isHomePage()) {
         link.addEventListener("click", function (event) {
           event.preventDefault();
           jumpTo(entry.target);

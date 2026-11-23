@@ -654,3 +654,2354 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 12px rgba(232, 185, 79, 0.30);
   font-weight: 800;
 }
+
+/* ส่วนหน่วยงานอื่นๆ (ด้านบน): หน่วยงานอยู่ซ้าย ข้อมูลการติดต่ออยู่ขวา */
+.news__layout--links {
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+/* ส่วนรายการข่าว (ก่อนภาพรวมสถิติ) ใช้คอลัมน์เต็มความกว้าง */
+.news__layout--list {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 63.99rem) {
+  .news__layout--links {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ข้อมูลการติดต่อ: ให้ความสูงเท่ากับกล่องหน่วยงาน */
+.news-contact {
+  padding: 1.5rem 1.6rem;
+  background: var(--news-card-bg);
+  border: 1px solid var(--news-card-border);
+  border-radius: 1.125rem;
+  box-shadow: var(--news-card-shadow);
+}
+
+.news-contact .foot-col__title {
+  margin-bottom: 1rem;
+}
+
+/* สลับภาษา ไทย / English */
+.news-contact .lang-en {
+  display: none;
+}
+
+[data-lang="en"] .news-contact .lang-th {
+  display: none;
+}
+
+[data-lang="en"] .news-contact .lang-en {
+  display: inline;
+}
+
+/* อนิเมชัน: หน่วยงานอื่นๆ เลื่อนเข้าจากซ้าย และข้อมูลการติดต่อเลื่อนเข้าจากขวา */
+.news--links.is-armed .news-contact {
+  opacity: 0;
+}
+
+.news--links.is-in .news-links {
+  animation: news-slide-left 680ms var(--ease) 80ms both;
+}
+
+.news--links.is-in .news-contact {
+  animation: news-slide-right 680ms var(--ease) 170ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news--links.is-in .news-links,
+  .news--links.is-in .news-contact {
+    animation: none;
+  }
+}
+
+/* ---------- ข้อมูลการติดต่อ: หัวเรื่องและแถวแบบเดียวกับกล่องหน่วยงานอื่นๆ ให้ความสูงเท่ากัน ---------- */
+.news-contact {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.news-contact__list {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.news-contact__item {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  border-bottom: 1px solid var(--news-card-border);
+}
+
+.news-contact__item:last-child {
+  border-bottom: 0;
+}
+
+.news-contact__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.news-contact__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-accent, #D6A83F);
+}
+
+.news-contact__value {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.news-contact__value a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-contact__value a:hover,
+.news-contact__value a:focus-visible {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.news-contact__sub {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- การ์ดหน่วยงานอื่นๆ: ปรับตามดีไซน์ที่ต้องการ (หัวเรื่องอ่อน แถวมีเส้นคั่น ไอคอนและตัวอักษรเรียบ) ---------- */
+.news-links,
+.news-contact {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBF9FE 100%);
+}
+
+.news-links__title {
+  padding: 0.85rem 1.25rem;
+  font-size: 0.9375rem;
+  background: linear-gradient(180deg, #F3EDFC 0%, #FFFFFF 100%);
+  border-bottom: 1px solid rgba(77, 35, 141, 0.14);
+}
+
+.news-links__list {
+  padding: 0.25rem 0 0.35rem;
+}
+
+.news-links__item {
+  gap: 0.85rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(77, 35, 141, 0.08);
+}
+
+.news-links__item:last-child {
+  border-bottom: 0;
+}
+
+.news-links__item:hover,
+.news-links__item:focus-visible {
+  background-color: #F6F1FD;
+}
+
+.news-links__icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.625rem;
+  background: linear-gradient(180deg, #F4EEFC 0%, #E9DEF9 100%);
+  border-color: rgba(77, 35, 141, 0.16);
+}
+
+.news-links__name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #241B32;
+}
+
+.news-links__host {
+  font-size: 0.75rem;
+  color: #7A7189;
+}
+
+.news-links__arrow {
+  width: 1rem;
+  height: 1rem;
+  color: #8C82A0;
+}
+
+/* กล่องติดต่อเรา: ใช้เส้นคั่นและสไตล์เดียวกัน */
+.news-contact__item {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid rgba(77, 35, 141, 0.08);
+}
+
+.news-contact__label {
+  font-size: 0.75rem;
+}
+
+.news-contact__value {
+  font-size: 0.9375rem;
+}
+
+/* โหมดมืด: ใช้สีจากชุดตัวแปรของโหมดมืดแทนสีอ่อนของดีไซน์ใหม่ */
+[data-theme="dark"] .news-links,
+[data-theme="dark"] .news-contact {
+  background: var(--news-card-bg);
+}
+
+[data-theme="dark"] .news-links__title {
+  background: linear-gradient(180deg, var(--news-head-tint), rgba(77, 35, 141, 0));
+  border-bottom-color: var(--color-border);
+}
+
+[data-theme="dark"] .news-links__item {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .news-links__item:hover,
+[data-theme="dark"] .news-links__item:focus-visible {
+  background-color: var(--color-primary-soft);
+}
+
+[data-theme="dark"] .news-links__icon {
+  background: var(--color-primary-soft);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .news-links__name,
+[data-theme="dark"] .news-contact__value {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .news-links__host,
+[data-theme="dark"] .news-links__arrow {
+  color: var(--color-text-secondary);
+}
+
+/* หัวข้อของกล่องหน่วยงานอื่นๆ และติดต่อเรา: ขนาดตัวอักษรใหญ่ขึ้นให้อ่านสบายตา */
+.news-links__title,
+.news-contact__title {
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+.news-links__title svg,
+.news-contact__title svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ---------- ส่วนหน่วยงานอื่นๆ: พื้นหลังตกแต่งแบบไล่โทนม่วง-ทองจาง ---------- */
+.news--links {
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(60% 70% at 0% 0%, rgba(147, 100, 223, 0.14) 0%, rgba(147, 100, 223, 0) 70%),
+    radial-gradient(50% 60% at 100% 100%, rgba(214, 168, 63, 0.16) 0%, rgba(214, 168, 63, 0) 70%),
+    radial-gradient(rgba(77, 35, 141, 0.07) 1px, transparent 1px);
+  background-size: auto, auto, 22px 22px;
+}
+
+[data-theme="dark"] .news--links {
+  background-image:
+    radial-gradient(60% 70% at 0% 0%, rgba(147, 100, 223, 0.22) 0%, rgba(147, 100, 223, 0) 70%),
+    radial-gradient(50% 60% at 100% 100%, rgba(240, 201, 109, 0.12) 0%, rgba(240, 201, 109, 0) 70%),
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* ส่วนหน่วยงานอื่นๆ: ขอบตรง (ไม่โค้งมน) และไม่มีเส้นทองด้านบน */
+.news--links {
+  border-radius: 0;
+}
+
+.news--links::before {
+  display: none;
+}
+
+/* ---------- ดอกกล้วยไม้ตกแต่งพื้นหลังส่วนหน่วยงานอื่นๆ (เคลื่อนไหวลอยและหมุนช้าๆ) ---------- */
+.news--links .news__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.news-petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.news-petal {
+  position: absolute;
+  width: var(--size, 90px);
+  height: auto;
+  opacity: 0.22;
+  top: var(--top, 20%);
+  left: var(--left, 10%);
+  animation: petal-float var(--dur, 14s) ease-in-out var(--delay, 0s) infinite alternate,
+    petal-spin calc(var(--dur, 14s) * 2.4) linear var(--delay, 0s) infinite;
+  will-change: transform;
+}
+
+.news-petal--1 { --size: 110px; --top: 6%;  --left: 3%;  --dur: 16s; --delay: 0s; }
+.news-petal--2 { --size: 70px;  --top: 60%; --left: 12%; --dur: 13s; --delay: -4s; }
+.news-petal--3 { --size: 90px;  --top: 18%; --left: 42%; --dur: 18s; --delay: -7s; }
+.news-petal--4 { --size: 60px;  --top: 70%; --left: 58%; --dur: 12s; --delay: -2s; }
+.news-petal--5 { --size: 100px; --top: 30%; --left: 84%; --dur: 17s; --delay: -9s; }
+.news-petal--6 { --size: 64px;  --top: 8%;  --left: 72%; --dur: 14s; --delay: -5s; }
+
+@keyframes petal-float {
+  from {
+    transform: translate3d(-14px, -6px, 0);
+  }
+  to {
+    transform: translate3d(18px, 16px, 0);
+  }
+}
+
+@keyframes petal-spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+[data-theme="dark"] .news-petal {
+  opacity: 0.16;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-petal {
+    animation: none;
+  }
+}
+
+/* ---------- ดอกกล้วยไม้เคลื่อนไหวตกแต่งพื้นหลังส่วนหน่วยงานอื่นๆ ---------- */
+.news--links .news__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.news-flowers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.news-flower {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--s);
+  height: var(--s);
+  opacity: var(--op, 0.45);
+  filter: drop-shadow(0 6px 10px rgba(77, 35, 141, 0.18));
+  animation: news-flower-drift var(--d, 18s) ease-in-out var(--delay, 0s) infinite alternate;
+  will-change: transform;
+}
+
+.news-flower svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: news-flower-spin calc(var(--d, 18s) * 1.6) linear infinite;
+}
+
+@keyframes news-flower-drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translate3d(18px, -26px, 0) rotate(calc(var(--rot, 0deg) + 14deg));
+  }
+  100% {
+    transform: translate3d(-14px, 16px, 0) rotate(calc(var(--rot, 0deg) - 10deg));
+  }
+}
+
+@keyframes news-flower-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .news-flower:nth-child(even) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-flower,
+  .news-flower svg {
+    animation: none;
+  }
+}
+
+[data-theme="dark"] .news-flower {
+  opacity: calc(var(--op, 0.45) * 0.8);
+}
+
+
+/* ---------- เส้นคั่นหัวข้อ: ดอกไม้เคลื่อนไหวเป็นเส้นตรงตามแนวเส้น ---------- */
+.news__rule,
+.calendar-section .calendar-section__rule,
+.stats-section .stats-section__rule {
+  display: block;
+  flex: 1 1 auto;
+  align-self: center;
+  min-width: 0;
+  height: 28px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 28'%3E%3Cg transform='translate(30 14) rotate(10) scale(1)'%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(0)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(72)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(144)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(216)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='2.2' fill='%23F0C96D'/%3E%3C/g%3E%3Cg transform='translate(110 14) rotate(-18) scale(0.75)'%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(0)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(72)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(144)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(216)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='2.2' fill='%23F0C96D'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(90deg, transparent, rgba(77, 35, 141, 0.3) 25%, rgba(214, 168, 63, 0.55) 75%, transparent);
+  background-repeat: repeat-x, no-repeat;
+  background-size: 160px 28px, 100% 1px;
+  background-position: 0 50%, 0 50%;
+  animation: rule-flowers-flow 14s linear infinite;
+}
+
+@keyframes rule-flowers-flow {
+  from {
+    background-position: 0 50%, 0 50%;
+  }
+  to {
+    background-position: 160px 50%, 0 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news__rule,
+  .calendar-section .calendar-section__rule,
+  .stats-section .stats-section__rule {
+    animation: none;
+  }
+}
+
+/* โหมดมืด: เส้นคั่นภาพรวมสถิติให้แสดงดอกไม้เคลื่อนไหวเหมือนส่วนอื่น (แทนเส้นทองเดิม) */
+html[data-theme="dark"] .stats-section .stats-section__rule {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 28'%3E%3Cg transform='translate(30 14) rotate(10) scale(1)'%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(0)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(72)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(144)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(216)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='2.2' fill='%23F0C96D'/%3E%3C/g%3E%3Cg transform='translate(110 14) rotate(-18) scale(0.75)'%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(0)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(72)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(144)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(216)'/%3E%3Cellipse cx='0' cy='-8' rx='5.5' ry='7' fill='%238F5BD6' fill-opacity='.9' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='2.2' fill='%23F0C96D'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(90deg, transparent, rgba(147, 100, 223, 0.5) 25%, rgba(240, 201, 109, 0.4) 75%, transparent);
+  background-repeat: repeat-x, no-repeat;
+  background-size: 160px 28px, 100% 1px;
+  background-position: 0 50%, 0 50%;
+  animation: rule-flowers-flow 14s linear infinite;
+  height: 28px;
+}
+
+/* ลบลวดลายเรขาคณิต (วงกลมและเส้นทแยง) ออกจากพื้นหลังส่วนข่าว คงไว้เฉพาะแสงไล่สีจาง */
+.news::after {
+  background:
+    radial-gradient(55% 90% at 12% 0%, rgba(77, 35, 141, 0.1), transparent 72%),
+    radial-gradient(45% 85% at 92% 4%, rgba(214, 168, 63, 0.14), transparent 74%);
+}
+
+[data-theme="dark"] .news::after {
+  background:
+    radial-gradient(55% 90% at 12% 0%, rgba(147, 100, 223, 0.22), transparent 72%),
+    radial-gradient(45% 85% at 92% 4%, rgba(240, 201, 109, 0.1), transparent 74%);
+}
+
+/* ระยะห่างระหว่างหัวข้อกับเนื้อหา: หัวข้อข่าวและหัวข้อภาพรวมสถิติให้ห่างจากการ์ดเท่ากัน */
+.news__head,
+.stats-section .stats-section__head {
+  margin-bottom: clamp(1.5rem, 2.4vw, 2.25rem);
+}
+
+/* กล่องติดต่อเรา: แถวกระชับ จัดกลุ่มกลางกล่อง ไม่กระจายห่างเกินไป */
+.news-contact__list {
+  justify-content: center;
+}
+
+.news-contact__item {
+  flex: 0 0 auto;
+  padding: 0.9rem 1.25rem;
+}
+
+/* กล่องติดต่อเรา: เริ่มเนื้อหาจากด้านบนของกล่องให้ใกล้หัวข้อ */
+.news-contact__list {
+  justify-content: flex-start;
+  padding-top: 0.25rem;
+}
+
+/* กล่องติดต่อเรา: ความสูงตามเนื้อหา (ไม่ยืดเท่ากับกล่องหน่วยงานอื่นๆ) */
+.news-contact {
+  align-self: start;
+}
+
+/* หัวข้อ "ข่าวสารและประกาศ" ให้มีกรอบแบบเดียวกับหัวข้อ "ภาพรวมสถิติ" */
+.news__title {
+  padding: 0.3rem 0.7rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(77, 35, 141, 0.12);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(36, 27, 50, 0.08);
+}
+
+[data-theme="dark"] .news__title {
+  background: #272038;
+  border-color: #393047;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ==========================================================================
+   เรื่องเด่น / ข่าวสารล่าสุด (ด้านบน) · ประกาศและข่าวสารทั่วไป (แถวเดียว 3 การ์ด)
+   · Pop-up ข่าวสารและประกาศทั้งหมด · ขนาดการ์ดเล็กลง
+   ========================================================================== */
+.news__feed {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.4rem, 2.4vw, 2rem);
+  min-width: 0;
+}
+
+.news-new__head,
+.news-row__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.news-new__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.news-new__label,
+.news-row__head .news__panel-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.news-new__label::before,
+.news-row__head .news__panel-label::before {
+  content: "";
+  width: 0.3rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  background: var(--color-primary, #8f5bd6);
+}
+
+.news-new__sub {
+  margin: 0 0 0 0.9rem;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary, #6b6480);
+}
+
+.news-new__pill {
+  position: relative;
+  overflow: hidden;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f7d77a, #d9a633);
+  color: #3b2507;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 12px rgba(217, 166, 51, 0.35);
+}
+
+.news-new__pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.75) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: news-shimmer 2.8s ease-in-out infinite;
+}
+
+@keyframes news-shimmer {
+  0%, 55% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+.news-new__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.news-new__dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.news-hero__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: width 0.3s var(--ease, ease), background 0.3s;
+}
+
+.news-hero__dot.is-active {
+  width: 1.3rem;
+  background: var(--color-primary, #8f5bd6);
+}
+
+.news-new.is-single .news-new__controls {
+  display: none;
+}
+
+.news-new__btn,
+.news-row__btn {
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--news-card-bg, #fff);
+  color: var(--color-primary-ink, var(--color-primary));
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(60, 30, 100, 0.1);
+  transition: background 0.3s var(--ease, ease);
+}
+
+.news-new__btn:hover,
+.news-new__btn:focus-visible,
+.news-row__btn:hover:not(:disabled),
+.news-row__btn:focus-visible {
+  background: var(--color-primary-soft, rgba(143, 91, 214, 0.12));
+}
+
+.news-row__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ---- เรื่องเด่น: ภาพเต็มกรอบ ---- */
+.news-new__viewport {
+  position: relative;
+  height: clamp(20rem, 30vw, 26rem);
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #1d1533;
+  box-shadow: 0 14px 34px rgba(60, 30, 100, 0.18);
+}
+
+.news-hero__slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s var(--ease, ease), visibility 0.6s;
+}
+
+.news-hero__slide.is-current {
+  opacity: 1;
+  visibility: visible;
+}
+
+.news-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--ease, ease);
+}
+
+.news-hero__slide:hover .news-hero__img {
+  transform: scale(1.03);
+}
+
+.news-hero__slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14, 8, 30, 0.92) 0%, rgba(14, 8, 30, 0.45) 50%, rgba(14, 8, 30, 0) 100%);
+}
+
+.news-hero__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  padding: 0.28rem 0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f7d77a, #d9a633);
+  color: #3b2507;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  box-shadow: 0 6px 16px rgba(217, 166, 51, 0.4);
+}
+
+.news-hero__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.4rem 1.5rem;
+}
+
+.news-hero__content .news-card__chip {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-primary-ink, #5b2fa3);
+}
+
+.news-hero__title {
+  display: -webkit-box;
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  font-weight: 800;
+  line-height: 1.45;
+  color: #fff;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-hero__desc {
+  display: -webkit-box;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-hero__date {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.news-hero__more {
+  align-self: flex-start;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #f7d77a;
+}
+
+/* ---- ประกาศและข่าวสารทั่วไป: แถวเดียว 3 การ์ด (ขนาดเล็ก) ---- */
+.news-row__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.news-row__body {
+  position: relative;
+  padding: 0 0.4rem;
+}
+
+.news-row__viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.news-row__track {
+  --per: 3;
+  display: flex;
+  align-items: stretch;
+  gap: 0.9rem;
+  padding: 0.3rem 0 0.6rem;
+  transform: translateX(calc(var(--page, 0) * -1 * (100% + 0.9rem)));
+  transition: transform 0.6s var(--ease, ease);
+}
+
+.news-row .news-row__track .news-card {
+  flex: 0 0 calc((100% - (var(--per) - 1) * 0.9rem) / var(--per));
+  min-width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--news-card-bg, #fff);
+  border: 1px solid var(--news-card-border, var(--color-border));
+  border-radius: 0.85rem;
+  box-shadow: var(--news-card-shadow, 0 10px 26px rgba(60, 30, 100, 0.09));
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-row .news-card__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 8.5rem;
+  overflow: hidden;
+  margin: 0;
+  background: #efe9f8;
+}
+
+.news-row .news-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.news-row .news-card__chip {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2;
+  padding: 0.14rem 0.5rem;
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--color-primary-ink, #5b2fa3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(40, 20, 80, 0.15);
+}
+
+.news-row .news-card__title {
+  display: -webkit-box;
+  margin: 0.6rem 0.75rem 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--color-primary-ink, #5b2fa3);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-row .news-card__desc {
+  display: -webkit-box;
+  margin: 0.45rem 0.7rem 0;
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.6rem;
+  background: var(--color-primary-soft, #f3eefb);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary, #5f5873);
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding: 0.5rem 0.75rem 0.6rem;
+  font-size: 0.72rem;
+}
+
+.news-row .news-card__date {
+  padding: 0;
+  font-size: 0.74rem;
+  color: var(--color-text-secondary, #6b6480);
+}
+
+.news-row .news-card__more {
+  margin: 0;
+  padding: 0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--color-primary-ink, #5b2fa3);
+  white-space: nowrap;
+}
+
+.news-row__body .news-row__btn {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: 1.05rem;
+  transform: translateY(-50%);
+}
+
+.news-row__body .news-row__btn--prev {
+  left: -0.7rem;
+}
+
+.news-row__body .news-row__btn--next {
+  right: -0.7rem;
+}
+
+.news-row.is-single .news-row__btn {
+  display: none;
+}
+
+/* ---- Pop-up: ข่าวสารและประกาศทั้งหมด ---- */
+.news-modal[hidden] {
+  display: none;
+}
+
+.news-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.news-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 8, 30, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.news-modal__dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(60rem, 100%);
+  max-height: 85vh;
+  overflow: hidden;
+  border: 1px solid var(--news-card-border, var(--color-border));
+  border-radius: 1.1rem;
+  background: var(--news-card-bg, #fff);
+  box-shadow: 0 24px 60px rgba(20, 10, 50, 0.35);
+}
+
+.news-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.news-modal__head .news__panel-label {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.news-modal__close {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.news-modal__close:hover,
+.news-modal__close:focus-visible {
+  background: var(--color-primary-soft, rgba(143, 91, 214, 0.12));
+}
+
+.news-modal__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: start;
+  gap: 0.9rem;
+  overflow-y: auto;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.news-modal__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  background: var(--news-card-bg, #fff);
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease, ease), transform 0.3s var(--ease, ease);
+}
+
+.news-modal__card:hover,
+.news-modal__card:focus-visible {
+  border-color: var(--color-primary, #8f5bd6);
+  transform: translateY(-2px);
+}
+
+.news-modal__media {
+  display: block;
+  aspect-ratio: 16 / 9;
+  max-height: 8.5rem;
+  overflow: hidden;
+  background: #efe9f8;
+}
+
+.news-modal__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.news-modal__card .news-card__chip {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.14rem 0.5rem;
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--color-primary-ink, #5b2fa3);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.news-modal__card .news-card__title {
+  margin: 0.6rem 0.75rem 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--color-primary-ink, #5b2fa3);
+}
+
+.news-modal__card .news-card__desc {
+  margin: 0.45rem 0.7rem 0;
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.6rem;
+  background: var(--color-primary-soft, #f3eefb);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary, #5f5873);
+}
+
+body.news-modal-open {
+  overflow: hidden;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 63.99rem) {
+  .news-new__sub {
+    margin-left: 0.9rem;
+  }
+  .news-modal__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 39.99rem) {
+  .news-modal__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .news-new__viewport {
+    height: 20rem;
+  }
+}
+
+/* ---- Dark mode ---- */
+html[data-theme="dark"] .news-row .news-row__track .news-card,
+html[data-theme="dark"] .news-modal__card {
+  border-color: var(--news-card-border, rgba(255, 255, 255, 0.12));
+}
+
+html[data-theme="dark"] .news-row .news-card__desc,
+html[data-theme="dark"] .news-modal__card .news-card__desc {
+  background: rgba(143, 91, 214, 0.14);
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-new__pill::after,
+  .news-row__track,
+  .news-hero__slide,
+  .news-hero__img,
+  .news-hero__dot,
+  .news-modal__card {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   รูปแบบตามภาพอ้างอิง: ซ้ายเป็นเรื่องเด่นในกรอบการ์ด · ขวาเป็นประกาศทั่วไป 2×2
+   ========================================================================== */
+.news__feed {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(1rem, 2vw, 1.6rem);
+}
+
+.news-new {
+  padding: 1rem 1rem 1.1rem;
+  border: 1px solid var(--news-card-border, var(--color-border));
+  border-radius: 1rem;
+  background: var(--news-card-bg, #fff);
+  box-shadow: var(--news-card-shadow, 0 10px 26px rgba(60, 30, 100, 0.09));
+}
+
+.news-new__viewport {
+  height: clamp(18rem, 27vw, 24rem);
+  border-radius: 0.85rem;
+}
+
+.news-row__head {
+  margin-bottom: 1rem;
+  min-height: 2.6rem;
+}
+
+.news-row__body {
+  display: block;
+  padding: 0;
+}
+
+.news-row__btn {
+  display: none;
+}
+
+.news-row__viewport {
+  overflow: visible;
+}
+
+.news-row .news-row__track {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  padding: 0;
+  transform: none;
+  transition: none;
+}
+
+.news-row .news-row__track .news-card {
+  flex: none;
+  width: auto;
+}
+
+@media (max-width: 63.99rem) {
+  .news__feed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 39.99rem) {
+  .news-row .news-row__track {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+html[data-theme="dark"] .news-new {
+  border-color: var(--news-card-border, rgba(255, 255, 255, 0.12));
+}
+
+/* ลบป้าย NEW ที่ซ้อนบนภาพเรื่องเด่น (ป้าย NEW ที่หัวข้อยังคงอยู่) */
+.news-hero__badge {
+  display: none !important;
+}
+
+/* ข่าวใหม่: กว้างและสูงขึ้น (ขยายไปทางขวา) ให้สูงเท่ากับส่วนประกาศทั่วไป */
+.news__feed {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.news-new {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news-new__viewport {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: clamp(22rem, 36vw, 32rem);
+}
+
+@media (max-width: 63.99rem) {
+  .news__feed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .news-new__viewport {
+    min-height: clamp(18rem, 60vw, 24rem);
+  }
+}
+
+/* ==========================================================================
+   ข่าวสารล่าสุด: ออกแบบให้เด่นและน่าสนใจ
+   ========================================================================== */
+.news-new {
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(217, 166, 51, 0.12) 0%, rgba(217, 166, 51, 0) 55%),
+    linear-gradient(160deg, #ffffff 0%, #f5eeff 70%, #fff8e6 100%);
+  border: 1px solid rgba(143, 91, 214, 0.18);
+  box-shadow: 0 18px 44px rgba(91, 47, 163, 0.16);
+}
+
+.news-new .news-new__label span:first-child {
+  background: linear-gradient(90deg, #5b2fa3, #8f5bd6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.news-new__pill {
+  padding: 0.24rem 0.75rem;
+  font-size: 0.75rem;
+  box-shadow: 0 0 0 3px rgba(217, 166, 51, 0.25), 0 6px 16px rgba(217, 166, 51, 0.45);
+}
+
+.news-new__viewport {
+  border-radius: 1.1rem;
+  box-shadow: 0 22px 46px rgba(45, 20, 90, 0.32), 0 0 0 1px rgba(217, 166, 51, 0.45);
+}
+
+.news-hero__slide::after {
+  background:
+    linear-gradient(to top, rgba(28, 10, 58, 0.96) 0%, rgba(28, 10, 58, 0.55) 42%, rgba(28, 10, 58, 0) 78%);
+}
+
+.news-hero__content {
+  padding: 1.6rem 1.75rem 1.5rem;
+  gap: 0.5rem;
+}
+
+.news-hero__content .news-card__chip {
+  background: linear-gradient(135deg, #f7d77a, #d9a633);
+  color: #3b2507;
+  font-weight: 800;
+  padding: 0.25rem 0.8rem;
+  box-shadow: 0 6px 16px rgba(217, 166, 51, 0.4);
+}
+
+.news-hero__title {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  line-height: 1.35;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.news-hero__desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.news-hero__date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f7d77a;
+}
+
+.news-hero__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f7d77a, #d9a633);
+  color: #3b2507;
+  font-weight: 800;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 20px rgba(217, 166, 51, 0.45);
+}
+
+.news-hero__slide:hover .news-hero__more {
+  filter: brightness(1.05);
+}
+
+.news-new__btn {
+  border-color: rgba(143, 91, 214, 0.35);
+}
+
+.news-hero__dot.is-active {
+  background: linear-gradient(90deg, #8f5bd6, #d9a633);
+}
+
+html[data-theme="dark"] .news-new {
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(217, 166, 51, 0.1) 0%, rgba(217, 166, 51, 0) 55%),
+    linear-gradient(160deg, #1e1838 0%, #241b44 100%);
+  border-color: rgba(217, 166, 51, 0.22);
+}
+
+html[data-theme="dark"] .news-new .news-new__label span:first-child {
+  background: linear-gradient(90deg, #f7d77a, #d9a633);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* หัวข้อ "ข่าวสารล่าสุด": ตัวใหญ่และเด่นกว่าพื้นหลัง */
+.news-new .news-new__label span:first-child {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: #3b1a7a;
+  color: #3b1a7a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.news-new .news-new__label::before {
+  width: 0.4rem;
+  height: 1.6rem;
+}
+
+.news-new__sub {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #3f3656;
+}
+
+html[data-theme="dark"] .news-new .news-new__label span:first-child {
+  -webkit-text-fill-color: #f7d77a;
+  color: #f7d77a;
+  text-shadow: none;
+}
+
+html[data-theme="dark"] .news-new__sub {
+  color: #e6def5;
+}
+
+/* ==========================================================================
+   กรอบ "หน่วยงานอื่นๆ" และ "ติดต่อเรา": ให้เด่นกว่าพื้นหลัง
+   ========================================================================== */
+.news-links,
+.news-contact {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(143, 91, 214, 0.28);
+  border-radius: 1.1rem;
+  box-shadow:
+    0 20px 44px rgba(91, 47, 163, 0.18),
+    0 0 0 5px rgba(217, 166, 51, 0.09);
+}
+
+.news-links::before,
+.news-contact::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #5b2fa3, #8f5bd6 55%, #d9a633);
+  z-index: 1;
+}
+
+.news-links__title {
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 900;
+  color: #3b1a7a;
+  letter-spacing: -0.01em;
+}
+
+.news-links__title svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.news-links__item {
+  transition: background 0.3s var(--ease, ease), transform 0.3s var(--ease, ease);
+}
+
+.news-links__item:hover {
+  background: rgba(143, 91, 214, 0.08);
+}
+
+html[data-theme="dark"] .news-links,
+html[data-theme="dark"] .news-contact {
+  background: var(--news-card-bg, #1c1730);
+  border-color: rgba(217, 166, 51, 0.28);
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.35),
+    0 0 0 5px rgba(217, 166, 51, 0.08);
+}
+
+html[data-theme="dark"] .news-links__title {
+  color: #f7d77a;
+}
+
+/* ตำแหน่งกรอบ "หน่วยงานอื่นๆ" ให้เริ่มระดับเดียวกับกรอบ "ติดต่อเรา" (ยกเลิกการค้างตามการเลื่อน) */
+.news-links,
+.news-contact {
+  position: relative;
+  top: auto;
+  align-self: start;
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   ส่วนข่าว (ข่าวสารล่าสุด + ประกาศทั่วไป): ให้เด่นกว่าพื้นหลัง สอดคล้องกับกรอบอื่น
+   ========================================================================== */
+.news-new,
+.news-row {
+  position: relative;
+}
+
+.news-new {
+  overflow: hidden;
+  border: 1px solid rgba(143, 91, 214, 0.28);
+  box-shadow:
+    0 22px 48px rgba(91, 47, 163, 0.18),
+    0 0 0 5px rgba(217, 166, 51, 0.09);
+}
+
+.news-new::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #5b2fa3, #8f5bd6 55%, #d9a633);
+  z-index: 1;
+}
+
+.news-row__head .news__panel-label {
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 900;
+  color: #3b1a7a;
+  letter-spacing: -0.01em;
+}
+
+.news-row .news-row__track .news-card {
+  border: 1px solid rgba(143, 91, 214, 0.25);
+  box-shadow: 0 14px 30px rgba(91, 47, 163, 0.14);
+  transition: transform 0.3s var(--ease, ease), box-shadow 0.3s var(--ease, ease), border-color 0.3s var(--ease, ease);
+}
+
+.news-row .news-row__track .news-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(217, 166, 51, 0.6);
+  box-shadow: 0 20px 38px rgba(91, 47, 163, 0.22);
+}
+
+.news-row .news-card__title {
+  font-size: 0.95rem;
+  color: #3b1a7a;
+}
+
+html[data-theme="dark"] .news-new,
+html[data-theme="dark"] .news-row__head .news__panel-label {
+  color: #f7d77a;
+}
+
+html[data-theme="dark"] .news-new {
+  border-color: rgba(217, 166, 51, 0.28);
+}
+
+html[data-theme="dark"] .news-row .news-row__track .news-card {
+  border-color: rgba(217, 166, 51, 0.25);
+}
+
+/* ==========================================================================
+   ป้าย NEW: เด่นที่สุดและสะดุดตาเมื่อเข้าหน้าข่าว (ขนาดใหญ่ สีแดง-ส้ม-ทอง มีการกระพริบแสง)
+   ========================================================================== */
+.news-new .news-new__pill {
+  padding: 0.38rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  background: linear-gradient(120deg, #ff3d3d 0%, #ff7a1a 45%, #ffc53d 100%);
+  text-shadow: 0 1px 2px rgba(120, 20, 0, 0.45);
+  border-radius: 0.5rem;
+  transform-origin: left center;
+  animation:
+    news-new-enter 0.9s var(--ease, ease) both,
+    news-new-glow 1.8s ease-in-out 0.9s infinite;
+}
+
+.news-new .news-new__pill::after {
+  animation: news-shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes news-new-enter {
+  0% { opacity: 0; transform: translateX(-14px) scale(0.7); }
+  60% { opacity: 1; transform: translateX(0) scale(1.12); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes news-new-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 90, 40, 0.55), 0 8px 22px rgba(255, 90, 40, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 9px rgba(255, 90, 40, 0), 0 10px 28px rgba(255, 150, 40, 0.7);
+  }
+}
+
+.news-new .news-new__label span:first-child {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-new .news-new__pill,
+  .news-new .news-new__pill::after {
+    animation: none;
+  }
+}
+
+/* ย้ายป้าย NEW ไปอยู่บนรูปข่าวด้านขวาบน (ซ่อนป้ายที่หัวข้อ) */
+.news-new .news-new__pill {
+  display: none !important;
+}
+
+.news-hero__badge {
+  display: inline-flex !important;
+  top: 0.9rem;
+  right: 0.9rem;
+  left: auto;
+  padding: 0.38rem 0.95rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  background: linear-gradient(120deg, #ff3d3d 0%, #ff7a1a 45%, #ffc53d 100%);
+  text-shadow: 0 1px 2px rgba(120, 20, 0, 0.45);
+  animation:
+    news-new-enter 0.9s var(--ease, ease) both,
+    news-new-glow 1.8s ease-in-out 0.9s infinite;
+}
+
+.news-hero__badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.75) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: news-shimmer 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-hero__badge,
+  .news-hero__badge::after {
+    animation: none;
+  }
+}
+
+/* ป้าย NEW บนรูป: ทรงแคปซูลโค้งมน โทนแดง ตัวหนังสือสีทอง (ไม่ใช่สีขาว) */
+.news-hero__badge {
+  border-radius: 999px;
+  padding: 0.36rem 1.05rem;
+  background: linear-gradient(120deg, #a50f1e 0%, #e0263a 55%, #ff4d4d 100%);
+  color: #ffe27a;
+  text-shadow: 0 1px 2px rgba(80, 0, 0, 0.55);
+  box-shadow: 0 6px 18px rgba(170, 20, 35, 0.55);
+}
+
+.news-hero__badge::after {
+  border-radius: 999px;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 226, 122, 0.55) 50%, transparent 70%);
+}
+
+@keyframes news-new-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(224, 38, 58, 0.55), 0 6px 18px rgba(170, 20, 35, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 9px rgba(224, 38, 58, 0), 0 8px 24px rgba(224, 38, 58, 0.7);
+  }
+}
+
+/* ป้าย NEW รูปดาวระเบิด โทนแดง ตัวหนังสือสีเหลืองทองเด่นชัด (ไม่ใช่กรอบสี่เหลี่ยม) */
+.news-hero__badge {
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 4.7rem;
+  height: 4.7rem;
+  padding: 0;
+  border-radius: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #ffe45c;
+  background: radial-gradient(circle at 40% 35%, #ff4d4d 0%, #d4001f 62%, #8a0010 100%);
+  text-shadow: 0 1px 0 #3a0006, 0 0 4px rgba(60, 0, 6, 0.7);
+  clip-path: polygon(
+    50% 0%, 61% 13%, 79% 8%, 79% 26%, 97% 29%, 88% 45%,
+    100% 58%, 87% 69%, 93% 87%, 75% 88%, 67% 100%, 50% 91%,
+    33% 100%, 25% 88%, 7% 87%, 13% 69%, 0% 58%, 12% 45%,
+    3% 29%, 21% 26%, 21% 8%, 39% 13%
+  );
+  animation:
+    news-new-enter 0.9s var(--ease, ease) both,
+    news-star-pulse 1.6s ease-in-out 0.9s infinite;
+}
+
+.news-hero__badge::after {
+  border-radius: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 240, 180, 0.7) 50%, transparent 70%);
+}
+
+@keyframes news-star-pulse {
+  0%, 100% { transform: scale(1) rotate(-4deg); }
+  50% { transform: scale(1.08) rotate(4deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-hero__badge {
+    animation: none;
+  }
+}
+
+/* ป้าย NEW: ขยับไปมุมขวาบน ใหญ่ขึ้น ตัวหนังสือเด่นขึ้น และรูปดาวนูนขึ้น (มีเงาด้านล่าง) */
+.news-hero__badge {
+  top: 0.1rem;
+  right: 0.1rem;
+  width: 6rem;
+  height: 6rem;
+  font-size: 1.22rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #fff4a3;
+  background: radial-gradient(circle at 38% 30%, #ff6a6a 0%, #e00020 45%, #9c0013 100%);
+  text-shadow:
+    0 2px 0 #4a0008,
+    0 3px 0 #4a0008,
+    0 0 8px rgba(70, 0, 8, 0.8);
+  z-index: 3;
+  isolation: isolate;
+}
+
+/* ชั้นเงาด้านล่างให้ดูนูน (ใช้รูปร่างดาวเดียวกัน เลื่อนลงเล็กน้อย) */
+.news-hero__badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #7a0010, #3d0008);
+  clip-path: inherit;
+  transform: translate(4px, 6px);
+  opacity: 0.85;
+}
+
+/* ป้าย NEW นูน: เงาวางบนกล่องครอบ (drop-shadow) เพื่อให้เงาตามรูปดาวจริง */
+.news-hero__badge-wrap {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.1rem;
+  z-index: 3;
+  filter:
+    drop-shadow(3px 5px 3px rgba(60, 0, 8, 0.6))
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.35));
+  animation:
+    news-new-enter 0.9s var(--ease, ease) both,
+    news-star-pulse 1.6s ease-in-out 0.9s infinite;
+}
+
+.news-hero__badge-wrap .news-hero__badge {
+  position: relative;
+  top: auto;
+  right: auto;
+  z-index: auto;
+  animation: none;
+}
+
+.news-hero__badge::before {
+  content: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-hero__badge-wrap {
+    animation: none;
+  }
+}
+
+/* ป้าย NEW ประกบมุมขวาบนของรูปพอดี */
+.news-hero__badge-wrap {
+  top: 0;
+  right: 0;
+}
+
+/* ขยับป้าย NEW ขึ้นและไปทางขวาอีกนิด ให้ประกบมุมภาพ */
+.news-hero__badge-wrap {
+  top: -0.3rem;
+  right: -0.3rem;
+}
+
+/* ป้าย NEW อยู่เหนือภาพ (วางบนกรอบ viewport ไม่ถูกตัดตามรูป) และขยับขึ้นประกบมุมภาพ */
+.news-new__viewport {
+  overflow: visible;
+}
+
+.news-hero__slide {
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.news-hero__badge-wrap {
+  top: -0.7rem;
+  right: -0.7rem;
+  z-index: 10;
+}
+
+/* ขยับป้ายขึ้นอีกให้ประกบมุมภาพ และเพิ่มสีให้สะดุดตา (แดงสด + ตัวหนังสือเหลืองสว่าง + แสงทอง) */
+.news-hero__badge-wrap {
+  top: -1rem;
+  right: -1rem;
+  filter:
+    drop-shadow(3px 5px 3px rgba(60, 0, 8, 0.65))
+    drop-shadow(0 0 7px rgba(255, 215, 0, 0.9));
+}
+
+.news-hero__badge {
+  background: radial-gradient(circle at 38% 30%, #ff5b4d 0%, #ff0f3c 42%, #c4001f 100%);
+  color: #fff700;
+  -webkit-text-stroke: 0.6px #5a0008;
+  text-shadow:
+    0 2px 0 #5a0008,
+    0 0 10px rgba(255, 240, 0, 0.8);
+}
+
+/* ป้าย NEW: ขยับขึ้นอีกให้ประกบมุมภาพ และเปลี่ยนเป็นสีเหลืองทองสะดุดตา ตัวหนังสือสีแดงเข้มหนาที่สุด */
+.news-hero__badge-wrap {
+  top: -1.1rem;
+  right: -1.1rem;
+}
+
+.news-hero__badge {
+  background: radial-gradient(circle at 40% 32%, #fffb9a 0%, #ffd52e 45%, #ff9a00 100%);
+  color: #6e0000;
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85),
+    0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.news-hero__badge::after {
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.9) 50%, transparent 70%);
+}
+
+/* ป้าย NEW กลับเป็นสีแดง ตัวหนังสือสีเหลืองทองมีขอบเข้มให้เด่น */
+.news-hero__badge {
+  background: radial-gradient(circle at 40% 32%, #ff5252 0%, #e0001c 50%, #a00014 100%);
+  color: #ffe45c;
+  text-shadow:
+    0 2px 0 #4a0008,
+    0 3px 0 #4a0008,
+    0 0 6px rgba(70, 0, 8, 0.8);
+}
+
+.news-hero__badge::after {
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 240, 180, 0.75) 50%, transparent 70%);
+}
+
+/* ป้าย NEW: สีเหลืองไล่ไปสีแดง */
+.news-hero__badge {
+  background: radial-gradient(circle at 40% 32%, #fff48a 0%, #ffd21f 38%, #ff8a00 72%, #e0141c 100%);
+  color: #7a0008;
+}
+
+/* ป้าย NEW: พื้นเหลืองไล่เป็นสีแดงที่ขอบ ตัวหนังสือสีแดงเด่นกว่าพื้นหลังแต่ไม่เข้มเกินไป */
+.news-hero__badge {
+  background: radial-gradient(circle at 46% 42%, #fff6b0 0%, #ffe03d 34%, #ff9a1f 66%, #e3152b 100%);
+  color: #d0001f;
+  font-size: 1.35rem;
+  font-weight: 900;
+  text-shadow:
+    0 0 2px #ffffff,
+    0 0 6px rgba(255, 255, 255, 0.95),
+    0 1px 0 #ffffff;
+}
+
+/* ป้ายประเภทข่าว (เช่น ประกาศสอบ, แจ้งปิดระบบ): เป็นแคปซูลสีม่วงเข้มขอบทอง ตัวหนังสือขาวหนา เด่นกว่าพื้นหลัง */
+.news-row .news-card__chip,
+.news-modal__card .news-card__chip {
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid #f0c75e;
+  background: linear-gradient(135deg, #6a3bbd, #4a1f8f);
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 1px rgba(30, 0, 60, 0.4);
+  box-shadow: 0 6px 16px rgba(74, 31, 143, 0.35), 0 0 0 2px rgba(255, 255, 255, 0.85);
+}
+
+html[data-theme="dark"] .news-row .news-card__chip,
+html[data-theme="dark"] .news-modal__card .news-card__chip {
+  background: linear-gradient(135deg, #8f5bd6, #6a3bbd);
+  border-color: #f7d77a;
+}
+
+/* ป้ายประเภทข่าวบนการ์ด (เช่น ประกาศสอบ): พื้นทองเด่น ตัวหนังสือสีม่วงเข้มหนา ไม่ใช่พื้นขาว */
+.news-row .news-card__chip,
+.news-modal__card .news-card__chip {
+  background: linear-gradient(135deg, #ffe27a 0%, #f2b233 100%);
+  color: #4a1d8f;
+  font-size: 0.78rem;
+  font-weight: 900;
+  padding: 0.26rem 0.7rem;
+  border: 1px solid rgba(91, 47, 163, 0.35);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(91, 47, 163, 0.28);
+}
+
+html[data-theme="dark"] .news-row .news-card__chip,
+html[data-theme="dark"] .news-modal__card .news-card__chip {
+  color: #2a0f5a;
+}
+
+/* ป้ายประเภทข่าว (ประกาศสอบ ฯลฯ) บนการ์ด: เด่นกว่าพื้นหลัง ตัวหนังสือสีม่วงเข้ม ไม่ใช้กรอบทอง */
+.news-row .news-card__chip,
+.news-modal__card .news-card__chip {
+  background: linear-gradient(135deg, #e9dcff 0%, #d6c2ff 100%);
+  color: #3b1a7a;
+  font-weight: 900;
+  font-size: 0.74rem;
+  border: 1px solid rgba(91, 47, 163, 0.55);
+  box-shadow: 0 6px 14px rgba(59, 26, 122, 0.25);
+  padding: 0.22rem 0.6rem;
+  border-radius: 0.45rem;
+}
+
+html[data-theme="dark"] .news-row .news-card__chip,
+html[data-theme="dark"] .news-modal__card .news-card__chip {
+  background: linear-gradient(135deg, #e9dcff 0%, #d6c2ff 100%);
+  color: #2a0f5c;
+  border-color: rgba(91, 47, 163, 0.55);
+}
+
+/* โหมดมืด: หัวข้อ "ภาพรวมสถิติ" ให้เหมือนหัวข้อ "ข่าวสารและประกาศ" (กล่องเข้ม ขอบเรียบ แท่งไล่สีทอง-ม่วง) */
+html[data-theme="dark"] .stats-section .stats-section__head .stats-section__title {
+  color: #F5F1FC;
+  background: #272038;
+  border: 1px solid #393047;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="dark"] .stats-section .stats-section__head .stats-section__title::before {
+  background: linear-gradient(180deg, #F0C96D, #9364DF);
+}
+
+/* โหมดมืด: ตัวหนังสือการ์ดประกาศทั่วไปให้สว่างและเด่นกว่าพื้นหลัง */
+html[data-theme="dark"] .news-row .news-card__title,
+html[data-theme="dark"] .news-modal__card .news-card__title {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .news-row .news-card__desc,
+html[data-theme="dark"] .news-modal__card .news-card__desc {
+  color: #ece6f7;
+  background: rgba(147, 100, 223, 0.22);
+}
+
+html[data-theme="dark"] .news-row .news-card__date,
+html[data-theme="dark"] .news-modal__card .news-card__date {
+  color: #e6def5;
+}
+
+html[data-theme="dark"] .news-row .news-card__more,
+html[data-theme="dark"] .news-modal__card .news-card__more {
+  color: #f0c96d;
+}
+
+/* โหมดมืด: พื้นการ์ดและกรอบ Pop-up ใช้สีเข้มโดยตรง (กันกรณีตัวแปรสีไม่ถูกกำหนด) ทำให้ตัวหนังสือสีขาวอ่านได้ */
+html[data-theme="dark"] .news-modal__dialog,
+html[data-theme="dark"] .news-modal__card,
+html[data-theme="dark"] .news-row .news-row__track .news-card,
+html[data-theme="dark"] .news-new,
+html[data-theme="dark"] .news-new__btn,
+html[data-theme="dark"] .news-row__btn {
+  background: #1c1730;
+}
+
+html[data-theme="dark"] .news-modal__dialog {
+  background: #1c1730;
+  border-color: rgba(217, 166, 51, 0.28);
+}
+
+html[data-theme="dark"] .news-modal__head {
+  border-bottom-color: rgba(217, 166, 51, 0.2);
+}
+
+html[data-theme="dark"] .news-modal__head .news__panel-label,
+html[data-theme="dark"] .news-modal__close {
+  color: #f5f1fc;
+}
+
+html[data-theme="dark"] .news-modal__card .news-card__chip,
+html[data-theme="dark"] .news-row .news-card__chip {
+  color: #2a0f5c;
+}
+
+/* ==========================================================================
+   ประกาศและข่าวสารทั่วไป: การ์ดแบบเดียวกับต้นฉบับ + เลื่อนภายในกล่อง
+   ความสูงของกล่องล็อกให้เท่ากับแถบข่าวล่าสุด (ไม่ดันความสูงของหน้า)
+   ========================================================================== */
+.news__feed {
+  align-items: stretch !important;
+}
+
+.news-row {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.news-row__body {
+  position: relative !important;
+  flex: 1 1 0;
+  min-height: 26rem;
+  padding: 0 !important;
+  display: block !important;
+}
+
+.news-row__body .news-row__btn {
+  display: none !important;
+}
+
+.news-row__viewport {
+  position: absolute !important;
+  inset: 0;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 0.25rem 0.35rem 0.5rem 0.1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #9364df transparent;
+}
+
+.news-row .news-row__track {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0.9rem !important;
+  transform: none !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.news-row .news-row__track .news-card {
+  width: auto !important;
+  flex: none !important;
+  display: flex !important;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0 0 0.75rem !important;
+  border-radius: 14px !important;
+  overflow: hidden;
+  background: #fff !important;
+  border: 1px solid #e3dcf0 !important;
+  box-shadow: 0 6px 18px rgba(60, 30, 100, 0.08) !important;
+}
+
+.news-row .news-card__media {
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  overflow: hidden;
+  background: #f4f0fb;
+}
+
+.news-row .news-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.news-row .news-card__chip {
+  display: none !important;
+}
+
+.news-row .news-card__title {
+  display: block;
+  margin: 0.1rem 0.85rem 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #5b2aa8 !important;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.news-row .news-card__desc {
+  display: block;
+  margin: 0 0.85rem;
+  padding: 0.5rem 0.6rem;
+  max-height: 5.4em;
+  overflow-y: auto;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: #3e3552 !important;
+  background: #f7f4fc;
+  border-radius: 8px;
+  scrollbar-width: thin;
+}
+
+.news-row .news-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0.85rem;
+  gap: 0.5rem;
+}
+
+.news-row .news-card__date {
+  font-size: 0.8rem;
+  color: #6b6480 !important;
+  font-style: italic;
+}
+
+.news-row .news-card__more {
+  display: none !important;
+}
+
+@media (max-width: 639px) {
+  .news-row .news-row__track {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* โหมดมืด */
+html[data-theme="dark"] .news-row .news-row__track .news-card {
+  background: #1c1730 !important;
+  border-color: #3d3360 !important;
+}
+
+html[data-theme="dark"] .news-row .news-card__title {
+  color: #e9dcff !important;
+}
+
+html[data-theme="dark"] .news-row .news-card__desc {
+  color: #f1ecfa !important;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+html[data-theme="dark"] .news-row .news-card__date {
+  color: #d6cde6 !important;
+}
+
+/* ข่าวทั้งหมด (Pop-up): 3 คอลัมน์ แสดง 2 แถวพอดี ที่เหลือเลื่อนดูภายในกล่อง */
+@media (min-width: 768px) {
+  .news-modal__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    max-height: min(46rem, 72vh);
+    overflow-y: auto !important;
+    align-content: start;
+  }
+}
+
+@media (max-width: 767px) {
+  .news-modal__list {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-height: 72vh;
+    overflow-y: auto !important;
+  }
+}
+
+/* ประกาศและข่าวสารทั่วไป: คืนป้ายประเภทบนรูปและ "อ่านต่อ" ให้เหมือนแบบอ้างอิง */
+.news-row .news-card__media {
+  position: relative;
+}
+
+.news-row .news-card__chip {
+  display: inline-flex !important;
+  align-items: center;
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 2;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #d9cbf0;
+  box-shadow: 0 2px 8px rgba(60, 30, 100, 0.18);
+  color: #5b2aa8 !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.news-row .news-card__more {
+  display: inline !important;
+  color: #5b2aa8;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+html[data-theme="dark"] .news-row .news-card__chip {
+  background: #2a1f47 !important;
+  border-color: #6d56a0;
+  color: #e9dcff !important;
+}
+
+html[data-theme="dark"] .news-row .news-card__more {
+  color: #e9dcff;
+}
+
+/* ประกาศและข่าวสารทั่วไป: วันที่และ "อ่านต่อ" ให้เหมือนแบบอ้างอิง */
+.news-row .news-card__date {
+  font-style: normal;
+  font-size: 0.85rem;
+  color: #4a4358 !important;
+}
+
+.news-row .news-card__more {
+  display: inline !important;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #6a2fc0;
+}
+
+html[data-theme="dark"] .news-row .news-card__date {
+  color: #e4dcf2 !important;
+}
+
+html[data-theme="dark"] .news-row .news-card__more {
+  color: #d9c2ff;
+}
+
+/* วันที่ชิดขอบซ้าย และ "อ่านต่อ" ชิดขอบขวาของการ์ด */
+.news-row .news-card__foot {
+  margin: 0 0.35rem !important;
+  justify-content: space-between !important;
+}
+
+/* แก้: ให้แถววันที่ยืดเต็มความกว้างการ์ด เพื่อให้วันที่ชิดซ้ายและอ่านต่อชิดขวา */
+.news-row .news-row__track .news-card > .news-card__foot {
+  align-self: stretch !important;
+  width: auto !important;
+  box-sizing: border-box;
+  justify-content: space-between !important;
+  text-align: left;
+}
+
+
+/* กรอบการ์ดข่าวทั่วไป: เด่นกว่าพื้นหลัง แต่เบากว่าข่าวสารล่าสุด */
+.news-row .news-row__track .news-card {
+  border: 1px solid rgba(143, 91, 214, 0.38) !important;
+  box-shadow: 0 8px 20px rgba(91, 47, 163, 0.12) !important;
+}
+
+html[data-theme="dark"] .news-row .news-row__track .news-card {
+  border-color: rgba(190, 160, 255, 0.35) !important;
+}
+
+/* โหมดมืด: กรอบกล่องข่าวล่าสุดให้เด่นกว่าพื้นหลัง */
+html[data-theme="dark"] .news-new {
+  border: 1.5px solid rgba(200, 170, 255, 0.6) !important;
+  box-shadow: 0 0 0 1px rgba(200, 170, 255, 0.15), 0 14px 34px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ตัวกรองสถิติ (statistics.html) โหมดมืด: ใช้พื้นทึบ ไม่มีลายซิกแซก */
+html[data-theme="dark"] .stats-filters select,
+html[data-theme="dark"] .stats-section .stats-filters select {
+  background-color: #241b3b !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23D5C2F7' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 16px center !important;
+  background-size: 12px 8px !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  color: #f5f1fc !important;
+  border: 1px solid rgba(200, 170, 255, 0.28) !important;
+}
+
+html[data-theme="dark"] .stats-filters::before,
+html[data-theme="dark"] .stats-filters::after,
+html[data-theme="dark"] .stats-filters select::before,
+html[data-theme="dark"] .stats-filters select::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* ปุ่มกลับหน้าแรก: ไม่มีเส้นใต้ */
+.stats-back,
+.stats-back:hover,
+.stats-back:focus-visible {
+  text-decoration: none !important;
+}
+
+/* ปุ่มกลับหน้าแรก: เอาเส้นใต้ (border-bottom) ออกทุกโหมด */
+.stats-back,
+[data-theme="dark"] .stats-section .stats-back,
+[data-theme="dark"] .stats-back {
+  border-bottom: none !important;
+}
+
+/* ปุ่มเข้าสู่ระบบ (โหมดมืด): พื้นอ่อนเด่น ตัวหนังสือม่วงเข้ม ไม่ใช้สีขาวหรือเหลือง */
+html[data-theme="dark"] .header-login,
+html[data-theme="dark"] a.btn--primary.header-login {
+  background: linear-gradient(135deg, #e9dcff 0%, #cdb5ff 100%) !important;
+  color: #2a0f5c !important;
+  border: 1px solid #f3eaff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 0 3px rgba(205, 181, 255, 0.28), 0 8px 22px rgba(0, 0, 0, 0.45) !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="dark"] .header-login:hover,
+html[data-theme="dark"] .header-login:focus-visible {
+  background: linear-gradient(135deg, #f3eaff 0%, #dccbff 100%) !important;
+  color: #1c0f3d !important;
+}
+
+/* ปุ่ม "อ่านประกาศฉบับเต็ม" (โหมดมืด): พื้นอ่อนเด่น ตัวหนังสือม่วงเข้ม ไม่ใช้สีขาว */
+html[data-theme="dark"] .news-hero__more {
+  background: linear-gradient(135deg, #e9dcff 0%, #cdb5ff 100%) !important;
+  color: #2a0f5c !important;
+  border: 1px solid #f3eaff !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+  box-shadow: 0 0 0 3px rgba(205, 181, 255, 0.28), 0 8px 22px rgba(0, 0, 0, 0.45) !important;
+}
+
+html[data-theme="dark"] .news-hero__slide:hover .news-hero__more,
+html[data-theme="dark"] .news-hero__more:hover {
+  background: linear-gradient(135deg, #f3eaff 0%, #dccbff 100%) !important;
+  color: #1c0f3d !important;
+}
+
+/* ป๊อปอัพประชาสัมพันธ์ "อ่านประกาศฉบับเต็ม" (โหมดมืด): พื้นอ่อนเด่น ตัวหนังสือม่วงเข้ม ไม่ใช้สีขาว */
+html[data-theme="dark"] .promo__actions .btn {
+  background: linear-gradient(135deg, #e9dcff 0%, #cdb5ff 100%) !important;
+  color: #2a0f5c !important;
+  font-weight: 800;
+  border: 1px solid #f3eaff;
+  box-shadow: 0 0 0 3px rgba(205, 181, 255, 0.28), 0 8px 22px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .promo__actions .btn:hover,
+html[data-theme="dark"] .promo__actions .btn:focus-visible {
+  background: linear-gradient(135deg, #f3eaff 0%, #dccbff 100%) !important;
+  color: #1c0f3d !important;
+}
+
+/* ปุ่ม "ดูสถิติทั้งหมด" (โหมดมืด): พื้นอ่อนเด่น ตัวหนังสือม่วงเข้ม ไม่ใช้สีขาว */
+html[data-theme="dark"] .stats-section .btn--primary,
+html[data-theme="dark"] .stats-section a.btn--primary {
+  background: linear-gradient(135deg, #e9dcff 0%, #cdb5ff 100%) !important;
+  color: #2a0f5c !important;
+  font-weight: 800;
+  border: 1px solid #f3eaff;
+  box-shadow: 0 0 0 3px rgba(205, 181, 255, 0.28), 0 8px 22px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .stats-section .btn--primary:hover,
+html[data-theme="dark"] .stats-section .btn--primary:focus-visible {
+  background: linear-gradient(135deg, #f3eaff 0%, #dccbff 100%) !important;
+  color: #1c0f3d !important;
+}
+
+/* ป๊อปอัปประชาสัมพันธ์: ขยายให้ใหญ่และสูงขึ้น (จอ 768px ขึ้นไป) */
+@media (min-width: 48rem) {
+  .promo__dialog {
+    width: min(58rem, 100%);
+    max-height: min(92svh, 60rem);
+  }
+
+  .promo__media {
+    aspect-ratio: 2.3 / 1;
+    min-height: 12rem;
+  }
+}
+
+/* ป๊อปอัปประชาสัมพันธ์ (โหมดมืด): หัวข้อกับเนื้อหาให้คนละสี */
+html[data-theme="dark"] .promo__dialog .promo__title {
+  color: #F3EAFF !important;
+  font-weight: 800;
+}
+
+html[data-theme="dark"] .promo__dialog .promo__body,
+html[data-theme="dark"] .promo__dialog .promo__body p {
+  color: #BDB1D3 !important;
+}
+
+/* ป๊อปอัปประชาสัมพันธ์: หัวข้อกับเนื้อหาคนละสี และเนื้อหาเด่นกว่าพื้นหลัง (ทั้งสองโหมด) */
+.promo__dialog .promo__title {
+  color: #4D238D !important;
+  font-weight: 800;
+}
+
+.promo__dialog .promo__body,
+.promo__dialog .promo__body p {
+  color: #241B32 !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="dark"] .promo__dialog .promo__title {
+  color: #F0C96D !important;
+}
+
+html[data-theme="dark"] .promo__dialog .promo__body,
+html[data-theme="dark"] .promo__dialog .promo__body p {
+  color: #EDE6F8 !important;
+}
+
+/* ป้ายประเภทในป๊อปอัป "ข่าวสารและประกาศทั้งหมด": ให้เหมือนป้ายในส่วนประกาศและข่าวสารทั่วไป (ภาพอ้างอิง) */
+.news-modal__card .news-card__media {
+  position: relative;
+}
+
+.news-modal__card .news-card__chip {
+  position: absolute !important;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.7rem !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid #d9cbf0 !important;
+  box-shadow: 0 2px 8px rgba(60, 30, 100, 0.18) !important;
+  color: #5b2aa8 !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2;
+  text-shadow: none !important;
+}
+
+html[data-theme="dark"] .news-modal__card .news-card__chip {
+  background: #2a1f47 !important;
+  border-color: #6d56a0 !important;
+  color: #e9dcff !important;
+}
