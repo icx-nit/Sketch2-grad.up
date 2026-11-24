@@ -318,8 +318,22 @@
   arrows.appendChild(nextBtn);
   bar.appendChild(dots);
   bar.appendChild(arrows);
-  dock.appendChild(stage);
-  dock.appendChild(bar);
+  /* ตัวการ์ตูนแทนกล่องการ์ด: กดแต่ละครั้งเปิดประกาศทีละเรื่อง (3 เรื่อง) แล้ววนกลับเรื่องแรก */
+  var mascot = el("button", "promo__mascot");
+  mascot.type = "button";
+  mascot.setAttribute("aria-label", lang() === "en" ? "Open announcements" : "เปิดดูประกาศ");
+  var mascotImg = el("img", "promo__mascot-img");
+  mascotImg.src = "assets/images/promo-mascot.gif";
+  mascotImg.alt = "";
+  mascotImg.decoding = "async";
+  mascot.appendChild(mascotImg);
+  mascot.addEventListener("click", function () {
+    if (stackOpen) {
+      return;
+    }
+    openStack(true);
+  });
+  dock.appendChild(mascot);
   dock.hidden = true;
 
   /* ------------------------------------------------------------------------
@@ -332,8 +346,9 @@
   var onFirstView = true;
 
   function isFirstView() {
+    /* ตัวการ์ตูนแสดงเฉพาะหน้าหลัก (ไม่มีภาพปก = ไม่ใช่หน้าแรก) */
     if (!heroStage) {
-      return true;
+      return false;
     }
     /* ยังนับว่าอยู่ "หน้าแรก" ตราบใดที่ภาพปกยังครองพื้นที่ส่วนใหญ่ของจอ
        (เลื่อนลงจนหน้าข่าวเริ่มขึ้นมาแทนที่ = ออกจากหน้าแรกแล้ว) */
@@ -366,6 +381,7 @@
       if (!modal.hidden) {
         hideModalNow();
       }
+      hideStackNow();
     }
   }
 
@@ -504,17 +520,9 @@
     }
   }
 
+  /* ไม่สลับการ์ดอัตโนมัติแล้ว (ใช้ตัวการ์ตูนแทน) */
   function startTimer() {
     stopTimer();
-    if (!modal.hidden) {
-      return;
-    }
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-    timer = window.setInterval(function () {
-      step(1);
-    }, AUTO_MS);
   }
 
   /* หยุดสลับอัตโนมัติชั่วคราวขณะเอาเมาส์ชี้หรือโฟกัสอยู่ที่การ์ด */
@@ -527,6 +535,221 @@
         startTimer();
       }
     }, 0);
+  });
+
+  /* ------------------------------------------------------------------------
+     ป๊อปอัพซ้อนกัน 3 ใบ: เปิดพร้อมกันกลางจอ (ใบที่ 1 อยู่บนสุด)
+     กด X ทีละใบ ใบสุดท้ายยุบเข้าตัวการ์ตูน กดตัวการ์ตูนเพื่อเรียกกลับมา
+     ------------------------------------------------------------------------ */
+
+  var stack = el("div", "promo__modal promo__stack");
+  stack.hidden = true;
+  var stackScrim = el("div", "promo__scrim");
+  var sheetsEl = el("div", "promo__sheets");
+  stack.appendChild(stackScrim);
+  stack.appendChild(sheetsEl);
+  document.body.appendChild(stack);
+
+  var sheetEls = [];
+  var sheetOrder = [];
+  var stackOpen = false;
+  var stackBusy = false;
+  var stackTimers = [];
+
+  function later(fn, ms) {
+    stackTimers.push(window.setTimeout(fn, ms));
+  }
+
+  function clearLater() {
+    stackTimers.forEach(function (t) {
+      window.clearTimeout(t);
+    });
+    stackTimers = [];
+  }
+
+  function buildSheet(index) {
+    var item = DATA[index];
+    var l = lang();
+    var sheet = el("div", "promo__dialog promo__sheet");
+
+    var media = el("figure", "promo__media");
+    var img = el("img", "promo__media-img");
+    img.src = item.image;
+    img.alt = "";
+    img.decoding = "async";
+    var chip = el("figcaption", "promo__media-chip");
+    chip.textContent = item.tag[l];
+    media.appendChild(img);
+    media.appendChild(chip);
+
+    var content = el("div", "promo__content");
+    var title = el("h2", "promo__title");
+    title.textContent = item.title[l];
+    var meta = el("p", "promo__meta");
+    meta.innerHTML = ICONS.calendar + "<span></span>";
+    meta.lastElementChild.textContent = item.meta[l];
+    var body = el("div", "promo__body");
+    item.body[l].forEach(function (text) {
+      var paragraph = document.createElement("p");
+      paragraph.textContent = text;
+      body.appendChild(paragraph);
+    });
+    var actions = el("div", "promo__actions");
+    var link = el("a", "btn", "");
+    link.href = item.link;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.innerHTML = "<span></span>" + ICONS.arrowRight;
+    link.firstElementChild.textContent = UI[l].action;
+    actions.appendChild(link);
+
+    var closeX = el("button", "promo__close", ICONS.close);
+    closeX.type = "button";
+    closeX.setAttribute("aria-label", l === "en" ? "Close" : "ปิด");
+    closeX.addEventListener("click", function () {
+      dismissFront();
+    });
+
+    /* ส่วนข้อความเลื่อนได้ / ส่วนปุ่มล็อกอยู่ด้านล่างเสมอ */
+    var foot = el("div", "promo__sheet-foot");
+    foot.appendChild(actions);
+
+    content.appendChild(title);
+    content.appendChild(meta);
+    content.appendChild(body);
+    sheet.appendChild(closeX);
+    sheet.appendChild(media);
+    sheet.appendChild(content);
+    sheet.appendChild(foot);
+    return sheet;
+  }
+
+  function layoutStack() {
+    sheetOrder.forEach(function (index, position) {
+      var sheet = sheetEls[index];
+      sheet.classList.remove("pos-0", "pos-1", "pos-2");
+      sheet.classList.add("pos-" + Math.min(position, 2));
+    });
+  }
+
+  function openStack(fromMascot) {
+    if (stackOpen) {
+      return;
+    }
+    clearLater();
+    sheetsEl.querySelectorAll(".promo__sheet").forEach(function (node) {
+      node.remove();
+    });
+    sheetEls = DATA.map(function (item, index) {
+      return buildSheet(index);
+    });
+    sheetOrder = DATA.map(function (item, index) {
+      return index;
+    });
+    sheetEls.forEach(function (sheet) {
+      sheetsEl.appendChild(sheet);
+    });
+    layoutStack();
+
+    /* ให้ตัวการ์ตูนมองเห็นได้เป็นจุดยุบ/กางของป๊อปอัพ */
+    dock.hidden = false;
+    stackOpen = true;
+    stackBusy = true;
+    stack.hidden = false;
+    document.body.classList.add("is-locked");
+
+    if (fromMascot) {
+      var m = mascot.getBoundingClientRect();
+      var dx = m.left + m.width / 2 - window.innerWidth / 2;
+      var dy = m.top + m.height / 2 - window.innerHeight / 2;
+      sheetEls.forEach(function (sheet) {
+        sheet.style.transition = "none";
+        sheet.style.transform = "translate(" + dx + "px, " + dy + "px) scale(0.08)";
+        sheet.style.opacity = "0";
+      });
+    }
+
+    void stack.offsetWidth;
+    stack.classList.add("is-open");
+
+    window.requestAnimationFrame(function () {
+      sheetEls.forEach(function (sheet) {
+        sheet.style.transition = "";
+        sheet.style.transform = "";
+        sheet.style.opacity = "";
+      });
+      sheetOrder.forEach(function (index, position) {
+        sheetEls[index].style.transitionDelay = position * 110 + "ms";
+      });
+    });
+
+    later(function () {
+      sheetEls.forEach(function (sheet) {
+        sheet.style.transitionDelay = "";
+      });
+      stackBusy = false;
+    }, 700 + (sheetOrder.length - 1) * 110);
+  }
+
+  function dismissFront() {
+    if (!stackOpen || stackBusy || !sheetOrder.length) {
+      return;
+    }
+    stackBusy = true;
+    var index = sheetOrder[0];
+    var sheet = sheetEls[index];
+
+    /* ใบที่เหลือ: ปิดใบนี้ แล้วเลื่อนใบถัดไปขึ้นมาอยู่บนสุด */
+    if (sheetOrder.length > 1) {
+      sheetOrder.shift();
+      sheet.classList.remove("pos-0", "pos-1", "pos-2");
+      sheet.classList.add("is-dismissing");
+      layoutStack();
+      later(function () {
+        sheet.classList.add("is-gone");
+        stackBusy = false;
+      }, 380);
+      return;
+    }
+
+    /* ใบสุดท้าย: ยุบเข้าหาตัวการ์ตูนมุมขวาล่าง แล้วจางหลังฉาก */
+    sheetOrder = [];
+    var r = sheet.getBoundingClientRect();
+    var m = mascot.getBoundingClientRect();
+    var dx = m.left + m.width / 2 - (r.left + r.width / 2);
+    var dy = m.top + m.height / 2 - (r.top + r.height / 2);
+    sheet.classList.remove("pos-0", "pos-1", "pos-2");
+    sheet.style.transform = "translate(" + dx + "px, " + dy + "px) scale(0.08)";
+    sheet.style.opacity = "0";
+    stack.classList.remove("is-open");
+    document.body.classList.remove("is-locked");
+
+    later(function () {
+      hideStackNow();
+    }, 480);
+  }
+
+  function hideStackNow() {
+    clearLater();
+    stack.classList.remove("is-open");
+    stack.hidden = true;
+    stackOpen = false;
+    stackBusy = false;
+    document.body.classList.remove("is-locked");
+    sheetsEl.querySelectorAll(".promo__sheet").forEach(function (node) {
+      node.remove();
+    });
+    sheetEls = [];
+    sheetOrder = [];
+  }
+
+  stackScrim.addEventListener("click", function () {
+    /* ฉากหลังไม่ปิดป๊อปอัพ: ต้องกด X ทีละใบ */
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && stackOpen) {
+      dismissFront();
+    }
   });
 
   /* ------------------------------------------------------------------------
@@ -629,7 +852,7 @@
       dock.hidden = !firstView;
 
       if (firstView) {
-        refs[order[0]].card.focus({ preventScroll: true });
+        mascot.focus({ preventScroll: true });
         startTimer();
       }
     }, 300);
@@ -714,7 +937,7 @@
         startTimer();
         return;
       }
-      openModal(0);
+      openStack(false);
     }, 1100);
   }
 

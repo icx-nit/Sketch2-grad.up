@@ -289,6 +289,7 @@
   var newRoot = mount.querySelector("[data-news-new]");
   var viewportEl = mount.querySelector("[data-news-new-viewport]");
   var dotsEl = mount.querySelector("[data-news-dots]");
+  var footLinksEl = mount.querySelector("[data-news-foot-links]");
   var prevBtn = mount.querySelector("[data-news-prev]");
   var nextBtn = mount.querySelector("[data-news-next]");
   var slideRefs = [];
@@ -321,22 +322,20 @@
       var title = el("span", "news-hero__title");
       var desc = el("span", "news-hero__desc");
       var date = el("span", "news-hero__date");
-      var more = el("span", "news-hero__more", "อ่านประกาศฉบับเต็ม →");
+      var more = el("a", "news-hero__more", "อ่านประกาศฉบับเต็ม →");
+      more.href = item.href;
+      more.target = "_blank";
+      more.rel = "noopener noreferrer";
       content.appendChild(chip);
       content.appendChild(title);
       content.appendChild(desc);
       content.appendChild(date);
-      content.appendChild(more);
+      if (footLinksEl) footLinksEl.appendChild(more);
 
       a.appendChild(img);
-      var badgeWrap = el("span", "news-hero__badge-wrap");
-      badgeWrap.appendChild(el("span", "news-hero__badge", "NEW"));
-      if (!viewportEl.querySelector(".news-hero__badge-wrap")) {
-        viewportEl.appendChild(badgeWrap);
-      }
       a.appendChild(content);
       viewportEl.appendChild(a);
-      slideRefs.push({ slide: a, chip: chip, title: title, desc: desc, date: date, item: item });
+      slideRefs.push({ slide: a, chip: chip, title: title, desc: desc, date: date, item: item, link: more });
     });
 
     if (dotsEl) {
@@ -360,6 +359,7 @@
     slideIndex = (index + count) % count;
     slideRefs.forEach(function (ref, i) {
       ref.slide.classList.toggle("is-current", i === slideIndex);
+      if (ref.link) ref.link.classList.toggle("is-current", i === slideIndex);
       ref.slide.setAttribute("aria-hidden", String(i !== slideIndex));
       ref.slide.tabIndex = i === slideIndex ? 0 : -1;
     });

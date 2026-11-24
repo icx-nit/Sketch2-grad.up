@@ -23,8 +23,8 @@
   <link rel="stylesheet" href="css/reset.css?v=20261121b">
   <link rel="stylesheet" href="css/style.css?v=20261124c">
   <link rel="stylesheet" href="css/components.css?v=20261123a">
-  <link rel="stylesheet" href="css/promo.css?v=20261123b">
-  <link rel="stylesheet" href="css/news.css?v=20261123cb">
+  <link rel="stylesheet" href="css/promo.css?v=20261123o">
+  <link rel="stylesheet" href="css/news.css?v=20261123dc">
   <link rel="stylesheet" href="css/calendar.css?v=20261123g">
   <link rel="stylesheet" href="css/stats.css?v=20261119d">
   <link rel="stylesheet" href="css/stats-dashboard.css?v=20261123f">
@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="css/intro.css?v=20261122a">
   <link rel="stylesheet" href="css/animations.css?v=20261125b">
   <link rel="stylesheet" href="css/responsive.css?v=20261119a">
-  <link rel="stylesheet" href="css/header.css?v=20261123j">
+  <link rel="stylesheet" href="css/header.css?v=20261123l">
 
   <!-- โหลดก่อน paint เพื่อไม่ให้จอกระพริบตอนสลับธีม -->
   <script src="js/theme.js?v=20261121b"></script>
@@ -805,6 +805,10 @@
         <div class="news__layout news__layout--list">
           <div class="news__feed">
             <section class="news-new" aria-label="ข่าวสารล่าสุด" data-news-new>
+              <div class="news-new__ribbon" aria-hidden="true">
+                <img src="assets/images/news-ribbon.png?v=20261123a" alt="" width="320" height="329" decoding="async">
+                <span class="news-new__ribbon-text"><span class="is-th">ใหม่</span><span class="is-en">NEW</span></span>
+              </div>
               <div class="news-new__head">
                 <div class="news-new__titles">
                   <p class="news-new__label">
@@ -813,13 +817,19 @@
                   </p>
                   <p class="news-new__sub">อัปเดตข่าวสารและประกาศล่าสุดจากบัณฑิตวิทยาลัย</p>
                 </div>
+              </div>
+              <div class="news-new__viewport" data-news-new-viewport></div>
+              <div class="news-new__foot">
+                <div class="news-new__foot-links" data-news-foot-links></div>
                 <div class="news-new__controls">
                   <div class="news-new__dots" data-news-dots></div>
                   <button class="news-new__btn" type="button" data-news-prev aria-label="ข่าวก่อนหน้า">&#8249;</button>
                   <button class="news-new__btn" type="button" data-news-next aria-label="ข่าวถัดไป">&#8250;</button>
                 </div>
               </div>
-              <div class="news-new__viewport" data-news-new-viewport></div>
+              <div class="news-new__mascot" aria-hidden="true">
+                <img src="assets/images/news-mascot.gif?v=20261123b" alt="" width="300" height="267" loading="lazy" decoding="async">
+              </div>
             </section>
 
             <section class="news-row" aria-label="ประกาศและข่าวสารทั่วไป" data-news-row>
@@ -1100,8 +1110,8 @@
   <script src="js/navigation.js?v=20261123b" defer></script>
   <script src="js/components.js?v=20261121b" defer></script>
   <script src="js/main.js?v=20261123a" defer></script>
-  <script src="js/promo.js?v=20261121b" defer></script>
-  <script src="js/news.js?v=20261123u" defer></script>
+  <script src="js/promo.js?v=20261123f" defer></script>
+  <script src="js/news.js?v=20261123x" defer></script>
   <script src="js/calendar.js?v=20261123a" defer></script>
   <script src="js/animations.js?v=20261125b" defer></script>
   <script src="js/search.js?v=20261123b" defer></script>
