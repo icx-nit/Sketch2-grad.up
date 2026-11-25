@@ -1,0 +1,140 @@
+/* ==========================================================================
+   dashboard-modern.css: ชั้นดีไซน์ตามภาพอ้างอิง (ต้องโหลดหลัง dashboard-pages.css)
+   แถบค้นหากลาง, สวิตช์โหมดมืด, เมนูที่เลือกแบบโทนอ่อน, การ์ดสรุป, แท็บ, กราฟพื้นที่
+   ใช้โทเค็นสีจาก ../css/variables.css ทั้งหมด จึงรองรับ Light/Dark
+   ========================================================================== */
+
+/* ---------- เมนูข้าง: รายการที่เลือกเป็นโทนอ่อน + แถบสีด้านซ้าย ---------- */
+.bd-nav__link[aria-current="page"] {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-ink);
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+[data-theme="dark"] .bd-nav__link[aria-current="page"] { background: color-mix(in srgb, var(--color-primary) 22%, transparent); }
+
+/* ---------- แถบบน ---------- */
+.bd-topbar__lead { flex: none; }
+.bd-topbar__tools { margin-left: 0; }
+.bd-gsearch {
+  min-width: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1 1 auto;
+  max-width: 34rem;
+  margin-inline: auto;
+  height: 2.75rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+}
+.bd-gsearch:focus-within { border-color: var(--color-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 25%, transparent); }
+.bd-gsearch > svg { flex: none; width: 1.1rem; height: 1.1rem; }
+.bd-gsearch__input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--color-text); font: inherit; font-size: var(--text-sm); }
+.bd-gsearch kbd { flex: none; padding: 0.05rem 0.45rem; border: 1px solid var(--color-border); border-radius: 6px; font-size: var(--text-xs); }
+.bd-gsearch__list {
+  position: absolute; left: 0; right: 0; top: calc(100% + 0.4rem); z-index: 30;
+  margin: 0; padding: 0.35rem; list-style: none;
+  border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+  background: var(--color-panel); box-shadow: var(--bd-shadow);
+}
+.bd-gsearch__list a { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.7rem; border-radius: var(--radius-md); color: var(--color-text); }
+.bd-gsearch__list a:hover, .bd-gsearch__list a:focus-visible { background: var(--color-primary-soft); outline: 0; }
+.bd-gsearch__list svg { flex: none; width: 1.1rem; height: 1.1rem; color: var(--color-primary-ink); }
+.bd-gsearch__name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bd-gsearch__list small { color: var(--color-text-secondary); }
+.bd-gsearch__none { padding: 0.7rem; color: var(--color-text-secondary); font-size: var(--text-sm); }
+
+/* ---------- สวิตช์โหมดมืด ---------- */
+.bd-switch {
+  position: relative; flex: none; display: inline-flex; align-items: center; justify-content: space-between;
+  width: 4.1rem; height: 2.2rem; padding: 0 0.5rem;
+  border: 1px solid var(--color-border); border-radius: var(--radius-pill);
+  background: var(--color-bg); color: var(--color-text-secondary); cursor: pointer;
+}
+.bd-switch:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.bd-switch > svg { position: relative; z-index: 1; width: 1.05rem; height: 1.05rem; }
+.bd-switch__thumb {
+  position: absolute; top: 0.2rem; left: 0.2rem; width: 1.65rem; height: 1.65rem; border-radius: 50%;
+  background: var(--color-primary); opacity: 0.22; transition: transform 0.2s var(--ease);
+}
+.bd-switch[aria-checked="true"] .bd-switch__thumb { transform: translateX(1.85rem); }
+.bd-switch[aria-checked="false"] > svg:nth-child(1), .bd-switch[aria-checked="true"] > svg:nth-child(2) { color: var(--color-primary-ink); }
+
+/* ---------- ข้อความอธิบายบนหน้า และกลุ่มป้าย ---------- */
+.bd-note {
+  display: flex; align-items: flex-start; gap: 0.6rem; margin: 0 0 1rem; padding: 0.7rem 1rem;
+  border: 1px solid var(--color-border); border-radius: var(--radius-md);
+  background: var(--color-primary-soft); color: var(--color-text); font-size: var(--text-sm);
+}
+.bd-note svg { flex: none; width: 1.1rem; height: 1.1rem; margin-top: 0.15rem; color: var(--color-primary-ink); }
+.bd-pills { display: inline-flex; flex-wrap: wrap; gap: 0.35rem; }
+
+/* ---------- หน้าภาพรวม: กริดตามภาพอ้างอิง ---------- */
+.bd-ov { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; }
+.bd-ov > * { min-width: 0; }
+.bd-ov__stats { grid-column: span 7; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.bd-ov__chart1 { grid-column: span 5; }
+.bd-ov__recent { grid-column: span 7; }
+.bd-ov__chart2 { grid-column: span 5; }
+.bd-ov .bd-card { margin: 0; }
+
+.bd-stat { display: flex; flex-direction: column; justify-content: space-between; gap: 0.9rem; min-height: 11rem; }
+.bd-stat__big { display: flex; flex-direction: column; margin: 0; }
+.bd-stat__big b { font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; color: var(--color-text); }
+.bd-stat__big span { font-size: var(--text-sm); color: var(--color-text-secondary); }
+.bd-stat__row { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: var(--text-sm); color: var(--color-text-secondary); }
+.bd-stat__row b { color: var(--color-text); }
+.bd-stat__progress .bd-bar { min-width: 0; }
+
+.bd-donut--sm { grid-template-columns: auto minmax(0, 1fr); gap: 0.8rem; }
+.bd-donut--sm svg { width: 6.5rem; height: 6.5rem; }
+.bd-donut--sm .bd-donut__total { font-size: 1.2rem; }
+.bd-donut--sm ul { gap: 0.35rem; }
+.bd-donut--sm li { font-size: var(--text-xs); }
+
+.bd-minibars { display: flex; align-items: flex-end; gap: 0.45rem; height: 5rem; }
+.bd-minibars span { flex: 1; min-height: 0.5rem; border-radius: 5px 5px 2px 2px; background: var(--color-primary); opacity: 0.85; }
+.bd-minibars span:hover { opacity: 1; background: var(--color-accent-strong); }
+
+.bd-dates { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+.bd-dates__item { display: grid; place-items: center; width: 2.6rem; height: 2.9rem; border-radius: var(--radius-md); background: var(--color-primary-soft); color: var(--color-primary-ink); line-height: 1.1; }
+.bd-dates__item b { font-family: var(--font-heading); font-size: var(--text-base); }
+.bd-dates__item small { font-size: 0.68rem; font-weight: 700; }
+.bd-dates__more { margin-left: auto; font-size: var(--text-xs); color: var(--color-text-secondary); }
+
+.bd-chart--area { max-height: 16rem; }
+
+/* ---------- แท็บรายการล่าสุด ---------- */
+.bd-recent__tabs { padding: 0 1.25rem 0.9rem; }
+.bd-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+.bd-tab {
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem; padding: 0.6rem 0.4rem;
+  border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg);
+  color: var(--color-text-secondary); font: inherit; font-size: var(--text-sm); font-weight: 700; cursor: pointer;
+}
+.bd-tab svg { width: 1.2rem; height: 1.2rem; }
+.bd-tab:hover { color: var(--color-text); border-color: var(--color-primary); }
+.bd-tab:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.bd-tab[aria-selected="true"] { border-color: var(--color-primary); color: var(--color-primary-ink); background: var(--color-primary-soft); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1279px) {
+  .bd-today { display: none; }
+  .bd-ov__stats, .bd-ov__chart1, .bd-ov__recent, .bd-ov__chart2 { grid-column: 1 / -1; }
+}
+@media (max-width: 899px) {
+  .bd-topbar__lead { display: none; }
+  .bd-gsearch { margin-inline: 0; }
+}
+@media (max-width: 599px) {
+  .bd-ov__stats { grid-template-columns: minmax(0, 1fr); }
+  .bd-gsearch { display: none; }
+  .bd-topbar { gap: 0.5rem; }
+  .bd-topbar__tools { margin-left: auto; gap: 0.4rem; }
+  .bd-user__who, .bd-user__btn > svg { display: none; }
+  .bd-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
