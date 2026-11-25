@@ -7,7 +7,9 @@
 
 - เป็นเว็บไซต์ Static ทำงานได้โดยไม่ต้องมีเซิร์ฟเวอร์ฐานข้อมูล
 - ข้อมูลสถิติและข่าวบางส่วนเป็นข้อมูลจำลอง ดูรายละเอียดใน `DATA_SOURCE.md`
-- รายการงานที่เสร็จและค้างอยู่ดูใน `PLAN.md`
+- Deploy อัตโนมัติจาก Git Branch `main` ไปที่ https://sketch2-grad-up.vercel.app (Remote: `origin`, `github`, `gitlab`)
+- รายการงานที่เสร็จและค้างอยู่ดูใน `PLAN.MD`
+- มีหน้านโยบายคุกกี้และแถบแจ้งนโยบาย (เว็บไม่ใช้คุกกี้ติดตามหรือโฆษณา)
 
 ## เทคโนโลยี
 
@@ -22,22 +24,23 @@ Sketch2 grad.up/
 ├── index.html              หน้าหลัก: Header, ประกาศป๊อปอัป, ประกาศ, ข่าว, ลิงก์, ติดต่อ, ปฏิทิน, สถิติ, Footer
 ├── statistics.html         หน้า "สถิติการยื่นคำร้อง บศ.1 ทั้งหมด" (มีตัวกรอง)
 ├── login.html              หน้าเข้าสู่ระบบ
+├── cookie-policy.html      นโยบายคุกกี้ (ไทย/อังกฤษ)
 ├── announce-command.html   คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา
 ├── announce-exam.html      การสอบต่าง ๆ
 ├── announce-form.html      แบบฟอร์มบัณฑิตศึกษา
 ├── announce-guidebook.html คู่มือบัณฑิตศึกษา
 ├── announce-other.html     ประกาศอื่น ๆ
 ├── announce-scholarship.html ทุนอุดหนุนการทำวิทยานิพนธ์
-├── css/                    ไฟล์สไตล์ แยกตามส่วนของเว็บ
-├── js/                     สคริปต์ แยกตามฟีเจอร์
-├── assets/images/          รูปภาพและรูปข่าว (assets/images/news/)
+├── css/                    ไฟล์สไตล์ แยกตามส่วนของเว็บ (header, news, promo, calendar, stats-dashboard, policy, cookie-notice ฯลฯ)
+├── js/                     สคริปต์ แยกตามฟีเจอร์ (i18n, theme, news, promo, calendar, stats-*, cookie-notice ฯลฯ)
+├── assets/images/          รูปภาพ มาสคอต (promo-mascot.gif, news-mascot.gif) ริบบิ้น news-ribbon.png และรูปข่าว (assets/images/news/)
 ├── uploads/                เอกสารประกอบ แยกตามหมวด (announce, calendar, exam, forms, guides, other, scholarship)
 ├── .agents/skills/         ชุดคำสั่งช่วยออกแบบและตรวจการเข้าถึง
 ├── AGENTS.md               กฎการออกแบบและข้อห้าม
 ├── CLAUDE.md               คู่มือการทำงานสำหรับ Claude
 ├── DESIGN.md               ระบบดีไซน์ (สี ฟอนต์ ระยะ คอมโพเนนต์)
 ├── REQUIREMENTS.md         สเปกฟีเจอร์
-├── PLAN.md                 แผนพัฒนาและสถานะงาน
+├── PLAN.MD                 แผนพัฒนาและสถานะงาน
 ├── DATA_SOURCE.md          แหล่งข้อมูล โครงสร้างข้อมูล และนโยบายไฟล์
 └── .gitignore              ยกเว้นไฟล์ uploads/ ส่วนใหญ่ออกจาก Git
 ```
@@ -54,13 +57,13 @@ python -m http.server 8000
 
 แล้วเปิด `http://localhost:8000/index.html` ในเบราว์เซอร์
 
-วิธีที่ 2: ใช้ส่วนขยาย Live Server ใน VS Code แล้วคลิก "Go Live" ที่ `index.html`
+วิธีที่ 2: ใช้ส่วนขยาย Live Server ใน VS Code แล้วคลิก "Go Live" ที่ `index.html` (ปกติใช้พอร์ต 5500 เช่น `http://localhost:5500/index.html`)
 
 หมายเหตุ: ควรใช้เซิร์ฟเวอร์ในเครื่องแทนการดับเบิลคลิกไฟล์ เพราะการเปิดจาก `file://` อาจทำให้บางฟีเจอร์ทำงานไม่ถูกต้อง (ยังไม่ได้ทดสอบทุกกรณี)
 
 ## การ Build และการ Deploy
 
-- ไม่มีขั้นตอน Build ให้คัดลอกไฟล์ในโฟลเดอร์โปรเจกต์ขึ้นเว็บเซิร์ฟเวอร์แบบ Static ได้เลย
+- ไม่มีขั้นตอน Build ให้คัดลอกไฟล์ในโฟลเดอร์โปรเจกต์ขึ้นเว็บเซิร์ฟเวอร์แบบ Static ได้เลย หรือ Push ไปที่ `main` เพื่อให้ Vercel Deploy อัตโนมัติ
 - ไฟล์ใน `uploads/` ไม่อยู่ใน Git ต้องนำขึ้นเซิร์ฟเวอร์แยกต่างหาก ตามโครงสร้างโฟลเดอร์เดิม
 - ก่อน Deploy ให้ตรวจว่า `?v=` ของ CSS และ JS ถูกเปลี่ยนแล้วทุกครั้งที่มีการแก้ไข
 - ก่อน Deploy ให้ตรวจว่ามีข้อมูลจำลองที่ยังไม่ได้เปลี่ยนเป็นข้อมูลจริงหรือไม่ (ดู `DATA_SOURCE.md`)
@@ -69,6 +72,9 @@ python -m http.server 8000
 
 - `.gitignore` ยกเว้นไฟล์ใน `uploads/` ทั้งหมด ยกเว้นไฟล์ตัวอย่างแหล่งละ 3 ไฟล์
 - ไม่ควร Commit ไฟล์ขนาดใหญ่ใน `uploads/` เพราะรวมแล้วประมาณ 479 MB
+- ก่อน Commit ให้ตรวจว่าไม่มีเครื่องหมาย Conflict (`<<<<<<<`) ค้างในไฟล์ (เคยทำให้หน้าบน Vercel พัง)
+- `git status` มีไฟล์ที่ถูกแก้จำนวนมากซึ่งน่าจะเป็นความต่างของ Line Ending หรือสิทธิ์ไฟล์ ให้ตรวจก่อน Commit รวม
+- การ Push ต้องทำจากเทอร์มินัลของผู้ใช้เอง
 
 ## ข้อมูลติดต่อทีมพัฒนา
 
