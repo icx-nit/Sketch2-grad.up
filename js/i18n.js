@@ -163,6 +163,7 @@
       "footer.designedBy": "ออกแบบโดย",
       "footer.logoSource": "และแหล่งที่มาของโลโก้โดย",
       "footer.admin": "ผู้ดูแลระบบ",
+      "footer.cookies": "นโยบายคุกกี้",
       "footer.login": "เข้าสู่ระบบ",
 
       "section.announceTitle": "ประกาศ",
@@ -326,6 +327,7 @@
       "footer.designedBy": "Designed by",
       "footer.logoSource": "and logo source by",
       "footer.admin": "Admin",
+      "footer.cookies": "Cookie Policy",
       "footer.login": "Login",
 
       "section.announceTitle": "Announcements",
