@@ -178,7 +178,8 @@
 
 .dropdown__title {
   display: block;
-  font-weight: 600;
+  font-weight: 400;
+  white-space: nowrap;
   color: var(--color-text);
 }
 
@@ -188,6 +189,16 @@
   font-size: 0.8125rem;
   line-height: 1.4;
   color: var(--color-text-secondary);
+}
+
+/* รายการแสดงบรรทัดเดียวเสมอ ไม่ตัดคำ ไม่หนา */
+.dropdown__link {
+  white-space: nowrap;
+}
+
+.dropdown {
+  width: max-content;
+  max-width: 100%;
 }
 
 .dropdown__link--sub {

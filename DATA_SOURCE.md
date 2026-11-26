@@ -7,9 +7,17 @@
 | ส่วน | ไฟล์ | สถานะ |
 |---|---|---|
 | ข่าวสารล่าสุดและประกาศทั่วไป | `js/news.js` (ตัวแปร `NEWS`) | ข้อมูลจริงบางส่วน ใช้หัวข้อ วันที่ และลิงก์ที่ยืนยันแล้ว คำอธิบายบางรายการเป็นฉบับย่อที่ทีมเขียนเอง |
+<<<<<<< HEAD
 | Pop-up ประชาสัมพันธ์ | `js/promo.js` | ข้อมูลจำลอง 3 รายการ (ตัวแปร `DATA`) |
 | ค่าที่จำในเบราว์เซอร์ | localStorage | `gu-language`, `gu-theme`, `gu-font-size`, `grad_up_calendar_events_v2`, `gu-cookie-notice` (ดู `cookie-policy.html`) |
 | ลิงก์ที่เกี่ยวข้อง/หน่วยงานอื่น | `js/news.js` (ตัวแปร `LINKS`) | ลิงก์จริงของมหาวิทยาลัย |
+=======
+| Pop-up ประชาสัมพันธ์ | `js/promo.js` | ข้อมูลจำลอง |
+| ลิงก์ที่เกี่ยวข้อง/หน่วยงานอื่น | `js/news.js` (ตัวแปร `LINKS`) | ลิงก์จริงของมหาวิทยาลัยและหน่วยงานที่ผู้ใช้ให้มา |
+| เมนูบริการวิชาการ | `index.html` และ `announce-*.html` (ใน HTML โดยตรง) | ลิงก์จริงจาก `reg.up.ac.th` และ `does.up.ac.th` |
+| เมนูฐานข้อมูลและระบบอื่นๆ | `index.html` และหน้าอื่นที่มีแถบเมนู (ใน HTML โดยตรง) | ลิงก์จริง ยังไม่ได้ตรวจลิงก์ทีละรายการ |
+| ข้อมูลในเบราว์เซอร์ | `localStorage` และ `sessionStorage` (ดูหัวข้อ 3.7) | ใช้จริงในเครื่องผู้ใช้ |
+>>>>>>> Second-edit-to-the-request
 | ปฏิทิน | `js/calendar.js` | ข้อมูลจริงบางส่วนจากปฏิทินบัณฑิตวิทยาลัย |
 | สถิติการยื่นคำร้อง บศ.1 | `js/stats-data.js` (ตัวแปร `SOURCE`) | **ข้อมูลจำลองทั้งหมด** |
 | ประกาศย้อนหลังในหน้า `announce-*.html` | `js/announce-*.js` | ข้อมูลจริงจากการเก็บข้อมูลก่อนหน้า |
@@ -41,20 +49,40 @@
 | ระบบบริการการศึกษา (REG) | https://reg.up.ac.th |
 | การรับสมัครบุคคลเข้าศึกษา | https://admission.up.ac.th |
 | ระบบฐานข้อมูลหลักสูตร (TQF Online) | https://tqf.up.ac.th |
-| ระบบบริหารจัดการวิทยานิพนธ์ (iThesis) | https://app.ithesis.co/ |
-| ระบบบริหารจัดการสหกิจศึกษา | https://coop.up.ac.th |
-| สำนักงานคณะกรรมการการอุดมศึกษา | https://www.mua.go.th/index2.html |
-| กองบริการการศึกษา (does.ac.th) | https://does.ac.th |
+| สำนักงานปลัดกระทรวงการอุดมศึกษา วิทยาศาสตร์ วิจัยและนวัตกรรม (ชื่อภาษาอังกฤษเป็นคำแปลที่ทีมต้องตรวจ) | https://www.ops.go.th/en/content_page/219-announcement-ches |
+| ทคบร (ชื่อภาษาอังกฤษยังใช้ชื่อเดียวกับภาษาไทย) | https://cgau.mhesi.go.th/about-cgau.php |
+
+รายการที่ถูกลบออกแล้ว: app.ithesis.co, coop.up.ac.th, mua.go.th และ does.ac.th
 
 ### 2.3 ฐานข้อมูลวิชาการ (เมนู "ฐานข้อมูล")
 
+<<<<<<< HEAD
 เมนูปัจจุบันมี Scopus, ISI, TCI, ERIC, PubMed และรายชื่อสำนักพิมพ์/วารสารที่ควรระวัง ต้องตรวจลิงก์ทีละรายการ (ยังไม่ได้ตรวจ) ส่วน Google Scholar ยังไม่มีในเมนู
 
 ลิงก์ "ประเมินความพึงพอใจ" ใช้ Google Forms (`forms.gle`) ที่ผู้ใช้ให้มา ยังไม่ได้ตรวจว่าเปิดได้
+=======
+| รายการ | ลิงก์ |
+|---|---|
+| Scopus | https://www.scopus.com/pages/home#basic |
+| ISI (Web of Knowledge) | https://apps.webofknowledge.com/ |
+| TCI (Thai-Journal Citation Index) | https://tci-thailand.org/list%20journal.php |
+| ERIC | https://eric.ed.gov/ |
+| PubMed (ลิงก์เดียว) | https://pubmed.ncbi.nlm.nih.gov/ |
+| Web of Science Master Journal List | https://mjl.clarivate.com/home |
+| รายชื่อสำนักพิมพ์/วารสารที่ควรระมัดระวัง (เก็บถาวรจาก Web Archive) | https://web.archive.org/web/20170112125427/https://scholarlyoa.com/publishers/ |
+>>>>>>> Second-edit-to-the-request
 
-### 2.4 ระบบอื่น ๆ และหน่วยงานอื่น
+ยังไม่ได้ตรวจลิงก์ทีละรายการ และยังไม่มี Google Scholar ในเมนู
 
+<<<<<<< HEAD
 ITC และ UP Meeting ยังไม่มีในโค้ดและยังไม่มีลิงก์ที่ยืนยันแล้ว ต้องได้รับลิงก์จากผู้ใช้ก่อน
+=======
+### 2.4 เมนูบริการวิชาการ และระบบอื่น ๆ
+
+- **บริการวิชาการ:** ประกอบด้วย ระเบียบ/ประกาศ/แบบฟอร์ม (`does.up.ac.th/announce`), ปฏิทินการศึกษา (`reg.up.ac.th/announce/calendaracademic`), รายวิชาที่เปิดสอน (`reg.up.ac.th/app/class_info`), ตารางการใช้ห้อง (`reg.up.ac.th/app/class_room`), ตารางสอนอาจารย์ (`reg.up.ac.th/app/class_time_instructor`), ประกาศการสอบ (`reg.up.ac.th/announce/exam`), DynEd (`reg.up.ac.th/content/all/dyned`) และข้อมูลสารสนเทศ (`reg.up.ac.th/content/all/information`)
+- รายการ "ระเบียบ/ประกาศ/แบบฟอร์ม" ใช้ลิงก์เดียวกับระเบียบ เพราะยังไม่มีลิงก์แบบฟอร์มแยก
+- **ระบบอื่นๆ:** ITC และ UP Meeting ยังไม่มีลิงก์ที่ยืนยันแล้ว ต้องได้รับลิงก์จากผู้ใช้ก่อน
+>>>>>>> Second-edit-to-the-request
 
 ### 2.5 การเชื่อมกับระบบ REG
 
@@ -84,7 +112,12 @@ ITC และ UP Meeting ยังไม่มีในโค้ดและย�
 
 - ตัวแปร `DATA` มี 3 รายการ แต่ละรายการมีหัวข้อ วันที่ รูป คำอธิบาย และลิงก์ `link` (ไทย/อังกฤษ)
 - ลิงก์ของจริงจะถูกใส่ภายหลัง
+<<<<<<< HEAD
 - มาสคอตใช้ไฟล์ `assets/images/promo-mascot.gif` และสถานะการเปิด/ปิดของป๊อปอัปจำในหน่วยความจำของหน้าเท่านั้น
+=======
+- ป๊อปอัปใหญ่แสดงเมื่อเปิดแท็บใหม่ (บันทึกใน `sessionStorage` คีย์ `gu-promo-seen`)
+- กล่องมุมขวาล่างเลื่อนรายการทุก 2 วินาที (`AUTO_MS`) และมีกากบาทปิดกล่อง
+>>>>>>> Second-edit-to-the-request
 
 ### 3.3 สถิติ (`SOURCE` ใน `js/stats-data.js`)
 
@@ -119,6 +152,7 @@ var SOURCE = {
 - ชื่อเดือนที่หัวปฏิทินจัดรูปแบบด้วย `Intl.DateTimeFormat` ตามภาษา (th-TH / en-US)
 - แผงรายละเอียดแสดงกิจกรรมของวันที่เลือก
 
+<<<<<<< HEAD
 ### 3.6 ค่าที่จำในเบราว์เซอร์
 
 | คีย์ | ใช้ทำอะไร | ไฟล์ |
@@ -132,6 +166,21 @@ var SOURCE = {
 ข้อมูลทั้งหมดอยู่ในเครื่องผู้ใช้ ไม่ส่งไปเซิร์ฟเวอร์ ถ้าเพิ่มคีย์ใหม่ ต้องอัปเดตตารางใน `cookie-policy.html`
 
 ### 3.7 ประกาศย้อนหลัง (`js/announce-*.js`)
+=======
+### 3.7 ข้อมูลที่บันทึกในเบราว์เซอร์ของผู้ใช้
+
+| คีย์ | ที่เก็บ | ใช้ทำอะไร |
+|---|---|---|
+| `gu-language` | localStorage | ภาษาที่ผู้ใช้เลือก (ไทย/อังกฤษ) |
+| `gu-theme` | localStorage | โหมดสว่าง/มืด |
+| `gu-font-size` | localStorage | ขนาดตัวอักษร |
+| `grad_up_calendar_events_v2` | localStorage | กิจกรรมปฏิทินที่ผู้ใช้บันทึกไว้ในเครื่อง |
+| `gu-promo-seen` | sessionStorage | จำว่าได้แสดงป๊อปอัปใหญ่ในแท็บนี้แล้ว |
+
+รายการเหล่านี้ระบุไว้ในหน้า `cookie-policy.html` และปุ่ม "ล้างการตั้งค่าที่บันทึกไว้" ลบเฉพาะ 4 คีย์แรก ถ้าเพิ่มคีย์ใหม่ต้องอัปเดตหน้านโยบายด้วย
+
+### 3.6 ประกาศย้อนหลัง (`js/announce-*.js`)
+>>>>>>> Second-edit-to-the-request
 
 - แต่ละหน้าประกาศมีสคริปต์ของตัวเอง เก็บรายการประกาศย้อนหลังไว้ในไฟล์
 - ฟิลด์ที่ใช้: `num` (ลำดับ), `code` (รหัสเอกสาร), `date`, `title`, `label` (หมวด), `file` (ชื่อไฟล์ใน `uploads/`) และ `ext` (นามสกุล เช่น pdf)
@@ -169,6 +218,10 @@ var SOURCE = {
 
 - `_probe-reveal.html` เป็นไฟล์ทดสอบ ไม่ได้ถูกลิงก์จากหน้าหลัก
 - `sedV4ok6q` เป็นไฟล์ที่ไม่ทราบที่มา ต้องถามผู้ใช้ก่อนลบ
+<<<<<<< HEAD
+=======
+- ไฟล์ `DESING.MD` ฉบับร่างเดิมไม่พบในโปรเจกต์แล้ว ใช้ `DESIGN.md` แทน
+>>>>>>> Second-edit-to-the-request
 
 ## 5. การเปลี่ยนจากข้อมูลจำลองเป็นข้อมูลจริง
 

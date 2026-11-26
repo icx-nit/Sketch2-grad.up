@@ -29,7 +29,7 @@
 
       "nav.label": "เมนูหลัก",
       "nav.home": "หน้าหลัก",
-      "nav.announcements": "ข้อบังคับ / ประกาศ",
+      "nav.announcements": "บริการวิชาการ",
       "nav.news": "ข่าว",
       "nav.journal": "ฐานข้อมูล",
       "nav.contact": "ติดต่อเรา",
@@ -39,10 +39,16 @@
       "foot.hoursMain": "เวลาทำการ 08:30 - 16:30 น.",
       "foot.hoursNote": "(ยกเว้น : วันหยุดราชการ)",
 
-      "announce.regulations": "ระเบียบ • ข้อบังคับ • ประกาศ",
+      "announce.regulations": "ระเบียบ • ข้อบังคับ • ประกาศ • แบบฟอร์ม",
       "announce.calendar": "ปฏิทินการศึกษา",
       "announce.fees": "อัตราค่าธรรมเนียมการศึกษา",
       "announce.other": "ประกาศอื่นๆ",
+      "academic.courses": "รายวิชาที่เปิดสอน",
+      "academic.rooms": "ตารางการใช้ห้อง",
+      "academic.instructors": "ตารางสอนอาจารย์",
+      "academic.exams": "ประกาศการสอบต่าง ๆ",
+      "academic.dyned": "DynEd (การทดสอบภาษาอังกฤษ)",
+      "academic.info": "ข้อมูลสารสนเทศ",
 
       "journal.scopus": "รายชื่อวารสารในฐานข้อมูล Scopus/ISI/TCI/ERIC",
       "db.scopus.desc": "ฐานข้อมูลบทคัดย่อและการอ้างอิงของวารสารวิชาการที่ผ่านการพิจารณาโดยผู้ทรงคุณวุฒิ",
@@ -165,6 +171,7 @@
       "footer.admin": "ผู้ดูแลระบบ",
       "footer.cookies": "นโยบายคุกกี้",
       "footer.login": "เข้าสู่ระบบ",
+      "footer.cookies": "นโยบายคุกกี้",
 
       "section.announceTitle": "ประกาศ",
       "section.appointment": "คำสั่งแต่งตั้งอาจารย์บัณฑิตศึกษา",
@@ -192,7 +199,7 @@
 
       "nav.label": "Main navigation",
       "nav.home": "Home",
-      "nav.announcements": "Regulations / Announcements",
+      "nav.announcements": "Academic Services",
       "nav.news": "News",
       "nav.journal": "Databases",
       "nav.contact": "Contact Us",
@@ -202,10 +209,16 @@
       "foot.hoursMain": "Office hours 08:30 - 16:30",
       "foot.hoursNote": "(Excluding public holidays)",
 
-      "announce.regulations": "Regulations • Rules • Announcements",
+      "announce.regulations": "Regulations • Rules • Announcements • Forms",
       "announce.calendar": "Academic Calendar",
       "announce.fees": "Tuition Fees",
       "announce.other": "Other Announcements",
+      "academic.courses": "Courses Offered",
+      "academic.rooms": "Room Schedule",
+      "academic.instructors": "Instructor Timetable",
+      "academic.exams": "Examination Announcements",
+      "academic.dyned": "DynEd (English Proficiency Test)",
+      "academic.info": "Information Resources",
 
       "journal.scopus": "Journals indexed in Scopus/ISI/TCI/ERIC",
       "db.scopus.desc": "Abstract and citation database of peer-reviewed academic literature",
@@ -329,6 +342,7 @@
       "footer.admin": "Admin",
       "footer.cookies": "Cookie Policy",
       "footer.login": "Login",
+      "footer.cookies": "Cookie Policy",
 
       "section.announceTitle": "Announcements",
       "section.appointment": "Graduate Faculty Appointment Orders",

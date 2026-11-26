@@ -169,6 +169,7 @@
       prev: "ประกาศก่อนหน้า",
       next: "ประกาศถัดไป",
       close: "ปิดและย่อลงมุมขวาล่าง",
+      dismiss: "ปิดกล่องประกาศ",
       dot: "ดูประกาศลำดับที่",
       open: "เปิดอ่านรายละเอียด",
       action: "อ่านประกาศฉบับเต็ม"
@@ -178,6 +179,7 @@
       prev: "Previous announcement",
       next: "Next announcement",
       close: "Close and minimize to the bottom right",
+      dismiss: "Dismiss announcement box",
       dot: "Show announcement",
       open: "Open details",
       action: "Read full announcement"
@@ -318,6 +320,7 @@
   arrows.appendChild(nextBtn);
   bar.appendChild(dots);
   bar.appendChild(arrows);
+<<<<<<< HEAD
   /* ตัวการ์ตูนแทนกล่องการ์ด: กดแต่ละครั้งเปิดประกาศทีละเรื่อง (3 เรื่อง) แล้ววนกลับเรื่องแรก */
   var mascot = el("button", "promo__mascot");
   mascot.type = "button";
@@ -334,7 +337,22 @@
     openStack(true);
   });
   dock.appendChild(mascot);
+=======
+  var dockClose = el("button", "promo__dock-close", ICONS.close);
+  dockClose.type = "button";
+  dock.appendChild(stage);
+  dock.appendChild(bar);
+  dock.appendChild(dockClose);
+>>>>>>> Second-edit-to-the-request
   dock.hidden = true;
+
+  /* กากบาทที่กล่อง: ปิดกล่องทิ้งจนกว่าจะรีเฟรชหน้าเว็บ */
+  var dismissed = false;
+  dockClose.addEventListener("click", function () {
+    dismissed = true;
+    dock.hidden = true;
+    stopTimer();
+  });
 
   /* ------------------------------------------------------------------------
      กล่องประชาสัมพันธ์แสดงเฉพาะ "หน้าแรก" (ภาพปก + ประกาศ)
@@ -371,7 +389,7 @@
     onFirstView = show;
 
     if (show) {
-      if (modal.hidden) {
+      if (modal.hidden && !dismissed) {
         dock.hidden = false;
         startTimer();
       }
@@ -450,7 +468,7 @@
   var order = DATA.map(function (item, index) {
     return index;
   });
-  var AUTO_MS = 4200;
+  var AUTO_MS = 2000;
   var timer = null;
   var modalIndex = 0;
   var closeTimer = null;
@@ -805,6 +823,7 @@
     prevBtn.setAttribute("aria-label", UI[l].prev);
     nextBtn.setAttribute("aria-label", UI[l].next);
     closeBtn.setAttribute("aria-label", UI[l].close);
+    dockClose.setAttribute("aria-label", UI[l].dismiss);
     dotEls.forEach(function (dot, index) {
       dot.setAttribute(
         "aria-label",
@@ -932,13 +951,41 @@
       if (!isFirstView()) {
         return;
       }
-      if (interacted) {
+      if (interacted && !dismissed) {
         dock.hidden = false;
         startTimer();
         return;
       }
+<<<<<<< HEAD
       openStack(false);
+=======
+      /* แสดงป๊อปอัปเฉพาะตอนเปิดแท็บใหม่ ไม่แสดงซ้ำเมื่อกดรีเฟรชในแท็บเดิม
+         (sessionStorage ผูกกับแท็บ และหายเมื่อปิดแท็บ) */
+      if (hasSeenThisTab()) {
+        if (!dismissed) {
+          dock.hidden = false;
+          startTimer();
+        }
+        return;
+      }
+      markSeenThisTab();
+      openModal(0);
+>>>>>>> Second-edit-to-the-request
     }, 1100);
+  }
+
+  function hasSeenThisTab() {
+    try {
+      return window.sessionStorage.getItem("gu-promo-seen") === "1";
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function markSeenThisTab() {
+    try {
+      window.sessionStorage.setItem("gu-promo-seen", "1");
+    } catch (e) {}
   }
 
   /* ถ้ามีอนิเมชั่นเปิดหน้าเว็บ ให้รอจนอนิเมชั่นจบก่อน แล้วค่อยเริ่มนับเวลา */

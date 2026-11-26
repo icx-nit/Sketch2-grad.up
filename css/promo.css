@@ -679,6 +679,7 @@
   }
 }
 
+<<<<<<< HEAD
 /* ==========================================================================
    ตัวการ์ตูนแทนกล่องประกาศมุมขวาล่าง (เฉพาะหน้าหลัก): กดเพื่อเปิดประกาศทีละเรื่อง
    ========================================================================== */
@@ -979,4 +980,40 @@
 html:has(body.is-locked) {
   overflow: hidden;
   scrollbar-gutter: auto;
+=======
+
+/* กากบาทของกล่องประชาสัมพันธ์ (มุมขวาบน) */
+.promo__dock-close {
+  position: absolute;
+  top: 0.4rem;
+  inset-inline-end: 0.4rem;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
+  color: #ffffff;
+  background: rgba(12, 7, 20, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-pill);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: background-color var(--duration) var(--ease);
+}
+
+.promo__dock-close:hover {
+  background: rgba(12, 7, 20, 0.8);
+}
+
+.promo__dock-close:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.promo__dock-close svg {
+  width: 0.9rem;
+  height: 0.9rem;
+>>>>>>> Second-edit-to-the-request
 }

@@ -6,9 +6,14 @@
 ## ภาพรวมโปรเจกต์
 
 - เว็บไซต์แบบ Static ไม่มีฐานข้อมูลและไม่มีระบบหลังบ้านในปัจจุบัน
+<<<<<<< HEAD
 - Deploy อัตโนมัติจาก Git Branch `main` ไปที่ https://sketch2-grad-up.vercel.app (Remote: `origin`, `github`, `gitlab`)
 - หน้าเว็บ: `index.html` (หน้าหลัก), `statistics.html`, `login.html`, `cookie-policy.html` และ `announce-*.html` (command, exam, form, guidebook, other, scholarship)
 - ข้อมูลที่แสดงเกือบทั้งหมดเป็นข้อมูลจำลอง (Mock) ยกเว้นข่าวบางรายการที่ระบุลิงก์จริงแล้ว
+=======
+- หน้าหลักคือ `index.html` ส่วนหน้าแยกอื่นได้แก่ `statistics.html`, `login.html`, `cookie-policy.html` และหน้า `announce-*.html`
+- ข้อมูลทั้งหมดที่แสดงในตอนนี้เป็นข้อมูลจำลอง (Mock) ยกเว้นข่าวบางรายการที่ระบุลิงก์จริงแล้ว
+>>>>>>> Second-edit-to-the-request
 
 ## Tech Stack
 
@@ -21,6 +26,7 @@
 
 ## โครงสร้างโปรเจกต์
 
+<<<<<<< HEAD
 - `css/`: `variables.css`, `reset.css`, `style.css`, `components.css`, `responsive.css`, `header.css`, `footer.css`, `intro.css`, `animations.css`, `news.css`, `promo.css`, `calendar.css`, `support.css`, `stats.css`, `stats-dashboard.css`, `announce-command.css`, `login.css`, `policy.css`, `cookie-notice.css`
 - `js/`: `main.js`, `intro.js`, `i18n.js`, `theme.js`, `font-size.js`, `navigation.js`, `components.js`, `search.js`, `animations.js`, `news.js`, `promo.js`, `calendar.js`, `stats-data.js`, `stats-page.js`, `stats-dashboard.js`, `stats-chart.js`, `announce-*.js`, `cookie-notice.js`
 - `assets/images/`: รูปภาพ มาสคอต (`promo-mascot.gif`, `news-mascot.gif`), ริบบิ้น `news-ribbon.png` และรูปข่าวใน `assets/images/news/`
@@ -35,6 +41,14 @@
 - **ประชาสัมพันธ์**: มาสคอตมุมขวา และป๊อปอัพประกาศ 3 ใบซ้อนกัน (`js/promo.js`) แสดงเฉพาะหน้าหลัก ปิดทีละใบ ยุบลงมาสคอตเมื่อปิดใบสุดท้าย
 - **สถิติ**: ตัวกรองปีการศึกษา/เดือน/คณะ/สาขา ปัญหาที่ยังค้าง: การเลื่อนหน้าบนหน้าสถิติรู้สึกติด (ยังไม่พบสาเหตุแน่ชัด)
 - **นโยบายคุกกี้**: เว็บไม่ใช้คุกกี้ติดตามหรือโฆษณา ถ้าเพิ่มคีย์ localStorage ใหม่หรือเครื่องมือวิเคราะห์ ต้องอัปเดตตารางใน `cookie-policy.html` ด้วย
+=======
+- `index.html`, `statistics.html`, `login.html`, `cookie-policy.html`, `announce-*.html`: หน้าเว็บ
+- `css/`: ไฟล์สไตล์แยกตามส่วน เช่น `variables.css`, `news.css`, `promo.css`, `footer.css`, `login.css`, `policy.css`, `calendar.css`, `stats-dashboard.css`
+- `js/`: สคริปต์แยกตามฟีเจอร์ เช่น `news.js`, `promo.js`, `calendar.js`, `stats-data.js`, `stats-page.js`, `i18n.js`, `theme.js`, `font-size.js`
+- `assets/images/`: รูปภาพ รวมถึงรูปข่าวใน `assets/images/news/`
+- `uploads/`: เอกสารประกอบ (ประกาศ คู่มือ แบบฟอร์ม) โดยไฟล์จริงไม่ถูกเก็บใน Git
+- `.agents/skills/`: ชุดคำสั่งช่วยออกแบบและตรวจการเข้าถึง (Accessibility)
+>>>>>>> Second-edit-to-the-request
 
 ## ไฟล์เอกสารย่อย (โหลดบริบทอัตโนมัติ)
 
@@ -44,8 +58,12 @@
 @PLAN.MD
 @DATA_SOURCE.md
 
+<<<<<<< HEAD
 หมายเหตุ: ไฟล์แผนงานชื่อ `PLAN.MD` (ตัวพิมพ์ใหญ่ทั้งหมด) ต้องเขียนชื่อให้ตรงเมื่ออ้างอิง
 ไฟล์ `AGENTS.md` คือกฎการออกแบบและการทำงานฉบับภาษาไทย ใช้ประกอบกับไฟล์ข้างต้น
+=======
+ไฟล์ `AGENTS.md` คือกฎการออกแบบและการทำงาน ใช้ประกอบกับไฟล์ข้างต้น (ไม่มีไฟล์ `DESING.MD` แล้ว ใช้ `DESIGN.md` แทน)
+>>>>>>> Second-edit-to-the-request
 
 ## กฎการเขียนโค้ด และข้อห้าม
 
@@ -63,8 +81,13 @@
 ## ข้อควรระวังด้านความปลอดภัยและ Git
 
 - ไม่เข้าถึงไฟล์นอกโฟลเดอร์โปรเจกต์ และไม่แก้ไขการตั้งค่าระบบ
+<<<<<<< HEAD
 - ไม่ Commit หรือ Push จนกว่าผู้ใช้จะสั่งอย่างชัดเจน ถ้าอยู่บน Branch หลักให้แตก Branch ก่อน (ผู้ใช้เคยสั่ง Commit บน `main` โดยตรง และ Push เองจากเทอร์มินัลเพราะระบบบล็อก `git push`)
 - ก่อน Commit ให้ตรวจว่าไม่มีเครื่องหมาย Conflict (`<<<<<<<`, `=======`, `>>>>>>>`) ค้างในไฟล์ เคยทำให้หน้าบน Vercel พังมาแล้ว
+=======
+- ไม่ Commit หรือ Push จนกว่าผู้ใช้จะสั่งอย่างชัดเจน ถ้าอยู่บน Branch หลักให้แตก Branch ก่อน
+- ก่อน Commit ให้ตรวจ `git status` และแจ้งผู้ใช้ว่ามีไฟล์ใหม่หรือไฟล์ที่แก้ค้างไว้อยู่ (ตอนนี้มีไฟล์ใหม่ที่ยังไม่ Commit เช่น `cookie-policy.html`, `css/policy.css`)
+>>>>>>> Second-edit-to-the-request
 - ไม่ Commit ไฟล์ที่อาจมีข้อมูลลับ เช่น `.env` หรือ Credential
 - `git status` มีไฟล์ที่ถูกแก้จำนวนมากซึ่งน่าจะเป็นความต่างของ Line Ending/สิทธิ์ไฟล์ ห้าม Commit รวมโดยไม่ตรวจก่อน
 - ไม่ลบไฟล์ที่ไม่แน่ใจว่าใช้งานอยู่หรือไม่ เช่น `_probe-reveal.html` และ `sedV4ok6q` ให้ถามผู้ใช้ก่อน
@@ -74,8 +97,14 @@
 
 1. อ่านสเปกในไฟล์ `.md` ที่เกี่ยวข้องก่อนลงมือเขียนโค้ด
 2. แก้เฉพาะจุดที่ได้รับคำสั่ง และรายงานว่าไฟล์ใดถูกแก้บ้าง
+<<<<<<< HEAD
 3. ตอบเป็นภาษาไทย ส่วนชื่อไฟล์ คลาส และโค้ดใช้ภาษาอังกฤษ
 4. ตรวจ Error ในโค้ด เช่น ไวยากรณ์ JavaScript (`node --check`) และลิงก์ที่เสีย ก่อนสรุปว่าเสร็จ
 5. คำสั่ง "กลับไป Design เดิม" หมายถึงย้อนการเปลี่ยนแปลงด้านภาพล่าสุดเพียงรายการเดียว
 6. อัปเดต `PLAN.MD` เมื่อสถานะของงานเปลี่ยน
 7. ถ้าสเปกกับโค้ดไม่ตรงกัน ให้บอกผู้ใช้และถามก่อนตัดสินใจ
+=======
+3. ตรวจ Error ในโค้ด เช่น ไวยากรณ์ JavaScript และลิงก์ที่เสีย ก่อนสรุปว่าเสร็จ
+4. อัปเดต `PLAN.MD` เมื่อสถานะของงานเปลี่ยน
+5. ถ้าสเปกกับโค้ดไม่ตรงกัน ให้บอกผู้ใช้และถามก่อนตัดสินใจ
+>>>>>>> Second-edit-to-the-request
