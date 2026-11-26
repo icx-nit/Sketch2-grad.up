@@ -191,10 +191,6 @@ button:not(.promo-card) {
   transition: transform var(--duration) var(--ease);
 }
 
-.nav-item--dropdown.is-open > .nav-link__toggle .nav-link__chevron {
-  transform: rotate(180deg);
-}
-
 .nav-item--dropdown > .nav-link__toggle:hover,
 .nav-item--dropdown.is-open > .nav-link__toggle {
   color: var(--color-primary-ink);
