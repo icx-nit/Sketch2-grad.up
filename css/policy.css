@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-/* หน้านโยบายคุกกี้ (cookie-policy.html): หน้าเอกสารอ่านง่าย รองรับโหมดมืดและสองภาษา */
-.policy-page { max-width: 52rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; color: var(--color-text); }
-.policy-back { display: inline-block; margin-bottom: 1rem; font-weight: 600; color: var(--color-primary-ink); text-decoration: none; }
-.policy-back:hover, .policy-back:focus-visible { text-decoration: underline; }
-.policy-card { background: var(--color-panel); border: 1px solid var(--color-border); border-radius: 1.25rem; padding: clamp(1.25rem, 4vw, 2.5rem); box-shadow: 0 10px 30px rgba(77, 35, 141, .08); }
-.policy-title { margin: 0 0 .25rem; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; color: var(--color-primary-ink); border-left: 5px solid var(--color-accent); padding-left: .75rem; }
-.policy-updated { margin: 0 0 1.5rem; color: var(--color-text-secondary); font-size: .9rem; }
-.policy-card h2 { margin: 1.75rem 0 .5rem; font-size: 1.15rem; font-weight: 700; color: var(--color-primary-ink); }
-.policy-card p, .policy-card li { line-height: 1.8; }
-.policy-card ul { padding-left: 1.25rem; }
-.policy-table-wrap { overflow-x: auto; margin: .5rem 0; border: 1px solid var(--color-border); border-radius: .75rem; }
-.policy-table { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 34rem; }
-.policy-table th, .policy-table td { padding: .65rem .8rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--color-border); }
-.policy-table th { background: var(--color-primary-soft); color: var(--color-primary-ink); font-weight: 700; }
-.policy-table tr:last-child td { border-bottom: 0; }
-.policy-table code { font-size: .85em; }
-.policy-card a { color: var(--color-primary-ink); }
-.policy-actions { margin-top: 1rem; }
-.policy-btn { display: inline-flex; align-items: center; padding: .55rem 1.1rem; border: 0; border-radius: 999px; background: var(--color-primary); color: var(--color-on-primary); font: inherit; font-weight: 700; cursor: pointer; }
-.policy-btn:hover, .policy-btn:focus-visible { background: var(--color-primary-hover); }
-.policy-msg { margin: .6rem 0 0; font-weight: 600; color: var(--color-accent-strong); min-height: 1.4em; }
-.policy-lang { display: flex; gap: .5rem; margin-bottom: 1rem; }
-.policy-lang button { padding: .35rem .9rem; border-radius: 999px; border: 1px solid var(--color-border); background: transparent; color: var(--color-text); font: inherit; cursor: pointer; }
-.policy-lang button[aria-pressed="true"] { background: var(--color-primary); color: var(--color-on-primary); border-color: transparent; }
-.policy-en { display: none; }
-html[data-lang="en"] .policy-th { display: none; }
-html[data-lang="en"] .policy-en { display: block; }
-html[data-lang="en"] span.policy-en { display: inline; }
-=======
 /* ==========================================================================
    นโยบายคุกกี้ (cookie-policy.html)
    ========================================================================== */
@@ -218,4 +188,3 @@ body.policy-body {
     transition: none;
   }
 }
->>>>>>> Second-edit-to-the-request
