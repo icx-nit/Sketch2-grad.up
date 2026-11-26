@@ -91,15 +91,32 @@
     }
   };
 
+  /* 4 หมวดสี: holiday=แดง, registrar=เหลือง, term=น้ำเงิน, activity=เขียว */
   var CAT = {
-    gs1: { th: "ยื่นคำร้อง บศ.1", en: "Form GS.1" },
-    review: { th: "การพิจารณาคำร้อง", en: "Petition Review" },
-    register: { th: "งานทะเบียน / เปิด-ปิดภาค", en: "Registration" },
-    petition: { th: "ยื่นคำร้องต่าง ๆ", en: "Petitions" },
-    exam: { th: "การสอบ (QE / ปลายภาค)", en: "Examinations" },
-    thesis: { th: "วิทยานิพนธ์ / บศ.16-17", en: "Thesis & Degree" },
-    grant: { th: "ทุนอุดหนุนการศึกษา", en: "Thesis Grant" }
+    holiday: { th: "วันหยุดราชการ / นักขัตฤกษ์ / งดการเรียนการสอน", en: "Holidays & No-class Days" },
+    registrar: { th: "ช่วงเวลาสำคัญทางทะเบียน", en: "Registration Deadlines" },
+    term: { th: "เปิด-ปิดภาคเรียน / ช่วงสอบ", en: "Semester & Examinations" },
+    activity: { th: "กิจกรรมนักศึกษา / คำร้องทั่วไป", en: "Student Activities & Petitions" }
   };
+
+  /* แปลงหมวดเดิมเป็น 4 หมวดใหม่ (รวมข้อมูลที่เคยบันทึกไว้ในเบราว์เซอร์) */
+  var LEGACY_CAT = {
+    gs1: "activity", review: "activity", petition: "activity", thesis: "activity", grant: "activity",
+    exam: "term", register: "registrar"
+  };
+  var TERM_ID = /-(term-start|term-end|final-exam|qe\d?-exam)$/;
+  var REGISTRAR_ID = /-(course-plan|schedule-announce|reg-prep|regular-reg|reg|late-reg|late-pay|defer-pay-final|defer-petition|drop-w|qe\d?-apply|qe\d?-late-apply)$/;
+
+  function normalizeCategory(ev) {
+    if (!ev) return ev;
+    if (CAT[ev.category]) return ev;
+    var id = String(ev.id || "");
+    if (TERM_ID.test(id)) ev.category = "term";
+    else if (REGISTRAR_ID.test(id)) ev.category = "registrar";
+    else ev.category = LEGACY_CAT[ev.category] || "activity";
+    return ev;
+  }
+
 
   var DEFAULT_EVENTS = [
   {
@@ -982,13 +999,13 @@
       if (raw) {
         var parsed = JSON.parse(raw);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+          return parsed.map(normalizeCategory);
         }
       }
     } catch (e) {
       console.warn("Cannot load events from localStorage", e);
     }
-    return DEFAULT_EVENTS.slice();
+    return DEFAULT_EVENTS.map(normalizeCategory);
   }
 
   function saveEvents(list) {
@@ -1282,7 +1299,7 @@
     var catInfo = CAT[event.category] || { th: event.category, en: event.category };
     if (catInfo) {
       var catSpan = document.createElement("span");
-      catSpan.className = "calendar-event__category";
+      catSpan.className = "calendar-event__category calendar-event__category--" + event.category;
       catSpan.textContent = eventText(catInfo);
       card.appendChild(catSpan);
     }
@@ -1569,7 +1586,7 @@
     if (!form) return;
     if (formId) formId.value = ev.id;
     if (formTitle) formTitle.value = eventText(ev.title);
-    if (formCategory) formCategory.value = ev.category || "register";
+    if (formCategory) formCategory.value = ev.category || "registrar";
     if (formStart) formStart.value = ev.date || "";
     if (formEnd) formEnd.value = ev.dateEnd || ev.date || "";
     if (formLink) formLink.value = ev.href || "";

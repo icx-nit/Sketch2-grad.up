@@ -787,48 +787,65 @@
   transform: translateX(1px);
 }
 
-/* Category colors */
-.calendar__event-pill--gs1 {
-  color: #4C1D95;
-  background: #F3E8FF;
-  border-left-color: #7C3AED;
+/* Category colors — 4 สี */
+.calendar__event-pill--holiday {
+  color: #991B1B;
+  background: #FEE2E2;
+  border-left-color: #DC2626;
 }
 
-.calendar__event-pill--review {
-  color: #0F766E;
-  background: #CCFBF1;
-  border-left-color: #0D9488;
-}
-
-.calendar__event-pill--register {
+.calendar__event-pill--registrar {
   color: #854D0E;
   background: #FEF9C3;
-  border-left-color: #CA8A04;
+  border-left-color: #EAB308;
 }
 
-.calendar__event-pill--petition {
-  color: #3730A3;
-  background: #E0E7FF;
-  border-left-color: #4F46E5;
-}
-
-.calendar__event-pill--exam {
+.calendar__event-pill--term {
   color: #1E40AF;
   background: #DBEAFE;
   border-left-color: #2563EB;
 }
 
-.calendar__event-pill--thesis {
-  color: #9F1239;
-  background: #FFE4E6;
-  border-left-color: #E11D48;
+.calendar__event-pill--activity {
+  color: #166534;
+  background: #DCFCE7;
+  border-left-color: #16A34A;
 }
 
-.calendar__event-pill--grant {
-  color: #065F46;
-  background: #D1FAE5;
-  border-left-color: #059669;
+html .calendar-event__category--holiday { background: #FEE2E2; color: #991B1B; }
+html .calendar-event__category--registrar { background: #FEF9C3; color: #854D0E; }
+html .calendar-event__category--term { background: #DBEAFE; color: #1E40AF; }
+html .calendar-event__category--activity { background: #DCFCE7; color: #166534; }
+
+/* Legend */
+.calendar__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+  color: var(--calendar-muted);
 }
+
+.calendar__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.calendar__legend-dot {
+  flex-shrink: 0;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+}
+
+.calendar__legend-dot--holiday { background: #DC2626; }
+.calendar__legend-dot--registrar { background: #EAB308; }
+.calendar__legend-dot--term { background: #2563EB; }
+.calendar__legend-dot--activity { background: #16A34A; }
 
 .calendar__more-events {
   display: inline-block;

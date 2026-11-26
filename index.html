@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="css/components.css?v=20261125b">
   <link rel="stylesheet" href="css/promo.css?v=20261125c">
   <link rel="stylesheet" href="css/news.css?v=20261125k">
-  <link rel="stylesheet" href="css/calendar.css?v=20261123g">
+  <link rel="stylesheet" href="css/calendar.css?v=20261126a">
   <link rel="stylesheet" href="css/stats.css?v=20261119d">
   <link rel="stylesheet" href="css/stats-dashboard.css?v=20261123f">
   <link rel="stylesheet" href="css/support.css?v=20261119b">
@@ -652,6 +652,12 @@
               </p>
             </div>
 
+            <ul class="calendar__legend" aria-label="สีของกำหนดการ">
+              <li><span class="calendar__legend-dot calendar__legend-dot--holiday" aria-hidden="true"></span><span data-i18n="calendar.legend.holiday">วันหยุดราชการ / นักขัตฤกษ์ / งดการเรียนการสอน</span></li>
+              <li><span class="calendar__legend-dot calendar__legend-dot--registrar" aria-hidden="true"></span><span data-i18n="calendar.legend.registrar">ช่วงเวลาสำคัญทางทะเบียน</span></li>
+              <li><span class="calendar__legend-dot calendar__legend-dot--term" aria-hidden="true"></span><span data-i18n="calendar.legend.term">เปิด-ปิดภาคเรียน / ช่วงสอบ</span></li>
+              <li><span class="calendar__legend-dot calendar__legend-dot--activity" aria-hidden="true"></span><span data-i18n="calendar.legend.activity">กิจกรรมนักศึกษา / คำร้องทั่วไป</span></li>
+            </ul>
             <div class="calendar__weekdays" data-calendar-weekdays role="row"></div>
             <div class="calendar__grid" data-calendar-grid role="grid" aria-labelledby="calendar-month-label"></div>
           </div>
@@ -733,13 +739,10 @@
                 <div class="calendar-form__field">
                   <label for="cal-event-cat">หมวดหมู่กิจกรรม *</label>
                   <select id="cal-event-cat" data-form-category required>
-                    <option value="gs1">ยื่นคำร้อง บศ.1</option>
-                    <option value="review">ช่วงเวลาพิจารณาคำร้อง</option>
-                    <option value="register">งานทะเบียน / เปิด-ปิดภาค</option>
-                    <option value="petition">ยื่นคำร้องต่าง ๆ (เทียบโอน/ผ่อนผัน/ถอน)</option>
-                    <option value="exam">การสอบ (QE / วัดคุณสมบัติ / ปลายภาค)</option>
-                    <option value="thesis">วิทยานิพนธ์ / บศ.16 / บศ.17 / สำเร็จการศึกษา</option>
-                    <option value="grant">ทุนอุดหนุนการศึกษา</option>
+                    <option value="holiday">แดง: วันหยุดราชการ / นักขัตฤกษ์ / งดการเรียนการสอน</option>
+                    <option value="registrar">เหลือง: ช่วงเวลาสำคัญทางทะเบียน</option>
+                    <option value="term">น้ำเงิน: เปิด-ปิดภาคเรียน / ช่วงสอบ</option>
+                    <option value="activity">เขียว: กิจกรรมนักศึกษา / คำร้องทั่วไป</option>
                   </select>
                 </div>
 
@@ -1096,7 +1099,7 @@
   <div class="promo" data-promo></div>
 
   <script src="js/intro.js?v=20261122a" defer></script>
-  <script src="js/i18n.js?v=20261125b" defer></script>
+  <script src="js/i18n.js?v=20261126a" defer></script>
   <script src="js/stats-data.js?v=20261123k" defer></script>
   <script src="js/stats-dashboard.js?v=20261123j" defer></script>
   <script src="js/font-size.js?v=20261125e" defer></script>
@@ -1105,7 +1108,7 @@
   <script src="js/main.js?v=20261123a" defer></script>
   <script src="js/promo.js?v=20261125f" defer></script>
   <script src="js/news.js?v=20261125e" defer></script>
-  <script src="js/calendar.js?v=20261123a" defer></script>
+  <script src="js/calendar.js?v=20261126a" defer></script>
   <script src="js/animations.js?v=20261125b" defer></script>
   <script src="js/search.js?v=20261123b" defer></script>
   <script src="js/stats-chart.js?v=20261119a" defer></script>
