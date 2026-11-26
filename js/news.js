@@ -162,34 +162,19 @@
       name: { th: "ระบบฐานข้อมูลหลักสูตร (TQF Online)", en: "Curriculum Database (TQF Online)" }
     },
     {
-      icon: "fileText",
-      host: "app.ithesis.co",
-      href: "https://app.ithesis.co/",
-      name: {
-        th: "ระบบบริหารจัดการวิทยานิพนธ์ (iThesis)",
-        en: "Thesis Management System (iThesis)"
-      }
-    },
-    {
-      icon: "briefcase",
-      host: "coop.up.ac.th",
-      href: "https://coop.up.ac.th",
-      name: { th: "ระบบบริหารจัดการสหกิจศึกษา", en: "Cooperative Education System" }
-    },
-    {
       icon: "cap",
-      host: "mua.go.th",
-      href: "https://www.mua.go.th/index2.html",
+      host: "ops.go.th",
+      href: "https://www.ops.go.th/en/content_page/219-announcement-ches",
       name: {
-        th: "สำนักงานคณะกรรมการการอุดมศึกษา",
-        en: "Office of the Higher Education Commission"
+        th: "สำนักงานปลัดกระทรวงการอุดมศึกษา วิทยาศาสตร์ วิจัยและนวัตกรรม",
+        en: "Office of the Permanent Secretary, MHESI"
       }
     },
     {
-      icon: "building",
-      host: "does.ac.th",
-      href: "https://does.ac.th",
-      name: { th: "กองบริการการศึกษา (does.ac.th)", en: "Division of Educational Services" }
+      icon: "book",
+      host: "cgau.mhesi.go.th",
+      href: "https://cgau.mhesi.go.th/about-cgau.php",
+      name: { th: "ทคบร", en: "ทคบร" }
     }
   ];
 
@@ -329,11 +314,6 @@
       content.appendChild(more);
 
       a.appendChild(img);
-      var badgeWrap = el("span", "news-hero__badge-wrap");
-      badgeWrap.appendChild(el("span", "news-hero__badge", "NEW"));
-      if (!viewportEl.querySelector(".news-hero__badge-wrap")) {
-        viewportEl.appendChild(badgeWrap);
-      }
       a.appendChild(content);
       viewportEl.appendChild(a);
       slideRefs.push({ slide: a, chip: chip, title: title, desc: desc, date: date, item: item });

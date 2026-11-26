@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="th" data-lang="th" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4D238D">
+  <meta name="description" content="นโยบายคุกกี้และการจัดเก็บข้อมูลในเบราว์เซอร์ของเว็บไซต์ GRAD UP มหาวิทยาลัยพะเยา">
+  <title>นโยบายคุกกี้ | GRAD UP มหาวิทยาลัยพะเยา</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700;800&family=Sarabun:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css?v=20261123a">
+  <link rel="stylesheet" href="css/reset.css?v=20261121b">
+  <link rel="stylesheet" href="css/style.css?v=20261124c">
+  <link rel="stylesheet" href="css/components.css?v=20261125b">
+  <link rel="stylesheet" href="css/promo.css?v=20261123b">
+  <link rel="stylesheet" href="css/news.css?v=20261125k">
+  <link rel="stylesheet" href="css/calendar.css?v=20261123g">
+  <link rel="stylesheet" href="css/stats.css?v=20261119d">
+  <link rel="stylesheet" href="css/stats-dashboard.css?v=20261123f">
+  <link rel="stylesheet" href="css/support.css?v=20261119b">
+  <link rel="stylesheet" href="css/footer.css?v=20261126a">
+  <link rel="stylesheet" href="css/intro.css?v=20261122a">
+  <link rel="stylesheet" href="css/animations.css?v=20261125b">
+  <link rel="stylesheet" href="css/responsive.css?v=20261119a">
+  <link rel="stylesheet" href="css/header.css?v=20261123j">
+  <link rel="stylesheet" href="css/policy.css?v=20261125b">
+
+  <script src="js/theme.js?v=20261121b"></script>
+</head>
+
+<body class="policy-body">
+  <!-- SVG clip-path สำหรับขอบโค้ง Tab bar -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <clipPath id="tabbar-arch" clipPathUnits="objectBoundingBox">
+        <path d="M 0 0 L 1 0 L 1 0.75 C 0.75 0.9, 0.6 0.97, 0.5 0.97 C 0.4 0.97, 0.25 0.9, 0 0.75 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">ข้ามไปยังเนื้อหาหลัก</a>
+
+  <!-- พื้นหลังภาพที่ 8 -->
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+
+      <!-- โลโก้ GRAD UP -->
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="assets/images/grad-logo.png" alt="GRAD UP">
+      </a>
+
+      <!-- เมนูกลาง -->
+      <nav class="primary-nav" aria-label="เมนูหลัก" data-i18n-aria-label="nav.label">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a class="nav-link is-active" href="index.html" aria-current="page">
+              <span data-i18n="nav.home">หน้าหลัก</span>
+            </a>
+          </li>
+
+          <li class="nav-item nav-item--dropdown">
+            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false" aria-haspopup="true"
+              aria-controls="menu-announcements">
+              <span data-i18n="nav.announcements">บริการวิชาการ</span>
+              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="dropdown" id="menu-announcements">
+              <li>
+                <a class="dropdown__link" href="https://does.up.ac.th/announce" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="announce.regulations">ระเบียบ • ข้อบังคับ • ประกาศ • แบบฟอร์ม</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://reg.up.ac.th/announce/calendaracademic" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="announce.calendar">ปฏิทินการศึกษา</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://reg.up.ac.th/app/class_info" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="academic.courses">รายวิชาที่เปิดสอน</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://reg.up.ac.th/app/class_room" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="academic.rooms">ตารางการใช้ห้อง</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://reg.up.ac.th/app/class_time_instructor" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="academic.instructors">ตารางสอนอาจารย์</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://reg.up.ac.th/announce/exam" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="academic.exams">ประกาศการสอบต่าง ๆ</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://reg.up.ac.th/content/all/dyned" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="academic.dyned">DynEd (การทดสอบภาษาอังกฤษ)</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://reg.up.ac.th/content/all/information" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title" data-i18n="academic.info">ข้อมูลสารสนเทศ</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item--dropdown">
+            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false" aria-haspopup="true"
+              aria-controls="menu-systems">
+              <span data-i18n="nav.systems">ระบบอื่นๆ</span>
+              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="dropdown" id="menu-systems">
+              <li>
+                <a class="dropdown__link" href="https://app.ithesis.co/" target="_blank" rel="noopener noreferrer">
+                  <span data-i18n="drawer.ithesis">iThesis</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://doga.up.ac.th/emeeting" target="_blank"
+                  rel="noopener noreferrer">
+                  <span data-i18n="drawer.upmeeting">UP-Meeting</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item--dropdown">
+            <button class="nav-link nav-link__toggle" type="button" aria-expanded="false" aria-haspopup="true"
+              aria-controls="menu-journal">
+              <span data-i18n="nav.journal">ฐานข้อมูล</span>
+              <svg class="nav-link__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="dropdown dropdown--wide" id="menu-journal">
+              <li>
+                <a class="dropdown__link" href="https://www.scopus.com/pages/home#basic" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title">Scopus</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://apps.webofknowledge.com/" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title">ISI (Web of Knowledge)</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://tci-thailand.org/list%20journal.php" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title">TCI (Thai-Journal Citation Index)</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://eric.ed.gov/" target="_blank" rel="noopener noreferrer">
+                  <span class="dropdown__title">ERIC</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">
+                  <span class="dropdown__title">PubMed</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link" href="https://mjl.clarivate.com/home" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title">Web of Science Master Journal List</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown__link"
+                  href="https://web.archive.org/web/20170112125427/https://scholarlyoa.com/publishers/" target="_blank"
+                  rel="noopener noreferrer">
+                  <span class="dropdown__title"
+                    data-i18n="db.predatory.title">รายชื่อสำนักพิมพ์/วารสารที่ควรระมัดระวังในการตีพิมพ์</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#news-links" data-spy="news-links">
+              <span data-i18n="nav.agencies">หน่วยงานอื่นๆ</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#news" data-spy="news">
+              <span data-i18n="nav.news">ข่าว</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact" data-spy="contact">
+              <span data-i18n="nav.contact">ติดต่อเรา</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://forms.gle/6c73eaxoZytt5Krc8" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="drawer.satisfaction">ประเมินความพึงพอใจ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- แถบขวา: ขนาดตัวอักษร / เปลี่ยนภาษา / ธีม / ค้นหา / เมนู 3 ขีด -->
+      <div class="header-actions">
+        <div class="font-size font-size--menu" role="group" aria-label="ขนาดตัวอักษร"
+          data-i18n-aria-label="action.fontGroup" data-font-size>
+          <button class="font-size__act" type="button" data-font="reset" data-font-act
+            aria-label="ขนาดตัวอักษรปกติ" data-i18n-aria-label="action.fontReset">A</button>
+          <button class="font-size__chev" type="button" aria-expanded="false" aria-controls="font-size-menu"
+            aria-label="เลือกขนาดตัวอักษร" data-i18n-aria-label="action.fontGroup" data-font-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+          <div class="font-size__menu" id="font-size-menu" hidden>
+            <button class="font-size__btn" type="button" data-font-pick="increase" aria-label="เพิ่มขนาดตัวอักษร"
+              data-i18n-aria-label="action.fontIncrease">A+</button>
+            <button class="font-size__btn" type="button" data-font-pick="reset" aria-label="ขนาดตัวอักษรปกติ"
+              data-i18n-aria-label="action.fontReset">A</button>
+            <button class="font-size__btn" type="button" data-font-pick="decrease" aria-label="ลดขนาดตัวอักษร"
+              data-i18n-aria-label="action.fontDecrease">A-</button>
+          </div>
+        </div>
+
+        <button class="lang-btn" type="button" data-lang-toggle>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9"></circle>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"></path>
+          </svg>
+          <span class="visually-hidden" data-i18n="action.language">เปลี่ยนภาษา</span>
+          <span class="lang-btn__badge" data-lang-badge lang="th" aria-hidden="true">TH</span>
+        </button>
+
+        <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="สลับโหมดมืดและสว่าง"
+          data-i18n-aria-label="action.theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3A6.5 6.5 0 0 0 21 12.8Z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41">
+            </path>
+          </svg>
+        </button>
+
+        <button class="icon-btn" type="button" data-search-toggle aria-expanded="false" aria-controls="site-search"
+          aria-label="ค้นหา" data-i18n-aria-label="action.search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+
+        <a class="btn btn--primary header-login" href="login.html" data-i18n="drawer.login">เข้าสู่ระบบ</a>
+      </div>
+    </div>
+
+    <!-- ช่องค้นหา -->
+    <div class="search-panel" id="site-search" hidden>
+      <form class="container search-panel__inner" role="search" action="#" method="get">
+        <label class="visually-hidden" for="site-search-input" data-i18n="search.label">ค้นหาในเว็บไซต์</label>
+        <input class="search-panel__input" id="site-search-input" type="search" name="q"
+          placeholder="ค้นหาในเว็บไซต์..." data-i18n-placeholder="search.placeholder" autocomplete="off"
+          aria-controls="site-search-results" aria-expanded="false" aria-autocomplete="list">
+        <button class="btn btn--primary" type="submit" data-i18n="search.submit">ค้นหา</button>
+      </form>
+
+      <div class="search-results" id="site-search-results" data-search-results hidden>
+        <div class="search-results__inner container">
+          <p class="search-results__status" data-search-status role="status" aria-live="polite"></p>
+          <ul class="search-results__list" data-search-list role="listbox" aria-label="ผลการค้นหา"
+            data-i18n-aria-label="search.results"></ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="policy-page" id="main">
+    <div class="policy-page__inner">
+      <p class="policy-page__back"><a href="index.html">&larr; <span class="policy-th">กลับหน้าหลัก</span><span class="policy-en">Back to home</span></a></p>
+
+      <!-- ===================== ภาษาไทย ===================== -->
+      <article class="policy-th" lang="th">
+        <h1 class="policy-page__title">นโยบายคุกกี้</h1>
+        <p class="policy-page__meta">อัปเดตล่าสุด 25 พฤศจิกายน 2569</p>
+
+        <p>เว็บไซต์ GRAD UP (ระบบจัดการสารสนเทศบัณฑิตศึกษา มหาวิทยาลัยพะเยา) ใช้เทคโนโลยีที่คล้ายคุกกี้เพื่อจำการตั้งค่าการแสดงผลของคุณ นโยบายนี้อธิบายว่าเว็บไซต์เก็บข้อมูลอะไรบ้าง เก็บไว้ที่ไหน และคุณจัดการข้อมูลเหล่านั้นได้อย่างไร</p>
+
+        <h2>1. ข้อมูลที่เก็บในเบราว์เซอร์ของคุณ</h2>
+        <p>เว็บไซต์ใช้ <code>localStorage</code> และ <code>sessionStorage</code> ของเบราว์เซอร์ ข้อมูลเหล่านี้ถูกเก็บไว้ในเครื่องของคุณและไม่ถูกส่งไปยังเซิร์ฟเวอร์ของเว็บไซต์ ยกเว้นเมื่อคุณเข้าใช้งานบริการที่อยู่นอกเว็บไซต์นี้ด้วยตนเอง</p>
+        <div class="policy-table-wrap">
+          <table class="policy-table">
+            <thead>
+              <tr>
+                <th scope="col">ชื่อรายการ</th>
+                <th scope="col">ที่เก็บ</th>
+                <th scope="col">วัตถุประสงค์</th>
+                <th scope="col">ระยะเวลาเก็บ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>gu-language</code></td>
+                <td>localStorage</td>
+                <td>จำภาษาที่คุณเลือก (ไทยหรืออังกฤษ)</td>
+                <td>จนกว่าจะลบข้อมูลในเบราว์เซอร์</td>
+              </tr>
+              <tr>
+                <td><code>gu-theme</code></td>
+                <td>localStorage</td>
+                <td>จำโหมดการแสดงผล (สว่างหรือมืด)</td>
+                <td>จนกว่าจะลบข้อมูลในเบราว์เซอร์</td>
+              </tr>
+              <tr>
+                <td><code>gu-font-size</code></td>
+                <td>localStorage</td>
+                <td>จำขนาดตัวอักษรที่คุณเลือก</td>
+                <td>จนกว่าจะลบข้อมูลในเบราว์เซอร์</td>
+              </tr>
+              <tr>
+                <td><code>grad_up_calendar_events_v2</code></td>
+                <td>localStorage</td>
+                <td>เก็บรายการกิจกรรมในปฏิทินที่คุณบันทึกไว้ในเครื่อง</td>
+                <td>จนกว่าจะลบข้อมูลในเบราว์เซอร์</td>
+              </tr>
+              <tr>
+                <td><code>gu-promo-seen</code></td>
+                <td>sessionStorage</td>
+                <td>จำว่าได้แสดงป๊อปอัปประกาศในแท็บนี้แล้ว เพื่อไม่ให้แสดงซ้ำเมื่อรีเฟรชหน้า</td>
+                <td>จนกว่าจะปิดแท็บ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>2. เราไม่ใช้คุกกี้เพื่อการติดตามหรือโฆษณา</h2>
+        <p>ปัจจุบันเว็บไซต์นี้ไม่มีเครื่องมือวิเคราะห์พฤติกรรมผู้ใช้ และไม่มีคุกกี้สำหรับการโฆษณา เราไม่นำข้อมูลในเบราว์เซอร์ของคุณไปใช้ระบุตัวตนหรือติดตามการใช้งานข้ามเว็บไซต์</p>
+
+        <h2>3. บริการจากภายนอก</h2>
+        <ul>
+          <li><strong>Google Fonts</strong> ใช้โหลดแบบอักษร (Anuphan และ Sarabun) เมื่อเบราว์เซอร์ขอไฟล์ฟอนต์ Google อาจบันทึกที่อยู่ IP ของอุปกรณ์ตามนโยบายของ Google</li>
+          <li><strong>ลิงก์ไปยังเว็บไซต์อื่น</strong> เช่น ระบบทะเบียน ฐานข้อมูลวารสาร และหน่วยงานภายนอก เว็บไซต์เหล่านั้นมีนโยบายการใช้คุกกี้และข้อมูลของตนเอง</li>
+        </ul>
+
+        <h2>4. การจัดการข้อมูลของคุณ</h2>
+        <p>คุณสามารถลบข้อมูลเหล่านี้ได้ 2 วิธี</p>
+        <ul>
+          <li>ลบข้อมูลของเว็บไซต์ผ่านการตั้งค่าเบราว์เซอร์ (เช่น ลบประวัติและข้อมูลเว็บไซต์)</li>
+          <li>กดปุ่ม "ล้างการตั้งค่าที่บันทึกไว้" ด้านล่าง ซึ่งจะลบ <code>gu-language</code>, <code>gu-theme</code>, <code>gu-font-size</code> และ <code>grad_up_calendar_events_v2</code> ออกจากเครื่องนี้ (รายการกิจกรรมในปฏิทินที่บันทึกไว้จะหายไปด้วย)</li>
+        </ul>
+        <p>หากคุณปิดการใช้งาน localStorage ในเบราว์เซอร์ เว็บไซต์ยังใช้งานได้ตามปกติ แต่การตั้งค่าบางอย่างจะไม่ถูกจำไว้</p>
+
+        <h2>5. ระบบเข้าสู่ระบบ</h2>
+        <p>หน้าเข้าสู่ระบบสำหรับผู้ดูแลเป็นระบบของมหาวิทยาลัย และอยู่ภายใต้นโยบายของระบบนั้น นโยบายคุกกี้นี้ไม่ครอบคลุมส่วนดังกล่าว</p>
+
+        <h2>6. การเปลี่ยนแปลงนโยบาย</h2>
+        <p>เราอาจปรับปรุงนโยบายนี้เมื่อมีการเปลี่ยนแปลงรายการที่เก็บหรือบริการที่ใช้ โดยจะระบุวันที่อัปเดตล่าสุดไว้ที่หัวหน้านี้</p>
+
+        <h2>7. ติดต่อเรา</h2>
+        <p>หากมีคำถามเกี่ยวกับนโยบายนี้ ติดต่อได้ที่ <span class="policy-placeholder">[ระบุช่องทางติดต่อผู้ดูแลเว็บ]</span></p>
+      </article>
+
+      <!-- ===================== English ===================== -->
+      <article class="policy-en" lang="en">
+        <h1 class="policy-page__title">Cookie Policy</h1>
+        <p class="policy-page__meta">Last updated: 25 November 2026</p>
+
+        <p>The GRAD UP website (Graduate Information System, University of Phayao) uses cookie-like technologies to remember your display settings. This policy explains what the site stores, where it is kept, and how you can manage it.</p>
+
+        <h2>1. Data stored in your browser</h2>
+        <p>The site uses your browser's <code>localStorage</code> and <code>sessionStorage</code>. This data stays on your device and is not sent to our web server, except when you voluntarily use an external service linked from this site.</p>
+        <div class="policy-table-wrap">
+          <table class="policy-table">
+            <thead>
+              <tr>
+                <th scope="col">Key</th>
+                <th scope="col">Storage</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">Retention</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>gu-language</code></td>
+                <td>localStorage</td>
+                <td>Remembers your chosen language (Thai or English)</td>
+                <td>Until browser data is cleared</td>
+              </tr>
+              <tr>
+                <td><code>gu-theme</code></td>
+                <td>localStorage</td>
+                <td>Remembers your display mode (light or dark)</td>
+                <td>Until browser data is cleared</td>
+              </tr>
+              <tr>
+                <td><code>gu-font-size</code></td>
+                <td>localStorage</td>
+                <td>Remembers your chosen text size</td>
+                <td>Until browser data is cleared</td>
+              </tr>
+              <tr>
+                <td><code>grad_up_calendar_events_v2</code></td>
+                <td>localStorage</td>
+                <td>Stores calendar events you saved on this device</td>
+                <td>Until browser data is cleared</td>
+              </tr>
+              <tr>
+                <td><code>gu-promo-seen</code></td>
+                <td>sessionStorage</td>
+                <td>Records that the announcement pop-up has been shown in this tab, so it does not reappear on refresh</td>
+                <td>Until the tab is closed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>2. No tracking or advertising cookies</h2>
+        <p>This website currently does not use audience analytics tools or advertising cookies. We do not use browser-stored data to identify you or to track your activity across other websites.</p>
+
+        <h2>3. Third-party services</h2>
+        <ul>
+          <li><strong>Google Fonts</strong> serves the Anuphan and Sarabun typefaces. When your browser requests these files, Google may log your IP address under its own policy.</li>
+          <li><strong>External links</strong> to registration systems, journal databases and other agencies are governed by those websites' own cookie and data policies.</li>
+        </ul>
+
+        <h2>4. Managing your data</h2>
+        <p>You can remove this data in two ways.</p>
+        <ul>
+          <li>Clear this website's data through your browser settings.</li>
+          <li>Press the "Clear saved settings" button below. It removes <code>gu-language</code>, <code>gu-theme</code>, <code>gu-font-size</code> and <code>grad_up_calendar_events_v2</code> from this device, including any calendar events you saved.</li>
+        </ul>
+        <p>If you disable localStorage in your browser, the site still works, but some preferences will not be remembered.</p>
+
+        <h2>5. Login system</h2>
+        <p>The administrator login page is operated by the university's system and is governed by that system's policy. This cookie policy does not cover it.</p>
+
+        <h2>6. Changes to this policy</h2>
+        <p>We may update this policy when the stored data or the services we use change. The date at the top of the page will show the latest update.</p>
+
+        <h2>7. Contact us</h2>
+        <p>For questions about this policy, contact <span class="policy-placeholder">[website contact details to be specified]</span>.</p>
+      </article>
+
+      <!-- ปุ่มล้างการตั้งค่า -->
+      <div class="policy-actions">
+        <button type="button" class="policy-clear" id="policy-clear">
+          <span class="policy-th">ล้างการตั้งค่าที่บันทึกไว้</span>
+          <span class="policy-en">Clear saved settings</span>
+        </button>
+        <p class="policy-clear-msg" id="policy-clear-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__petals support-petals" aria-hidden="true">
+            <span class="support-petal support-petal--1"></span>
+            <span class="support-petal support-petal--2"></span>
+            <span class="support-petal support-petal--3"></span>
+            <span class="support-petal support-petal--4"></span>
+            <span class="support-petal support-petal--5"></span>
+            <span class="support-petal support-petal--6"></span>
+            <span class="support-petal support-petal--7"></span>
+            <span class="support-petal support-petal--8"></span>
+            <span class="support-petal support-petal--9"></span>
+            <span class="support-petal support-petal--10"></span>
+          </div>
+    <div class="site-footer__inner">
+      <div class="foot-main">
+        <div class="foot-brand">
+          <div class="foot-brand__head">
+            <img class="foot-logo" src="assets/images/grad-logo.png" alt="GRAD UP" width="72" height="auto" loading="lazy">
+            <header class="support-hero">
+            <h2 class="support-hero__title" id="support-title" data-i18n="support.heroTitle">
+              พร้อมให้บริการ ทำงานเป็น⁠ทีม ยิ้มแย้มแจ่มใส ใส่ใจคุณภาพ
+            </h2>
+            <span class="support-hero__rule" aria-hidden="true"></span>
+          </header>
+          </div>
+          <p class="foot-desc" data-i18n="foot.desc">ศูนย์บริการและส่งเสริมการศึกษา มหาวิทยาลัยพะเยา มุ่งมั่นพัฒนาการให้บริการด้วย ระบบดิจิทัลที่ทันสมัย สะดวก รวดเร็ว และตรวจสอบได้</p>
+          <p class="foot-hours">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            <span class="foot-hours__text"><span data-i18n="foot.hoursMain">เวลาทำการ 08:30 - 16:30 น.</span><span class="foot-hours__note" data-i18n="foot.hoursNote">(ยกเว้น : วันหยุดราชการ)</span></span>
+          </p>
+        </div>
+
+        <div class="foot-links">
+          <div class="foot-col">
+            <h3 class="foot-col__title" data-i18n="support.contactTitle">ติดต่อเรา</h3>
+            <div class="foot-contact">
+              <div class="foot-contact__item">
+                <span class="foot-col__label" data-i18n="support.addressLabel">ที่อยู่</span>
+                <p class="foot-col__org" data-i18n="support.addressOrg">กองบริการการศึกษา มหาวิทยาลัยพะเยา</p>
+                <p class="foot-col__text" data-i18n="support.address">เลขที่ 19 หมู่ที่ 2 ตำบลแม่กา อำเภอเมืองพะเยา จังหวัดพะเยา 56000</p>
+              </div>
+              <div class="foot-contact__item">
+                <span class="foot-col__label" data-i18n="support.phoneLabel">โทรศัพท์</span>
+                <a class="foot-col__text foot-col__link" href="tel:+6654466666">054-466-666 ต่อ 1831, 1832</a>
+              </div>
+              <div class="foot-contact__item">
+                <span class="foot-col__label" data-i18n="support.emailLabel">อีเมล</span>
+                <a class="foot-col__text foot-col__link" href="mailto:reg@up.ac.th">reg@up.ac.th</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+      </div>
+    </div>
+
+    <div class="site-footer__bar">
+      <p class="site-footer__line">
+        <span>
+        Copyright © 2019
+        <a class="site-footer__brand" href="https://does.up.ac.th" target="_blank"
+        rel="noopener noreferrer">DOESUP</a>,
+        <span data-i18n="footer.rights">สงวนลิขสิทธิ์</span>
+        </span>
+        <span class="site-footer__sep" aria-hidden="true"></span>
+        <span>
+        <span data-i18n="footer.designedBy">ออกแบบโดย</span>
+        <a href="https://bootstrapmade.com/" target="_blank" rel="noopener noreferrer">BootstrapMade</a>
+        </span>
+        <span class="site-footer__sep" aria-hidden="true"></span>
+        <span>
+        <span data-i18n="footer.logoSource">และแหล่งที่มาของโลโก้โดย</span>
+        <a href="https://www.logodesign.net/" target="_blank" rel="noopener noreferrer">Logodesign.net</a>
+        </span>
+        <span class="site-footer__sep" aria-hidden="true"></span>
+        <a href="login.html" target="_blank" rel="noopener noreferrer">
+        <span data-i18n="footer.admin">ผู้ดูแลระบบ</span>
+        <span data-i18n="footer.login">เข้าสู่ระบบ</span>
+        </a>
+        </p>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js?v=20261125b" defer></script>
+  <script src="js/font-size.js?v=20261125e" defer></script>
+  <script src="js/navigation.js?v=20261123b" defer></script>
+  <script>
+    (function () {
+      var btn = document.getElementById("policy-clear");
+      var msg = document.getElementById("policy-clear-msg");
+      if (!btn) { return; }
+      var keys = ["gu-language", "gu-theme", "gu-font-size", "grad_up_calendar_events_v2"];
+      btn.addEventListener("click", function () {
+        keys.forEach(function (k) {
+          try { localStorage.removeItem(k); } catch (e) { /* ignore */ }
+        });
+        var isEn = document.documentElement.getAttribute("data-lang") === "en";
+        msg.textContent = isEn
+          ? "Saved settings cleared. Reload the page to apply the defaults."
+          : "ล้างการตั้งค่าแล้ว โหลดหน้าใหม่เพื่อใช้ค่าเริ่มต้น";
+      });
+    })();
+  </script>
+</body>
+
+</html>

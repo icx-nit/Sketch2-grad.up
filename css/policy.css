@@ -1,0 +1,190 @@
+/* ==========================================================================
+   นโยบายคุกกี้ (cookie-policy.html)
+   ========================================================================== */
+
+.policy-page {
+  padding: clamp(1.5rem, 4vw, 3rem) var(--container-pad, 1rem);
+}
+
+.policy-page__inner {
+  max-width: 52rem;
+  margin: 0 auto;
+  color: var(--color-text);
+  line-height: 1.8;
+}
+
+/* สลับภาษาตามค่า data-lang ของ html */
+html:not([data-lang="en"]) .policy-en { display: none; }
+html[data-lang="en"] .policy-th { display: none; }
+
+.policy-page__back a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.policy-page__title {
+  margin: 0.5rem 0 0.25rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+}
+
+.policy-page__meta {
+  margin-bottom: 1.5rem;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.policy-page__inner h2 {
+  margin: 1.75rem 0 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-primary-ink, var(--color-primary));
+}
+
+.policy-page__inner p,
+.policy-page__inner li {
+  font-size: 0.975rem;
+}
+
+.policy-page__inner ul {
+  margin: 0.25rem 0 0.75rem 1.25rem;
+  list-style: disc;
+}
+
+.policy-page__inner code {
+  padding: 0.05rem 0.35rem;
+  border-radius: 0.3rem;
+  background: var(--color-primary-soft, #EAE5F2);
+  font-size: 0.875em;
+  word-break: break-all;
+}
+
+.policy-table-wrap {
+  overflow-x: auto;
+  margin: 0.75rem 0 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.policy-table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.policy-table th,
+.policy-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.policy-table th {
+  background: var(--color-primary-soft, #EAE5F2);
+  font-weight: 600;
+}
+
+.policy-placeholder {
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  background: var(--color-accent-soft, #FBF3DD);
+  color: var(--color-text);
+}
+
+.policy-actions {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.policy-clear {
+  min-height: 2.75rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.policy-clear:hover {
+  background: var(--color-primary-soft, #EAE5F2);
+}
+
+.policy-clear:focus-visible {
+  outline: 3px solid var(--color-focus, #4D238D);
+  outline-offset: 3px;
+}
+
+.policy-clear-msg {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 767px) {
+  .policy-page__inner p,
+  .policy-page__inner li {
+    font-size: 0.925rem;
+  }
+}
+
+/* กันหน้าเลื่อนซ้ายขวาบนมือถือ (มาจากส่วน footer ที่กว้างกว่าจอ) */
+body.policy-body {
+  overflow-x: clip;
+}
+
+.policy-page,
+.policy-page__inner {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.policy-page__inner {
+  overflow-wrap: anywhere;
+}
+
+.policy-page__inner code {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+  .policy-page {
+    padding: 1.25rem 0.9rem 2rem;
+  }
+
+  .policy-page__title {
+    font-size: 1.5rem;
+  }
+
+  .policy-page__inner h2 {
+    font-size: 1.1rem;
+    margin-top: 1.4rem;
+  }
+
+  .policy-table {
+    min-width: 30rem;
+    font-size: 0.85rem;
+  }
+
+  .policy-table th,
+  .policy-table td {
+    padding: 0.5rem 0.6rem;
+  }
+
+  .policy-page__inner ul {
+    margin-left: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .policy-clear {
+    transition: none;
+  }
+}
