@@ -350,8 +350,7 @@
   }
 
   /* กล่องอยู่กึ่งกลางคอลัมน์ของป๊อปอัพ ระยะซ้ายขวาจึงเท่ากันเสมอ */
-  .promo__dialog,
-  .promo__sheets {
+  .promo__dialog {
     width: 100%;
     max-width: 24rem;
     justify-self: center;
@@ -585,73 +584,5 @@
   .site-header .nav-link {
     font-size: 0.92rem;
     padding-inline: 0.55rem;
-  }
-}
-
-
-/* ==========================================================================
-   แท็บเล็ต (iPad) 768–1199px: โลโก้กับไอคอนอยู่แถวบน เมนูเต็มความกว้างอยู่แถวล่าง
-   - เมนูเลื่อนแนวนอนได้ในบรรทัดเดียว ไม่ตัดเป็นหลายบรรทัด
-   - ตัวอักษรเมนูเล็กลงเล็กน้อยให้พอดีความกว้าง
-   ========================================================================== */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .site-header .site-header__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 10px 16px;
-    padding-inline: 20px;
-  }
-
-  .site-header .brand {
-    justify-self: start;
-  }
-
-  .site-header .header-actions {
-    justify-self: end;
-    gap: 8px;
-  }
-
-  .site-header .primary-nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-self: stretch;
-    min-width: 0;
-    width: 100%;
-    margin-inline: 0;
-  }
-
-  .site-header .nav-list {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 14px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
-    padding-bottom: 2px;
-  }
-
-  .site-header .nav-list::-webkit-scrollbar {
-    display: none;
-  }
-
-  .site-header .nav-link {
-    white-space: nowrap;
-    font-size: 0.875rem;
-    flex: 0 0 auto;
-  }
-}
-
-/* แท็บเล็ต 768–1199px: แถบเมนูและพื้นหลังภาพปกเต็มความกว้างจอ (ชนขอบซ้าย-ขวา ไม่มีช่องว่าง) */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .site-header {
-    margin: 0;
-    border-radius: 0;
-  }
-
-  .hero-stage {
-    --hero-gap-block: 0px;
-    --hero-gap-inline: 0px;
-    --hero-radius: 0px;
   }
 }
