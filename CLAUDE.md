@@ -6,7 +6,7 @@
 ## ภาพรวมโปรเจกต์
 
 - เว็บไซต์แบบ Static ไม่มีฐานข้อมูลและไม่มีระบบหลังบ้านในปัจจุบัน
-- หน้าหลักคือ `index.html` ส่วนหน้าแยกอื่นได้แก่ `statistics.html`, `login.html` และหน้า `announce-*.html`
+- หน้าหลักคือ `index.html` ส่วนหน้าแยกอื่นได้แก่ `statistics.html`, `login.html`, `cookie-policy.html` และหน้า `announce-*.html`
 - ข้อมูลทั้งหมดที่แสดงในตอนนี้เป็นข้อมูลจำลอง (Mock) ยกเว้นข่าวบางรายการที่ระบุลิงก์จริงแล้ว
 
 ## Tech Stack 
@@ -19,9 +19,9 @@
 
 ## โครงสร้างโปรเจกต์
 
-- `index.html`, `statistics.html`, `login.html`, `announce-*.html`: หน้าเว็บ
-- `css/`: ไฟล์สไตล์แยกตามส่วน เช่น `variables.css`, `news.css`, `calendar.css`, `stats-dashboard.css`
-- `js/`: สคริปต์แยกตามฟีเจอร์ เช่น `news.js`, `calendar.js`, `stats-data.js`, `stats-page.js`, `i18n.js`, `theme.js`
+- `index.html`, `statistics.html`, `login.html`, `cookie-policy.html`, `announce-*.html`: หน้าเว็บ
+- `css/`: ไฟล์สไตล์แยกตามส่วน เช่น `variables.css`, `news.css`, `promo.css`, `footer.css`, `login.css`, `policy.css`, `calendar.css`, `stats-dashboard.css`
+- `js/`: สคริปต์แยกตามฟีเจอร์ เช่น `news.js`, `promo.js`, `calendar.js`, `stats-data.js`, `stats-page.js`, `i18n.js`, `theme.js`, `font-size.js`
 - `assets/images/`: รูปภาพ รวมถึงรูปข่าวใน `assets/images/news/`
 - `uploads/`: เอกสารประกอบ (ประกาศ คู่มือ แบบฟอร์ม) โดยไฟล์จริงไม่ถูกเก็บใน Git
 - `.agents/skills/`: ชุดคำสั่งช่วยออกแบบและตรวจการเข้าถึง (Accessibility)
@@ -31,10 +31,10 @@
 @README.md
 @REQUIREMENTS.md
 @DESIGN.md
-@PLAN.md
+@PLAN.MD
 @DATA_SOURCE.md
 
-ไฟล์ `AGENTS.md` คือกฎการออกแบบเดิม ใช้ประกอบกับไฟล์ข้างต้น ส่วน `DESING.MD` เป็นฉบับร่างเดิมที่ถูกแทนที่ด้วย `DESIGN.md` แล้ว
+ไฟล์ `AGENTS.md` คือกฎการออกแบบและการทำงาน ใช้ประกอบกับไฟล์ข้างต้น (ไม่มีไฟล์ `DESING.MD` แล้ว ใช้ `DESIGN.md` แทน)
 
 ## กฎการเขียนโค้ด และข้อห้าม
 
@@ -52,6 +52,7 @@
 
 - ไม่เข้าถึงไฟล์นอกโฟลเดอร์โปรเจกต์ และไม่แก้ไขการตั้งค่าระบบ
 - ไม่ Commit หรือ Push จนกว่าผู้ใช้จะสั่งอย่างชัดเจน ถ้าอยู่บน Branch หลักให้แตก Branch ก่อน
+- ก่อน Commit ให้ตรวจ `git status` และแจ้งผู้ใช้ว่ามีไฟล์ใหม่หรือไฟล์ที่แก้ค้างไว้อยู่ (ตอนนี้มีไฟล์ใหม่ที่ยังไม่ Commit เช่น `cookie-policy.html`, `css/policy.css`)
 - ไม่ Commit ไฟล์ที่อาจมีข้อมูลลับ เช่น `.env` หรือ Credential
 - ไม่ลบไฟล์ที่ไม่แน่ใจว่าใช้งานอยู่หรือไม่ เช่น `_probe-reveal.html` และ `sedV4ok6q` ให้ถามผู้ใช้ก่อน
 - ไฟล์ใน `uploads/` ไม่ได้อยู่ใน Git ยกเว้นไฟล์ตัวอย่างที่กำหนดไว้ใน `.gitignore`
@@ -61,5 +62,5 @@
 1. อ่านสเปกในไฟล์ `.md` ที่เกี่ยวข้องก่อนลงมือเขียนโค้ด
 2. แก้เฉพาะจุดที่ได้รับคำสั่ง และรายงานว่าไฟล์ใดถูกแก้บ้าง
 3. ตรวจ Error ในโค้ด เช่น ไวยากรณ์ JavaScript และลิงก์ที่เสีย ก่อนสรุปว่าเสร็จ
-4. อัปเดต `PLAN.md` เมื่อสถานะของงานเปลี่ยน
+4. อัปเดต `PLAN.MD` เมื่อสถานะของงานเปลี่ยน
 5. ถ้าสเปกกับโค้ดไม่ตรงกัน ให้บอกผู้ใช้และถามก่อนตัดสินใจ

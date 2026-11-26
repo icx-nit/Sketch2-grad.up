@@ -1,38 +1,59 @@
-# University Website - Design Rules
+# AGENTS.md: กฎการออกแบบและการทำงาน
 
-## 1. Technology Restrictions
-- HTML5 only
-- CSS3 only
-- Vanilla JavaScript only
-- No React
-- No Next.js
-- No Vue
-- No Tailwind CSS
-- No Bootstrap
-- No backend frameworks
+กฎสำหรับเอเจนต์ที่แก้ไขเว็บไซต์บัณฑิตวิทยาลัย มหาวิทยาลัยพะเยา (GRAD UP) ใช้ร่วมกับ `CLAUDE.md` และไฟล์สเปกอื่น
 
-## 2. UX/UI Design
-- Follow modern university website design standards.
-- Use a consistent design system.
-- Define color, typography, spacing and layout.
-- Design responsive layouts for desktop, tablet and mobile.
-- Prioritize usability and accessibility.
-- Use semantic HTML elements.
+## 1. ข้อจำกัดด้านเทคโนโลยี
 
-## 3. Code Structure
-- Separate HTML, CSS and JavaScript files.
-- Keep code clean and readable.
-- Use reusable CSS classes.
-- Avoid unnecessary external dependencies.
+- ใช้ HTML5, CSS3 และ Vanilla JavaScript เท่านั้น
+- ห้ามใช้ React, Next.js, Vue, Tailwind CSS, Bootstrap และ Framework ฝั่งเซิร์ฟเวอร์
+- ไม่มี Build Tool และไม่มีขั้นตอนคอมไพล์ในการรันหน้าเว็บ
 
-## 4. Security
-- Do not execute unknown scripts.
-- Do not access files outside the project.
-- Do not install additional packages without approval.
-- Do not modify system configurations.
+## 2. การออกแบบ UX/UI
 
-## 5. Workflow
-- Analyze requirements before designing.
-- Create Wireframes before coding.
-- Build UI components systematically.
-- Review UX/UI before finalizing.
+- ยึดมาตรฐานเว็บไซต์มหาวิทยาลัยที่ทันสมัย ใช้ระบบดีไซน์ร่วมกันทั้งเว็บ
+- กำหนดสี ฟอนต์ ระยะห่าง และเลย์เอาต์ผ่าน `DESIGN.md` และ `css/variables.css`
+- ออกแบบให้รองรับ Desktop, Tablet และ Mobile
+- ให้ความสำคัญกับการใช้งานและการเข้าถึง (Accessibility) เช่น กรอบโฟกัส และ `prefers-reduced-motion`
+- ใช้ HTML เชิงความหมาย (Semantic HTML)
+- ทุกการแก้ UI ต้องตรวจทั้ง Light Mode, Dark Mode และ Responsive บนมือถือ
+
+## 3. โครงสร้างโค้ด
+
+- แยก HTML, CSS และ JavaScript ออกจากกัน
+- ใช้ CSS Class ที่นำกลับมาใช้ซ้ำได้
+- โค้ดต้องอ่านง่าย ไม่เพิ่มไลบรารีภายนอกโดยไม่จำเป็น
+- ไม่แก้ Logic เดิมที่ทำงานได้อยู่แล้ว เว้นแต่ได้รับคำสั่งให้แก้ส่วนนั้นโดยตรง
+
+## 4. ความปลอดภัย
+
+- ไม่รันสคริปต์ที่ไม่รู้ที่มา
+- ไม่เข้าถึงไฟล์นอกโฟลเดอร์โปรเจกต์
+- ไม่ติดตั้งแพ็กเกจเพิ่มโดยไม่ได้รับอนุมัติ
+- ไม่แก้ไขการตั้งค่าระบบ
+- ห้ามใส่รหัสผ่าน Token หรือ Credential ลงในไฟล์ใด ๆ ของโปรเจกต์
+
+## 5. การเก็บข้อมูลและลิงก์
+
+- ห้ามสร้าง URL ขึ้นมาเอง ใช้เฉพาะลิงก์ที่อยู่ในเอกสารหรือที่ผู้ใช้ให้มา
+- ห้ามใช้ข้อมูลจำลอง (Mock) เป็นข้อมูลจริงใน Production และต้องบอกชัดเจนเมื่อยังเป็นข้อมูลจำลอง
+- ห้ามทำให้หน้าเว็บหลักพังเมื่อแหล่งข้อมูลภายนอกไม่ตอบสนอง
+
+## 6. การเปลี่ยนแปลงไฟล์ที่โหลดบนหน้าเว็บ
+
+- ทุกครั้งที่แก้ไฟล์ CSS หรือ JS ที่ถูกโหลดจากหน้าเว็บ ให้เปลี่ยนค่า `?v=` ของไฟล์นั้นในทุกหน้าที่เรียกใช้
+- ตรวจว่าค่า `?v=` เปลี่ยนแล้วก่อนสรุปว่างานเสร็จ
+
+## 7. Git และการลบไฟล์
+
+- ไม่ Commit หรือ Push จนกว่าผู้ใช้จะสั่งอย่างชัดเจน
+- ถ้าอยู่บน Branch หลัก ให้แตก Branch ก่อนแก้ไข
+- ไม่ Commit ไฟล์ที่อาจมีข้อมูลลับ เช่น `.env` หรือ Credential
+- ไม่ลบไฟล์ที่ไม่แน่ใจว่าใช้งานอยู่ เช่น `_probe-reveal.html` และ `sedV4ok6q` ให้ถามผู้ใช้ก่อน
+
+## 8. ขั้นตอนการทำงาน
+
+1. วิเคราะห์สเปกใน `REQUIREMENTS.md` และ `DESIGN.md` ก่อนเขียนโค้ด
+2. แก้เฉพาะจุดที่ได้รับคำสั่ง และรายงานว่าแก้ไฟล์ใดบ้าง
+3. ตรวจ Error เช่น ไวยากรณ์ JavaScript และลิงก์ที่เสียก่อนสรุปว่าเสร็จ
+4. อัปเดต `PLAN.MD` เมื่อสถานะของงานเปลี่ยน
+5. ถ้าสเปกกับโค้ดไม่ตรงกัน ให้แจ้งผู้ใช้และถามก่อนตัดสินใจ
